@@ -6,9 +6,11 @@ This repo will contain the React Frontend of our project.
 
 ## RevLearn
 
-Our project is a Learning Management System. Revlearn will enable an organization's online course delivery. Users will be able to use Revlearn to track grades, course resources, and assignments.
+Our project is a Learning Management System. Revlearn will enable an organization's online course delivery. A course consist of 
 
-The program will have three roles Student, Teacher, and Admins. Revlearn will enable students to access course work, quizzes, grades, enroll in new courses, and create a new student account. The teacher will assign quizzes, grades, course work, upload course resources, and approve course enrollment. Admins will develop courses, create site-wide notification banners, uplift teachers, and assign teachers to a class.
+Users will be able to use Revlearn to track grades, course resources, and assignments.
+
+The program will have three roles: Student, Teacher, and Admins. Revlearn will enable students to access course work, quizzes, grades, enroll in new courses, and create a new student account. The teacher will assign quizzes, grades, course work, upload course resources, and approve course enrollment. Admins will develop courses, create site-wide notification banners, uplift teachers, and assign teachers to a class.
 
 The application will consist of four layers, the React Native frontend, the API, the database, the S3 file storage. The React Native frontend handles business logic, for example, user interaction, input validation, and system management. The API layer handles interaction between the front end and the database / and S3. The database stores persistent data from the front end. The S3 bucket will store files from the front end.
 
