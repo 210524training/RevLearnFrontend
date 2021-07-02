@@ -1,6 +1,6 @@
 # RevLearnFrontend
 
-This repo will contain the react front end of our project.
+This repo will contain the React Frontend of our project.
 
 ## Learning Management System
 
