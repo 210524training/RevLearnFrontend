@@ -6,7 +6,7 @@ This repo will contain the React Frontend of our project.
 
 ## RevLearn
 
-Our project is a Learning Management System. Revlearn will enable an organization's online course delivery. A course consist of 
+Our project is a Learning Management System. Revlearn will enable an organization's online course delivery. A course consists of homepage, grading scale, general course information, lectures, homework assignment, seperate page for quizzes/exams.  Each student can have final grade in the course.
 
 Users will be able to use Revlearn to track grades, course resources, and assignments.
 
