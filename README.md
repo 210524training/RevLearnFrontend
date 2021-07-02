@@ -16,7 +16,6 @@ The application will consist of four layers, the React Native frontend, the API,
 
 - As an admin, I can create a course
 - As an admin, I can assign a teacher to a course
-- As an admin, I can create site-wide notification banners.
 - As a student, I can request to enroll in a course
 - As a student, I can view a list of my enrolled courses
 - As a student, I can view course resources
@@ -40,4 +39,4 @@ The application will consist of four layers, the React Native frontend, the API,
 - As a user, I can send messages to other users.
 - As the system, I can send email/push notifications when due dates are near
 - As a user, I can update my account settings to affect the site's styling
-- As a Teacher, I can update quiz grades.
+- As an admin, I can create site-wide notification banners.
