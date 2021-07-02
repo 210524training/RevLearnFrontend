@@ -15,7 +15,7 @@ The program will have three roles: Student, Teacher, and Admins. Revlearn will e
 The application will consist of four layers, the React Native frontend, the API, the database, the S3 file storage. The React Native frontend handles business logic, for example, user interaction, input validation, and system management. The API layer handles interaction between the front end and the database / and S3. The database stores persistent data from the front end. The S3 bucket will store files from the front end.
 
 - As an admin, I can create a course
-- As an admin, I can assign a teacher to a course
+- As an admin, I can assign a teacher to a cours
 - As a student, I can request to enroll in a course
 - As a student, I can view a list of my enrolled courses
 - As a student, I can view course resources
@@ -30,13 +30,13 @@ The application will consist of four layers, the React Native frontend, the API,
 - As a teacher, I can view quiz results and approve/change grades
 - As a teacher, I can create assessments
 - As a teacher, I can drop students from my course.
-- As the system, I can automatically assign a zero to a student of the assignment passes its due date
+- As the system, I can automatically assign a zero to a student if the assignment passes its due date
 - As the system, I can mark courses as completed after the ending date
 
 ### strech goals
 
 - As the system, I can send a certificate to a student with a passing grade.
 - As a user, I can send messages to other users.
-- As the system, I can send email/push notifications when due dates are near
-- As a user, I can update my account settings to affect the site's styling
+- As the system, I can send email / push notifications when due-dates are near
+- As a user, I can update my account settings to affect the site's styling.
 - As an admin, I can create site-wide notification banners.
