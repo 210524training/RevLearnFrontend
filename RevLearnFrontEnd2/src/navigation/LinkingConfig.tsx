@@ -19,6 +19,7 @@ const config: LinkingOptions = {
           },
         },
       },
+      Test: 'Test',
       /* ItemView: {
         screens: {
           ItemView: 'item',

@@ -10,7 +10,7 @@ export type WebStackParamList = {
 
 export type RootStackParamList = {
   Root: undefined;
-  NotFound: undefined;
+  Test: undefined;
   /* ItemView: {
     restaurant: Restaurant;
   }; */

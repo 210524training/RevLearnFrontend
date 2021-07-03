@@ -8,7 +8,7 @@ export default function App() {
   const colorScheme = useColorScheme();
   return (
     <View style={styles.container}>
-     <Navigation colorScheme={colorScheme} /> 
+      <Navigation colorScheme={colorScheme} /> 
       <StatusBar style="auto" />
     </View>
   );

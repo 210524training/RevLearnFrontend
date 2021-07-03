@@ -9,7 +9,7 @@ function WebNavigator() {
   const Stack = createStackNavigator<WebStackParamList>();
   return (
     <Stack.Navigator 
-      initialRouteName = 'LandingPage'
+      initialRouteName = 'LoginPage'
       headerMode={'none'}
     >
       <Stack.Screen name="LandingPage" component={LandingPage} />

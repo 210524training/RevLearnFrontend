@@ -1,13 +1,18 @@
 import React from "react";
-import { Platform, Text } from "react-native";
+import { Platform, Text, View } from "react-native";
 
 const LandingPage: React.FC<unknown> = () => {
   return (
   <>
-    {Platform.OS === 'web'
-      ? <Text>Web Login Screen</Text>
-      : <Text>Mobile Login Screen</Text>
-    }
+    <View>
+      {Platform.OS === 'web'
+        ? <Text>Web Login Screen</Text>
+        : <Text>Mobile Login Screen</Text>
+      }
+
+      <Text>Web Login Screen</Text>
+    </View>
+    
   </>
   );
 }

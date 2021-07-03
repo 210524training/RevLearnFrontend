@@ -1,7 +1,7 @@
  import { DarkTheme, DefaultTheme, NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack'; 
 import * as React from 'react';
-import { ColorSchemeName, Platform } from 'react-native';
+import { ColorSchemeName, Platform, View } from 'react-native';
 import LandingPage from '../components/pages/LandingPage';
 import LoginPage from '../components/pages/LoginPage';
 import { RootStackParamList } from '../Types';
@@ -13,17 +13,20 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
   
   return (
     <>
-    <NavigationContainer
-      linking={LinkingConfiguration}
-      theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        
-         {/* Platform.OS === 'web'
-          ? <RootWebNavigator />
-          : <RootMobileNavigator />
-        }   */}
-     <RootWebNavigator /> 
-     
-    </NavigationContainer> 
+    <View style={{ flex: 1 }}>
+      <NavigationContainer 
+        linking={LinkingConfiguration}
+        theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          
+          {/* Platform.OS === 'web'
+            ? <RootWebNavigator />
+            : <RootMobileNavigator />
+          }   */}
+      <RootWebNavigator /> 
+      
+      </NavigationContainer> 
+    </View>
+    
     </>
   );
 
@@ -37,15 +40,15 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
     );
   }*/
   
-  function RootWebNavigator() {
+  function RootWebNavigator() { 
     const Stack = createStackNavigator<RootStackParamList>();
     return (
       <>
-      {/* <Stack.Navigator initialRouteName = 'Root' headerMode={'none'}>
+       <Stack.Navigator headerMode={'none'}>
         <Stack.Screen name="Root" component={WebNavigator} /> 
-        <Stack.Screen name="Root" component={LoginPage} /> 
-      </Stack.Navigator> */}
-        <LoginPage/>
+        <Stack.Screen name="Test" component={LoginPage} /> 
+      </Stack.Navigator> 
+       {/* <LoginPage/>  */}
       </>
     );
   } 
