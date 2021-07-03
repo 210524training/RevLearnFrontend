@@ -3,8 +3,7 @@ import Activity from "./Activity";
 import AssignmentSubmission from "./AssignmentSubmission";
 
 export default interface Assignment extends Activity{
-type: AssignmentType,
-submissions: AssignmentSubmission[],
-passingGrade: LetterGrade,
-
+  type: AssignmentType,
+  submissions: AssignmentSubmission[],
+  passingGrade: LetterGrade,
 }
