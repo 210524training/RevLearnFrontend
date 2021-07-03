@@ -1,4 +1,4 @@
-import { AnyAction } from 'redux';
+/* import { AnyAction } from 'redux';
 import { configureStore, ThunkAction } from '@reduxjs/toolkit';
 import userReducer from './slices/user.slice';
 
@@ -18,4 +18,4 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   AnyAction
 >;
 
-export default store;
+export default store; */

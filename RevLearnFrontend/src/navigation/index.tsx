@@ -1,30 +1,40 @@
  import { NavigationContainer, DefaultTheme, DarkTheme } from '@react-navigation/native';
  import { createStackNavigator } from '@react-navigation/stack';
  import * as React from 'react';
- import { ColorSchemeName } from 'react-native';
-
- import { RootStackParamList } from '../types';
- import BottomTabNavigator from './BottomTabNavigator';
- import LinkingConfiguration from './LinkingConfiguration';
+ import { ColorSchemeName, Platform } from 'react-native';
+ import { RootStackParamList } from '../@Types/StackParams';
+ import BottomTabNavigator from './BottomTabNav';
+ import LinkingConfiguration from './LinkingConfig';
+import WebNavigator from './WebNav';
  //This is a comment
  export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
    return (
      <NavigationContainer
        linking={LinkingConfiguration}
        theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-       <RootNavigator />
+         {Platform.OS === 'web'
+           ? <RootWebNavigator />
+           : <RootMobileNavigator />
+         }
+       
      </NavigationContainer>
    );
  }
 
  const Stack = createStackNavigator<RootStackParamList>();
  
- function RootNavigator() {
+ function RootMobileNavigator() {
    return (
      <Stack.Navigator  headerMode={'none'}>
        <Stack.Screen name="Root" component={BottomTabNavigator} />
-       <Stack.Screen name="ItemView" component={ItemViewScreen} />
-       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
      </Stack.Navigator>
    );
  }
+
+ function RootWebNavigator() {
+  return (
+    <Stack.Navigator  headerMode={'none'}>
+      <Stack.Screen name="Root" component={WebNavigator} />
+    </Stack.Navigator>
+  );
+}
