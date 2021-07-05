@@ -4,7 +4,7 @@ import {Text} from 'react-native';
 type Props = {
 
 }
-const CreateAssignmentsPage: React.FC<Props> = (props) => {
+const CreateAssignmentPage: React.FC<Props> = (props) => {
   return (
     <>
       <Text>CreateAssignmentsPage</Text>
@@ -12,4 +12,4 @@ const CreateAssignmentsPage: React.FC<Props> = (props) => {
   )
 }
 
-export default CreateAssignmentsPage;
+export default CreateAssignmentPage;

@@ -23,6 +23,33 @@ export type TabTwoParamList = {
 
 // Web stack Params
 export type WebStackParamList = {
+  // Screens Folder
   LandingPage: undefined;
   LoginPage: undefined;
+  // Assignments Pages Folder
+  AssignmentsPage: undefined;
+  AssignmentSubmissionsPage: undefined;
+  CreateAssignmentPage: undefined;
+  DetailedSubmissionPage: undefined;
+  SubmitAssignmentPage: undefined;
+  // Course Info Folder
+  CourseInfoPage: undefined;
+  UpdateCourseInfoPage: undefined;
+  // Quizzes Folder
+  AllQuizResultsPage: undefined;
+  AllQuizzesPage: undefined;
+  CreateQuizPage: undefined;
+  QuizPage: undefined;
+  // Resources Folder
+  AddResourcePage: undefined;
+  CourseResourcesPage: undefined;
+  DetailedResourcePage: undefined;
+  UpdateResourcePage: undefined;
+  // Courses Folder
+  AllCoursesPage: undefined;
+  CourseAdmissionRequestsPage: undefined;
+  CourseGradesPage: undefined;
+  CourseHomePage: undefined;
+  CourseStudentsPage: undefined;
+  CreateCoursePage: undefined;
 };
