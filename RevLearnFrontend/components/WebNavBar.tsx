@@ -1,11 +1,11 @@
 import React from "react";
-import {Text} from 'react-native'
+import {Text, View} from 'react-native'
 
 const NavBar = () => {
   return (
-    <>
+    <View>
       <Text>this in a nav bar</Text>
-    </>
+    </View>
   );
 }
 
