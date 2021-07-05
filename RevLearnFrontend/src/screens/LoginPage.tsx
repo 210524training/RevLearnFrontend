@@ -1,10 +1,13 @@
 import React from "react";
 import {Text} from 'react-native';
 
-function LoginPage() {
+type Props = {
+
+}
+const LoginPage: React.FC<Props> = (props) => {
   return (
     <>
-      <Text>Landing Page</Text>
+      <Text>LoginPage</Text>
     </>
   )
 }

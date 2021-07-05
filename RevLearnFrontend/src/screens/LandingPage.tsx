@@ -1,7 +1,10 @@
 import React from "react";
 import {Text} from 'react-native';
 
-function LandingPage() {
+type Props = {
+
+}
+const LandingPage: React.FC<Props> = (props) => {
   return (
     <>
       <Text>Landing Page</Text>

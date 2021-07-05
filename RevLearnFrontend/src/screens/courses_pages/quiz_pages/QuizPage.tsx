@@ -4,12 +4,12 @@ import {Text} from 'react-native';
 type Props = {
 
 }
-const AllUsersPage: React.FC<Props> = (props) => {
+const QuisPage: React.FC<Props> = (props) => {
   return (
     <>
-      <Text>AllUsersPage</Text>
+      <Text>QuisPage</Text>
     </>
   )
 }
 
-export default AllUsersPage;
+export default QuisPage;
