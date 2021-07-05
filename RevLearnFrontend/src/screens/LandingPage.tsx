@@ -1,5 +1,5 @@
 import React from "react";
-import {Text} from 'react-native';
+import {Platform, Text} from 'react-native';
 import WithNavBar from "../../components/higher_order_components/WithNavBar";
 
 
@@ -14,5 +14,4 @@ const LandingPage: React.FC<Props> = (props) => {
     </>
   )
 }
-
 export default WithNavBar(LandingPage);
