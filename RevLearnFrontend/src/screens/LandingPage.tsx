@@ -23,17 +23,16 @@ const LandingPage: React.FC<Props> = ({navigation}) => {
 
   // const navigation = useNavigation();
 
-  const press = () => {
+  /* const press = () => {
     // navigation.navigate('LoginPage');
     navigation.toggleDrawer();
-  }
+  } */
   return (
     <>
       
       <Text onPress={() => {navigation.navigate('LoginPage')}}>Landing Page</Text>
-       <Button title={'press'} onPress={press}>openDrawer</Button>
+       {/* <Button title={'press'} onPress={press}>openDrawer</Button> */}
     </>
   )
 }
-/* export default WithNavBar(LandingPage); */
-export default LandingPage;
+export default WithNavBar(LandingPage);

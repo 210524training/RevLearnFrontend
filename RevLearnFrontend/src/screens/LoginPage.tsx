@@ -7,7 +7,7 @@ type Props = {
 }
 const LoginPage: React.FC<Props> = (props) => {
   return (
-    <>
+    <> 
       <Text>LoginPage</Text>
     </>
   )
