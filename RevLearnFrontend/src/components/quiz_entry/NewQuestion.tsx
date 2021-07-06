@@ -6,24 +6,22 @@ type Props = {
 }
 
 const NewQuestion: React.FC<Props> = (props) => {
-
   const [title, setTitle] = useState<string>('');
   const [pointValue, setPointValue] = useState<string>('');
   const [prompt, setPrompt] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
 
   const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
-    
     const newQuestion = {
       questionID: '1',
       questionTitle: title,
       correctAnswer: answer,
       pointValue,
       prompt,
-    }
+    };
 
     // TODO: send the question data somewhere
-  }
+  };
 
   return (
     <>
@@ -41,7 +39,7 @@ const NewQuestion: React.FC<Props> = (props) => {
 
       <Button onPress={handleQuestionSubmit} title="Add Question" />
     </>
-  )
-}
+  );
+};
 
 export default NewQuestion;

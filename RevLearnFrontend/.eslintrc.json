@@ -5,7 +5,9 @@
       "jest": true
   },
   "extends": [
-      "airbnb-base"
+      "airbnb-base",
+      "react-app",
+      "react-app/jest"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {

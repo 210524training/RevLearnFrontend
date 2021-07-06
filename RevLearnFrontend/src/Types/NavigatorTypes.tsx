@@ -15,6 +15,7 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   LandingScreen: undefined;
+  LoginScreen: undefined;
 };
 
 export type TabTwoParamList = {
