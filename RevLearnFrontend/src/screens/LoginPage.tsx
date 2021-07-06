@@ -1,6 +1,6 @@
 import React from "react";
 import {Text} from 'react-native';
-import WithNavBar from "../../components/higher_order_components/WithNavBar";
+import WithNavBar from "../components/higher_order_components/WithNavBar";
 
 type Props = {
 
