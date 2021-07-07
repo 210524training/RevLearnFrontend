@@ -20,6 +20,7 @@
     "@react-navigation/stack": "~5.12.8",
     "@reduxjs/toolkit": "^1.6.0",
     "axios": "^0.21.1",
+    "eslint": "^7.27.0",
     "expo": "~42.0.0",
     "expo-asset": "~8.3.2",
     "expo-constants": "~11.0.1",
@@ -38,8 +39,8 @@
     "react-native-safe-area-context": "3.2.0",
     "react-native-screens": "~3.4.0",
     "react-native-web": "~0.13.12",
-    "eslint": "^7.27.0",
-    "react-redux": "^7.2.4"
+    "react-redux": "^7.2.4",
+    "redux": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",

@@ -1,6 +1,6 @@
-/* import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import User from "../../models/user";
-import { sendLogin } from "../../remote/grubdash-backend/grubdash.api";
+import { sendLogin } from "../../remote/RevLearnBackendAPI";
 import { RootState } from "../store";
 import { AxiosError } from 'axios';
 
@@ -59,4 +59,4 @@ export const { login, logout } = userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
 
-export default userSlice.reducer; */
+export default userSlice.reducer; 
