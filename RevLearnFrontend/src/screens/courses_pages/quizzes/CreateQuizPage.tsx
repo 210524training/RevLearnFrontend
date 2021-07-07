@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Text } from 'react-native';
+import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, View } from 'react-native';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
+import { useAppSelector } from '../../../hooks';
+import { getQuestions, addQuestion, clear, QuestionState } from '../../../hooks/slices/question.slice';
 import QuizQuestion from '../../../models/QuizQuestion';
 
 type Props = {
@@ -8,19 +10,27 @@ type Props = {
 }
 
 const CreateQuizPage: React.FC<Props> = (props) => {
-  const [questions, setQuestions] = useState<QuizQuestion[]>([]);
+  const questions = useAppSelector<QuestionState>(getQuestions);
+
+  const handleNewQuizSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
+    console.log(questions);
+  };
 
   return (
     <>
       {
         questions.map((question) => (
           <>
-            <Text>{question.questionTitle}</Text>
-            <Text>{question.prompt}</Text>
+            <View style={{borderWidth: 1}}>
+              <Text>{question.questionTitle}</Text>
+              <Text>{question.prompt}</Text>
+            </View>
           </>
         ))
       }
       <NewQuestion />
+
+      <Button onPress={handleNewQuizSubmit} title="Create Quiz" />
     </>
   );
 };

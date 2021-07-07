@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput } from 'react-native';
+import { useAppDispatch } from '../../hooks';
+import { addQuestion } from '../../hooks/slices/question.slice';
 
 type Props = {
 
@@ -11,16 +13,18 @@ const NewQuestion: React.FC<Props> = (props) => {
   const [prompt, setPrompt] = useState<string>('');
   const [answer, setAnswer] = useState<string>('');
 
+  const dispatch = useAppDispatch();
+
   const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
     const newQuestion = {
-      questionID: '1',
+      questionID: '0',
       questionTitle: title,
       correctAnswer: answer,
       pointValue,
       prompt,
     };
 
-    // TODO: send the question data somewhere
+    dispatch(addQuestion(newQuestion));
   };
 
   return (
@@ -28,7 +32,7 @@ const NewQuestion: React.FC<Props> = (props) => {
       <Text>Question Title</Text>
       <TextInput style={{borderWidth: 1}} onChangeText={setTitle} />
 
-      <Text>Question Title</Text>
+      <Text>Point Value</Text>
       <TextInput style={{borderWidth: 1}} onChangeText={setPointValue} />
 
       <Text>Question Prompt</Text>
