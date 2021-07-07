@@ -27,72 +27,72 @@ export type HomePageNavParamList = {
   HomePage: undefined;
 };
 export type UserInfoNavParamList = {
-  UserInfo: undefined;
+  UserInfoPage: undefined;
 };
 export type SettingsNavParamList = {
-  Settings: undefined;
+  SettingsPage: undefined;
 };
 export type AllUsersNavParamList = {
-  AllUsers: undefined;
+  AllUsersPage: undefined;
 };
 export type AllTeachersNavParamList = {
-  AllTeachers: undefined;
-  CreateTeacher: undefined;
+  AllTeachersPage: undefined;
+  CreateTeacherPage: undefined;
 };
 export type AllCoursesNavParamList = {
-  AllCourses: undefined;
-  CreateCourse: undefined;
+  AllCoursesPage: undefined;
+  CreateCoursePage: undefined;
 };
 export type GradesOverViewNavParamList = {
-  GradesOverView: undefined;
+  GradesOverViewPage: undefined;
 };
 //CourseHome
 export type HomeNavParamList = {
-  CourseHomeNav: undefined;
-  CourseResourcesNav: undefined;
-  AssignmentsNav: undefined;
-  QuizzesNav: undefined;
-  CourseInfoNav: undefined;
-  CourseGradesNav: undefined;
-  AdmissionRequestsNav: undefined;
-  StudentsNav: undefined;
-  AllCourseGradesNav: undefined;
+  CourseHome: undefined;
+  CourseResources: undefined;
+  Assignments: undefined;
+  Quizzes: undefined;
+  CourseInfo: undefined;
+  CourseGrades: undefined;
+  AdmissionRequests: undefined;
+  Students: undefined;
+  AllCourseGrades: undefined;
 };
 
 export type CourseHomeNavParamList = {
-  CourseHome: undefined;
+  CourseHomePage: undefined;
 };
 export type CourseResourcesNavParamList = {
-  GradesOverViewNav: undefined;
-  DetailedResource: undefined;
-  AddCourseresource: undefined;
+  CourseResourcesPage: undefined;
+  DetailedResourcePage: undefined;
+  AddCourseResourcePage: undefined;
 };
 export type AssignmentsNavParamList = {
-  Assignments: undefined;
-  SubmitAssignments: undefined;
-  CreateAssignment: undefined;
-  AssignmentsSubmissions: undefined;
-  DetaliedSubmission: undefined;
+  AssignmentsPage: undefined;
+  SubmitAssignmentsPage: undefined;
+  CreateAssignmentPage: undefined;
+  AssignmentsSubmissionsPage: undefined;
+  DetaliedSubmissionPage: undefined;
 };
 export type QuizzesNavParamList = {
-  Quizzes: undefined;
+  QuizzesPage: undefined;
   QuizPage: undefined;
 };
 export type CourseInfoNavParamList = {
-  CourseInfo: undefined;
-  UpdateCourseInfo: undefined;
+  CourseInfoPage: undefined;
+  UpdateCourseInfoPage: undefined;
 };
 export type CourseGradesNavParamList = {
-  CourseGrades: undefined;
+  CourseGradesPage: undefined;
 };
 export type AdmissionRequestsNavParamList = {
-  AdmissionRequests: undefined;
+  AdmissionRequestsPage: undefined;
 };
 export type StudentsNavParamList = {
-  Students: undefined;
+  StudentsPage: undefined;
 };
 export type AllCourseGradesNavParamList = {
-  AllCourseGrades: undefined;
+  AllCourseGradesPage: undefined;
 };
 
 

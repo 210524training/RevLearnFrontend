@@ -79,7 +79,7 @@ export default {
             screens: {
               CourseResources: 'CourseResources',
               DetailedResource: 'DetailedResource',
-              AddCourseresource: 'AddCourseresource',
+              AddCourseresource: 'AddCourseResource',
             },
           },
           AssignmentsNav: {

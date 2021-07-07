@@ -4,12 +4,12 @@ import {Text} from 'react-native';
 type Props = {
 
 }
-const QuisPage: React.FC<Props> = (props) => {
+const QuizPage: React.FC<Props> = (props) => {
   return (
     <>
-      <Text>QuisPage</Text>
+      <Text>QuizPage</Text>
     </>
   )
 }
 
-export default QuisPage;
+export default QuizPage;
