@@ -7,34 +7,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../Types/NavigatorTypes';
 import LandingPage from '../screens/LandingPage';
 import LoginPage from '../screens/LoginPage';
 
-const Drawer = createDrawerNavigator<BottomTabParamList>();
-
 function AppNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
-    <Drawer.Navigator
-      initialRouteName="TabOne"
-      
-      >
-      <Drawer.Screen
-        name="TabOne"
-        component={TabOneNavigator}
-        
-      />
-      <Drawer.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        
-      />
-    </Drawer.Navigator>
+    <>
+    </>
   );
 }
 
