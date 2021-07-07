@@ -3,41 +3,37 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from '@expo/vector-icons';
+/* import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
+import Colors from '../../constants/Colors';
+import useColorScheme from '../../hooks/useColorScheme';
+import { BottomTabParamList, RootHomeNavParamList, HomeNavParamList, LandingNavParamList, LoginNavParamList } from '../../Types/NavigatorTypes';
+import LandingPage from '../../screens/LandingPage';
+import LoginPage from '../../screens/LoginPage';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../Types/NavigatorTypes';
-import LandingPage from '../screens/LandingPage';
-import LoginPage from '../screens/LoginPage';
+const DrawerNav = createDrawerNavigator<RootHomeNavParamList>();
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
-
-function AppNavigator() {
+function AppHomeNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
-    <BottomTab.Navigator
+    <DrawerNav.Navigator
       initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
+      >
+      <DrawerNav.Screen
         name="TabOne"
-        component={TabOneNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
+        component={HomeNavigator}
+        options={{ headerTitle: 'Home Screen' }}
       />
-      <BottomTab.Screen
+      <DrawerNav.Screen
         name="TabTwo"
         component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
+        options={{ headerTitle: 'Home Screen' }}
       />
-    </BottomTab.Navigator>
+    </DrawerNav.Navigator>
   );
 }
 
@@ -49,17 +45,17 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeNav = createStackNavigator<HomeNavParamList>();
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="LandingScreen"
+    <HomeNav.Navigator>
+      <HomeNav.Screen
+        name="Home"
         component={LandingPage}
         options={{ headerTitle: 'Home Screen' }}
       />
-    </TabOneStack.Navigator>
+    </HomeNav.Navigator>
   );
 }
 
@@ -78,4 +74,4 @@ function TabTwoNavigator() {
 }
 
 
-export default AppNavigator;
+export default AppHomeNavigator; */

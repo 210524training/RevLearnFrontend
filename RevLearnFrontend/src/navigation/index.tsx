@@ -9,9 +9,10 @@ import * as React from 'react';
 import { ColorSchemeName, Platform } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../Types/NavigatorTypes';
-import AppNavigator from './AppNavigator';
-import AppLinkingConfiguration from './AppLinkingConfiguration';
+import { RootStackParamList, RootWebStackParamList } from '../Types/NavigatorTypes';
+import AppRootNavigator from './app_navigation/AppRootNavigation';
+import AppHomeNavigator from './app_navigation/AppHomeNavigator';
+import AppLinkingConfiguration from './app_navigation/AppLinkingConfiguration';
 import WebNavigator from './WebNavigator';
 import WebLinkingConfiguration from './WebLinkingConfiguration';
 
@@ -29,7 +30,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
           <NavigationContainer
             linking={AppLinkingConfiguration}
             theme={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-            <AppRootNavigator />
+            <AppBaseNavigator />
             
           </NavigationContainer>
         ) 
@@ -40,21 +41,24 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
 
 // A root stack navigator is often used for displaying modals on top of all other content
 // Read more here: https://reactnavigation.org/docs/modal
-const Stack = createStackNavigator<RootStackParamList>();
+const AppStack = createStackNavigator<RootStackParamList>();
 
-function AppRootNavigator() {
+function AppBaseNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={AppNavigator} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-    </Stack.Navigator>
+    <AppStack.Navigator screenOptions={{ headerShown: false }}>
+      <AppStack.Screen name="Root" component={AppRootNavigator} />
+      <AppStack.Screen name="Home" component={AppHomeNavigator} />
+      <AppStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+    </AppStack.Navigator>
   );
 }
+
+const WebStack = createStackNavigator<RootWebStackParamList>();
 function WebRootNavigator() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Root" component={WebNavigator} />
-      <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-    </Stack.Navigator>
+    <WebStack.Navigator screenOptions={{ headerShown: false }}>
+      <WebStack.Screen name="Root" component={WebNavigator} />
+      <WebStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
+    </WebStack.Navigator>
   );
 }
