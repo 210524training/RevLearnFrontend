@@ -3,22 +3,37 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from '@expo/vector-icons';
+/* import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../Types/NavigatorTypes';
-import LandingPage from '../screens/LandingPage';
-import LoginPage from '../screens/LoginPage';
+import Colors from '../../constants/Colors';
+import useColorScheme from '../../hooks/useColorScheme';
+import { BottomTabParamList, RootHomeNavParamList, HomeNavParamList, LandingNavParamList, LoginNavParamList } from '../../Types/NavigatorTypes';
+import LandingPage from '../../screens/LandingPage';
+import LoginPage from '../../screens/LoginPage';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
-function AppNavigator() {
+const DrawerNav = createDrawerNavigator<RootHomeNavParamList>();
+
+function AppHomeNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
-    <>
-    </>
+    <DrawerNav.Navigator
+      initialRouteName="TabOne"
+      >
+      <DrawerNav.Screen
+        name="TabOne"
+        component={HomeNavigator}
+        options={{ headerTitle: 'Home Screen' }}
+      />
+      <DrawerNav.Screen
+        name="TabTwo"
+        component={TabTwoNavigator}
+        options={{ headerTitle: 'Home Screen' }}
+      />
+    </DrawerNav.Navigator>
   );
 }
 
@@ -30,22 +45,17 @@ function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
 // https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const TabOneStack = createStackNavigator<TabOneParamList>();
+const HomeNav = createStackNavigator<HomeNavParamList>();
 
-function TabOneNavigator() {
+function HomeNavigator() {
   return (
-    <TabOneStack.Navigator>
-      <TabOneStack.Screen
-        name="LandingScreen"
+    <HomeNav.Navigator>
+      <HomeNav.Screen
+        name="Home"
         component={LandingPage}
         options={{ headerTitle: 'Home Screen' }}
       />
-      <TabOneStack.Screen
-        name="LoginScreen"
-        component={LoginPage}
-        options={{ headerTitle: 'Login Screen' }}
-      />
-    </TabOneStack.Navigator>
+    </HomeNav.Navigator>
   );
 }
 
@@ -64,4 +74,4 @@ function TabTwoNavigator() {
 }
 
 
-export default AppNavigator;
+export default AppHomeNavigator; */
