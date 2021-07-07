@@ -1,5 +1,15 @@
 import User from "../models/User"
 
+
+
+const newStudent: User = {
+  username: 'michael',
+  password: '123',
+  courses: [],
+  role: "student",
+  userID: "456",
+}
+
 // Temp sever calls go here.
 /**
  * 
@@ -8,11 +18,15 @@ import User from "../models/User"
 function test55(input: string) {
 
 }
-
-const newStudent: User = {
-  username: 'michael',
-  password: '123',
-  courses: [],
-  role: "student",
-  userID: "456",
+/**
+ * 
+ * @callAStudent to use as a placeholder in replace of the original grubdashClient method in RegisterPage.
+ */
+export function registerStudent(){
+  return true
 };
+
+export function getByUserName(){
+  return newStudent
+}
+

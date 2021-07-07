@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 import { loginAsync, logout, selectUser, UserState } from '../hooks/slices/user.slice';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { getAllUsers } from '../remote/grubdash-backend/grubdash.api';
+import { getByUserName, registerStudent } from '../remote/RevLearnBackendAPI';
 
 const RegisterScreen: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -14,7 +14,7 @@ const RegisterScreen: React.FC<unknown> = (props) => {
   const [password, setPassword] = useState<string>('');
   const [address, setAddress] = useState<string>('');
   const [phoneNumber, setPhoneNumber] = useState<string>('');
-
+  const nav = useNavigation();
   const dispatch = useAppDispatch();
 
   const handleLogin = async () => {
@@ -23,19 +23,11 @@ const RegisterScreen: React.FC<unknown> = (props) => {
   }
 
   const handleRegister = async () => {
-    const users = await getAllUsers();
+    const users = await getByUserName();
     let exists = false;
 
-    users.forEach(u => {
-      if (u.username === username) {
-        exists = true;
-      }
-    });
-
-    if (!exists) {
-      const { data: registered } = await grubdashClient.post<boolean>('/api/v1/users', {
-        username, password, address, phoneNumber
-      });
+    if (!users) {
+      const registered = await registerStudent();
 
       if (registered) {
         handleLogin();
