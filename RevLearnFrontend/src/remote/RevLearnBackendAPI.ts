@@ -1,3 +1,15 @@
+import User from "../models/User"
+
+
+
+const newStudent: User = {
+  username: 'michael',
+  password: '123',
+  courses: [],
+  role: "student",
+  userID: "456",
+}
+
 // Temp sever calls go here.
 
 import Quiz from "../models/Quiz";
@@ -37,3 +49,15 @@ export const sendLogin = async (username: string, password: string): Promise<Use
     console.log(user);
     return user;
   }
+/**
+ * 
+ * @callAStudent to use as a placeholder in replace of the original grubdashClient method in RegisterPage.
+ */
+export function registerStudent(){
+  return true
+};
+
+export function getByUserName(){
+  return newStudent
+}
+

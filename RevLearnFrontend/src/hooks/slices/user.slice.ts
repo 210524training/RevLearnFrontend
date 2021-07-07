@@ -11,9 +11,6 @@ export type LoginCredentials = {
   password: string;
 }
 
-export function isAxiosError(error: any): error is AxiosError {
-  return "isAxiosError" in error;
-}
 
 export const loginAsync = createAsyncThunk<User, LoginCredentials>(
   'user/login/async',
