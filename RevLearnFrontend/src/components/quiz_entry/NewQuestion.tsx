@@ -1,47 +1,29 @@
 import React, { useState } from 'react';
-import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput } from 'react-native';
-import { useAppDispatch } from '../../hooks';
-import { addQuestion } from '../../hooks/slices/question.slice';
+import { Text } from 'react-native';
+import { ButtonGroup } from 'react-native-elements';
+import NewShortAnswerQuestion from './NewShortAnswerQuestion';
+import NewMultipleChoiceQuestion from './NewMultipleChoiceQuestion';
+
 
 type Props = {
 
 }
 
 const NewQuestion: React.FC<Props> = (props) => {
-  const [title, setTitle] = useState<string>('');
-  const [pointValue, setPointValue] = useState<string>('');
-  const [prompt, setPrompt] = useState<string>('');
-  const [answer, setAnswer] = useState<string>('');
+  
+  const [questionType, setQuestionType] = useState<number>(0);
 
-  const dispatch = useAppDispatch();
-
-  const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
-    const newQuestion = {
-      questionID: '0',
-      questionTitle: title,
-      correctAnswer: answer,
-      pointValue,
-      prompt,
-    };
-
-    dispatch(addQuestion(newQuestion));
-  };
-
+  const options = ['Short Answer', 'Multiple Choice'];
+  
   return (
     <>
-      <Text>Question Title</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setTitle} />
-
-      <Text>Point Value</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setPointValue} />
-
-      <Text>Question Prompt</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setPrompt} />
-
-      <Text>Answer</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setAnswer} />
-
-      <Button onPress={handleQuestionSubmit} title="Add Question" />
+    <Text>New Question</Text>
+    <ButtonGroup onPress={setQuestionType} selectedIndex={questionType} buttons={options} />
+    {
+      (!questionType) ? 
+      <NewShortAnswerQuestion /> :
+      <NewMultipleChoiceQuestion />
+    }
     </>
   );
 };
