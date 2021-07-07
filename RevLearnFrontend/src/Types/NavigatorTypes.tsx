@@ -3,51 +3,50 @@
  * https://reactnavigation.org/docs/typescript/
  */
 
-export type RootWebStackParamList = {
-  Root: undefined;
-  Home: undefined;
-  NotFound: undefined;
-};
-
 export type RootStackParamList = {
   Root: undefined;
   Home: undefined;
+  CourseHome: undefined;
   NotFound: undefined;
+  Modal: undefined;
 };
 
 
 
 // Home Navigation Parms
 export type RootHomeNavParamList = {
-  UserInfoNav: undefined;
-  SettingsNav: undefined;
-  AllUsersNav: undefined;
-  AllTeachersNav: undefined;
-  AllCoursesNav: undefined;
-  GradesOverViewNav: undefined;
+  HomePage: undefined;
+  UserInfo: undefined;
+  Settings: undefined;
+  AllUsers: undefined;
+  AllTeachers: undefined;
+  AllCourses: undefined;
+  GradesOverView: undefined;
 };
-
+export type HomePageNavParamList = {
+  HomePage: undefined;
+};
 export type UserInfoNavParamList = {
   UserInfo: undefined;
 };
 export type SettingsNavParamList = {
-  SettingsNav: undefined;
+  Settings: undefined;
 };
 export type AllUsersNavParamList = {
-  AllUsersNav: undefined;
+  AllUsers: undefined;
 };
 export type AllTeachersNavParamList = {
-  AllTeachersNav: undefined;
+  AllTeachers: undefined;
   CreateTeacher: undefined;
 };
 export type AllCoursesNavParamList = {
-  AllCoursesNav: undefined;
+  AllCourses: undefined;
   CreateCourse: undefined;
 };
 export type GradesOverViewNavParamList = {
-  GradesOverViewNav: undefined;
+  GradesOverView: undefined;
 };
-
+//CourseHome
 export type HomeNavParamList = {
   CourseHomeNav: undefined;
   CourseResourcesNav: undefined;
@@ -99,49 +98,16 @@ export type AllCourseGradesNavParamList = {
 
 
 //Root Tab Navigation params
-export type BottomTabParamList = {
+export type RootNavParamList = {
   LandingNav: undefined;
   LoginNav: undefined;
 };
 
 export type LandingNavParamList = {
-  LandingScreen: undefined;
-  LoginScreen: undefined;
+  Landing: undefined;
 };
 
 export type LoginNavParamList = {
-  LoginScreen: undefined;
+  Login: undefined;
 };
 
-// Web stack Params
-export type WebStackParamList = {
-  // Screens Folder
-  LandingPage: undefined;
-  LoginPage: undefined;
-  // Assignments Pages Folder
-  AssignmentsPage: undefined;
-  AssignmentSubmissionsPage: undefined;
-  CreateAssignmentPage: undefined;
-  DetailedSubmissionPage: undefined;
-  SubmitAssignmentPage: undefined;
-  // Course Info Folder
-  CourseInfoPage: undefined;
-  UpdateCourseInfoPage: undefined;
-  // Quizzes Folder
-  AllQuizResultsPage: undefined;
-  AllQuizzesPage: undefined;
-  CreateQuizPage: undefined;
-  QuizPage: undefined;
-  // Resources Folder
-  AddResourcePage: undefined;
-  CourseResourcesPage: undefined;
-  DetailedResourcePage: undefined;
-  UpdateResourcePage: undefined;
-  // Courses Folder
-  AllCoursesPage: undefined;
-  CourseAdmissionRequestsPage: undefined;
-  CourseGradesPage: undefined;
-  CourseHomePage: undefined;
-  CourseStudentsPage: undefined;
-  CreateCoursePage: undefined;
-};

@@ -1,18 +1,17 @@
-/**
- * Learn more about createBottomTabNavigator:
- * https://reactnavigation.org/docs/bottom-tab-navigator
- */
-
-/* import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
-import { BottomTabParamList, RootHomeNavParamList, HomeNavParamList, LandingNavParamList, LoginNavParamList } from '../../Types/NavigatorTypes';
-import LandingPage from '../../screens/LandingPage';
-import LoginPage from '../../screens/LoginPage';
+import { AllCoursesNavParamList, AllTeachersNavParamList, AllUsersNavParamList, GradesOverViewNavParamList, HomePageNavParamList, RootHomeNavParamList, SettingsNavParamList, UserInfoNavParamList } from '../../Types/NavigatorTypes';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import HomePage from '../../screens/home_pages/HomePage';
+import UserInfoPage from '../../screens/home_pages/UserInfo';
+import SettingsPage from '../../screens/home_pages/Settings';
+import AllUsersPage from '../../screens/home_pages/AllUsersPage';
+import AllTeachersPage from '../../screens/home_pages/teachers/AllTeachersPage';
+import AllCoursesPage from '../../screens/courses_pages/AllCoursesPage';
+import GradesOverviewPage from '../../screens/home_pages/GradesOverviewPage';
+import CreateTeacherAccountPage from '../../screens/home_pages/teachers/CreateTeacherAccountPage';
+import CreateCoursePage from '../../screens/courses_pages/CreateCoursePage';
 
 const DrawerNav = createDrawerNavigator<RootHomeNavParamList>();
 
@@ -20,58 +19,137 @@ function AppHomeNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
+    <>
     <DrawerNav.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="HomePage"
       >
       <DrawerNav.Screen
-        name="TabOne"
+        name="HomePage"
         component={HomeNavigator}
-        options={{ headerTitle: 'Home Screen' }}
-      />
+        options={{ headerTitle: 'Home Screen' }}/>
       <DrawerNav.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{ headerTitle: 'Home Screen' }}
-      />
+        name="UserInfo"
+        component={UserInfoNavigator}
+        options={{ headerTitle: 'User Info' }}/> 
+      <DrawerNav.Screen
+        name="Settings"
+        component={SettingsNavigator}
+        options={{ headerTitle: 'Settings' }}/>
+      <DrawerNav.Screen
+        name="AllUsers"
+        component={AllUsersNavigator}
+        options={{ headerTitle: 'All Users' }}/>
+      <DrawerNav.Screen
+        name="AllTeachers"
+        component={AllTeachersNavigator}
+        options={{ headerTitle: 'All Teachers' }}/>
+      <DrawerNav.Screen
+        name="AllCourses"
+        component={AllCoursesNavigator}
+        options={{ headerTitle: 'All Courses' }}/>
+      <DrawerNav.Screen
+        name="GradesOverView"
+        component={GradesOverViewNavigator}
+        options={{ headerTitle: 'Grades OverView' }}/>
     </DrawerNav.Navigator>
+    </>
   );
 }
 
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
-}
-
-// Each tab has its own navigation stack, you can read more about this pattern here:
-// https://reactnavigation.org/docs/tab-based-navigation#a-stack-navigator-for-each-tab
-const HomeNav = createStackNavigator<HomeNavParamList>();
-
 function HomeNavigator() {
+  const HomeNav = createStackNavigator<HomePageNavParamList>();
   return (
     <HomeNav.Navigator>
       <HomeNav.Screen
-        name="Home"
-        component={LandingPage}
-        options={{ headerTitle: 'Home Screen' }}
+        name="HomePage"
+        component={HomePage}
+        options={{ headerTitle: 'Home Page' }}
       />
     </HomeNav.Navigator>
   );
 }
-
-const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
+function UserInfoNavigator() {
+  const UserInfoStack = createStackNavigator<UserInfoNavParamList>();
   return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="LoginScreen"
-        component={LoginPage}
-        options={{ headerTitle: 'Login Screen' }}
+    <UserInfoStack.Navigator>
+      <UserInfoStack.Screen
+        name="UserInfo"
+        component={UserInfoPage}
+        options={{ headerTitle: 'User Info' }}
       />
-    </TabTwoStack.Navigator>
+    </UserInfoStack.Navigator>
+  );
+} 
+function SettingsNavigator() {
+  const SettingsStack = createStackNavigator<SettingsNavParamList>();
+  return (
+    <SettingsStack.Navigator>
+      <SettingsStack.Screen
+        name="Settings"
+        component={SettingsPage}
+        options={{ headerTitle: 'Settings' }}
+      />
+    </SettingsStack.Navigator>
+  )
+}
+function AllUsersNavigator() {
+  const AllUsersStack = createStackNavigator<AllUsersNavParamList>();
+  return (
+    <AllUsersStack.Navigator>
+      <AllUsersStack.Screen
+        name="AllUsers"
+        component={AllUsersPage}
+        options={{ headerTitle: 'All Users' }}
+      />
+    </AllUsersStack.Navigator>
+  );
+}
+function AllTeachersNavigator() {
+  const AllTeachersStack = createStackNavigator<AllTeachersNavParamList>();
+  return (
+    <AllTeachersStack.Navigator>
+      <AllTeachersStack.Screen
+        name="AllTeachers"
+        component={AllTeachersPage}
+        options={{ headerTitle: 'All Teachers' }}
+      />
+      <AllTeachersStack.Screen
+        name="CreateTeacher"
+        component={CreateTeacherAccountPage}
+        options={{ headerTitle: 'Create Teacher' }}
+      />
+    </AllTeachersStack.Navigator>
+  );
+}
+function AllCoursesNavigator() {
+  const AllCoursesStack = createStackNavigator<AllCoursesNavParamList>();
+  return (
+    <AllCoursesStack.Navigator>
+      <AllCoursesStack.Screen
+        name="AllCourses"
+        component={AllCoursesPage}
+        options={{ headerTitle: 'All Courses' }}
+      />
+      <AllCoursesStack.Screen
+        name="CreateCourse"
+        component={CreateCoursePage}
+        options={{ headerTitle: 'Create Course' }}
+      />
+    </AllCoursesStack.Navigator>
+  );
+}
+function GradesOverViewNavigator() {
+  const GradesOverViewStack = createStackNavigator<GradesOverViewNavParamList>();
+  return (
+    <GradesOverViewStack.Navigator>
+      <GradesOverViewStack.Screen
+        name="GradesOverView"
+        component={GradesOverviewPage}
+        options={{ headerTitle: 'Grades OverView' }}
+      />
+    </GradesOverViewStack.Navigator>
   );
 }
 
 
-export default AppHomeNavigator; */
+export default AppHomeNavigator; 

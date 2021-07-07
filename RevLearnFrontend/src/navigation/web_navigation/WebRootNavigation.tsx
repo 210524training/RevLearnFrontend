@@ -3,54 +3,37 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 
-import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList, WebStackParamList } from '../Types/NavigatorTypes';
-import LandingPage from '../screens/LandingPage';
-import LoginPage from '../screens/LoginPage';
-import AssignmentsPage from '../screens/courses_pages/assignments/AssignmentsPage';
-import AssignmentSubmissionsPage from '../screens/courses_pages/assignments/AssignmentSubmissionsPage';
-import AllCoursesPage from '../screens/courses_pages/AllCoursesPage';
-import DetailedSubmissionPage from '../screens/courses_pages/assignments/DetailedSubmissionPage';
-import SubmitAssignmentPage from '../screens/courses_pages/assignments/SubmitAssignmentPage';
-import CourseAdmissionRequestsPage from '../screens/courses_pages/CourseAdmissionRequestsPage';
-import CourseGradesPage from '../screens/courses_pages/CourseGradesPage';
-import CourseHomePage from '../screens/courses_pages/CourseHomePage';
-import CourseStudentsPage from '../screens/courses_pages/CourseStudentsPage';
-import CourseInfoPage from '../screens/courses_pages/course_info/CourseInfoPage';
-import UpdateCourseInfoPage from '../screens/courses_pages/course_info/UpdateCourseInfoPage';
-import CreateCoursePage from '../screens/courses_pages/CreateCoursePage';
-import AllQuizResultsPage from '../screens/courses_pages/quizzes/AllQuizResultsPage';
-import AllQuizzesPage from '../screens/courses_pages/quizzes/AllQuizzesPage';
-import CreateQuizPage from '../screens/courses_pages/quizzes/CreateQuizPage';
-import QuizPage from '../screens/courses_pages/quizzes/QuizPage';
-import AddResourcePage from '../screens/courses_pages/resources/AddResourcePage';
-import DetailedResourcePage from '../screens/courses_pages/resources/DetailedResourcePage';
-import UpdateResourcePage from '../screens/courses_pages/resources/UpdateResourcePage';
-import CourseResourcesPage from '../screens/courses_pages/resources/CourseResourcesPage';
-import CreateAssignmentPage from '../screens/courses_pages/assignments/CreateAssignmentPage';
+import Colors from '../../constants/Colors';
+import useColorScheme from '../../hooks/useColorScheme';
+import { LandingNavParamList, LoginNavParamList, RootNavParamList} from '../../Types/NavigatorTypes';
+import LandingPage from '../../screens/LandingPage';
+import LoginPage from '../../screens/LoginPage';
 
-const WebStack = createStackNavigator<WebStackParamList>();
 
-function WebNavigator() {
+const WebStack = createStackNavigator<RootNavParamList>();
+
+function WebRootNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
     <WebStack.Navigator
-      initialRouteName="LandingPage"
+      initialRouteName="LandingNav"
       headerMode={'none'}>
       {/* ScreensFolder */}
       <WebStack.Screen
-        name="LandingPage"
-        component={LandingPage}
-        options={{}}
+        name="LandingNav"
+        component={LandingStackNavigator}
       />
       <WebStack.Screen
+        name="LoginNav"
+        component={LoginStackNavigator}
+      />
+      {/* <WebStack.Screen
         name="LoginPage"
         component={LoginPage}
         options={{}}
       />
-      {/* Assignments Pages Folder */}
+      Assignments Pages Folder
       <WebStack.Screen
         name="AssignmentsPage"
         component={AssignmentsPage}
@@ -76,7 +59,7 @@ function WebNavigator() {
         component={SubmitAssignmentPage}
         options={{}}
       />
-      {/* Course Info Folder */}
+      Course Info Folder 
       <WebStack.Screen
         name="CourseInfoPage"
         component={CourseInfoPage}
@@ -87,7 +70,7 @@ function WebNavigator() {
         component={UpdateCourseInfoPage}
         options={{}}
       />
-      {/* Quizzes Folder */}
+      Quizzes Folder 
       <WebStack.Screen
         name="AllQuizResultsPage"
         component={AllQuizResultsPage}
@@ -108,7 +91,7 @@ function WebNavigator() {
         component={QuizPage}
         options={{}}
       />
-      {/* Resources Folder */}
+       Resources Folder 
       <WebStack.Screen
         name="AddResourcePage"
         component={AddResourcePage}
@@ -129,7 +112,7 @@ function WebNavigator() {
         component={UpdateResourcePage}
         options={{}}
       />
-      {/* Courses Folder */}
+       Courses Folder 
       <WebStack.Screen
         name="AllCoursesPage"
         component={AllCoursesPage}
@@ -159,11 +142,39 @@ function WebNavigator() {
         name="CreateCoursePage"
         component={CreateCoursePage}
         options={{}}
-      />
+      /> */}
       
     </WebStack.Navigator>
   );
 }
 
 
-export default WebNavigator;
+const LandingStack = createStackNavigator<LandingNavParamList>();
+
+function LandingStackNavigator() {
+  return (
+    <LandingStack.Navigator
+      headerMode={'none'}>
+      <LandingStack.Screen
+        name="Landing"
+        component={LandingPage}
+      />
+    </LandingStack.Navigator>
+  );
+}
+
+const LoginStack = createStackNavigator<LoginNavParamList>();
+
+function LoginStackNavigator() {
+  return (
+    <LoginStack.Navigator
+      headerMode={'none'}>
+      <LoginStack.Screen
+        name="Login"
+        component={LoginPage}
+      />
+    </LoginStack.Navigator>
+  );
+}
+
+export default WebRootNavigator;

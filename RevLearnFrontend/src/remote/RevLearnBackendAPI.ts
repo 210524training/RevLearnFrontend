@@ -1,6 +1,6 @@
+// Temp sever calls go here.
 import User from "../models/User"
-
-
+import Quiz from "../models/Quiz";
 
 const newStudent: User = {
   username: 'michael',
@@ -9,11 +9,6 @@ const newStudent: User = {
   role: "student",
   userID: "456",
 }
-
-// Temp sever calls go here.
-
-import Quiz from "../models/Quiz";
-import User from "../models/user";
 
 /**
  * 
@@ -41,13 +36,13 @@ export function createQuiz(quiz: Quiz) {
 export const sendLogin = async (username: string, password: string): Promise<User> => {
     console.log(username, password);
   
-    const { data: user } = await revLearnClient.post<User>('/login', {
+    /* const { data: user } = await revLearnClient.post<User>('/login', {
       username,
       password,
     });
-  
-    console.log(user);
-    return user;
+   */
+    console.log(newStudent);
+    return newStudent;
   }
 /**
  * 

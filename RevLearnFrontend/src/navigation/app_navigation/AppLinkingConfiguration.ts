@@ -27,95 +27,100 @@ export default {
       Home: {
         screens: {
           // All Users
-          UserInfoNav: {
+          HomePage: {
+            screens: {
+              HomePage: 'HomePage',
+            }
+          },
+          UserInfo: {
             screens: {
               UserInfo: 'UserInfo',
             },
           },
-          SettingsNav: {
+          Settings: {
             screens: {
               Settings: 'Settings',
             },
           },
           // Admins
-          AllUsersNav: {
+          AllUsers: {
             screens: {
               AllUsers: 'AllUsers',
             },
           },
-          AllTeachersNav: {
+          AllTeachers: {
             screens: {
               AllTeachers: 'AllTeachers',
               CreateTeacher: 'CreateTeacher',
             },
           },
-          AllCoursesNav: {
+          AllCourses: {
             screens: {
               AllCourses: 'AllCourses',
               CreateCourse: 'CreateCourse',
             },
           },
           // Students / Teachers
-          GradesOverViewNav: {
+          GradesOverView: {
             screens: {
               GradesOverView: 'GradesOverView',
             },
-          },
+          },        
+        },
+      },
+      CourseHome: {
+        screens: {
           CourseHomeNav: {
             screens: {
-              CourseHomeNav: {
-                screens: {
-                  CourseHome: 'CourseHome',
-                },
-              },
-              CourseResourcesNav: {
-                screens: {
-                  CourseResources: 'CourseResources',
-                  DetailedResource: 'DetailedResource',
-                  AddCourseresource: 'AddCourseresource',
-                },
-              },
-              AssignmentsNav: {
-                screens: {
-                  Assignments: 'Assignments',
-                  SubmitAssignments: 'SubmitAssignments',
-                  CreateAssignment: 'CreateAssignment',
-                  AssignmentsSubmissions: 'AssignmentsSubmissions',
-                  DetaliedSubmission: 'DetaliedSubmission',
-                },
-              },
-              QuizzesNav: {
-                screens: {
-                  Quizzes: 'Quizzes',
-                  QuizPage: 'QuizPage',
-                },
-              },
-              CourseInfoNav: {
-                screens: {
-                  CourseInfo: 'CourseInfo',
-                  UpdateCourseInfo: 'UpdateCourseInfo',
-                },
-              },
-              CourseGradesNav: {
-                screens: {
-                  CourseGrades: 'CourseGrades',
-                },
-              },
-              AdmissionRequestsNav: {
-                screens: {
-                  AdmissionRequests: 'AdmissionRequests',
-                },
-              },
-              StudentsNav: {
-                screens: {
-                  Students: 'Students',
-                },
-              },
-              AllCourseGradesNav: {
-                screens: {
-                  AllCourseGrades: 'AllCourseGrades',
-                },
-              },
+              CourseHome: 'CourseHome',
+            },
+          },
+          CourseResourcesNav: {
+            screens: {
+              CourseResources: 'CourseResources',
+              DetailedResource: 'DetailedResource',
+              AddCourseresource: 'AddCourseresource',
+            },
+          },
+          AssignmentsNav: {
+            screens: {
+              Assignments: 'Assignments',
+              SubmitAssignments: 'SubmitAssignments',
+              CreateAssignment: 'CreateAssignment',
+              AssignmentsSubmissions: 'AssignmentsSubmissions',
+              DetaliedSubmission: 'DetaliedSubmission',
+            },
+          },
+          QuizzesNav: {
+            screens: {
+              Quizzes: 'Quizzes',
+              QuizPage: 'QuizPage',
+            },
+          },
+          CourseInfoNav: {
+            screens: {
+              CourseInfo: 'CourseInfo',
+              UpdateCourseInfo: 'UpdateCourseInfo',
+            },
+          },
+          CourseGradesNav: {
+            screens: {
+              CourseGrades: 'CourseGrades',
+            },
+          },
+          AdmissionRequestsNav: {
+            screens: {
+              AdmissionRequests: 'AdmissionRequests',
+            },
+          },
+          StudentsNav: {
+            screens: {
+              Students: 'Students',
+            },
+          },
+          AllCourseGradesNav: {
+            screens: {
+              AllCourseGrades: 'AllCourseGrades',
             },
           },
         },

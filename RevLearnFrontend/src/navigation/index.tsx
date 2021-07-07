@@ -9,12 +9,14 @@ import * as React from 'react';
 import { ColorSchemeName, Platform } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList, RootWebStackParamList } from '../Types/NavigatorTypes';
+import { RootStackParamList} from '../Types/NavigatorTypes';
 import AppRootNavigator from './app_navigation/AppRootNavigation';
 import AppHomeNavigator from './app_navigation/AppHomeNavigator';
 import AppLinkingConfiguration from './app_navigation/AppLinkingConfiguration';
-import WebNavigator from './WebNavigator';
-import WebLinkingConfiguration from './WebLinkingConfiguration';
+import WebRootNavigator from './web_navigation/WebRootNavigation';
+import WebLinkingConfiguration from './web_navigation/WebLinkingConfiguration';
+import WebHomeNavigator from './web_navigation/WebHomeNavigtion';
+import AppCourseHomeNavigator from './app_navigation/AppCourseHomeNavigator';
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
   return (
@@ -23,7 +25,7 @@ export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeNa
         ? (<NavigationContainer
             linking={WebLinkingConfiguration}
             theme={colorScheme === 'light' ? DarkTheme : DefaultTheme}>
-            <WebRootNavigator />
+            <WebBaseNavigator />
           </NavigationContainer>
         )
         : (
@@ -48,16 +50,18 @@ function AppBaseNavigator() {
     <AppStack.Navigator screenOptions={{ headerShown: false }}>
       <AppStack.Screen name="Root" component={AppRootNavigator} />
       <AppStack.Screen name="Home" component={AppHomeNavigator} />
+      <AppStack.Screen name="CourseHome" component={AppCourseHomeNavigator} />
       <AppStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </AppStack.Navigator>
   );
 }
 
-const WebStack = createStackNavigator<RootWebStackParamList>();
-function WebRootNavigator() {
+const WebStack = createStackNavigator<RootStackParamList>();
+function WebBaseNavigator() {
   return (
     <WebStack.Navigator screenOptions={{ headerShown: false }}>
-      <WebStack.Screen name="Root" component={WebNavigator} />
+      <WebStack.Screen name="Root" component={WebRootNavigator} />
+      <AppStack.Screen name="Home" component={WebHomeNavigator} />
       <WebStack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
     </WebStack.Navigator>
   );

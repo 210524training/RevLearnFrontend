@@ -11,7 +11,8 @@ const NavBar = () => {
   }
   //navigate to landing page
   const NavToLoginPage = () => {
-    Navigation.navigate('LoginPage');
+    Navigation.navigate('Root', {screen: 'LoginNav'});
+    //  window.alert('NavToLoginPage');
   }
   //navigate to landing page
   const NavToHomePage = () => {

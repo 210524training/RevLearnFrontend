@@ -8,7 +8,7 @@ import { LandingNavParamList } from "../Types/NavigatorTypes";
 
 type ScreenNavigationProp = StackNavigationProp<
   LandingNavParamList,
-  'LandingScreen'
+  'Landing'
 >;
 type Props = {
   navigation: ScreenNavigationProp
@@ -16,11 +16,6 @@ type Props = {
 
 
 const LandingPage: React.FC<Props> = () => {
-
-  const navigation = useNavigation();
-  const press = () => {
-    navigation.navigate('Home', {TabOne: 'TabOne'})
-  }
 
   // const navigation = useNavigation();
 
@@ -31,8 +26,8 @@ const LandingPage: React.FC<Props> = () => {
   return (
     <>
       
-      <Text onPress={() => {navigation.navigate('LoginPage')}}>Landing Page</Text>
-      <Button title={'Login'} onPress={press}>Login</Button>
+      <Text>Landing Page</Text>
+      
     </>
   )
 }
