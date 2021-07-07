@@ -7,37 +7,18 @@ import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../Types/NavigatorTypes';
 import LandingPage from '../screens/LandingPage';
 import LoginPage from '../screens/LoginPage';
 
-const BottomTab = createBottomTabNavigator<BottomTabParamList>();
-
 function AppNavigator() {
   const colorScheme = useColorScheme(); 
 
   return (
-    <BottomTab.Navigator
-      initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
-      <BottomTab.Screen
-        name="TabOne"
-        component={TabOneNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-        }}
-      />
-    </BottomTab.Navigator>
+    <>
+    </>
   );
 }
 
@@ -58,6 +39,11 @@ function TabOneNavigator() {
         name="LandingScreen"
         component={LandingPage}
         options={{ headerTitle: 'Home Screen' }}
+      />
+      <TabOneStack.Screen
+        name="LoginScreen"
+        component={LoginPage}
+        options={{ headerTitle: 'Login Screen' }}
       />
     </TabOneStack.Navigator>
   );
