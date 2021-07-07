@@ -1,4 +1,4 @@
-/* import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import User from "../../models/user";
 import { sendLogin } from "../../remote/grubdash-backend/grubdash.api";
 import { RootState } from "../store";
@@ -11,9 +11,6 @@ export type LoginCredentials = {
   password: string;
 }
 
-export function isAxiosError(error: any): error is AxiosError {
-  return "isAxiosError" in error;
-}
 
 export const loginAsync = createAsyncThunk<User, LoginCredentials>(
   'user/login/async',
@@ -59,4 +56,4 @@ export const { login, logout } = userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
 
-export default userSlice.reducer; */
+export default userSlice.reducer;

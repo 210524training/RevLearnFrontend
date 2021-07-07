@@ -5,7 +5,6 @@ import { Text, View } from '../components/Themed';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { loginAsync, logout, selectUser, UserState } from '../hooks/slices/user.slice';
 import { Alert } from 'react-native';
-import grubdashClient from '../remote/grubdash-backend/grubdash.client';
 import { useNavigation } from '@react-navigation/native';
 import { getAllUsers } from '../remote/grubdash-backend/grubdash.api';
 
@@ -17,7 +16,6 @@ const RegisterScreen: React.FC<unknown> = (props) => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
 
   const dispatch = useAppDispatch();
-  const nav = useNavigation();
 
   const handleLogin = async () => {
     await dispatch(loginAsync({ username, password }));
