@@ -48,9 +48,6 @@ function AppHomeNavigator() {
         </>)
         : <></>
       }
-      
-      
-      
     </DrawerNav.Navigator>
     </>
   );

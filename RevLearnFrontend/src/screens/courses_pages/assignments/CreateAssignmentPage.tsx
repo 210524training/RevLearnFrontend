@@ -1,5 +1,6 @@
 import React from "react";
 import {Text} from 'react-native';
+import WithCourseNavbar from "../../../components/higher_order_components/Navbars/WithCourseNavbar";
 
 type Props = {
 
@@ -12,4 +13,4 @@ const CreateAssignmentPage: React.FC<Props> = (props) => {
   )
 }
 
-export default CreateAssignmentPage;
+export default WithCourseNavbar(CreateAssignmentPage);

@@ -7,6 +7,7 @@ import { loginAsync, logout, selectUser, UserState } from '../hooks/slices/user.
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getByUserName, registerStudent } from '../remote/RevLearnBackendAPI';
+import WithNavbar from '../components/higher_order_components/Navbars/WithNavBar';
 
 const RegisterScreen: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -126,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RegisterScreen;
+export default WithNavbar(RegisterScreen);

@@ -1,14 +1,12 @@
 import { Ionicons } from '@expo/vector-icons';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
-import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
 import { HomePageNavParamList, RootHomeNavParamList } from '../../Types/NavigatorTypes';
-import LandingPage from '../../screens/LandingPage';
-import LoginPage from '../../screens/LoginPage';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import HomePage from '../../screens/home_pages/HomePage';
+import { UserInfoNavigator, SettingsNavigator, GradesOverViewNavigator, AllCoursesNavigator, AllUsersNavigator, AllTeachersNavigator, HomeNavigator } from '../StackNavigatiors';
+import { Platform } from 'react-native';
+import { StackHeaderMode } from '@react-navigation/stack/lib/typescript/src/types';
 
 const RootStackNav = createStackNavigator<RootHomeNavParamList>();
 
@@ -24,13 +22,38 @@ function WebHomeNavigator() {
       <RootStackNav.Screen
         name="HomePage"
         component={HomeNavigator}
-        options={{ headerTitle: 'Home Screen' }}
-      />
-      {/* <RootStackNav.Screen
-        name="TabTwo"
-        component={TabTwoNavigator}
-        options={{ headerTitle: 'Home Screen' }}
-      /> */}
+        options={{ headerTitle: 'Home Screen' }}/>
+
+      <RootStackNav.Screen
+        name="UserInfo"
+        component={UserInfoNavigator}
+        options={{ headerTitle: 'User Info' }}/> 
+      <RootStackNav.Screen
+        name="Settings"
+        component={SettingsNavigator}
+        options={{ headerTitle: 'Settings' }}/>
+      <RootStackNav.Screen
+        name="GradesOverView"
+        component={GradesOverViewNavigator}
+        options={{ headerTitle: 'Grades OverView' }}/>
+      <RootStackNav.Screen
+        name="AllCourses"
+        component={AllCoursesNavigator}
+        options={{ headerTitle: 'All Courses' }}/>
+      {/* If Role=Admin */}
+      {true 
+        ? (<>
+          <RootStackNav.Screen
+            name="AllUsers"
+            component={AllUsersNavigator}
+            options={{ headerTitle: 'All Users' }}/>
+          <RootStackNav.Screen
+            name="AllTeachers"
+            component={AllTeachersNavigator}
+            options={{ headerTitle: 'All Teachers' }}/>
+        </>)
+        : <></>
+      }
     </RootStackNav.Navigator>
     </>
   );
@@ -41,36 +64,6 @@ function WebHomeNavigator() {
 function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
   return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
-
-
-const HomeNav = createStackNavigator<HomePageNavParamList>();
-
-function HomeNavigator() {
-  return (
-    <HomeNav.Navigator
-      headerMode={'none'}>
-      <HomeNav.Screen
-        name="HomePage"
-        component={HomePage}
-        options={{ headerTitle: 'Home Page' }}
-      />
-    </HomeNav.Navigator>
-  );
-}
-
-/* const TabTwoStack = createStackNavigator<TabTwoParamList>();
-
-function TabTwoNavigator() {
-  return (
-    <TabTwoStack.Navigator>
-      <TabTwoStack.Screen
-        name="LoginScreen"
-        component={LoginPage}
-        options={{ headerTitle: 'Login Screen' }}
-      />
-    </TabTwoStack.Navigator>
-  );
-} */
 
 
 export default WebHomeNavigator; 

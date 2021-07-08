@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList } from "../Types/NavigatorTypes";
-import AllCoursesPage from "../screens/courses_pages/AllCoursesPage";
+import { HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList, CourseHomeNavParamList } from "../Types/NavigatorTypes";
+import AllCoursesPage from "../screens/home_pages/AllCoursesPage";
 import CreateCoursePage from "../screens/courses_pages/CreateCoursePage";
 import AllUsersPage from "../screens/home_pages/AllUsersPage";
 import GradesOverviewPage from "../screens/home_pages/GradesOverviewPage";
@@ -25,12 +25,20 @@ import QuizPage from "../screens/courses_pages/quizzes/QuizPage";
 import AddResource from "../screens/courses_pages/resources/AddResourcePage";
 import CourseResourcesPage from "../screens/courses_pages/resources/CourseResourcesPage";
 import DetailedResourcePage from "../screens/courses_pages/resources/DetailedResourcePage";
+import { useNavHeader } from "../hooks/useNavHeader";
+import CreateQuizPage from "../screens/courses_pages/quizzes/CreateQuizPage";
+import AllQuizResultsPage from "../screens/courses_pages/quizzes/AllQuizResultsPage";
+import CourseHomePage from "../screens/courses_pages/CourseHomePage";
 
+   
 //Home navigation stack navigators
 export function HomeNavigator() {
   const HomeNav = createStackNavigator<HomePageNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <HomeNav.Navigator>
+    <HomeNav.Navigator
+      initialRouteName='HomePage'
+      headerMode={setHeader}>
       <HomeNav.Screen
         name="HomePage"
         component={HomePage}
@@ -41,8 +49,11 @@ export function HomeNavigator() {
 }
 export function UserInfoNavigator() {
   const UserInfoStack = createStackNavigator<UserInfoNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <UserInfoStack.Navigator>
+    <UserInfoStack.Navigator
+      initialRouteName='UserInfoPage'
+      headerMode={setHeader}>
       <UserInfoStack.Screen
         name="UserInfoPage"
         component={UserInfoPage}
@@ -53,8 +64,11 @@ export function UserInfoNavigator() {
 } 
 export function SettingsNavigator() {
   const SettingsStack = createStackNavigator<SettingsNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <SettingsStack.Navigator>
+    <SettingsStack.Navigator
+      initialRouteName='SettingsPage' 
+      headerMode={setHeader}>
       <SettingsStack.Screen
         name="SettingsPage"
         component={SettingsPage}
@@ -65,8 +79,11 @@ export function SettingsNavigator() {
 }
 export function AllUsersNavigator() {
   const AllUsersStack = createStackNavigator<AllUsersNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AllUsersStack.Navigator>
+    <AllUsersStack.Navigator
+      initialRouteName='AllUsersPage'
+      headerMode={setHeader}>
       <AllUsersStack.Screen
         name="AllUsersPage"
         component={AllUsersPage}
@@ -77,8 +94,11 @@ export function AllUsersNavigator() {
 }
 export function AllTeachersNavigator() {
   const AllTeachersStack = createStackNavigator<AllTeachersNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AllTeachersStack.Navigator>
+    <AllTeachersStack.Navigator
+      initialRouteName='AllTeachersPage'
+      headerMode={setHeader}>
       <AllTeachersStack.Screen
         name="AllTeachersPage"
         component={AllTeachersPage}
@@ -94,8 +114,11 @@ export function AllTeachersNavigator() {
 }
 export function AllCoursesNavigator() {
   const AllCoursesStack = createStackNavigator<AllCoursesNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AllCoursesStack.Navigator>
+    <AllCoursesStack.Navigator
+      initialRouteName='AllCoursesPage'
+      headerMode={setHeader}>
       <AllCoursesStack.Screen
         name="AllCoursesPage"
         component={AllCoursesPage}
@@ -111,8 +134,11 @@ export function AllCoursesNavigator() {
 }
 export function GradesOverViewNavigator() {
   const GradesOverViewStack = createStackNavigator<GradesOverViewNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <GradesOverViewStack.Navigator>
+    <GradesOverViewStack.Navigator
+      initialRouteName='GradesOverViewPage'
+      headerMode={setHeader}>
       <GradesOverViewStack.Screen
         name="GradesOverViewPage"
         component={GradesOverviewPage}
@@ -124,12 +150,16 @@ export function GradesOverViewNavigator() {
 
 // Course home navigation stack navigators
 export function CourseHomeNavigator() {
-  const HomeNav = createStackNavigator<HomePageNavParamList>();
+  const HomeNav = createStackNavigator<CourseHomeNavParamList>();
+  const setHeader = useNavHeader();
+  console.log('Course Home Nav Navigating...')
   return (
-    <HomeNav.Navigator>
+    <HomeNav.Navigator
+      initialRouteName='CourseHomePage'
+      headerMode={setHeader}>
       <HomeNav.Screen
-        name="HomePage"
-        component={HomePage}
+        name="CourseHomePage"
+        component={CourseHomePage}
         options={{ headerTitle: 'Home Page' }}
       />
     </HomeNav.Navigator>
@@ -137,8 +167,11 @@ export function CourseHomeNavigator() {
 }
 export function CourseResourcesNavigator() {
   const CourseResourcesStack = createStackNavigator<CourseResourcesNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <CourseResourcesStack.Navigator>
+    <CourseResourcesStack.Navigator
+      initialRouteName='CourseResourcesPage'
+      headerMode={setHeader}>
       <CourseResourcesStack.Screen
         name="CourseResourcesPage"
         component={CourseResourcesPage}
@@ -159,8 +192,11 @@ export function CourseResourcesNavigator() {
 }
 export function AssignmentsNavigator() {
   const AssignmentsStack = createStackNavigator<AssignmentsNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AssignmentsStack.Navigator>
+    <AssignmentsStack.Navigator
+      initialRouteName='AssignmentsPage'
+      headerMode={setHeader}>
       <AssignmentsStack.Screen
         name="AssignmentsPage"
         component={AssignmentsPage}
@@ -191,8 +227,11 @@ export function AssignmentsNavigator() {
 }
 export function QuizzesNavigator() {
   const QuizzesStack = createStackNavigator<QuizzesNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <QuizzesStack.Navigator>
+    <QuizzesStack.Navigator
+      initialRouteName='QuizzesPage'
+      headerMode={setHeader}>
       <QuizzesStack.Screen
         name="QuizzesPage"
         component={AllQuizzesPage}
@@ -203,13 +242,26 @@ export function QuizzesNavigator() {
         component={QuizPage}
         options={{ headerTitle: 'Quiz' }}
       />
+      <QuizzesStack.Screen
+        name="CreateQuizPage"
+        component={CreateQuizPage}
+        options={{ headerTitle: 'Create Quiz' }}
+      />
+      <QuizzesStack.Screen
+        name="QuizGradesPage"
+        component={AllQuizResultsPage}
+        options={{ headerTitle: 'Quiz Grades' }}
+      />
     </QuizzesStack.Navigator>
   );
 }
 export function CourseInfoNavigator() {
   const CourseInfoStack = createStackNavigator<CourseInfoNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <CourseInfoStack.Navigator>
+    <CourseInfoStack.Navigator
+      initialRouteName='CourseInfoPage'
+      headerMode={setHeader}>
       <CourseInfoStack.Screen
         name="CourseInfoPage"
         component={CourseInfoPage}
@@ -225,8 +277,11 @@ export function CourseInfoNavigator() {
 }
 export function CourseGradesNavigator() {
   const CourseGradesStack = createStackNavigator<CourseGradesNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <CourseGradesStack.Navigator>
+    <CourseGradesStack.Navigator
+      initialRouteName='CourseGradesPage'
+      headerMode={setHeader}>
       <CourseGradesStack.Screen
         name="CourseGradesPage"
         component={CourseGradesPage}
@@ -237,8 +292,11 @@ export function CourseGradesNavigator() {
 }
 export function AdmissionRequestsNavigator() {
   const AdmissionRequestsStack = createStackNavigator<AdmissionRequestsNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AdmissionRequestsStack.Navigator>
+    <AdmissionRequestsStack.Navigator
+      initialRouteName='AdmissionRequestsPage'
+      headerMode={setHeader}>
       <AdmissionRequestsStack.Screen
         name="AdmissionRequestsPage"
         component={CourseAdmissionReouetsPage}
@@ -249,8 +307,11 @@ export function AdmissionRequestsNavigator() {
 }
 export function StudentsNavigator() {
   const StudentsStack = createStackNavigator<StudentsNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <StudentsStack.Navigator>
+    <StudentsStack.Navigator
+      initialRouteName='StudentsPage'
+      headerMode={setHeader}>
       <StudentsStack.Screen
         name="StudentsPage"
         component={CourseStudentsPage}
@@ -261,8 +322,11 @@ export function StudentsNavigator() {
 }
 export function AllCourseGradesNavigator() {
   const AllCourseGradesStack = createStackNavigator<AllCourseGradesNavParamList>();
+  const setHeader = useNavHeader();
   return (
-    <AllCourseGradesStack.Navigator>
+    <AllCourseGradesStack.Navigator
+      initialRouteName='AllCourseGradesPage'
+      headerMode={setHeader}>
       <AllCourseGradesStack.Screen
         name="AllCourseGradesPage"
         component={AllCoursesPage}

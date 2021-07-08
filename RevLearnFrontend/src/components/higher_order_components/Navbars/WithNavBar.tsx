@@ -1,8 +1,8 @@
 import React from "react";
 import { Platform } from "react-native";
-import NavBar from '../web_navbar/WebNavBarContainer';
+import NavBar from '../../web_navbar/unauthorized_navbar/WebNavBarContainer';
 
-const WithNavBar = <P extends object>(Component: React.ComponentType<P>): React.ComponentType<P> => {
+const WithNavbar = <P extends object>(Component: React.ComponentType<P>): React.ComponentType<P> => {
   return (props) => (
     <>
       {Platform.OS === 'web'
@@ -19,4 +19,4 @@ const WithNavBar = <P extends object>(Component: React.ComponentType<P>): React.
   );
 }
 
-export default WithNavBar;
+export default WithNavbar;

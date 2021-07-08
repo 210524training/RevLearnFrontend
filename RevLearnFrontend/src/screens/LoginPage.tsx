@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Button, TextInput, Text, View  } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import { loginAsync, logout, selectUser, UserState } from '../hooks/slices/user.slice';
-import WithNavBar from "../components/higher_order_components/WithNavBar";
+import WithNavBar from "../components/higher_order_components/Navbars/WithNavBar";
 import { useNavigation } from "@react-navigation/native";
 
 

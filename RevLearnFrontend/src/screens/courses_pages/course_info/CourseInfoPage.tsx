@@ -1,5 +1,6 @@
 import React from "react";
 import {Text} from 'react-native';
+import WithCourseNavbar from "../../../components/higher_order_components/Navbars/WithCourseNavbar";
 
 type Props = {
 
@@ -12,4 +13,10 @@ const CourseInfoPage: React.FC<Props> = (props) => {
   )
 }
 
-export default CourseInfoPage;
+// Navigate to UpdateCourseInfoPage
+/**
+ * const navigation = useNavigation();
+ * navigation.navigate('UpdateCourseInfoPage');
+ */
+
+export default WithCourseNavbar(CourseInfoPage);

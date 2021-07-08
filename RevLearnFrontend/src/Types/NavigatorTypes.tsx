@@ -48,15 +48,15 @@ export type GradesOverViewNavParamList = {
 };
 //CourseHome
 export type HomeNavParamList = {
-  CourseHome: undefined;
-  CourseResources: undefined;
-  Assignments: undefined;
-  Quizzes: undefined;
-  CourseInfo: undefined;
-  CourseGrades: undefined;
-  AdmissionRequests: undefined;
-  Students: undefined;
-  AllCourseGrades: undefined;
+  CourseHomeNav: undefined;
+  CourseResourcesNav: undefined;
+  AssignmentsNav: undefined;
+  QuizzesNav: undefined;
+  CourseInfoNav: undefined;
+  CourseGradesNav: undefined;
+  AdmissionRequestsNav: undefined;
+  StudentsNav: undefined;
+  AllCourseGradesNav: undefined;
 };
 
 export type CourseHomeNavParamList = {
@@ -77,6 +77,8 @@ export type AssignmentsNavParamList = {
 export type QuizzesNavParamList = {
   QuizzesPage: undefined;
   QuizPage: undefined;
+  CreateQuizPage: undefined;
+  QuizGradesPage: undefined;
 };
 export type CourseInfoNavParamList = {
   CourseInfoPage: undefined;

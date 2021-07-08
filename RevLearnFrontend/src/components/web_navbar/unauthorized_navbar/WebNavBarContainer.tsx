@@ -2,22 +2,22 @@ import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import WebNavBarPresentation from "./WebNavBarPresentation";
 
-const NavBar = () => {
+const UnauthorizedNavbarContainer = () => {
   const Navigation = useNavigation();
 
-  //navigate to landing page
+  /**
+   * Navigate to Landing Page
+   */
   const NavToLandingPage = () => {
-    Navigation.navigate('LandingPage');
+    Navigation.navigate('Root', {screen: 'LandingNav'});
   }
-  //navigate to landing page
+  /**
+   * Navigate to Login Page
+   */
   const NavToLoginPage = () => {
     Navigation.navigate('Root', {screen: 'LoginNav'});
-    //  window.alert('NavToLoginPage');
   }
-  //navigate to landing page
-  const NavToHomePage = () => {
-    Navigation.navigate('LoginPage');
-  }
+  
   return (
     <WebNavBarPresentation
       NavToLandingPage={NavToLandingPage}
@@ -26,4 +26,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default UnauthorizedNavbarContainer;

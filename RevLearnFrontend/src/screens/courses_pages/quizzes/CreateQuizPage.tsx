@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View } from 'react-native';
-import DatePicker from 'react-native-date-picker';
+import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
 import { useAppSelector } from '../../../hooks';
 import { getQuestions, clear, QuestionState } from '../../../hooks/slices/question.slice';
@@ -71,4 +71,4 @@ const CreateQuizPage: React.FC<Props> = (props) => {
   );
 };
 
-export default CreateQuizPage;
+export default WithCourseNavbar(CreateQuizPage);
