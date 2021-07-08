@@ -34,36 +34,36 @@ export default {
           },
           UserInfo: {
             screens: {
-              UserInfo: 'UserInfo',
+              UserInfoPage: 'UserInfoPage',
             },
           },
           Settings: {
             screens: {
-              Settings: 'Settings',
+              SettingsPage: 'SettingsPage',
             },
           },
           // Admins
           AllUsers: {
             screens: {
-              AllUsers: 'AllUsers',
+              AllUsersPage: 'AllUsersPage',
             },
           },
           AllTeachers: {
             screens: {
-              AllTeachers: 'AllTeachers',
-              CreateTeacher: 'CreateTeacher',
+              AllTeachersPage: 'AllTeachersPage',
+              CreateTeacherPage: 'CreateTeacherPage',
             },
           },
           AllCourses: {
             screens: {
-              AllCourses: 'AllCourses',
-              CreateCourse: 'CreateCourse',
+              AllCoursesPage: 'AllCoursesPage',
+              CreateCoursePage: 'CreateCoursePage',
             },
           },
           // Students / Teachers
           GradesOverView: {
             screens: {
-              GradesOverView: 'GradesOverView',
+              GradesOverViewPage: 'GradesOverViewPage',
             },
           },        
         },
