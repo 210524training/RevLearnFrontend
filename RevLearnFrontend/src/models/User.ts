@@ -1,7 +1,17 @@
+import { Role } from "../types/MyTypes";
+
+/**
+ * Represents the data of a user
+ * @property username: string
+ * @property password: string
+ * @property courses: []
+ * @property role: string
+ * @property userID: string
+ */
 export default interface User{
   username: string,
   password: string,
   courses: [],
-  role: string,
+  role: Role,
   userID: string,
 }
