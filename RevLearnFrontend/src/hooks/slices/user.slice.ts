@@ -52,6 +52,10 @@ export const userSlice = createSlice({
   },
 });
 
+export function isAxiosError(error: any): error is AxiosError {
+  return "isAxiosError" in error;
+}
+
 export const { login, logout } = userSlice.actions;
 
 export const selectUser = (state: RootState) => state.user;
