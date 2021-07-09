@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View } from 'react-native';
-import DatePicker from 'react-native-date-picker';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
 import { useAppSelector } from '../../../hooks';
 import { getQuestions, clear, QuestionState } from '../../../hooks/slices/question.slice';
