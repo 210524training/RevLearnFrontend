@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
 import MultipleChoiceQuizQuestion from '../../models/MultipleChoiceQuizQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../Types/MyTypes';
+import { v4 as uuidv4 } from 'uuid';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');
@@ -35,7 +36,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
     ];
 
     const newQuestion: MultipleChoiceQuizQuestion = {
-      questionID: '0',
+      questionID: uuidv4(),
       questionTitle: title,
       correctAnswer: answer,
       pointValue: Number(pointValue),

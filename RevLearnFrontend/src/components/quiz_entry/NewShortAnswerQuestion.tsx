@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput } from 'react-native';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
+import { v4 as uuidv4 } from 'uuid';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');
@@ -13,10 +14,10 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
   const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
     const newQuestion = {
-      questionID: '0',
+      questionID: uuidv4(),
       questionTitle: title,
       correctAnswer: answer,
-      pointValue,
+      pointValue: Number(pointValue),
       prompt,
     };
 

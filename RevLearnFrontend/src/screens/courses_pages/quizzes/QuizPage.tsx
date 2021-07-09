@@ -9,6 +9,8 @@ import { MultipleChoiceOption } from '../../../types/MyTypes';
 import { updateQuiz } from '../../../remote/RevLearnBackendAPI';
 import QuizSubmission from '../../../models/QuizSubmission';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
+import { v4 as uuidv4 } from 'uuid';
+
 
 type Props = {
 
@@ -111,7 +113,7 @@ const QuizPage: React.FC<Props> = (props) => {
     const formattedPercent: number = Math.floor(percentCorrect * 10000) / 100;
 
     const submission: QuizSubmission = {
-      submissionID: '1',
+      submissionID: uuidv4(),
       studentID: '1',
       activityID: quiz.ID,
       submissionDate: new Date(),

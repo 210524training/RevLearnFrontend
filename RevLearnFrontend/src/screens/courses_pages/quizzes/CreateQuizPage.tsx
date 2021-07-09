@@ -6,6 +6,7 @@ import { useAppSelector } from '../../../hooks';
 import { getQuestions, clear, QuestionState } from '../../../hooks/slices/question.slice';
 import QuizQuestion from '../../../models/QuizQuestion';
 import { createQuiz } from '../../../remote/RevLearnBackendAPI';
+import {v4 as uuidv4} from 'uuid';
 
 type Props = {
 
@@ -23,7 +24,7 @@ const CreateQuizPage: React.FC<Props> = (props) => {
     console.log(questions);
 
     const quiz = {
-      ID: '0',
+      ID: uuidv4(),
       submissions: [],
       questions: questions as QuizQuestion[],
       passingGrade: Number(passingGrade),
