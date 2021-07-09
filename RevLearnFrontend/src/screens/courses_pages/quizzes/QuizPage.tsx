@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Text, TextInput, View } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
-import ShortAnswerSubmission from '../../../components/quiz_submission/ShortAnswerSubmission';
 import MultipleChoiceQuizQuestion from '../../../models/MultipleChoiceQuizQuestion';
 import Quiz from '../../../models/Quiz';
 import QuizQuestion from '../../../models/QuizQuestion';
 import ShortAnswerQuestion from '../../../models/ShortAnswerQuestion';
 import { MultipleChoiceOption } from '../../../types/MyTypes';
+import { updateQuiz } from '../../../remote/RevLearnBackendAPI';
+import QuizSubmission from '../../../models/QuizSubmission';
 
 type Props = {
 
@@ -100,16 +101,25 @@ const QuizPage: React.FC<Props> = (props) => {
     let earnedPoints: number = 0;
     
     answerHooks.forEach( (question, index) => {
-      console.log(`Question ${index} answer: ${question.value}, expected ${questions[index].correctAnswer} `);
       if(questions[index].correctAnswer === answerHooks[index].value) {
         earnedPoints += questions[index].pointValue;
       }
     });
 
     const percentCorrect = earnedPoints / possiblePoints;
-    const formattedPercent = Math.floor(percentCorrect * 10000) / 100;
+    const formattedPercent: number = Math.floor(percentCorrect * 10000) / 100;
 
-    console.log(`Earned ${earnedPoints} out of ${possiblePoints} points, or ${formattedPercent}%`);
+    const submission: QuizSubmission = {
+      submissionID: '1',
+      studentID: '1',
+      activityID: quiz.ID,
+      submissionDate: new Date(),
+      grade: formattedPercent,
+    }
+
+    console.log(submission);
+    quiz.submissions.push(submission);
+    updateQuiz(quiz);
   }
 
   return (

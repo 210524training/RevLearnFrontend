@@ -18,3 +18,13 @@ function test55(input: string) {
 export function createQuiz(quiz: Quiz) {
   
 }
+
+
+
+/**
+ * Use for updating a quiz with a new submission after the quiz is taken
+ * @param quiz 
+ */
+export function updateQuiz(quiz: Quiz) {
+
+}
