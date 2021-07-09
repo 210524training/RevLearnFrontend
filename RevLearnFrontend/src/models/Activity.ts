@@ -12,4 +12,4 @@ export default interface Activity{
   startDate: Date,
   dueDate: Date,
   description: string,
-}
+};

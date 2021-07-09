@@ -1,5 +1,3 @@
-/* eslint-disable semi */
-/* eslint-disable no-extra-semi */
 import { AssignmentType, LetterGrade } from '../Types/MyTypes';
 import Activity from './Activity';
 import AssignmentSubmission from './AssignmentSubmission';

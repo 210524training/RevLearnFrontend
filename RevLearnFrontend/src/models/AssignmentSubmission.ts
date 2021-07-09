@@ -6,7 +6,7 @@ import Submission from './Submission';
  * @property attachment: string[]
  * @extends Submission
  */
-export default interface AssignmentSubmission extends Submission {
+export default interface AssignmentSubmission extends Submission{
   grade: string,
   attachment: string[],
 };
