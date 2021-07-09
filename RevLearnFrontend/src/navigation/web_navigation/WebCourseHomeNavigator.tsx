@@ -10,7 +10,6 @@ const StackNav = createStackNavigator<HomeNavParamList>();
 function AppCourseHomeNavigator() {
   const test: boolean = false;
   const setHeader = useNavHeader()
-   // console.log('Web Course Home navigating...');
   return (
     <>
     <StackNav.Navigator
@@ -40,6 +39,7 @@ function AppCourseHomeNavigator() {
         name="CourseGradesNav"
         component={CourseGradesNavigator}
         options={{ headerTitle: 'Home Screen' }}/>
+      
       {/* If Role=Teacher */}
       {test 
         ? (<>
@@ -51,10 +51,10 @@ function AppCourseHomeNavigator() {
             name="AllCourseGradesNav"
             component={AllCourseGradesNavigator}
             options={{ headerTitle: 'All Course Grades' }}/>
-            <StackNav.Screen
-              name="AdmissionRequestsNav"
-              component={AdmissionRequestsNavigator}
-              options={{ headerTitle: 'Home Screen' }}/>
+          <StackNav.Screen
+            name="AdmissionRequestsNav"
+            component={AdmissionRequestsNavigator}
+            options={{ headerTitle: 'Home Screen' }}/>
         </>)
         : <></>
       }

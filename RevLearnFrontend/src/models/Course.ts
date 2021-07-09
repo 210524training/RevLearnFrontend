@@ -23,3 +23,4 @@ export default interface Course{
   assignments: string[],
   quizzes: string[],
 }
+
