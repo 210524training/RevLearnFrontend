@@ -1,62 +1,39 @@
 import React from "react";
 import {Text, ScrollView, Pressable, Platform, TouchableNativeFeedback, View} from 'react-native';
 import WithHomeNavbar from "../../components/higher_order_components/Navbars/WithHomeNavbar";
-import CoursesList from '../../components/display_list/courses'
+import CoursesList from '../../components/display_list/DisplayCourseList'
 import { useNavigation } from '@react-navigation/native';
-import Courses from "../../models/Course";
+import DisplayCourseList from "../../components/display_list/DisplayCourseList";
+import { courses } from '../../remote/RevLearnBackendAPI';
 
 type Props = {
 }
 
 const AllCoursesPage: React.FC<Props> = (props) => {
   const nav = useNavigation();
-  const courses = ['computer science', 'math', 'chemistry', 'english']
-  
-  const coursesJSX = () => {
-    return courses.map(course => (
-      <Pressable onPress={() => handlePress(courses)}>
-        <CoursesList source={courses[0]} description={courses[1]} />
-      </Pressable>
-    ));
-  }
-  
-  const androidJSX = () => {
-    return courses.map(course => (
-      <TouchableNativeFeedback
-        background={TouchableNativeFeedback.SelectableBackground()}
-        onPress={() => handlePress(course)}>
-        <CoursesList source={courses[0]} description={courses[1]}/>
-      </TouchableNativeFeedback>
-    ))
-  }
-
-  const handlePress = (course) => {
-    nav.navigate({
-      course,
-    });
+  const setSelected = () => {}
+  const handlePress = () => {
+    // nav.navigate({
+    //   course,
+    // });
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView>
       <View>
-        {
+        {/* {
           Platform.OS === 'android' ? 
-          coursesJSX() : coursesJSX()
+          androidJSX() : coursesJSX()
+        } */}
+        {courses
+          ? <DisplayCourseList courses={courses} setSelected={setSelected}/>
+          : <></>
         }
+
       </View>
     </ScrollView>
   );
 };
-
-const styles =  StyleSheet.create({
-  container: {
-    flex: 1,
-    height: "100%",
-    paddingHorizontal: 20,
-    marginTop: 10,
-    backgroundColor: "white",
-  }
-});
 
 
 

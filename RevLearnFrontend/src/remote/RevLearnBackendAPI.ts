@@ -1,14 +1,48 @@
 // Temp sever calls go here.
 import User from "../models/User"
 import Quiz from "../models/Quiz";
+import Course from "../models/Course"
 
 const newStudent: User = {
   username: 'michael',
   password: '123',
   courses: [],
-  role: "student",
+  role: 'Admin',
   userID: "456",
 }
+
+const newvar2: Course = {
+  courseID: '1234',
+  courseTitle: 'Computer Science',
+  startDate: new Date(Date.now()),
+  endDate: new Date(Date.now()),
+  teacher: 'ProfessorA',
+  passingGrade: 'C',
+  category: 'Software Engineering',
+  students: [],
+  assignments: [],
+  quizzes: [],
+}
+
+const newvar: Course = {
+  courseID: '1234',
+  courseTitle: 'Calculus',
+  startDate: new Date(Date.now()),
+  endDate: new Date(Date.now()),
+  teacher: 'ProfessorC',
+  passingGrade: 'C',
+  category: 'Mathematic',
+  students: [],
+  assignments: [],
+  quizzes: [],
+}
+
+export const courses: Array<Course> = [newvar, newvar2]
+
+
+
+
+
 
 /**
  * 
