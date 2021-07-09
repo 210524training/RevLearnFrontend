@@ -38,8 +38,8 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
       questionID: '0',
       questionTitle: title,
       correctAnswer: answer,
+      pointValue: Number(pointValue),
       choices,
-      pointValue,
       prompt,
     };
 

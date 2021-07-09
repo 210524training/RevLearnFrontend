@@ -6,7 +6,7 @@ const newStudent: User = {
   username: 'michael',
   password: '123',
   courses: [],
-  role: "student",
+  role: "Student",
   userID: "456",
 }
 
@@ -56,3 +56,13 @@ export function getByUserName(){
   return newStudent
 }
 
+
+
+
+/**
+ * Use for updating a quiz with a new submission after the quiz is taken
+ * @param quiz 
+ */
+export function updateQuiz(quiz: Quiz) {
+
+}

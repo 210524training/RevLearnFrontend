@@ -7,7 +7,7 @@
  */
 export default interface Submission {
   submissionID: string,
-  student: string,
+  studentID: string,
   activityID: string,
   submissionDate: Date,
 }

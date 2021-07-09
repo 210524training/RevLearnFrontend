@@ -1,7 +1,5 @@
-/**
- * Represents the data of an assignment
- * @property correctAnswer: string
- */
-export default interface ShortAnswerQuestion {
+import QuizQuestion from "./QuizQuestion";
+
+export default interface ShortAnswerQuestion extends QuizQuestion {
   correctAnswer: string,
 }
