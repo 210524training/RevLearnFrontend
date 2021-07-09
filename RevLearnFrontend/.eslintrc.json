@@ -2,20 +2,25 @@
   "env": {
       "node": true,
       "es2021": true,
-      "jest": true
+      "jest": true,
+      "react-native/react-native": true
   },
   "extends": [
-      "airbnb-base",
-      "react-app",
-      "react-app/jest"
+      "airbnb-base"
   ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
       "ecmaVersion": 12,
-      "sourceType": "module"
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true,
+        "tsx": true
+      }
   },
   "plugins": [
-      "@typescript-eslint"
+      "@typescript-eslint",
+      "react",
+      "react-native"
   ],
   "rules": {
       "no-use-before-define": "off",
