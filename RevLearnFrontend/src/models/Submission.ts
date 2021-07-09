@@ -10,4 +10,4 @@ export default interface Submission {
   studentID: string,
   activityID: string,
   submissionDate: Date,
-}
+};

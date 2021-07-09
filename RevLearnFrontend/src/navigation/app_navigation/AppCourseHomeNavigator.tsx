@@ -1,8 +1,10 @@
 import * as React from 'react';
-import useColorScheme from '../../hooks/useColorScheme';
-import { HomeNavParamList} from '../../Types/NavigatorTypes';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { CourseHomeNavigator, CourseResourcesNavigator, AssignmentsNavigator, QuizzesNavigator, CourseInfoNavigator, CourseGradesNavigator, AdmissionRequestsNavigator, AllCourseGradesNavigator, StudentsNavigator } from '../StackNavigatiors';
+import useColorScheme from '../../hooks/useColorScheme';
+import { HomeNavParamList } from '../../Types/NavigatorTypes';
+import {
+  CourseHomeNavigator, CourseResourcesNavigator, AssignmentsNavigator, QuizzesNavigator, CourseInfoNavigator, CourseGradesNavigator, AdmissionRequestsNavigator, AllCourseGradesNavigator, StudentsNavigator,
+} from '../StackNavigatiors';
 
 const DrawerNav = createDrawerNavigator<HomeNavParamList>();
 
@@ -10,54 +12,54 @@ function AppCourseHomeNavigator() {
   const test: boolean = false;
   return (
     <>
-    <DrawerNav.Navigator
-      initialRouteName="CourseHome"
+      <DrawerNav.Navigator
+        initialRouteName="CourseHomeNav"
       >
-      <DrawerNav.Screen
-        name="CourseHome"
-        component={CourseHomeNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      <DrawerNav.Screen
-        name="CourseResources"
-        component={CourseResourcesNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      <DrawerNav.Screen
-        name="Assignments"
-        component={AssignmentsNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      <DrawerNav.Screen
-        name="Quizzes"
-        component={QuizzesNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      <DrawerNav.Screen
-        name="CourseInfo"
-        component={CourseInfoNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      <DrawerNav.Screen
-        name="CourseGrades"
-        component={CourseGradesNavigator}
-        options={{ headerTitle: 'Home Screen' }}/>
-      {/* If Role=Teacher */}
-      {test 
-        ? (<>
-          <DrawerNav.Screen
-            name="Students"
-            component={StudentsNavigator}
-            options={{ headerTitle: 'Home Screen' }}/>
-          <DrawerNav.Screen
-            name="AllCourseGrades"
-            component={AllCourseGradesNavigator}
-            options={{ headerTitle: 'All Course Grades' }}/>
+        <DrawerNav.Screen
+          name="CourseHomeNav"
+          component={CourseHomeNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        <DrawerNav.Screen
+          name="CourseResourcesNav"
+          component={CourseResourcesNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        <DrawerNav.Screen
+          name="AssignmentsNav"
+          component={AssignmentsNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        <DrawerNav.Screen
+          name="QuizzesNav"
+          component={QuizzesNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        <DrawerNav.Screen
+          name="CourseInfoNav"
+          component={CourseInfoNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        <DrawerNav.Screen
+          name="CourseGradesNav"
+          component={CourseGradesNavigator}
+          options={{ headerTitle: 'Home Screen' }}/>
+        {/* If Role=Teacher */}
+        {test
+          ? (<>
             <DrawerNav.Screen
-              name="AdmissionRequests"
+              name="StudentsNav"
+              component={StudentsNavigator}
+              options={{ headerTitle: 'Home Screen' }}/>
+            <DrawerNav.Screen
+              name="AllCourseGradesNav"
+              component={AllCourseGradesNavigator}
+              options={{ headerTitle: 'All Course Grades' }}/>
+            <DrawerNav.Screen
+              name="AdmissionRequestsNav"
               component={AdmissionRequestsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
-        </>)
-        : <></>
-      }
-    </DrawerNav.Navigator>
+          </>)
+          : <></>
+        }
+      </DrawerNav.Navigator>
     </>
   );
 }
 
-export default AppCourseHomeNavigator; 
+export default AppCourseHomeNavigator;

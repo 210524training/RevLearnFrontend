@@ -1,6 +1,6 @@
-import Activity from "./Activity";
-import QuizQuestion from "./QuizQuestion";
-import QuizSubmission from "./QuizSubmission";
+import Activity from './Activity';
+import QuizQuestion from './QuizQuestion';
+import QuizSubmission from './QuizSubmission';
 
 /**
  * Represents the data of an assignment
@@ -13,4 +13,4 @@ export default interface Quiz extends Activity{
   submissions: QuizSubmission[],
   passingGrade: number,
   questions: QuizQuestion[],
-}
+};

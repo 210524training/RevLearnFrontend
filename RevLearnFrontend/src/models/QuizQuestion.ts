@@ -11,4 +11,4 @@ export default interface QuizQuestion{
   questionTitle: string,
   pointValue: number,
   prompt: string,
-}
+};

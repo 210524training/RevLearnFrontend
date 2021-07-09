@@ -22,5 +22,4 @@ export default interface Course{
   category: string,
   assignments: string[],
   quizzes: string[],
-}
-
+};

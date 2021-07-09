@@ -1,6 +1,8 @@
-import { AssignmentType, LetterGrade } from "../types/MyTypes";
-import Activity from "./Activity";
-import AssignmentSubmission from "./AssignmentSubmission";
+/* eslint-disable semi */
+/* eslint-disable no-extra-semi */
+import { AssignmentType, LetterGrade } from '../Types/MyTypes';
+import Activity from './Activity';
+import AssignmentSubmission from './AssignmentSubmission';
 
 /**
  * Represents the data of an assignment
@@ -13,4 +15,4 @@ export default interface Assignment extends Activity{
   type: AssignmentType,
   submissions: AssignmentSubmission[],
   passingGrade: LetterGrade,
-}
+};

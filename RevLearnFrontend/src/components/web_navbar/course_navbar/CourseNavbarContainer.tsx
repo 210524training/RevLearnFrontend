@@ -1,6 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import CourseHomeNavbar from "./CourseNavbarPresentation";
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import CourseHomeNavbar from './CourseNavbarPresentation';
 
 const CourseNavbarContainer = () => {
   const Navigation = useNavigation();
@@ -9,59 +9,57 @@ const CourseNavbarContainer = () => {
    * Navigate to CourseHome
    */
   const NavToCourseHome = () => {
-    Navigation.navigate('CourseHome', {screen: 'CourseHomeNav'});
-  }
+    Navigation.navigate('CourseHome', { screen: 'CourseHomeNav' });
+  };
   /**
    * Navigate to CourseResources
    */
   const NavToCourseResources = () => {
-    Navigation.navigate('CourseHome', {screen: 'CourseResourcesNav'});
-  }
+    Navigation.navigate('CourseHome', { screen: 'CourseResourcesNav' });
+  };
   /**
    * Navigate to Assignments
    */
-   const NavToAssignments = () => {
-   
-    Navigation.navigate('CourseHome', {screen: 'AssignmentsNav'});
-  }
+  const NavToAssignments = () => {
+    Navigation.navigate('CourseHome', { screen: 'AssignmentsNav' });
+  };
   /**
    * Navigate to Quizzes
    */
-   const NavToQuizzes = () => {
-    Navigation.navigate('CourseHome', {screen: 'QuizzesNav'});
-  }
+  const NavToQuizzes = () => {
+    Navigation.navigate('CourseHome', { screen: 'QuizzesNav' });
+  };
   /**
    * Navigate to CourseInfo
    */
-   const NavToCourseInfo = () => {
-    Navigation.navigate('CourseHome', {screen: 'CourseInfoNav'});
-  }
+  const NavToCourseInfo = () => {
+    Navigation.navigate('CourseHome', { screen: 'CourseInfoNav' });
+  };
   /**
    * Navigate to CourseGrades
    */
-   const NavToCourseGrades = () => {
-    Navigation.navigate('CourseHome', {screen: 'CourseGradesNav'});
-  }
+  const NavToCourseGrades = () => {
+    Navigation.navigate('CourseHome', { screen: 'CourseGradesNav' });
+  };
   /**
    * Navigate to AdmissionRequests
    */
-   const NavToAdmissionRequests = () => {
-    Navigation.navigate('CourseHome', {screen: 'AdmissionRequestsNav'});
-  }
+  const NavToAdmissionRequests = () => {
+    Navigation.navigate('CourseHome', { screen: 'AdmissionRequestsNav' });
+  };
   /**
    * Navigate to Students
    */
-   const NavToStudents = () => {
-    Navigation.navigate('CourseHome', {screen: 'StudentsNav'});
-  }
+  const NavToStudents = () => {
+    Navigation.navigate('CourseHome', { screen: 'StudentsNav' });
+  };
   /**
    * Navigate to AllCourseGrades
    */
-   const NavToAllCourseGrades = () => {
-    Navigation.navigate('CourseHome', {screen: 'AllCourseGradesNav'});
-  }
+  const NavToAllCourseGrades = () => {
+    Navigation.navigate('CourseHome', { screen: 'AllCourseGradesNav' });
+  };
 
-  
   return (
     <CourseHomeNavbar
       NavToCourseHome={NavToCourseHome}
@@ -75,6 +73,6 @@ const CourseNavbarContainer = () => {
       NavToAllCourseGrades={NavToAllCourseGrades}
     />
   );
-}
+};
 
 export default CourseNavbarContainer;

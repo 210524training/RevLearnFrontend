@@ -23,6 +23,7 @@
       "react-native"
   ],
   "rules": {
+      "max-len": "off",
       "no-use-before-define": "off",
       "newline-per-chained-call": "off",
       "@typescript-eslint/no-use-before-define": ["error"],
@@ -30,8 +31,10 @@
           "error",
           "ignorePackages",
           {
-              "ts": "never"
+              "ts": "never",
+              "tsx": "never"
           }
+        
       ],
       "import/prefer-default-export": "warn",
       "lines-between-class-members": "off",
@@ -83,6 +86,7 @@
       "consistent-return": "off",
       "no-restricted-syntax": "off",
       "no-else-return": "off"
+      
   },
   "settings": {
       "import/resolver": {

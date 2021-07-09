@@ -8,13 +8,9 @@ export const questionSlice = createSlice({
   name: 'questions',
   initialState: [] as QuizQuestion[],
   reducers: {
-    addQuestion: (state, action: PayloadAction<QuizQuestion>) => {
-      return [...state, action.payload];
-    },
-    clear: (state) => {
-      return [];
-    }
-  }
+    addQuestion: (state, action: PayloadAction<QuizQuestion>) => [...state, action.payload],
+    clear: (state) => [],
+  },
 });
 
 export const { addQuestion, clear } = questionSlice.actions;

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View } from 'react-native';
+import {
+  Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View,
+} from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
 import { useAppSelector } from '../../../hooks';
 import { getQuestions, clear, QuestionState } from '../../../hooks/slices/question.slice';
 import QuizQuestion from '../../../models/QuizQuestion';
 import { createQuiz } from '../../../remote/RevLearnBackendAPI';
-import {v4 as uuidv4} from 'uuid';
 
 type Props = {
 
@@ -14,11 +16,11 @@ type Props = {
 
 const CreateQuizPage: React.FC<Props> = (props) => {
   const questions = useAppSelector<QuestionState>(getQuestions);
-  const [ passingGrade, setPassingGrade ] = useState<string>('0');
-  const [ title, setTitle ] = useState<string>('');
-  const [ description, setDescription ] = useState<string>('');
-  const [ startDate, setStartDate ] = useState<Date>(new Date());
-  const [dueDate, setDueDate ] = useState<Date>(new Date());
+  const [passingGrade, setPassingGrade] = useState<string>('0');
+  const [title, setTitle] = useState<string>('');
+  const [description, setDescription] = useState<string>('');
+  const [startDate, setStartDate] = useState<Date>(new Date());
+  const [dueDate, setDueDate] = useState<Date>(new Date());
 
   const handleNewQuizSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
     console.log(questions);
@@ -40,10 +42,10 @@ const CreateQuizPage: React.FC<Props> = (props) => {
   return (
     <>
       <Text>Quiz Title:</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setTitle} />
+      <TextInput style={{ borderWidth: 1 }} onChangeText={setTitle} />
 
       <Text>Description:</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setDescription} />
+      <TextInput style={{ borderWidth: 1 }} onChangeText={setDescription} />
 
       <Text>Start Date:</Text>
       {/* <DatePicker date={startDate} onDateChange={setStartDate} /> */}
@@ -52,13 +54,13 @@ const CreateQuizPage: React.FC<Props> = (props) => {
       {/* <DatePicker date={dueDate} onDateChange={setDueDate} /> */}
 
       <Text>Minimum Passing Grade:</Text>
-      <TextInput style={{borderWidth: 1}} onChangeText={setPassingGrade} />
+      <TextInput style={{ borderWidth: 1 }} onChangeText={setPassingGrade} />
 
       <Text>Questions:</Text>
       {
         questions.map((question) => (
           <>
-            <View style={{borderWidth: 1}}>
+            <View style={{ borderWidth: 1 }}>
               <Text>{question.questionTitle}</Text>
               <Text>{question.prompt}</Text>
             </View>

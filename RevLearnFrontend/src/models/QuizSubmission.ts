@@ -1,4 +1,4 @@
-import Submission from "./Submission";
+import Submission from './Submission';
 
 /**
  * Represents the data of an assignment
@@ -7,4 +7,4 @@ import Submission from "./Submission";
  */
 export default interface QuizSubmission extends Submission{
   grade: number,
-}
+};

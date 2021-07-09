@@ -30,7 +30,7 @@ export default {
           HomePage: {
             screens: {
               HomePage: 'HomePage',
-            }
+            },
           },
           UserInfo: {
             screens: {
@@ -65,7 +65,7 @@ export default {
             screens: {
               GradesOverViewPage: 'GradesOverViewPage',
             },
-          },        
+          },
         },
       },
       CourseHome: {
