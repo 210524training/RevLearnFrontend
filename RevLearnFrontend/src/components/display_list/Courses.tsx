@@ -1,15 +1,17 @@
 import React from 'react';
 import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
+import Course from '../../models/Course';
 
 type Props = {
-  courses: ['computer science', 'math', 'chemistry', 'english']
+  courses: Course[]
 }
 
 const CoursesList: React.FC<Props> = (props) => {
+  props.courses
   return (
     <>
       <View style={styles.courses}>
-        <Text style={styles.label}>{props.courses} </Text>
+        <Text style={styles.label}>{props.courses[0].courseTitle} </Text>
       </View>
     </>
   );
