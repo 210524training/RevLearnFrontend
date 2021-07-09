@@ -8,7 +8,7 @@ import { Role } from '../Types/MyTypes';
  * @property role: string
  * @property userID: string
  */
-export default interface User{
+export interface User{
   username: string,
   password: string,
   courses: [],

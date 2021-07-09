@@ -11,7 +11,7 @@
  * @property assignments: string[]
  * @property quizzes: string[]
  */
-export default interface Course{
+export interface Course{
   courseID: string,
   courseTitle: string,
   startDate: Date,
@@ -22,4 +22,4 @@ export default interface Course{
   category: string,
   assignments: string[],
   quizzes: string[],
-};
+}

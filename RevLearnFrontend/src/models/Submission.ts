@@ -5,9 +5,9 @@
  * @property activityID: string
  * @property submissionDate: Date
  */
-export default interface Submission {
+export interface Submission {
   submissionID: string,
   studentID: string,
   activityID: string,
   submissionDate: Date,
-};
+}

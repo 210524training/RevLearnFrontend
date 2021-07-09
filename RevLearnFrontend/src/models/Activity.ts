@@ -6,10 +6,10 @@
  * @property dueDate: Date
  * @property description: string
  */
-export default interface Activity{
+export interface Activity{
   ID: string,
   title: string,
   startDate: Date,
   dueDate: Date,
   description: string,
-};
+}
