@@ -8,7 +8,7 @@ import { CourseHomeNavigator, CourseResourcesNavigator, AssignmentsNavigator, Qu
 const StackNav = createStackNavigator<HomeNavParamList>();
 
 function AppCourseHomeNavigator() {
-  const test: boolean = false;
+  const test: boolean = true;
   const setHeader = useNavHeader()
   return (
     <>
