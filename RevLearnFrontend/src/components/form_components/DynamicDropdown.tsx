@@ -7,7 +7,7 @@ type Props = {
 }
 
 const DynamicDropdown: React.FC<Props> = ({ OptionsList, setSelected }) => (<>
-  {OptionsList
+  {OptionsList[0]
     ? (
       <Picker
         onValueChange={(itemValue: string) => { setSelected(itemValue); }}>

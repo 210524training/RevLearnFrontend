@@ -20,7 +20,7 @@ const CreateAssignmentPage: React.FC<Props> = (props) => {
       <Text>CreateAssignmentsPage</Text>
       <ActivityForm SetTitle={SetAssignmentType} ActivityType={'Assignment'}/>
       <DynamicDropdown setSelected={SetAssignmentType} OptionsList={Options}/>
-      <DynamicSlider SetValue={SetPassingGrade} Step={5} Title={'Passing Grade: '} MaxValue={100} CurrentValue={PassingGrade}/>
+      <DynamicSlider SetValue={SetPassingGrade} Step={5} Title={'Passing Grade: '} MaxValue={100} MinValue={50} CurrentValue={PassingGrade}/>
     </>
   );
 };
