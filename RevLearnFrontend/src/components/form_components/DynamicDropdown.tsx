@@ -10,9 +10,9 @@ const DynamicDropdown: React.FC<Props> = ({ OptionsList, setSelected }) => (<>
   {OptionsList
     ? (
       <Picker
-        onValueChange={(itemValue: string) => { setSelected(itemValue); }}>
+        onValueChange={(itemValue, itemIndex) => { setSelected(itemValue as string); }}>
         <Picker.Item label={'Please Select an Item'} value={'Homework'}/>
-        {OptionsList.map((element) => <Picker.Item label={element} value={element}/>)}
+        {OptionsList.map((element) => <Picker.Item key={OptionsList.findIndex((test) => element === test)} label={element} value={element}/>)}
       </Picker>
     )
     : (

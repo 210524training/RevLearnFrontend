@@ -18,9 +18,14 @@ const CreateCoursePage: React.FC<Props> = (props) => {
     <>
       <Text>Course Title</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setCourseTitle} />
+<<<<<<< HEAD
       <Text>Start Date</Text>
       <DynamicDatePicker date={startDate} setDate={setStartDate}/>
       <DynamicDatePicker date={endDate} setDate={setEndDate}/>
+=======
+      <DynamicDatePicker date={startDate} setDate={setStartDate} title={'Start Date'}/>
+      <DynamicDatePicker date={endDate} setDate={setEndDate} title={'End Date'}/>
+>>>>>>> 210425cb29da800487682c36f78ff38856a78e37
     </>
   );
 };
