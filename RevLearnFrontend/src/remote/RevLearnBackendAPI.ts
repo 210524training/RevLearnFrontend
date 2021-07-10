@@ -2,12 +2,9 @@
 import { User } from '../models/User';
 import { Quiz } from '../models/Quiz';
 import { Course } from '../models/Course';
-<<<<<<< HEAD
 import { QuizSubmission } from '../models/QuizSubmission';
 import { AssignmentSubmission } from '../models/AssignmentSubmission';
 import { Assignment } from '../models/Assignment';
-=======
->>>>>>> kirkBranch
 
 const newStudent: User = {
   username: 'michael',
@@ -113,7 +110,6 @@ export function updateQuiz(quiz: Quiz) {
 export function getAllStudentsForCourse() {
   const studentArray: User[] = [newStudent, newStudent2];
   return studentArray;
-<<<<<<< HEAD
 }
 
 export function getActivities(course: Course) {
@@ -174,6 +170,4 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
   };
 
   return [submission];
-=======
->>>>>>> kirkBranch
 }
