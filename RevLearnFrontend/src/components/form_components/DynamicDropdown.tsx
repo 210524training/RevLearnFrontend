@@ -10,8 +10,8 @@ const DynamicDropdown: React.FC<Props> = ({ OptionsList, setSelected }) => (<>
   {OptionsList
     ? (
       <Picker
-        selectedValue={OptionsList[0]}
-        onValueChange={(itemValue) => { setSelected(itemValue); }}>
+        onValueChange={(itemValue: string) => { setSelected(itemValue); }}>
+        <Picker.Item label={'Please Select an Item'} value={'Homework'}/>
         {OptionsList.map((element) => <Picker.Item label={element} value={element}/>)}
       </Picker>
     )
@@ -23,3 +23,5 @@ const DynamicDropdown: React.FC<Props> = ({ OptionsList, setSelected }) => (<>
     )
   }
 </>);
+
+export default DynamicDropdown;
