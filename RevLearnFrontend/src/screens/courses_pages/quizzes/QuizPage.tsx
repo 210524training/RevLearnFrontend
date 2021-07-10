@@ -5,22 +5,21 @@ import {
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
-import MultipleChoiceQuizQuestion from '../../../models/MultipleChoiceQuizQuestion';
-import Quiz from '../../../models/Quiz';
-import QuizQuestion from '../../../models/QuizQuestion';
-import ShortAnswerQuestion from '../../../models/ShortAnswerQuestion';
-import { MultipleChoiceOption } from '../../../Types/MyTypes';
+import { ListItem } from 'react-native-elements';
+import { MultipleChoiceQuizQuestion } from '../../../models/MultipleChoiceQuizQuestion';
+import { Quiz } from '../../../models/Quiz';
+import { QuizQuestion } from '../../../models/QuizQuestion';
+import { ShortAnswerQuestion } from '../../../models/ShortAnswerQuestion';
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../Types/MyTypes';
 import { updateQuiz } from '../../../remote/RevLearnBackendAPI';
-import QuizSubmission from '../../../models/QuizSubmission';
+import { QuizSubmission } from '../../../models/QuizSubmission';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 
 type Props = {
 
 }
 
-const QuizPage: React.FC<Props> = (props) => {
-  const [answer, setAnswer] = useState<string>();
-
+const QuizPage: React.FC<Props> = () => {
   const questions: (ShortAnswerQuestion | MultipleChoiceQuizQuestion)[] = [
     {
       questionID: '1',
@@ -75,18 +74,18 @@ const QuizPage: React.FC<Props> = (props) => {
 
   // Creating an array of hooks that dynamically scales to match the number of questions
   const answerHooks: { value: string | MultipleChoiceOption, setter: React.Dispatch<React.SetStateAction<any>> }[] = [];
-  quiz.questions.forEach((question) => {
+  quiz.questions.forEach((question: QuizQuestion) => {
     if(isMultipleChoiceQuestion(question)) {
       const [value, setter] = useState<MultipleChoiceOption>('OptionA');
       answerHooks.push({ value, setter });
     } else {
-      const [value, setter] = useState<string>('OptionA');
+      const [value, setter] = useState<string>('');
       answerHooks.push({ value, setter });
     }
   });
 
   function getRadioOptions(question: MultipleChoiceQuizQuestion): { label: string, value: string }[] {
-    const options = question.choices.map((choice) => ({ label: choice.answer, value: choice.option }));
+    const options = question.choices.map((choice: MultipleChoicePossibleAnswer) => ({ label: choice.answer, value: choice.option }));
 
     return options;
   }
@@ -128,8 +127,8 @@ const QuizPage: React.FC<Props> = (props) => {
       <Text>{quiz.description}</Text>
 
       {
-        quiz.questions.map((question, index) => (
-          <>
+        quiz.questions.map((question, index: number) => (
+          <ListItem key={index}>
             <View style={{ borderWidth: 1 }}>
               <Text>{questions[index].questionTitle}</Text>
               <Text>{questions[index].prompt}</Text>
@@ -143,7 +142,7 @@ const QuizPage: React.FC<Props> = (props) => {
               }
 
             </View>
-          </>
+          </ListItem>
         ))
       }
 

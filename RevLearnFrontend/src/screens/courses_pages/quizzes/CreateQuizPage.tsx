@@ -1,20 +1,22 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import {
-  Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput, View,
+  Button, Text, TextInput, View,
 } from 'react-native';
+import { ListItem } from 'react-native-elements';
 import { v4 as uuidv4 } from 'uuid';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
 import { useAppSelector } from '../../../hooks';
-import { getQuestions, clear, QuestionState } from '../../../hooks/slices/question.slice';
-import QuizQuestion from '../../../models/QuizQuestion';
+import { getQuestions, QuestionState } from '../../../hooks/slices/question.slice';
+import { QuizQuestion } from '../../../models/QuizQuestion';
 import { createQuiz } from '../../../remote/RevLearnBackendAPI';
 
 type Props = {
 
 }
 
-const CreateQuizPage: React.FC<Props> = (props) => {
+const CreateQuizPage: React.FC<Props> = () => {
   const questions = useAppSelector<QuestionState>(getQuestions);
   const [passingGrade, setPassingGrade] = useState<string>('0');
   const [title, setTitle] = useState<string>('');
@@ -22,7 +24,7 @@ const CreateQuizPage: React.FC<Props> = (props) => {
   const [startDate, setStartDate] = useState<Date>(new Date());
   const [dueDate, setDueDate] = useState<Date>(new Date());
 
-  const handleNewQuizSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
+  const handleNewQuizSubmit = () => {
     console.log(questions);
 
     const quiz = {
@@ -58,12 +60,14 @@ const CreateQuizPage: React.FC<Props> = (props) => {
 
       <Text>Questions:</Text>
       {
-        questions.map((question) => (
+        questions.map((question, index) => (
           <>
-            <View style={{ borderWidth: 1 }}>
-              <Text>{question.questionTitle}</Text>
-              <Text>{question.prompt}</Text>
-            </View>
+            <ListItem key={index}>
+              <View style={{ borderWidth: 1 }}>
+                <Text>{question.questionTitle}</Text>
+                <Text>{question.prompt}</Text>
+              </View>
+            </ListItem>
           </>
         ))
       }
