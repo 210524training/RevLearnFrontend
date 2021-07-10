@@ -21,42 +21,43 @@ const LoginPage: React.FC<unknown> = (props) => {
     await dispatch(loginAsync({ username, password }));
     navigation.navigate('Home', { screen: 'HomePageNav' });
   };
+
   return (
     <>
       {user ? (
         <>
           <Text >
    Hello, {user.username}!
- </Text>
- <View  />
- <Button
-   title="Logout"
-   onPress={() => dispatch(logout())}
- ></Button>
-</>
-):(
-  <>
-  <Text>Login</Text>
+          </Text>
+          <View />
+          <Button
+            title="Logout"
+            onPress={() => dispatch(logout())}
+          ></Button>
+        </>
+      ) : (
+        <>
+          <Text>Login</Text>
 
-    <TextInput
-      placeholder="Username"
-      onChangeText={text => setUsername(text)}
-      defaultValue={username}
-    />
-    <TextInput
-      secureTextEntry={true}
-      placeholder="Password"
-      onChangeText={text => setPassword(text)}
-      defaultValue={password}
-    />
+          <TextInput
+            placeholder="Username"
+            onChangeText={(text) => setUsername(text)}
+            defaultValue={username}
+          />
+          <TextInput
+            secureTextEntry={true}
+            placeholder="Password"
+            onChangeText={(text) => setPassword(text)}
+            defaultValue={password}
+          />
 
-    <Button
-      onPress={handleLogin}
-      title="Sign in"
-    />
-    
+          <Button
+            onPress={handleLogin}
+            title="Sign in"
+          />
 
-
+        </>
+      )}
     </>
   );
 };

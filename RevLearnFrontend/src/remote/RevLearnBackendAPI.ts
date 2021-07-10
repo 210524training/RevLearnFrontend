@@ -11,6 +11,14 @@ const newStudent: User = {
   userID: '456',
 };
 
+const newStudent2: User = {
+  username: 'jon',
+  password: '123',
+  courses: [],
+  role: 'Student',
+  userID: '123',
+};
+
 const newvar2: Course = {
   courseID: '1234',
   courseTitle: 'Computer Science',

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import {ScrollView, Text, View} from 'react-native';
-import DisplayAllStudents from "../../components/DisplayAllStudents";
+import DisplayAllStudents from "../../components/display_list/DisplayAllStudents";
 import WithCourseNavbar from "../../components/higher_order_components/Navbars/WithCourseNavbar";
-import User from "../../models/user";
+import {User} from "../../models/user";
 import { getAllStudentsForCourse } from "../../remote/RevLearnBackendAPI";
 
 type Props = {
