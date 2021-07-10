@@ -6,9 +6,18 @@ const newStudent: User = {
   username: 'michael',
   password: '123',
   courses: [],
-  role: "student",
+  role: 'Student',
   userID: "456",
 }
+
+const newStudent2: User = {
+  username: 'jon',
+  password: 'pass',
+  courses: [],
+  role: 'Student',
+  userID: "abc",
+}
+
 
 /**
  * 
@@ -56,3 +65,8 @@ export function getByUserName(){
   return newStudent
 }
 
+export function getAllStudentsForCourse(){
+const studentArray: User[] =[newStudent, newStudent2]
+return studentArray
+  
+}

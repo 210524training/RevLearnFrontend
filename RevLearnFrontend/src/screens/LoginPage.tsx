@@ -41,6 +41,7 @@ const LoginPage: React.FC<unknown> = (props) => {
       defaultValue={username}
     />
     <TextInput
+      secureTextEntry={true}
       placeholder="Password"
       onChangeText={text => setPassword(text)}
       defaultValue={password}
