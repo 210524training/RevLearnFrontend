@@ -10,6 +10,7 @@ import { User } from '../../models/User';
 type Props = {
 
 }
+
 const CourseGradesPage: React.FC<Props> = () => {
   const user: User = useAppSelector<UserState>(selectUser);
 

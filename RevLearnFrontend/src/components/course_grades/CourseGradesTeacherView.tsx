@@ -7,9 +7,9 @@ type Props = {
 
 }
 
-const CourseGradesPage: React.FC<Props> = (props) => (
+const CourseGradesTeacherView: React.FC<Props> = (props) => (
   <>
   </>
 );
 
-export default CourseGradesPage;
+export default CourseGradesTeacherView;
