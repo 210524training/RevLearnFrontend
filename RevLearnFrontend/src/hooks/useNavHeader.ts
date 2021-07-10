@@ -4,11 +4,11 @@ import { Platform } from 'react-native';
 
 export default function useNavHeader(): StackHeaderMode {
   let setHeader: StackHeaderMode;
-  if(Platform.OS === 'web') {
-    setHeader = 'none';
-  }
 
   setHeader = 'screen';
 
+  if(Platform.OS === 'web') {
+    setHeader = 'none';
+  }
   return setHeader;
 }
