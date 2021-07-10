@@ -4,17 +4,19 @@ import React from 'react';
 type Props = {
   OptionsList: string[],
   setSelected: (itemValue: string) => void,
+  title?: string,
 }
 
-const DynamicDropdown: React.FC<Props> = ({ OptionsList, setSelected }) => (<>
-  {OptionsList[0]
-    ? (
+const DynamicDropdown: React.FC<Props> = (props) => (<>
+  {props.OptionsList[0]
+    ? (<>
+      {props.title ? props.title : 'Select Item'}
       <Picker
-        onValueChange={(itemValue, itemIndex) => { setSelected(itemValue as string); }}>
+        onValueChange={(itemValue, itemIndex) => { props.setSelected(itemValue as string); }}>
         <Picker.Item label={'Please Select an Item'} value={'Homework'}/>
-        {OptionsList.map((element) => <Picker.Item key={OptionsList.findIndex((test) => element === test)} label={element} value={element}/>)}
+        {props.OptionsList.map((element) => <Picker.Item key={props.OptionsList.findIndex((test) => element === test)} label={element} value={element}/>)}
       </Picker>
-    )
+    </>)
     : (
       <Picker
         selectedValue={'empty array'}>

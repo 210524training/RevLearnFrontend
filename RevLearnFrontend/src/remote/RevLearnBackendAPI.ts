@@ -171,3 +171,11 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
 
   return [submission];
 }
+
+/**
+ * Sends create assignment request.
+ * @param assignment Assignment
+ */
+export function CreateAssignment(assignment: Assignment) {
+  console.log(assignment);
+}

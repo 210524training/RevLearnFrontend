@@ -19,9 +19,7 @@ const DynamicDatePicker: React.FC<Props> = (props) => {
     const currentDate = selectedDate || date;
     setShow(false);
     setDate(currentDate);
-    if(selectedDate) {
-      props.setDate(selectedDate.toString());
-    }
+    props.setDate(currentDate.toString());
   };
 
   const showMode = (currentMode: React.SetStateAction<string>) => {
@@ -46,15 +44,15 @@ const DynamicDatePicker: React.FC<Props> = (props) => {
         ? (<>
           <Button onPress={showDatepicker} title="Show date picker!" />
           {show ? <DateTimePicker date={date} onChange={change} value={date} mode={mode} is24Hour={true} display="default"/> : <></>}
-
+          <Text>{props.date}</Text>
         </>)
         : (
           <View>
-            <TextInput placeholder={'MM/DD/YYYY'} onChange={(event) => { props.setDate(event.target.toString()); }}/>
+            <TextInput placeholder={'MM/DD/YYYY'} onChangeText={(text) => { props.setDate(text); }}/>
           </View>
         )
       }
-      <Text>{props.date}</Text>
+
     </>
   );
 };

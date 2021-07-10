@@ -13,6 +13,7 @@ type Props = {
   Title?: string,
 }
 const DynamicSlider: React.FC<Props> = (props) => (<>
+  <Text>{props.Title ? props.Title : 'Value: '} {props.CurrentValue}</Text>
   <Slider
     step={props.Step ? props.Step : 1}
     minimumValue={props.MinValue ? props.MinValue : 0}
@@ -20,7 +21,7 @@ const DynamicSlider: React.FC<Props> = (props) => (<>
     value={props.StartingValue ? props.StartingValue : 1}
     onValueChange={(value: number) => { props.SetValue(value); }}
   />
-  <Text>{props.Title ? props.Title : 'Value: '} {props.CurrentValue}</Text>
+
 </>);
 
 export default DynamicSlider;
