@@ -11,7 +11,15 @@ type Props = {
 }
 
 const CourseGradesPage: React.FC<Props> = () => {
-  const user: User = useAppSelector<UserState>(selectUser);
+  // const user: User = useAppSelector<UserState>(selectUser);
+
+  const user: User = {
+    username: 'jon',
+    password: '123',
+    courses: [],
+    role: 'Student',
+    userID: '123',
+  };
 
   const course: Course = {
     courseID: '1234',

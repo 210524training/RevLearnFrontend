@@ -15,6 +15,7 @@ const CourseGradesStudentView: React.FC<Props> = (props) => {
 
   return (
     <View>
+      <Text>Grades for {props.user.username}:</Text>
       {
         submissions.map((submission, index) => {
           const activity = getActivityByID(submission.activityID);
