@@ -31,10 +31,10 @@ const CourseGradesPage: React.FC<Props> = () => {
     <>
       {
         // user.role === 'Student' ? (
-        true ? (
+        false ? (
           <CourseGradesStudentView user={user} course={course}/>
         ) : (
-          <CourseGradesTeacherView />
+          <CourseGradesTeacherView course={course} />
         )
       }
     </>

@@ -95,6 +95,11 @@ export function getByUserName() {
   return newStudent;
 }
 
+export function getUserByID(id: string) {
+  console.log(id);
+  return newStudent;
+}
+
 /**
  * Use for updating a quiz with a new submission after the quiz is taken
  * @param quiz
@@ -105,6 +110,31 @@ export function updateQuiz(quiz: Quiz) {
 export function getAllStudentsForCourse() {
   const studentArray: User[] = [newStudent, newStudent2];
   return studentArray;
+}
+
+export function getActivities(course: Course) {
+  console.log(course);
+
+  const submission: QuizSubmission = {
+    submissionID: '1',
+    studentID: '1',
+    activityID: '1',
+    submissionDate: new Date(),
+    grade: 80,
+  };
+
+  const quiz: Quiz = {
+    ID: '1',
+    startDate: new Date(),
+    dueDate: new Date(),
+    passingGrade: 75,
+    questions: [],
+    title: 'Quiz 1',
+    description: 'Description of quiz',
+    submissions: [submission],
+  };
+
+  return [quiz];
 }
 
 export function getActivityByID(id: string): Quiz | Assignment {
