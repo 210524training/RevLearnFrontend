@@ -11,6 +11,14 @@ const newStudent: User = {
   userID: '456',
 };
 
+const newStudent2: User = {
+  username: 'jon',
+  password: '123',
+  courses: [],
+  role: 'Student',
+  userID: '123',
+};
+
 const newvar2: Course = {
   courseID: '1234',
   courseTitle: 'Computer Science',
@@ -95,4 +103,9 @@ export function getByUserName() {
  */
 export function updateQuiz(quiz: Quiz) {
   //
+}
+export function getAllStudentsForCourse(){
+const studentArray: User[] =[newStudent, newStudent2]
+return studentArray
+  
 }
