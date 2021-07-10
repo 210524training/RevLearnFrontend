@@ -35,8 +35,6 @@ const AllCoursesPage: React.FC<Props> = (props) => {
   );
 };
 
-
-
 // Navigate to Create Course
 /**
  * const navigation = useNavigation();
