@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import {
   Button, TextInput, Text, View,
 } from 'react-native';
@@ -25,10 +24,11 @@ const LoginPage: React.FC<unknown> = (props) => {
     <>
       {user ? (
         <>
-          <Text >
-   Hello, {user.username}!
-          </Text>
-          <View />
+          <View>
+            <Text >
+              Hello, {user.username}!
+            </Text>
+          </View>
           <Button
             title="Logout"
             onPress={() => dispatch(logout())}
