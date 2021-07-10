@@ -61,14 +61,12 @@ const CreateQuizPage: React.FC<Props> = () => {
       <Text>Questions:</Text>
       {
         questions.map((question, index) => (
-          <>
-            <ListItem key={index}>
-              <View style={{ borderWidth: 1 }}>
-                <Text>{question.questionTitle}</Text>
-                <Text>{question.prompt}</Text>
-              </View>
-            </ListItem>
-          </>
+          <ListItem key={index}>
+            <View style={{ borderWidth: 1 }}>
+              <Text>{question.questionTitle}</Text>
+              <Text>{question.prompt}</Text>
+            </View>
+          </ListItem>
         ))
       }
       <NewQuestion />
