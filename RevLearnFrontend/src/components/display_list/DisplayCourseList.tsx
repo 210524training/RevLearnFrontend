@@ -12,29 +12,23 @@ type Props = {
 const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => (
   <>
     {courses.map((element) => (
-      <View>
-        <View>
-          <Text>Course ID:</Text> {`${element.courseID}`}
-        </View>
-        <View>
-          <Text>Course Title:</Text> {`${element.courseTitle}`}
-        </View>
-        <View>
-          <Text>Start Date:</Text> {`${element.startDate}`}
-        </View>
-        <View>
-          <Text>End Date:</Text> {`${element.endDate}`}
-        </View>
-        <View>
-          <Text>Teacher:</Text> {`${element.teacher}`}
-        </View>
-        <View>
-          <Text>Passing Grade:</Text> {`${element.passingGrade}`}
-        </View>
-        <View>
-          <Text>Category:</Text> {`${element.category}`}
-        </View>
-      </View>
+      <>
+
+        <Text>Course ID:  {`${element.courseID}`}</Text>
+
+        <Text>Course Title: {`${element.courseTitle}`}</Text>
+
+        <Text>Start Date: {`${element.startDate}`}</Text>
+
+        <Text>End Date: {`${element.endDate}`}</Text>
+
+        <Text>Teacher: {`${element.teacher}`}</Text>
+
+        <Text>Passing Grade: {`${element.passingGrade}`}</Text>
+
+        <Text>Category: {`${element.category}`}</Text>
+
+      </>
     ))}
   </>
 );
