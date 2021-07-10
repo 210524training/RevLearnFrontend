@@ -21,6 +21,7 @@ const LoginPage: React.FC<unknown> = (props) => {
     await dispatch(loginAsync({ username, password }));
     navigation.navigate('Home', { screen: 'HomePageNav' });
   };
+
   return (
     <>
       {user ? (
@@ -44,6 +45,7 @@ const LoginPage: React.FC<unknown> = (props) => {
             defaultValue={username}
           />
           <TextInput
+            secureTextEntry={true}
             placeholder="Password"
             onChangeText={(text) => setPassword(text)}
             defaultValue={password}
