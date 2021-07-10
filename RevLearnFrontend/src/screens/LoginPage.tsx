@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button, TextInput, Text, View,
+  Button, StyleSheet, TextInput, Text, View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useAppDispatch, useAppSelector } from '../hooks';
@@ -8,6 +8,8 @@ import {
   loginAsync, logout, selectUser, UserState,
 } from '../hooks/slices/user.slice';
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
+import { Styles } from '../styles/NavBarStyles';
+import { LoginPageStyles } from '../styles/LoginPageStyles';
 
 const LoginPage: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -22,29 +24,29 @@ const LoginPage: React.FC<unknown> = (props) => {
   };
 
   return (
-    <>
+    <View style={LoginPageStyles.container}>
       {user ? (
         <>
-          <View>
-            <Text >
+          {/* <Text >
               Hello, {user.username}!
-            </Text>
-          </View>
-          <Button
+          </Text> */}
+          {/* <Button
             title="Logout"
             onPress={() => dispatch(logout())}
-          ></Button>
+          ></Button> */}
         </>
       ) : (
         <>
-          <Text>Login</Text>
+          <Text style={LoginPageStyles.title}>Login</Text>
 
           <TextInput
+            style={LoginPageStyles.inputField}
             placeholder="Username"
             onChangeText={(text) => setUsername(text)}
             defaultValue={username}
           />
           <TextInput
+            style={LoginPageStyles.inputField}
             secureTextEntry={true}
             placeholder="Password"
             onChangeText={(text) => setPassword(text)}
@@ -52,13 +54,15 @@ const LoginPage: React.FC<unknown> = (props) => {
           />
 
           <Button
+            color="#00B2D4"
             onPress={handleLogin}
             title="Sign in"
           />
 
         </>
       )}
-    </>
+    </View>
   );
 };
+
 export default WithNavBar(LoginPage);
