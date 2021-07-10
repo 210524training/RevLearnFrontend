@@ -11,8 +11,6 @@ export type RootStackParamList = {
   Modal: undefined;
 };
 
-
-
 // Home Navigation Parms
 export type RootHomeNavParamList = {
   HomePage: undefined;
@@ -46,7 +44,7 @@ export type AllCoursesNavParamList = {
 export type GradesOverViewNavParamList = {
   GradesOverViewPage: undefined;
 };
-//CourseHome
+// CourseHome
 export type HomeNavParamList = {
   CourseHomeNav: undefined;
   CourseResourcesNav: undefined;
@@ -97,9 +95,7 @@ export type AllCourseGradesNavParamList = {
   AllCourseGradesPage: undefined;
 };
 
-
-
-//Root Tab Navigation params
+// Root Tab Navigation params
 export type RootNavParamList = {
   LandingNav: undefined;
   LoginNav: undefined;
@@ -112,4 +108,3 @@ export type LandingNavParamList = {
 export type LoginNavParamList = {
   Login: undefined;
 };
-

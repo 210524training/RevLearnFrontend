@@ -1,5 +1,5 @@
-import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from "../types/MyTypes";
-import QuizQuestion from "./QuizQuestion";
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../Types/MyTypes';
+import { QuizQuestion } from './QuizQuestion';
 
 /**
  * Represents the data of an assignment
@@ -7,7 +7,7 @@ import QuizQuestion from "./QuizQuestion";
  * @property choices: MultipleChoicePossibleAnswer[]
  * @extends QuizQuestion
  */
-export default interface MultipleChoiceQuizQuestion extends QuizQuestion {
+export interface MultipleChoiceQuizQuestion extends QuizQuestion {
   correctAnswer: MultipleChoiceOption,
   choices: MultipleChoicePossibleAnswer[],
 }

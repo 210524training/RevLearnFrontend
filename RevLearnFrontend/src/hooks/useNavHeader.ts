@@ -1,12 +1,14 @@
-import { StackHeaderMode } from "@react-navigation/stack/lib/typescript/src/types";
-import { Platform } from "react-native";
+// eslint-disable-next-line import/no-unresolved
+import { StackHeaderMode } from '@react-navigation/stack/lib/typescript/src/types';
+import { Platform } from 'react-native';
 
-export function useNavHeader(): StackHeaderMode {
+export default function useNavHeader(): StackHeaderMode {
   let setHeader: StackHeaderMode;
-  {Platform.OS === 'web'
-    ? setHeader = 'none'
-    : setHeader = 'screen'
+  if(Platform.OS === 'web') {
+    setHeader = 'none';
   }
-  
+
+  setHeader = 'screen';
+
   return setHeader;
 }

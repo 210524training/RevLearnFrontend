@@ -1,37 +1,38 @@
-import React from "react";
-import { createStackNavigator } from "@react-navigation/stack";
-import { HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList, CourseHomeNavParamList } from "../Types/NavigatorTypes";
-import AllCoursesPage from "../screens/home_pages/AllCoursesPage";
-import CreateCoursePage from "../screens/courses_pages/CreateCoursePage";
-import AllUsersPage from "../screens/home_pages/AllUsersPage";
-import GradesOverviewPage from "../screens/home_pages/GradesOverviewPage";
-import HomePage from "../screens/home_pages/HomePage";
-import SettingsPage from "../screens/home_pages/Settings";
-import AllTeachersPage from "../screens/home_pages/teachers/AllTeachersPage";
-import CreateTeacherAccountPage from "../screens/home_pages/teachers/CreateTeacherAccountPage";
-import UserInfoPage from "../screens/home_pages/UserInfo";
-import AssignmentsPage from "../screens/courses_pages/assignments/AssignmentsPage";
-import AssignmentsSubmissionsPage from "../screens/courses_pages/assignments/AssignmentSubmissionsPage";
-import CreateAssignmentPage from "../screens/courses_pages/assignments/CreateAssignmentPage";
-import DetailedSubmissionPage from "../screens/courses_pages/assignments/DetailedSubmissionPage";
-import SubmitAssignmentPage from "../screens/courses_pages/assignments/SubmitAssignmentPage";
-import CourseAdmissionReouetsPage from "../screens/courses_pages/CourseAdmissionRequestsPage";
-import CourseGradesPage from "../screens/courses_pages/CourseGradesPage";
-import CourseStudentsPage from "../screens/courses_pages/CourseStudentsPage";
-import CourseInfoPage from "../screens/courses_pages/course_info/CourseInfoPage";
-import UpdateCourseInfoPage from "../screens/courses_pages/course_info/UpdateCourseInfoPage";
-import AllQuizzesPage from "../screens/courses_pages/quizzes/AllQuizzesPage";
-import QuizPage from "../screens/courses_pages/quizzes/QuizPage";
-import AddResource from "../screens/courses_pages/resources/AddResourcePage";
-import CourseResourcesPage from "../screens/courses_pages/resources/CourseResourcesPage";
-import DetailedResourcePage from "../screens/courses_pages/resources/DetailedResourcePage";
-import { useNavHeader } from "../hooks/useNavHeader";
-import CreateQuizPage from "../screens/courses_pages/quizzes/CreateQuizPage";
-import AllQuizResultsPage from "../screens/courses_pages/quizzes/AllQuizResultsPage";
-import CourseHomePage from "../screens/courses_pages/CourseHomePage";
+import React from 'react';
+import { createStackNavigator } from '@react-navigation/stack';
+import {
+  HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList, CourseHomeNavParamList,
+} from '../Types/NavigatorTypes';
+import AllCoursesPage from '../screens/home_pages/AllCoursesPage';
+import CreateCoursePage from '../screens/courses_pages/CreateCoursePage';
+import AllUsersPage from '../screens/home_pages/AllUsersPage';
+import GradesOverviewPage from '../screens/home_pages/GradesOverviewPage';
+import HomePage from '../screens/home_pages/HomePage';
+import SettingsPage from '../screens/home_pages/Settings';
+import AllTeachersPage from '../screens/home_pages/teachers/AllTeachersPage';
+import CreateTeacherAccountPage from '../screens/home_pages/teachers/CreateTeacherAccountPage';
+import UserInfoPage from '../screens/home_pages/UserInfo';
+import AssignmentsPage from '../screens/courses_pages/assignments/AssignmentsPage';
+import AssignmentsSubmissionsPage from '../screens/courses_pages/assignments/AssignmentSubmissionsPage';
+import CreateAssignmentPage from '../screens/courses_pages/assignments/CreateAssignmentPage';
+import DetailedSubmissionPage from '../screens/courses_pages/assignments/DetailedSubmissionPage';
+import SubmitAssignmentPage from '../screens/courses_pages/assignments/SubmitAssignmentPage';
+import CourseAdmissionReouetsPage from '../screens/courses_pages/CourseAdmissionRequestsPage';
+import CourseGradesPage from '../screens/courses_pages/CourseGradesPage';
+import CourseStudentsPage from '../screens/courses_pages/CourseStudentsPage';
+import CourseInfoPage from '../screens/courses_pages/course_info/CourseInfoPage';
+import UpdateCourseInfoPage from '../screens/courses_pages/course_info/UpdateCourseInfoPage';
+import AllQuizzesPage from '../screens/courses_pages/quizzes/AllQuizzesPage';
+import QuizPage from '../screens/courses_pages/quizzes/QuizPage';
+import AddResource from '../screens/courses_pages/resources/AddResourcePage';
+import CourseResourcesPage from '../screens/courses_pages/resources/CourseResourcesPage';
+import DetailedResourcePage from '../screens/courses_pages/resources/DetailedResourcePage';
+import useNavHeader from '../hooks/useNavHeader';
+import CreateQuizPage from '../screens/courses_pages/quizzes/CreateQuizPage';
+import AllQuizResultsPage from '../screens/courses_pages/quizzes/AllQuizResultsPage';
+import CourseHomePage from '../screens/courses_pages/CourseHomePage';
 
-   
-//Home navigation stack navigators
+// Home navigation stack navigators
 export function HomeNavigator() {
   const HomeNav = createStackNavigator<HomePageNavParamList>();
   const setHeader = useNavHeader();
@@ -61,13 +62,13 @@ export function UserInfoNavigator() {
       />
     </UserInfoStack.Navigator>
   );
-} 
+}
 export function SettingsNavigator() {
   const SettingsStack = createStackNavigator<SettingsNavParamList>();
   const setHeader = useNavHeader();
   return (
     <SettingsStack.Navigator
-      initialRouteName='SettingsPage' 
+      initialRouteName='SettingsPage'
       headerMode={setHeader}>
       <SettingsStack.Screen
         name="SettingsPage"
@@ -75,7 +76,7 @@ export function SettingsNavigator() {
         options={{ headerTitle: 'Settings' }}
       />
     </SettingsStack.Navigator>
-  )
+  );
 }
 export function AllUsersNavigator() {
   const AllUsersStack = createStackNavigator<AllUsersNavParamList>();
@@ -152,7 +153,7 @@ export function GradesOverViewNavigator() {
 export function CourseHomeNavigator() {
   const HomeNav = createStackNavigator<CourseHomeNavParamList>();
   const setHeader = useNavHeader();
-  console.log('Course Home Nav Navigating...')
+  console.log('Course Home Nav Navigating...');
   return (
     <HomeNav.Navigator
       initialRouteName='CourseHomePage'

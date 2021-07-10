@@ -6,7 +6,7 @@
  * @property prompt: string
  * @extends QuizQuestion
  */
-export default interface QuizQuestion{
+export interface QuizQuestion{
   questionID: string,
   questionTitle: string,
   pointValue: number,

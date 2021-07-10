@@ -1,17 +1,15 @@
-import React from "react";
-import {Text} from 'react-native';
-import WithCourseNavbar from "../../../components/higher_order_components/Navbars/WithCourseNavbar";
+import React from 'react';
+import { Text } from 'react-native';
+import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 
 type Props = {
 
 }
-const CourseResourcesPage: React.FC<Props> = (props) => {
-  return (
-    <>
-      <Text>CourseResourcesPage</Text>
-    </>
-  )
-}
+const CourseResourcesPage: React.FC<Props> = (props) => (
+  <>
+    <Text>CourseResourcesPage</Text>
+  </>
+);
 
 // Navigate to DetailedResource, AddCourseResource
 /**

@@ -9,32 +9,6 @@ import { RootNavParamList, LandingNavParamList, LoginNavParamList } from '../../
 import LandingPage from '../../screens/LandingPage';
 import LoginPage from '../../screens/LoginPage';
 
-const BottomTab = createBottomTabNavigator<RootNavParamList>();
-
-function AppRootNavigator() {
-  const colorScheme = useColorScheme(); 
-
-  return (
-      <BottomTab.Navigator
-        initialRouteName='LandingNav'>
-        <BottomTab.Screen
-          name="LandingNav"
-          component={TabOneNavigator}
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
-          }}
-        />
-        <BottomTab.Screen
-          name="LoginNav"
-          component={TabTwoNavigator}
-          options={{
-            tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,
-          }}
-        />
-      </BottomTab.Navigator>
-  );
-}
-
 // You can explore the built-in icon families and icons on the web at:
 // https://icons.expo.fyi/
 function TabBarIcon(props: { name: React.ComponentProps<typeof Ionicons>['name']; color: string }) {
@@ -69,5 +43,30 @@ function TabTwoNavigator() {
   );
 }
 
+const BottomTab = createBottomTabNavigator<RootNavParamList>();
+
+function AppRootNavigator() {
+  const colorScheme = useColorScheme();
+
+  return (
+    <BottomTab.Navigator
+      initialRouteName='LandingNav'>
+      <BottomTab.Screen
+        name="LandingNav"
+        component={TabOneNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+        }}
+      />
+      <BottomTab.Screen
+        name="LoginNav"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,
+        }}
+      />
+    </BottomTab.Navigator>
+  );
+}
 
 export default AppRootNavigator;

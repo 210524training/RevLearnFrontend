@@ -1,4 +1,4 @@
-import { Role } from "../types/MyTypes";
+import { Role } from '../Types/MyTypes';
 
 /**
  * Represents the data of a user
@@ -8,7 +8,7 @@ import { Role } from "../types/MyTypes";
  * @property role: string
  * @property userID: string
  */
-export default interface User{
+export interface User{
   username: string,
   password: string,
   courses: [],

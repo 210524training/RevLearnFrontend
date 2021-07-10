@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useState} from 'react';
 import { Image, ImageSourcePropType, StyleSheet, Text, View } from 'react-native';
-import Course from '../../models/Course';
+import {Course} from '../../models/Course';
 
 type Props = {
   courses: Course[];
