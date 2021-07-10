@@ -1,18 +1,13 @@
 import React from 'react';
-import CourseGradesStudentView from '../../components/course_grades/CourseGradesStudentView';
+import CourseGradesTeacherView from '../../components/course_grades/CourseGradesTeacherView';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { useAppSelector } from '../../hooks';
-import { selectUser, UserState } from '../../hooks/slices/user.slice';
 import { Course } from '../../models/Course';
-import { User } from '../../models/User';
 
 type Props = {
 
 }
 
-const CourseGradesPage: React.FC<Props> = () => {
-  const user: User = useAppSelector<UserState>(selectUser);
-
+const AllCourseGradesPage: React.FC<Props> = () => {
   const course: Course = {
     courseID: '1234',
     courseTitle: 'Calculus',
@@ -27,8 +22,8 @@ const CourseGradesPage: React.FC<Props> = () => {
   };
 
   return (
-    <CourseGradesStudentView user={user} course={course}/>
+    <CourseGradesTeacherView course={course} />
   );
 };
 
-export default WithCourseNavbar(CourseGradesPage);
+export default WithCourseNavbar(AllCourseGradesPage);
