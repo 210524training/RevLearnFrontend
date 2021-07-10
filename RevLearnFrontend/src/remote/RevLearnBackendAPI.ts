@@ -96,3 +96,8 @@ export function getByUserName() {
 export function updateQuiz(quiz: Quiz) {
   //
 }
+export function getAllStudentsForCourse(){
+const studentArray: User[] =[newStudent, newStudent2]
+return studentArray
+  
+}
