@@ -1,7 +1,7 @@
 // Temp sever calls go here.
-import {User} from "../models/User"
-import {Quiz} from "../models/Quiz";
-import {Course} from "../models/Course"
+import { User } from '../models/User';
+import { Quiz } from '../models/Quiz';
+import { Course } from '../models/Course';
 
 const newStudent: User = {
   username: 'michael',
@@ -30,7 +30,7 @@ const newvar2: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
 const newvar: Course = {
   courseID: '1234',
@@ -43,14 +43,9 @@ const newvar: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
-export const courses: Array<Course> = [newvar, newvar2]
-
-
-
-
-
+export const courses: Array<Course> = [newvar, newvar2];
 
 /**
  *
@@ -104,8 +99,7 @@ export function getByUserName() {
 export function updateQuiz(quiz: Quiz) {
   //
 }
-export function getAllStudentsForCourse(){
-const studentArray: User[] =[newStudent, newStudent2]
-return studentArray
-  
+export function getAllStudentsForCourse() {
+  const studentArray: User[] = [newStudent, newStudent2];
+  return studentArray;
 }
