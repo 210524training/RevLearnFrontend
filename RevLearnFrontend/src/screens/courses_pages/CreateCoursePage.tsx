@@ -20,7 +20,6 @@ const CreateCoursePage: React.FC<Props> = (props) => {
       <TextInput style={{ borderWidth: 1 }} onChangeText={setCourseTitle} />
       <Text>Start Date</Text>
       <DynamicDatePicker date={startDate} setDate={setStartDate}/>
-      <Text>Start Date</Text>
       <DynamicDatePicker date={endDate} setDate={setEndDate}/>
     </>
   );
