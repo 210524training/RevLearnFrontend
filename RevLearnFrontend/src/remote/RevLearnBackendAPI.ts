@@ -4,6 +4,7 @@ import { Quiz } from '../models/Quiz';
 import { Course } from '../models/Course';
 import { QuizSubmission } from '../models/QuizSubmission';
 import { AssignmentSubmission } from '../models/AssignmentSubmission';
+import { Assignment } from '../models/Assignment';
 
 const newStudent: User = {
   username: 'michael',
@@ -106,6 +107,21 @@ export function getAllStudentsForCourse() {
   return studentArray;
 }
 
+export function getActivityByID(id: string): Quiz | Assignment {
+  console.log(id);
+  const quiz: Quiz = {
+    ID: '1',
+    startDate: new Date(),
+    dueDate: new Date(),
+    passingGrade: 75,
+    questions: [],
+    title: 'Quiz 1',
+    description: 'Description of quiz',
+    submissions: [],
+  };
+
+  return quiz;
+}
 /**
  * Returns all of a student's submissions for a given course
  * @param course
