@@ -31,6 +31,7 @@ import useNavHeader from '../hooks/useNavHeader';
 import CreateQuizPage from '../screens/courses_pages/quizzes/CreateQuizPage';
 import AllQuizResultsPage from '../screens/courses_pages/quizzes/AllQuizResultsPage';
 import CourseHomePage from '../screens/courses_pages/CourseHomePage';
+import AllCourseGradesPage from '../screens/courses_pages/AllCourseGradesPage';
 
 // Home navigation stack navigators
 export function HomeNavigator() {
@@ -330,7 +331,7 @@ export function AllCourseGradesNavigator() {
       headerMode={setHeader}>
       <AllCourseGradesStack.Screen
         name="AllCourseGradesPage"
-        component={AllCoursesPage}
+        component={AllCourseGradesPage}
         options={{ headerTitle: 'All Course Grades' }}
       />
     </AllCourseGradesStack.Navigator>

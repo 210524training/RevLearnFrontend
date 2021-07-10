@@ -1,4 +1,3 @@
-import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import useColorScheme from '../../hooks/useColorScheme';

@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  Button,
   ScrollView, View,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -11,8 +12,12 @@ type Props = {
 }
 
 const AllCoursesPage: React.FC<Props> = (props) => {
-  const nav = useNavigation();
-  const setSelected = () => { nav.canGoBack(); };
+  const navigation = useNavigation();
+  const setSelected = () => { navigation.canGoBack(); };
+
+  const temp = () => {
+    navigation.navigate('CreateCoursePage');
+  };
 
   return (
     <ScrollView>
@@ -25,6 +30,8 @@ const AllCoursesPage: React.FC<Props> = (props) => {
           ? <DisplayCourseList courses={courses} setSelected={setSelected}/>
           : <></>
         }
+
+        <Button title={'title'} onPress={temp}/>
 
       </View>
     </ScrollView>

@@ -1,7 +1,10 @@
 // Temp sever calls go here.
-import {User} from "../models/User"
-import {Quiz} from "../models/Quiz";
-import {Course} from "../models/Course"
+import { User } from '../models/User';
+import { Quiz } from '../models/Quiz';
+import { Course } from '../models/Course';
+import { QuizSubmission } from '../models/QuizSubmission';
+import { AssignmentSubmission } from '../models/AssignmentSubmission';
+import { Assignment } from '../models/Assignment';
 
 const newStudent: User = {
   username: 'michael',
@@ -30,7 +33,7 @@ const newvar2: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
 const newvar: Course = {
   courseID: '1234',
@@ -43,14 +46,9 @@ const newvar: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
-export const courses: Array<Course> = [newvar, newvar2]
-
-
-
-
-
+export const courses: Array<Course> = [newvar, newvar2];
 
 /**
  *
@@ -97,6 +95,11 @@ export function getByUserName() {
   return newStudent;
 }
 
+export function getUserByID(id: string) {
+  console.log(id);
+  return newStudent;
+}
+
 /**
  * Use for updating a quiz with a new submission after the quiz is taken
  * @param quiz
@@ -104,8 +107,67 @@ export function getByUserName() {
 export function updateQuiz(quiz: Quiz) {
   //
 }
-export function getAllStudentsForCourse(){
-const studentArray: User[] =[newStudent, newStudent2]
-return studentArray
-  
+export function getAllStudentsForCourse() {
+  const studentArray: User[] = [newStudent, newStudent2];
+  return studentArray;
+}
+
+export function getActivities(course: Course) {
+  console.log(course);
+
+  const submission: QuizSubmission = {
+    submissionID: '1',
+    studentID: '1',
+    activityID: '1',
+    submissionDate: new Date(),
+    grade: 80,
+  };
+
+  const quiz: Quiz = {
+    ID: '1',
+    startDate: new Date(),
+    dueDate: new Date(),
+    passingGrade: 75,
+    questions: [],
+    title: 'Quiz 1',
+    description: 'Description of quiz',
+    submissions: [submission],
+  };
+
+  return [quiz];
+}
+
+export function getActivityByID(id: string): Quiz | Assignment {
+  console.log(id);
+  const quiz: Quiz = {
+    ID: '1',
+    startDate: new Date(),
+    dueDate: new Date(),
+    passingGrade: 75,
+    questions: [],
+    title: 'Quiz 1',
+    description: 'Description of quiz',
+    submissions: [],
+  };
+
+  return quiz;
+}
+/**
+ * Returns all of a student's submissions for a given course
+ * @param course
+ * @param user
+ */
+export function getStudentSubmissions(course: Course, user: User): (QuizSubmission | AssignmentSubmission)[] {
+  console.log(course);
+  console.log(user);
+
+  const submission: QuizSubmission = {
+    submissionID: '1',
+    studentID: '1',
+    activityID: '1',
+    submissionDate: new Date(),
+    grade: 80,
+  };
+
+  return [submission];
 }

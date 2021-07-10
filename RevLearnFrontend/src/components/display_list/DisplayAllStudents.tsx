@@ -12,8 +12,7 @@ const DisplayAllStudents: React.FC<Props> = ({ students, setSelected }) => (
     {students.map((element) => (
       <View>
         <View>
-          <Text>Student Username:</Text> {`${element.username}`}
-          <Text>Student UserID:</Text> {`${element.userID}`}
+          <Text>Student Username: {`${element.username}`}</Text>
         </View>
       </View>
 
