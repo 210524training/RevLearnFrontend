@@ -1,7 +1,9 @@
 // Temp sever calls go here.
-import {User} from "../models/User"
-import {Quiz} from "../models/Quiz";
-import {Course} from "../models/Course"
+import { User } from '../models/User';
+import { Quiz } from '../models/Quiz';
+import { Course } from '../models/Course';
+import { QuizSubmission } from '../models/QuizSubmission';
+import { AssignmentSubmission } from '../models/AssignmentSubmission';
 
 const newStudent: User = {
   username: 'michael',
@@ -30,7 +32,7 @@ const newvar2: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
 const newvar: Course = {
   courseID: '1234',
@@ -43,14 +45,9 @@ const newvar: Course = {
   students: [],
   assignments: [],
   quizzes: [],
-}
+};
 
-export const courses: Array<Course> = [newvar, newvar2]
-
-
-
-
-
+export const courses: Array<Course> = [newvar, newvar2];
 
 /**
  *
@@ -104,8 +101,27 @@ export function getByUserName() {
 export function updateQuiz(quiz: Quiz) {
   //
 }
-export function getAllStudentsForCourse(){
-const studentArray: User[] =[newStudent, newStudent2]
-return studentArray
-  
+export function getAllStudentsForCourse() {
+  const studentArray: User[] = [newStudent, newStudent2];
+  return studentArray;
+}
+
+/**
+ * Returns all of a student's submissions for a given course
+ * @param course
+ * @param user
+ */
+export function getStudentSubmissions(course: Course, user: User): (QuizSubmission | AssignmentSubmission)[] {
+  console.log(course);
+  console.log(user);
+
+  const submission: QuizSubmission = {
+    submissionID: '1',
+    studentID: '1',
+    activityID: '1',
+    submissionDate: new Date(),
+    grade: 80,
+  };
+
+  return [submission];
 }
