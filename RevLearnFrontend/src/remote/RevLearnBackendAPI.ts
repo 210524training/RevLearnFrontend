@@ -180,6 +180,15 @@ export function CreateAssignment(assignment: Assignment) {
   console.log(assignment);
 }
 
+/**
+ * Sends a request to create a course
+ * @param courseTitle ,
+ * @param startDate ,
+ * @param endDate ,
+ * @param teacher ,
+ * @param passingGrade ,
+ * @param category ,
+ */
 export function createNewCourse(courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
   console.log(courseTitle, startDate, endDate, teacher, passingGrade, category);
 }
@@ -210,4 +219,31 @@ export function getCourseByID(id: string): Course {
 
 export function updateCourse(course: Course) {
   console.log(course);
+}
+export function getAllTeachers() {
+  const teachers: User = {
+    username: 'Brenda',
+    password: '123',
+    courses: [],
+    role: 'Teacher',
+    userID: '456',
+  };
+  const teachers2: User = {
+    username: 'Donna',
+    password: '123',
+    courses: [],
+    role: 'Teacher',
+    userID: '123',
+  };
+
+  return [teachers, teachers2];
+}
+
+export function createNewTeacher(username: string, password: string, role: string) {
+  console.log(username, password, role);
+}
+
+// update password on settings page
+export function updatePassword(password: string, userID: string) {
+  console.log(password, userID);
 }
