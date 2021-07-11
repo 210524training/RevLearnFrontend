@@ -178,4 +178,6 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
  */
 export function CreateAssignment(assignment: Assignment) {
   console.log(assignment);
+export function createNewCourse(courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
+  console.log(courseTitle, startDate, endDate, teacher, passingGrade, category);
 }
