@@ -10,8 +10,8 @@ import {
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
 import { Styles } from '../styles/NavBarStyles';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
-import { LandingPageStyles } from '../styles/LandingPageStyles';
 import { Buttons } from '../styles/Buttons';
+import { Container } from '../styles/Container';
 
 const LoginPage: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -26,7 +26,7 @@ const LoginPage: React.FC<unknown> = (props) => {
   };
 
   return (
-    <View style={LandingPageStyles.container}>
+    <View style={Container.container}>
       {user ? (
         <>
         </>

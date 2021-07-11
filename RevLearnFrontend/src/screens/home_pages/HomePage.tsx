@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
+import { Container } from '../../styles/Container';
 
 type Props = {
 
@@ -16,10 +17,10 @@ const HomePage: React.FC<Props> = (props) => {
     navigation.navigate('CourseHome', { screen: 'CourseHomeNav' });
   };
   return (
-    <>
+    <View style={Container.container}>
       <Text>HomePage</Text>
       <Button title={'button'} onPress={NavToCourseHome}>Course Home Page</Button>
-    </>
+    </View>
   );
 };
 

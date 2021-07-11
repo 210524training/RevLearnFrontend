@@ -8,6 +8,7 @@ import { SafeAreaConsumer, SafeAreaProvider } from 'react-native-safe-area-conte
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
 import { LandingNavParamList } from '../Types/NavigatorTypes';
 import { LandingPageStyles } from '../styles/LandingPageStyles';
+import { Container } from '../styles/Container';
 
 type ScreenNavigationProp = StackNavigationProp<
   LandingNavParamList,
@@ -25,7 +26,7 @@ const LandingPage: React.FC<Props> = () => {
 
   };
   return (
-    <View style={LandingPageStyles.container}>
+    <View style={Container.container}>
       <Text style = {LandingPageStyles.h1}>RevLearn</Text>
       <Text style = {LandingPageStyles.h2}>A Student Learning Management System</Text>
     </View>
