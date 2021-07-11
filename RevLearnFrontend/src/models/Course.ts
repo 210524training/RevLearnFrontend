@@ -1,3 +1,5 @@
+import { User } from './User';
+
 /**
  * Represents the data of an assignment
  * @property courseID: string
@@ -22,4 +24,5 @@ export interface Course{
   category: string,
   assignments: string[],
   quizzes: string[],
+  admissionRequests?: User[],
 }

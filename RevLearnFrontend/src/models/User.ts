@@ -1,4 +1,4 @@
-import { Role } from '../Types/MyTypes';
+import { Role } from '../types/MyTypes';
 
 /**
  * Represents the data of a user

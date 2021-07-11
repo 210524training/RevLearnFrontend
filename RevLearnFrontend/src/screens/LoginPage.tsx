@@ -10,6 +10,8 @@ import {
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
 import { Styles } from '../styles/NavBarStyles';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
+import { Buttons } from '../styles/Buttons';
+import { Container } from '../styles/Container';
 
 const LoginPage: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -24,16 +26,9 @@ const LoginPage: React.FC<unknown> = (props) => {
   };
 
   return (
-    <View style={LoginPageStyles.container}>
+    <View style={Container.container}>
       {user ? (
         <>
-          {/* <Text >
-              Hello, {user.username}!
-          </Text> */}
-          {/* <Button
-            title="Logout"
-            onPress={() => dispatch(logout())}
-          ></Button> */}
         </>
       ) : (
         <>
@@ -52,12 +47,12 @@ const LoginPage: React.FC<unknown> = (props) => {
             onChangeText={(text) => setPassword(text)}
             defaultValue={password}
           />
-
-          <Button
-            color="#00B2D4"
-            onPress={handleLogin}
-            title="Sign in"
-          />
+          <View style={Buttons.container}>
+            <Button
+              onPress={handleLogin}
+              title="Sign in"
+            />
+          </View>
 
         </>
       )}
