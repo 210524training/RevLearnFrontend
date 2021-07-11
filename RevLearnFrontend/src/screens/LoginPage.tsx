@@ -11,6 +11,7 @@ import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar
 import { Styles } from '../styles/NavBarStyles';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
 import { LandingPageStyles } from '../styles/LandingPageStyles';
+import { Buttons } from '../styles/Buttons';
 
 const LoginPage: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -46,12 +47,12 @@ const LoginPage: React.FC<unknown> = (props) => {
             onChangeText={(text) => setPassword(text)}
             defaultValue={password}
           />
-
-          <Button
-            color="#00B2D4"
-            onPress={handleLogin}
-            title="Sign in"
-          />
+          <View style={Buttons.container}>
+            <Button
+              onPress={handleLogin}
+              title="Sign in"
+            />
+          </View>
 
         </>
       )}
