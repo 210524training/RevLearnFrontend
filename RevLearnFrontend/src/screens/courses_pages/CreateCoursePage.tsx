@@ -3,25 +3,9 @@ import { Button, Text, TextInput } from 'react-native';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { createNewCourse } from '../../remote/RevLearnBackendAPI';
+import { createNewCourse, getAllTeachers } from '../../remote/RevLearnBackendAPI';
 
-const teachers = [
-  {
-    username: 'Brenda',
-    password: '123',
-    courses: [],
-    role: 'Teacher',
-    userID: '456',
-  },
-
-  {
-    username: 'Donna',
-    password: '123',
-    courses: [],
-    role: 'Teacher',
-    userID: '123',
-  },
-];
+const teachers = getAllTeachers();
 
 const teacherNames: string[] = teachers.map((element) => (element.username));
 
