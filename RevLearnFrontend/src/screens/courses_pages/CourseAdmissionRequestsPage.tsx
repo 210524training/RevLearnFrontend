@@ -14,9 +14,9 @@ const CourseAdmissionRequestsPage: React.FC<Props> = (props) => {
   const [course, setCourse] = useState<Course>(getCourseByID(props.courseID));
   const [requests, setRequests] = useState<User[]>(course.admissionRequests || []);
 
-  const acceptRequestHandlers = requests.map((request, index) => {
+  const acceptRequestHandlers = requests.map((request) => {
     const acceptRequest = () => {
-      const newRequestList = requests.splice(index, 1);
+      const newRequestList = requests.filter((item) => item.userID !== request.userID);
       const newStudentsList = [...course.students, request.userID];
 
       const updatedCourse: Course = {
