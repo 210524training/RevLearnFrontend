@@ -183,3 +183,31 @@ export function CreateAssignment(assignment: Assignment) {
 export function createNewCourse(courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
   console.log(courseTitle, startDate, endDate, teacher, passingGrade, category);
 }
+
+export function getCourseByID(id: string): Course {
+  const student: User = {
+    username: 'michael',
+    password: '123',
+    courses: [],
+    role: 'Student',
+    userID: '456',
+  };
+
+  return {
+    courseID: '1234',
+    courseTitle: 'Calculus',
+    startDate: new Date(Date.now()),
+    endDate: new Date(Date.now()),
+    teacher: 'ProfessorC',
+    passingGrade: 'C',
+    category: 'Mathematic',
+    students: [],
+    assignments: [],
+    quizzes: [],
+    admissionRequests: [student],
+  };
+}
+
+export function updateCourse(course: Course) {
+  console.log(course);
+}
