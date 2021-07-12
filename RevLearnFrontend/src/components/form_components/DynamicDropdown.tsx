@@ -1,5 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
 import React from 'react';
+import { Text } from 'react-native';
 
 type Props = {
   OptionsList: string[],
@@ -10,7 +11,9 @@ type Props = {
 const DynamicDropdown: React.FC<Props> = (props) => (<>
   {props.OptionsList[0]
     ? (<>
-      {props.title ? props.title : 'Select Item'}
+      <Text>
+        {props.title ? props.title : 'Select Item'}
+      </Text>
       <Picker
         onValueChange={(itemValue, itemIndex) => { props.setSelected(itemValue as string); }}>
         <Picker.Item label={'Please Select an Item'} value={'Homework'}/>

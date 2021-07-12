@@ -19,7 +19,7 @@ const HomePage: React.FC<Props> = (props) => {
   return (
     <View style={Container.container}>
       <Text>HomePage</Text>
-      <Button title={'button'} onPress={NavToCourseHome}>Course Home Page</Button>
+      <Button title='Course Home Page' onPress={NavToCourseHome}></Button>
     </View>
   );
 };
