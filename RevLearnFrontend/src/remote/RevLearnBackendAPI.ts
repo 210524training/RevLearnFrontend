@@ -5,6 +5,7 @@ import { Course } from '../models/Course';
 import { QuizSubmission } from '../models/QuizSubmission';
 import { AssignmentSubmission } from '../models/AssignmentSubmission';
 import { Assignment } from '../models/Assignment';
+import BackendClient from './RevLearnBackendClient';
 
 const newStudent: User = {
   username: 'michael',
@@ -246,4 +247,8 @@ export function createNewTeacher(username: string, password: string, role: strin
 // update password on settings page
 export function updatePassword(password: string, userID: string) {
   console.log(password, userID);
+}
+
+export function uploadFile(formData: FormData) {
+  BackendClient.post('/upload', formData).then((res) => { console.log('successfull'); });
 }

@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.0",
+    "@react-native-community/datetimepicker": "3.5.2",
     "@react-native-community/masked-view": "0.1.10",
     "@react-native-community/slider": "^3.0.3",
     "@react-native-picker/picker": "github:react-native-picker/picker",
@@ -34,8 +35,9 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-document-picker": "^5.2.0",
     "react-native-elements": "^3.4.2",
-    "react-native-gesture-handler": "~1.10.2",  
+    "react-native-gesture-handler": "~1.10.2",
     "react-native-i18n": "^2.0.15",
     "react-native-pixel-perfect": "^1.0.2",
     "react-native-reanimated": "~2.2.0",
@@ -46,7 +48,7 @@
     "react-test-renderer": "^17.0.2",
     "redux": "^4.1.0",
     "uuid": "^8.3.2",
-    "@react-native-community/datetimepicker": "3.5.2"
+    "expo-document-picker": "~9.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
