@@ -250,5 +250,5 @@ export function updatePassword(password: string, userID: string) {
 }
 
 export function uploadFile(formData: FormData) {
-  BackendClient.post('/upload', formData).then((res) => { console.log('successfull'); });
+  BackendClient.post('/upload', formData).then((res) => { console.log('successfull', res.data); });
 }
