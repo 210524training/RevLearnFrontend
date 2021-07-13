@@ -4,6 +4,7 @@ import {
   Button, Text, TextInput, View,
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
