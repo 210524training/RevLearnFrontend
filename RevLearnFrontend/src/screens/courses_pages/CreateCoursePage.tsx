@@ -36,7 +36,7 @@ const CreateCoursePage: React.FC<Props> = (props) => {
       <Text>Category:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setCategory} />
       <Text>Teacher:</Text>
-      <DynamicDropdown setSelected={setTeacher}OptionsList={teacherNames} />
+      <DynamicDropdown Selected={teacher} setSelected={setTeacher}OptionsList={teacherNames} />
       <Text>Passing Grade:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setPassingGrade} />
       <Button onPress={handleFormSubmit} title="Submit" />

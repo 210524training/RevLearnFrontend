@@ -51,8 +51,8 @@ const CreateAssignmentPage: React.FC<Props> = (props) => {
           onChangeText={(change) => { SetAssignmentDescription(change); }}
           placeholder={'Enter a discription of the Assignment.'}/>
       </View>
-      <DynamicDropdown setSelected={SetAssignmentType} OptionsList={Options} title={'Assignment Type'}/>
-      <DynamicDropdown OptionsList={gradeOptions} setSelected={SetPassingGrade} title={'Passing Grade'}/>
+      <DynamicDropdown Selected={assignmentType} setSelected={SetAssignmentType} OptionsList={Options} title={'Assignment Type'}/>
+      <DynamicDropdown Selected={PassingGrade} OptionsList={gradeOptions} setSelected={SetPassingGrade} title={'Passing Grade'}/>
       {/* <DynamicSlider SetValue={SetPassingGrade} Step={5} Title={'Passing Grade: '} MaxValue={100} MinValue={50} CurrentValue={PassingGrade}/> */}
       <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
       <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>

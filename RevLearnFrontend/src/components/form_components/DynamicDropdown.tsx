@@ -5,6 +5,7 @@ import { Text } from 'react-native';
 type Props = {
   OptionsList: string[],
   setSelected: (itemValue: string) => void,
+  Selected: string,
   title?: string,
 }
 
@@ -15,8 +16,9 @@ const DynamicDropdown: React.FC<Props> = (props) => (<>
         {props.title ? props.title : 'Select Item'}
       </Text>
       <Picker
+        selectedValue={props.Selected}
         onValueChange={(itemValue, itemIndex) => { props.setSelected(itemValue as string); }}>
-        <Picker.Item label={'Please Select an Item'} value={'Homework'}/>
+        {/* <Picker.Item label={'Please Select an Item'} value={'Homework'}/> */}
         {props.OptionsList.map((element, index) => <Picker.Item key={index} label={element} value={element}/>)}
       </Picker>
     </>)
