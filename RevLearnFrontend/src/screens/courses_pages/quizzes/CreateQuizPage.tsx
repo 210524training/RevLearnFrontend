@@ -7,6 +7,7 @@ import { ListItem } from 'react-native-elements';
 import { v4 as uuidv4 } from 'uuid';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
+import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
 import { useAppSelector } from '../../../hooks';
 import { getQuestions, QuestionState } from '../../../hooks/slices/question.slice';
 import { QuizQuestion } from '../../../models/QuizQuestion';
@@ -21,8 +22,8 @@ const CreateQuizPage: React.FC<Props> = () => {
   const [passingGrade, setPassingGrade] = useState<string>('0');
   const [title, setTitle] = useState<string>('');
   const [description, setDescription] = useState<string>('');
-  const [startDate, setStartDate] = useState<Date>(new Date());
-  const [dueDate, setDueDate] = useState<Date>(new Date());
+  const [startDateStr, setStartDateStr] = useState<string>(new Date().toDateString());
+  const [dueDateStr, setDueDateStr] = useState<string>(new Date().toDateString());
 
   const handleNewQuizSubmit = () => {
     console.log(questions);
@@ -32,10 +33,10 @@ const CreateQuizPage: React.FC<Props> = () => {
       submissions: [],
       questions: questions as QuizQuestion[],
       passingGrade: Number(passingGrade),
+      startDate: new Date(startDateStr),
+      dueDate: new Date(dueDateStr),
       title,
       description,
-      startDate,
-      dueDate,
     };
 
     createQuiz(quiz);
@@ -49,11 +50,8 @@ const CreateQuizPage: React.FC<Props> = () => {
       <Text>Description:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setDescription} />
 
-      <Text>Start Date:</Text>
-      {/* <DatePicker date={startDate} onDateChange={setStartDate} /> */}
-
-      <Text>Due Date:</Text>
-      {/* <DatePicker date={dueDate} onDateChange={setDueDate} /> */}
+      <DynamicDatePicker date={startDateStr} setDate={setStartDateStr} title={'Start Date'}/>
+      <DynamicDatePicker date={dueDateStr} setDate={setDueDateStr} title={'End Date'}/>
 
       <Text>Minimum Passing Grade:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setPassingGrade} />
