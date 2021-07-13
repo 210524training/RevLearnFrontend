@@ -241,7 +241,7 @@ export function getAllTeachers() {
 }
 
 export function createNewTeacher(userID: string, username: string, password: string, role: string) {
-  console.log(username, password, role);
+  console.log(userID, username, password, role);
 }
 
 // update password on settings page
