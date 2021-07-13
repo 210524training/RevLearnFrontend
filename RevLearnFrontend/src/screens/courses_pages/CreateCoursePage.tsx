@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Text, TextInput } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -13,6 +14,7 @@ type Props = {
 
 }
 const CreateCoursePage: React.FC<Props> = (props) => {
+  const [courseID, setCourseID] = useState<string>('');
   const [courseTitle, setCourseTitle] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
@@ -21,7 +23,8 @@ const CreateCoursePage: React.FC<Props> = (props) => {
   const [category, setCategory] = useState<string>('');
 
   const handleFormSubmit = async () => {
-    await createNewCourse(courseTitle, startDate, endDate, teacher, passingGrade, category);
+    setCourseID(uuidv4());
+    await createNewCourse(courseID, courseTitle, startDate, endDate, teacher, passingGrade, category);
   };
 
   return (

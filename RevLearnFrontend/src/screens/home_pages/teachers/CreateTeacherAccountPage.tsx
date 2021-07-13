@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import { Button, Text, TextInput } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 import { createNewTeacher } from '../../../remote/RevLearnBackendAPI';
 
 type Props = {
 
 }
 const CreateTeacherAccountPage: React.FC<Props> = (props) => {
+  const [userID, setUserID] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [role, setRole] = useState<string>('Teacher');
 
   const handleFormSubmit = async () => {
-    await createNewTeacher(username, password, role);
+    setUserID(uuidv4());
+    await createNewTeacher(userID, username, password, role);
   };
 
   return (

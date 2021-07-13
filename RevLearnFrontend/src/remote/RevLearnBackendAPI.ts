@@ -190,8 +190,8 @@ export function CreateAssignment(assignment: Assignment) {
  * @param passingGrade ,
  * @param category ,
  */
-export function createNewCourse(courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
-  console.log(courseTitle, startDate, endDate, teacher, passingGrade, category);
+export function createNewCourse(courseID: string, courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
+  console.log(courseID, courseTitle, startDate, endDate, teacher, passingGrade, category);
 }
 
 export function getCourseByID(id: string): Course {
@@ -240,7 +240,7 @@ export function getAllTeachers() {
   return [teachers, teachers2];
 }
 
-export function createNewTeacher(username: string, password: string, role: string) {
+export function createNewTeacher(userID: string, username: string, password: string, role: string) {
   console.log(username, password, role);
 }
 
