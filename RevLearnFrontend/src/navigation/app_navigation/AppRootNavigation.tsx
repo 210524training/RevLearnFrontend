@@ -5,7 +5,7 @@ import * as React from 'react';
 
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
-import { RootNavParamList, LandingNavParamList, LoginNavParamList } from '../../Types/NavigatorTypes';
+import { RootNavParamList, LandingNavParamList, LoginNavParamList } from '../../types/NavigatorTypes';
 import LandingPage from '../../screens/LandingPage';
 import LoginPage from '../../screens/LoginPage';
 

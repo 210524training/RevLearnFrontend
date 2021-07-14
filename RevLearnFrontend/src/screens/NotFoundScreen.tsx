@@ -3,7 +3,7 @@ import * as React from 'react';
 import {
   StyleSheet, Text, TouchableOpacity, View,
 } from 'react-native';
-import { RootStackParamList } from '../Types/NavigatorTypes';
+import { RootStackParamList } from '../types/NavigatorTypes';
 
 const styles = StyleSheet.create({
   container: {

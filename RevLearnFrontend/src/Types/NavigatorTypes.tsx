@@ -99,6 +99,7 @@ export type AllCourseGradesNavParamList = {
 export type RootNavParamList = {
   LandingNav: undefined;
   LoginNav: undefined;
+  RegisterNav: undefined;
 };
 
 export type LandingNavParamList = {
@@ -107,4 +108,8 @@ export type LandingNavParamList = {
 
 export type LoginNavParamList = {
   Login: undefined;
+};
+
+export type RegisterNavParamList = {
+  Register: undefined;
 };

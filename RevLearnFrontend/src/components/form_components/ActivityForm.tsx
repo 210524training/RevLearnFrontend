@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import { TextInput } from 'react-native-gesture-handler';
-import { ActivityType } from '../../Types/MyTypes';
+import { ActivityType } from '../../types/MyTypes';
 
 type Props = {
   ActivityType: ActivityType,

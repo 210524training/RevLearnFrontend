@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { ColorSchemeName, Platform } from 'react-native';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import { RootStackParamList } from '../Types/NavigatorTypes';
+import { RootStackParamList } from '../types/NavigatorTypes';
 import AppRootNavigator from './app_navigation/AppRootNavigation';
 import AppHomeNavigator from './app_navigation/AppHomeNavigator';
 import LinkingConfiguration from './LinkingConfiguration';

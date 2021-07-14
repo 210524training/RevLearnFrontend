@@ -1,4 +1,4 @@
-import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../Types/MyTypes';
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../types/MyTypes';
 import { QuizQuestion } from './QuizQuestion';
 
 /**
