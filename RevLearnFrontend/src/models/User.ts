@@ -16,6 +16,6 @@ export interface User{
   password: string,
   courses: [],
   role: Role,
-  userID: string,
+  id: string,
   courseGrades?: Submission[],
 }

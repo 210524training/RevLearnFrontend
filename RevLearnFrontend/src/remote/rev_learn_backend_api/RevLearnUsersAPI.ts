@@ -13,7 +13,7 @@ const newStudent: User = {
   password: '123',
   courses: [],
   role: 'Student',
-  userID: '456',
+  id: '456',
 };
 
 const newStudent2: User = {
@@ -21,34 +21,81 @@ const newStudent2: User = {
   password: '123',
   courses: [],
   role: 'Student',
-  userID: '123',
+  id: '123',
 };
 
-const newvar2: Course = {
-  courseID: '1234',
-  courseTitle: 'Computer Science',
+const assignmentSubmission: AssignmentSubmission = {
+  grade: 'A',
+  attachment: ['1', '1'],
+  submissionID: '2222',
+  studentID: '123',
+  submissionDate: new Date(Date.now()),
+};
+const assignmentSubmission1: AssignmentSubmission = {
+  grade: 'A',
+  attachment: ['1', '1'],
+  submissionID: '22',
+  studentID: '123',
+  submissionDate: new Date(Date.now()),
+};
+const assignment: Assignment = {
+  type: 'Homework',
+  title: 'my assignment',
+  submissions: [assignmentSubmission, assignmentSubmission1],
+  passingGrade: 'A',
+  ID: '112123',
   startDate: new Date(Date.now()),
-  endDate: new Date(Date.now()),
-  teacher: 'ProfessorA',
+  dueDate: new Date(Date.now()),
+  description: 'discription',
+};
+const assignment1: Assignment = {
+  type: 'Homework',
+  title: 'my assignment 1',
+  submissions: [assignmentSubmission, assignmentSubmission1],
+  passingGrade: 'A',
+  ID: '112123',
+  startDate: new Date(Date.now()),
+  dueDate: new Date(Date.now()),
+  description: 'discription',
+};
+const newvar2: Course = {
+  id: '1234',
+  courseTitle: 'Computer Science',
+  startDate: new Date(Date.now()).toDateString(),
+  endDate: new Date(Date.now()).toDateString(),
+  teacherID: 'ProfessorA',
   passingGrade: 'C',
   category: 'Software Engineering',
   students: [],
-  assignments: [],
-  quizzes: [],
+  activities: [
+    assignment,
+    assignment1,
+  ],
+  admissionRequests: [],
 };
 
 const newvar: Course = {
-  courseID: '1234',
+  id: '1234',
   courseTitle: 'Calculus',
-  startDate: new Date(Date.now()),
-  endDate: new Date(Date.now()),
-  teacher: 'ProfessorC',
+  startDate: new Date(Date.now()).toDateString(),
+  endDate: new Date(Date.now()).toDateString(),
+  teacherID: 'ProfessorC',
   passingGrade: 'C',
   category: 'Mathematic',
   students: [],
-  assignments: [],
-  quizzes: [],
+  activities: [
+    assignment,
+    assignment1,
+  ],
+  admissionRequests: [],
 };
+const stringArray: string[] = ['tht', 'thth'];
+/* const test: string[] = stringArray.reduce(
+  (strArray: string[], current: string): string[] => {
+    strArray.push(current);
+    return strArray;
+  },
+); */
 
 export const courses: Array<Course> = [newvar, newvar2];
 
@@ -126,7 +173,6 @@ export function getActivities(course: Course) {
   const submission: QuizSubmission = {
     submissionID: '1',
     studentID: '1',
-    activityID: '1',
     submissionDate: new Date(),
     grade: 80,
   };
@@ -172,7 +218,6 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
   const submission: QuizSubmission = {
     submissionID: '1',
     studentID: '1',
-    activityID: '1',
     submissionDate: new Date(),
     grade: 80,
   };
@@ -184,21 +229,8 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
  * Sends create assignment request.
  * @param assignment Assignment
  */
-export function CreateAssignment(assignment: Assignment) {
-  console.log(assignment);
-}
-
-/**
- * Sends a request to create a course
- * @param courseTitle ,
- * @param startDate ,
- * @param endDate ,
- * @param teacher ,
- * @param passingGrade ,
- * @param category ,
- */
-export function createNewCourse(courseID: string, courseTitle: string, startDate: string, endDate: string, teacher: string, passingGrade: string, category: string) {
-  console.log(courseID, courseTitle, startDate, endDate, teacher, passingGrade, category);
+export function CreateAssignment(assignment11: Assignment) {
+  console.log(assignment11);
 }
 
 export function getCourseByID(id: string): Course {
@@ -207,20 +239,22 @@ export function getCourseByID(id: string): Course {
     password: '123',
     courses: [],
     role: 'Student',
-    userID: '456',
+    id: '456',
   };
 
   return {
-    courseID: '1234',
+    id: '1234',
     courseTitle: 'Calculus',
-    startDate: new Date(Date.now()),
-    endDate: new Date(Date.now()),
-    teacher: 'ProfessorC',
+    startDate: new Date(Date.now()).toDateString(),
+    endDate: new Date(Date.now()).toDateString(),
+    teacherID: 'ProfessorC',
     passingGrade: 'C',
     category: 'Mathematic',
     students: [],
-    assignments: [],
-    quizzes: [],
+    activities: [
+      assignment,
+      assignment1,
+    ],
     admissionRequests: [student],
   };
 }
@@ -234,14 +268,14 @@ export function getAllTeachers() {
     password: '123',
     courses: [],
     role: 'Teacher',
-    userID: '456',
+    id: '456',
   };
   const teachers2: User = {
     username: 'Donna',
     password: '123',
     courses: [],
     role: 'Teacher',
-    userID: '123',
+    id: '123',
   };
 
   return [teachers, teachers2];

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
-import User from '../../models/User';
+import { User } from '../../models/User';
 
 type Props = {
 
@@ -12,7 +12,7 @@ const UserInfoPage: React.FC<Props> = (props) => {
     password: 'Pass',
     courses: [],
     role: 'Student',
-    userID: '1235',
+    id: '1235',
   };
   return (
     <>
@@ -23,7 +23,7 @@ const UserInfoPage: React.FC<Props> = (props) => {
             <Text>{user.username}</Text>
             <Text>{user.password}</Text>
             <Text>{user.role}</Text>
-            <Text>{user.userID}</Text>
+            <Text>{user.id}</Text>
           </View>
         )
         : <></>

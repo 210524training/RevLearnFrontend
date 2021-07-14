@@ -16,8 +16,8 @@ const CourseAdmissionRequestsPage: React.FC<Props> = (props) => {
 
   const acceptRequestHandlers = requests.map((request) => {
     const acceptRequest = () => {
-      const newRequestList = requests.filter((item) => item.userID !== request.userID);
-      const newStudentsList = [...course.students, request.userID];
+      const newRequestList = requests.filter((item) => item.id !== request.id);
+      const newStudentsList = [...course.students, request.id];
 
       const updatedCourse: Course = {
         ...course,

@@ -111,7 +111,6 @@ const QuizPage: React.FC<Props> = () => {
     const submission: QuizSubmission = {
       submissionID: uuidv4(),
       studentID: '1',
-      activityID: quiz.ID,
       submissionDate: new Date(),
       grade: formattedPercent,
     };

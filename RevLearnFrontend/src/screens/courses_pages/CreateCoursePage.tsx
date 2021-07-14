@@ -4,7 +4,9 @@ import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { createNewCourse, getAllTeachers } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { Course } from '../../models/Course';
+import { createNewCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { getAllTeachers } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 const teachers = getAllTeachers();
 
@@ -14,7 +16,6 @@ type Props = {
 
 }
 const CreateCoursePage: React.FC<Props> = (props) => {
-  const [courseID, setCourseID] = useState<string>('');
   const [courseTitle, setCourseTitle] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
@@ -23,8 +24,19 @@ const CreateCoursePage: React.FC<Props> = (props) => {
   const [category, setCategory] = useState<string>('');
 
   const handleFormSubmit = async () => {
-    setCourseID(uuidv4());
-    await createNewCourse(courseID, courseTitle, startDate, endDate, teacher, passingGrade, category);
+    const selected = teachers.find((element) => element.username === teacher);
+    await createNewCourse({
+      id: uuidv4(),
+      courseTitle,
+      startDate,
+      endDate,
+      teacherID: selected ? selected.id : 'No teacher found',
+      passingGrade,
+      students: [],
+      activities: [],
+      admissionRequests: [],
+      category,
+    } as Course);
   };
 
   return (

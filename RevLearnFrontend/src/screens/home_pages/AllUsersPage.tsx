@@ -20,7 +20,7 @@ const AllUsersPage: React.FC<unknown> = () => {
       {
         users.map((user, index) => (
           <ListItem key={index}>
-            <Text>{user.userID}: {user.username}</Text>
+            <Text>{user.id}: {user.username}</Text>
           </ListItem>
         ))
       }

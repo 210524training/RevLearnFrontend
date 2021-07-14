@@ -1,3 +1,4 @@
+import { LetterGrade } from '../types/MyTypes';
 import { Submission } from './Submission';
 
 /**
@@ -7,6 +8,6 @@ import { Submission } from './Submission';
  * @extends Submission
  */
 export interface AssignmentSubmission extends Submission{
-  grade: string,
+  grade: LetterGrade,
   attachment: string[],
 }

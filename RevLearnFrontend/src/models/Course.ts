@@ -1,3 +1,6 @@
+import { Activity } from './Activity';
+import { Assignment } from './Assignment';
+import { Quiz } from './Quiz';
 import { User } from './User';
 
 /**
@@ -10,19 +13,17 @@ import { User } from './User';
  * @property passingGrade: string
  * @property students: string[]
  * @property category: string
- * @property assignments: string[]
- * @property quizzes: string[]
+ * @property activities: Activity[]
  */
 export interface Course{
-  courseID: string,
+  id: string,
   courseTitle: string,
-  startDate: Date,
-  endDate: Date,
-  teacher: string,
+  startDate: string,
+  endDate: string,
+  teacherID: string,
   passingGrade: string,
   students: string[],
   category: string,
-  assignments: string[],
-  quizzes: string[],
-  admissionRequests?: User[],
+  activities: (Assignment | Quiz)[],
+  admissionRequests: User[],
 }

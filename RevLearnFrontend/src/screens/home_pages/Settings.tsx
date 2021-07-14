@@ -16,7 +16,7 @@ const SettingsPage: React.FC<Props> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
 
   const handleFormSubmit = () => {
-    updatePassword(password, user.userID);
+    updatePassword(password, user.id);
   };
 
   return (

@@ -9,16 +9,16 @@ type Props = {
 
 const AllCourseGradesPage: React.FC<Props> = () => {
   const course: Course = {
-    courseID: '1234',
+    id: '1234',
     courseTitle: 'Calculus',
-    startDate: new Date(Date.now()),
-    endDate: new Date(Date.now()),
-    teacher: 'ProfessorC',
+    startDate: new Date(Date.now()).toString(),
+    endDate: new Date(Date.now()).toString(),
+    teacherID: 'ProfessorC',
     passingGrade: 'C',
     category: 'Mathematic',
     students: [],
-    assignments: [],
-    quizzes: [],
+    activities: [],
+    admissionRequests: [],
   };
 
   return (
