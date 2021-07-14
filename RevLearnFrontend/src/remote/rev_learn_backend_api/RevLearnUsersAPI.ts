@@ -240,7 +240,7 @@ export function getAllTeachers() {
   return [teachers, teachers2];
 }
 
-export function createNewTeacher(userID: string, username: string, password: string, role: string) {
+export function addUser(userID: string, username: string, password: string, role: string) {
   console.log(userID, username, password, role);
 }
 
