@@ -49,8 +49,9 @@ const RegisterScreen: React.FC<unknown> = (props) => {
   const handleRegister = async () => {
     const role = 'Student';
     const users = await getAllUsers();
+    const result = users.find((u) => u.username === username);
 
-    if(users.find((u) => u.username === username)) {
+    if(!result) {
       const userID = uuidv4();
       addUser(username, password, role, userID);
     }
