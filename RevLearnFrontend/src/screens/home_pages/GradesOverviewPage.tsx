@@ -6,7 +6,6 @@ import DisplayCourseList from '../../components/display_list/DisplayCourseList';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { Assignment } from '../../models/Assignment';
 import { Course } from '../../models/Course';
-import { getCoursesByUserID } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { courses } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
@@ -26,7 +25,7 @@ const calculateCourseGrade = (course: Course) => {
 };
 
 const awaitRequest = async (set: React.Dispatch<React.SetStateAction<Course[] | undefined>>) => {
-  set(await getCoursesByUserID('123'));
+  // set(await getCoursesByUserID('123'));
 };
 
 const GradesOverviewPage: React.FC<Props> = (props) => {
