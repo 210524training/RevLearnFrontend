@@ -7,14 +7,13 @@ type Props = {
 
 }
 const CreateTeacherAccountPage: React.FC<Props> = (props) => {
-  const [userID, setUserID] = useState<string>('');
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [role, setRole] = useState<string>('Teacher');
 
   const handleFormSubmit = async () => {
-    setUserID(uuidv4());
-    await addUser(userID, username, password, role);
+    const role = 'Teacher';
+    const userID = uuidv4();
+    await addUser(username, password, role, userID);
   };
 
   return (

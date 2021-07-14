@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
+import 'react-native-get-random-values';
+import { v4 as uuidv4 } from 'uuid';
 import {
   Button, StyleSheet, TextInput, Alert,
 } from 'react-native';
@@ -10,7 +12,9 @@ import {
   loginAsync, logout, selectUser, UserState,
 } from '../hooks/slices/user.slice';
 
-import { getByUserName, registerStudent } from '../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import {
+  addUser, getAllUsers,
+} from '../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import WithNavbar from '../components/higher_order_components/Navbars/WithNavBar';
 
 const styles = StyleSheet.create({
@@ -34,32 +38,28 @@ const RegisterScreen: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [address, setAddress] = useState<string>('');
-  const [phoneNumber, setPhoneNumber] = useState<string>('');
-  const nav = useNavigation();
+  const navigation = useNavigation();
   const dispatch = useAppDispatch();
 
   const handleLogin = async () => {
     await dispatch(loginAsync({ username, password }));
-    nav.navigate('Home');
+    navigation.navigate('Home', { screen: 'HomePageNav' });
   };
 
   const handleRegister = async () => {
-    const users = await getByUserName();
-    const exists = false;
+    const role = 'Student';
+    const users = await getAllUsers();
 
-    if(!users) {
-      const registered = await registerStudent();
+    if(users.find((u) => u.username === username)) {
+      const userID = uuidv4();
+      addUser(username, password, role, userID);
+    }
 
-      if(registered) {
-        handleLogin();
-        return;
-      }
+    if(user) {
+      handleLogin();
     } else {
       Alert.alert('Username is already taken.');
-      return;
     }
-    Alert.alert('Failed to register.');
   };
   return (
     <View style={styles.container}>
@@ -68,10 +68,9 @@ const RegisterScreen: React.FC<unknown> = (props) => {
           <Text style={styles.title}>
             Hello, {user.username}!
           </Text>
-          <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+          <View />
           <Button
             title="Logout"
-            color="red"
             onPress={() => {
               dispatch(logout());
             }}
@@ -95,22 +94,10 @@ const RegisterScreen: React.FC<unknown> = (props) => {
               onChangeText={(text) => setPassword(text)}
               defaultValue={password}
             />
-            <TextInput
-              style={{ fontSize: 18, margin: 10 }}
-              placeholder="Phone Number"
-              onChangeText={(text) => setPhoneNumber(text)}
-              defaultValue={address}
-            />
-            <TextInput
-              style={{ fontSize: 18, margin: 10 }}
-              placeholder="Address"
-              onChangeText={(text) => setAddress(text)}
-              defaultValue={address}
-            />
+
             <Button
               onPress={handleRegister}
               title="Register"
-              color="red"
             />
             <Text
               style={{
@@ -118,10 +105,17 @@ const RegisterScreen: React.FC<unknown> = (props) => {
                 padding: 10,
                 textAlign: 'right',
               }}
-              onPress={() => nav.navigate('LoginScreen')}
+              onPress={() => {
+                navigation.navigate('Home', { screen: 'HomePageNav' });
+              }}
             >
-              Login?
+
             </Text>
+            <Text
+              onPress={() => {
+                navigation.navigate('Root', { screen: 'LoginNav' });
+              }}
+            >Login? </Text>
           </View>
         </>
       )
