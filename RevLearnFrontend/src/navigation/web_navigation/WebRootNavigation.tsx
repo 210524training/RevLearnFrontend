@@ -5,9 +5,12 @@ import * as React from 'react';
 
 import Colors from '../../constants/Colors';
 import useColorScheme from '../../hooks/useColorScheme';
-import { LandingNavParamList, LoginNavParamList, RootNavParamList } from '../../Types/NavigatorTypes';
+import {
+  LandingNavParamList, LoginNavParamList, RegisterNavParamList, RootNavParamList,
+} from '../../types/NavigatorTypes';
 import LandingPage from '../../screens/LandingPage';
 import LoginPage from '../../screens/LoginPage';
+import RegisterPage from '../../screens/RegisterPage';
 
 const LandingStack = createStackNavigator<LandingNavParamList>();
 
@@ -37,6 +40,19 @@ function LoginStackNavigator() {
   );
 }
 
+function RegisterStackNavigator() {
+  const RegisterStack = createStackNavigator<RegisterNavParamList>();
+  return (
+    <RegisterStack.Navigator
+      headerMode={'none'}>
+      <RegisterStack.Screen
+        name="Register"
+        component={RegisterPage}
+      />
+    </RegisterStack.Navigator>
+  );
+}
+
 const WebStack = createStackNavigator<RootNavParamList>();
 
 function WebRootNavigator() {
@@ -55,7 +71,10 @@ function WebRootNavigator() {
         name="LoginNav"
         component={LoginStackNavigator}
       />
-
+      <WebStack.Screen
+        name="RegisterNav"
+        component={LoginStackNavigator}
+      />
     </WebStack.Navigator>
   );
 }

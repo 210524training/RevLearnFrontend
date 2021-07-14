@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 // Temp sever calls go here.
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
@@ -90,6 +91,12 @@ export const sendLogin = async (username: string, password: string): Promise<Use
  */
 export function registerStudent() {
   return true;
+}
+
+export function getAllUsers() {
+  return BackendClient.get<User[]>('/user', {})
+    .then((res) => { console.log('Successfully Found Users'); return res.data as User[]; })
+    .catch((err) => { window.alert(err); return []; });
 }
 
 export function getByUserName() {

@@ -22,6 +22,11 @@ export default {
               Login: 'Login',
             },
           },
+          RegisterNav: {
+            screens: {
+              RegisterPage: 'Register',
+            },
+          },
         },
       },
       Home: {

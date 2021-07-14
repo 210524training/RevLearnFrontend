@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
 import MultipleChoiceQuizQuestion from '../../models/MultipleChoiceQuizQuestion';
-import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../Types/MyTypes';
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../types/MyTypes';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');

@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList, CourseHomeNavParamList,
-} from '../Types/NavigatorTypes';
+} from '../types/NavigatorTypes';
 import AllCoursesPage from '../screens/home_pages/AllCoursesPage';
 import CreateCoursePage from '../screens/courses_pages/CreateCoursePage';
 import AllUsersPage from '../screens/home_pages/AllUsersPage';

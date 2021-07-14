@@ -1,4 +1,7 @@
 import { Role } from '../types/MyTypes';
+import { Assignment } from './Assignment';
+import { CourseGrade } from './CourseGrade';
+import { Submission } from './Submission';
 
 /**
  * Represents the data of a user
@@ -14,4 +17,5 @@ export interface User{
   courses: [],
   role: Role,
   userID: string,
+  courseGrades?: Submission[],
 }
