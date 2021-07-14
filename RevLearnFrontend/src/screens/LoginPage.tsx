@@ -60,7 +60,7 @@ const LoginPage: React.FC<unknown> = (props) => {
           </View>
           <Text
             onPress={() => {
-              navigation.navigate('RegisterPage');
+              navigation.navigate('Root', { screen: 'RegisterNav' });
             }} style={LoginPageStyles.title}
           >
               Don't have an account? Register!

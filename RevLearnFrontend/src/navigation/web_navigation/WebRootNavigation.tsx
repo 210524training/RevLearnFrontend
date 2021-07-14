@@ -73,7 +73,7 @@ function WebRootNavigator() {
       />
       <WebStack.Screen
         name="RegisterNav"
-        component={LoginStackNavigator}
+        component={RegisterStackNavigator}
       />
     </WebStack.Navigator>
   );
