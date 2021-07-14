@@ -2,7 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import useColorScheme from '../../hooks/useColorScheme';
 import useNavHeader from '../../hooks/useNavHeader';
-import { HomeNavParamList } from '../../Types/NavigatorTypes';
+import { HomeNavParamList } from '../../types/NavigatorTypes';
 import {
   CourseHomeNavigator, CourseResourcesNavigator, AssignmentsNavigator, QuizzesNavigator, CourseInfoNavigator, CourseGradesNavigator, AdmissionRequestsNavigator, AllCourseGradesNavigator, StudentsNavigator,
 } from '../StackNavigatiors';

@@ -1,4 +1,4 @@
-import { AssignmentType, LetterGrade } from '../Types/MyTypes';
+import { AssignmentType, LetterGrade } from '../types/MyTypes';
 import { Activity } from './Activity';
 import { AssignmentSubmission } from './AssignmentSubmission';
 

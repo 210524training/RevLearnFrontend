@@ -3,7 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import * as React from 'react';
 import { Platform } from 'react-native';
 import useColorScheme from '../../hooks/useColorScheme';
-import { HomePageNavParamList, RootHomeNavParamList } from '../../Types/NavigatorTypes';
+import { HomePageNavParamList, RootHomeNavParamList } from '../../types/NavigatorTypes';
 import {
   UserInfoNavigator, SettingsNavigator, GradesOverViewNavigator, AllCoursesNavigator, AllUsersNavigator, AllTeachersNavigator, HomeNavigator,
 } from '../StackNavigatiors';

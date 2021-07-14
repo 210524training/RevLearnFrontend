@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import useColorScheme from '../../hooks/useColorScheme';
-import { RootHomeNavParamList } from '../../Types/NavigatorTypes';
+import { RootHomeNavParamList } from '../../types/NavigatorTypes';
 import {
   AllCoursesNavigator, AllTeachersNavigator, AllUsersNavigator, GradesOverViewNavigator, HomeNavigator, SettingsNavigator, UserInfoNavigator,
 } from '../StackNavigatiors';
