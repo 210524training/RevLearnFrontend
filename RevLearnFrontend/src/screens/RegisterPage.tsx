@@ -10,7 +10,7 @@ import {
   loginAsync, logout, selectUser, UserState,
 } from '../hooks/slices/user.slice';
 
-import { getByUserName, registerStudent } from '../remote/RevLearnBackendAPI';
+import { getByUserName, registerStudent } from '../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import WithNavbar from '../components/higher_order_components/Navbars/WithNavBar';
 
 const styles = StyleSheet.create({

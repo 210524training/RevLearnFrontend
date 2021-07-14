@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Text, TextInput } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
-import { createNewTeacher } from '../../../remote/RevLearnBackendAPI';
+import { createNewTeacher } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 

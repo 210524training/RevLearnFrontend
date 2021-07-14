@@ -11,7 +11,7 @@ import { Quiz } from '../../../models/Quiz';
 import { QuizQuestion } from '../../../models/QuizQuestion';
 import { ShortAnswerQuestion } from '../../../models/ShortAnswerQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../Types/MyTypes';
-import { updateQuiz } from '../../../remote/RevLearnBackendAPI';
+import { updateQuiz } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import { QuizSubmission } from '../../../models/QuizSubmission';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 

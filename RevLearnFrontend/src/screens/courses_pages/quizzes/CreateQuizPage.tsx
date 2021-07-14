@@ -12,7 +12,7 @@ import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker
 import { useAppSelector } from '../../../hooks';
 import { getQuestions, QuestionState } from '../../../hooks/slices/question.slice';
 import { QuizQuestion } from '../../../models/QuizQuestion';
-import { createQuiz } from '../../../remote/RevLearnBackendAPI';
+import { createQuiz } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 

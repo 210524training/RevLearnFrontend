@@ -5,7 +5,7 @@ import {
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { useAppSelector } from '../../hooks';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
-import { updatePassword } from '../../remote/RevLearnBackendAPI';
+import { updatePassword } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 

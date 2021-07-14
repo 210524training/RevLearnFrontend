@@ -3,7 +3,7 @@ import { Text, Button } from 'react-native';
 /* import DocumentPicker, { DocumentPickerOptions, PlatformTypes } from 'react-native-document-picker'; */
 import * as DocumentPicker from 'expo-document-picker';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { uploadFile } from '../../../remote/RevLearnBackendAPI';
+import { uploadFile } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 

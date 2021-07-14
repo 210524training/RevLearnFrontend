@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 import { Assignment } from '../../models/Assignment';
 import { Course } from '../../models/Course';
 import { Quiz } from '../../models/Quiz';
-import { getActivities, getUserByID } from '../../remote/RevLearnBackendAPI';
+import { getActivities, getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
   course: Course

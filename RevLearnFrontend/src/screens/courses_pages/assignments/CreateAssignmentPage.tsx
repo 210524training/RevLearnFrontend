@@ -7,7 +7,7 @@ import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker
 import DynamicDropdown from '../../../components/form_components/DynamicDropdown';
 import DynamicSlider from '../../../components/form_components/DynamicSlider';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { CreateAssignment } from '../../../remote/RevLearnBackendAPI';
+import { CreateAssignment } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
 
 type Props = {

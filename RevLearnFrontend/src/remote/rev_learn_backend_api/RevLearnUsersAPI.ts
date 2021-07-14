@@ -1,11 +1,11 @@
 // Temp sever calls go here.
-import { User } from '../models/User';
-import { Quiz } from '../models/Quiz';
-import { Course } from '../models/Course';
-import { QuizSubmission } from '../models/QuizSubmission';
-import { AssignmentSubmission } from '../models/AssignmentSubmission';
-import { Assignment } from '../models/Assignment';
-import BackendClient from './RevLearnBackendClient';
+import { User } from '../../models/User';
+import { Quiz } from '../../models/Quiz';
+import { Course } from '../../models/Course';
+import { QuizSubmission } from '../../models/QuizSubmission';
+import { AssignmentSubmission } from '../../models/AssignmentSubmission';
+import { Assignment } from '../../models/Assignment';
+import BackendClient from '../RevLearnBackendClient';
 
 const newStudent: User = {
   username: 'michael',

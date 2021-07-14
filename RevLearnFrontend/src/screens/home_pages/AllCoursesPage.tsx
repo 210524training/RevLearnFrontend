@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   ScrollView, View,
@@ -6,12 +6,19 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import DisplayCourseList from '../../components/display_list/DisplayCourseList';
-import { courses } from '../../remote/RevLearnBackendAPI';
+import { getAllCourses } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { Course } from '../../models/Course';
 
 type Props = {
 }
 
+const awaitRequest = async (set: React.Dispatch<React.SetStateAction<Course[]>>): Promise<void> => set(await getAllCourses());
+
 const AllCoursesPage: React.FC<Props> = (props) => {
+  const [courses, setCourses] = useState<Course[]>([]);
+  useEffect(() => {
+    awaitRequest(setCourses);
+  }, []);
   const navigation = useNavigation();
   const setSelected = () => { navigation.canGoBack(); };
 

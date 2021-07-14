@@ -3,7 +3,7 @@ import { ScrollView, Text, View } from 'react-native';
 import DisplayAllStudents from '../../components/display_list/DisplayAllStudents';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { User } from '../../models/User';
-import { getAllStudentsForCourse } from '../../remote/RevLearnBackendAPI';
+import { getAllStudentsForCourse } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 

@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 import User from '../../models/User';
-import { sendLogin } from '../../remote/RevLearnBackendAPI';
+import { sendLogin } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import { RootState } from '../store';
 
 export type UserState = User | null;
