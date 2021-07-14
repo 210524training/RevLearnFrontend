@@ -247,9 +247,15 @@ export function getAllTeachers() {
   return [teachers, teachers2];
 }
 
-export function createNewTeacher(userID: string, username: string, password: string, role: string) {
-  console.log(userID, username, password, role);
-}
+export const addUser = async (userID: string, username: string, password: string, role: string) => {
+  await BackendClient.post<User>('/user', {
+    userID,
+    username,
+    password,
+    role,
+  }).then(() => console.log('Successfully Added User'))
+    .catch((err) => window.alert(err));
+};
 
 // update password on settings page
 export function updatePassword(password: string, userID: string) {
