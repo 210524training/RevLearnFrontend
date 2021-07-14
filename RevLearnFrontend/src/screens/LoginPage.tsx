@@ -29,6 +29,10 @@ const LoginPage: React.FC<unknown> = (props) => {
     <View style={Container.container}>
       {user ? (
         <>
+          <Text style={LoginPageStyles.title}>Hello, {user.username} </Text>
+          <Button
+            title="Logout"
+            onPress={() => dispatch(logout())}/>
         </>
       ) : (
         <>
@@ -52,8 +56,15 @@ const LoginPage: React.FC<unknown> = (props) => {
               onPress={handleLogin}
               title="Sign in"
             />
-          </View>
 
+          </View>
+          <Text
+            onPress={() => {
+              navigation.navigate('Root', { screen: 'RegisterNav' });
+            }} style={LoginPageStyles.title}
+          >
+              Don't have an account? Register!
+          </Text>
         </>
       )}
     </View>
