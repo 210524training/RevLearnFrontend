@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-alert */
 // Temp sever calls go here.
 import { User } from '../../models/User';
@@ -8,12 +9,12 @@ import { AssignmentSubmission } from '../../models/AssignmentSubmission';
 import { Assignment } from '../../models/Assignment';
 import BackendClient from '../RevLearnBackendClient';
 
-const newStudent: User = {
+export const newStudent: User = {
   username: 'michael',
-  password: '151515',
+  password: 'password',
   courses: [],
   role: 'Student',
-  id: '456',
+  id: '151515',
 };
 
 const newStudent2: User = {
@@ -150,10 +151,19 @@ export function getByUserName() {
   return newStudent;
 }
 
-export function getUserByID(id: string) {
-  console.log(id);
-  return newStudent;
-}
+export const getUserByID = async (id: string): Promise<User> => {
+  return {
+    username: 'michael',
+    password: '151515',
+    courses: [],
+    role: 'Student',
+    id: '456',
+  };
+
+  // return BackendClient.get<User>(`/user/${id}`)
+  //   .then((res) => { console.log('Successfully Found Users'); return res.data as User; })
+  //   .catch((err) => { window.alert(err); throw new Error(err.message); });
+};
 
 /**
  * Use for updating a quiz with a new submission after the quiz is taken
