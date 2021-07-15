@@ -25,7 +25,7 @@ const HomePage: React.FC<Props> = () => {
   const user: User = {
     username: 'user',
     password: 'pass',
-    userID: '123',
+    id: '123',
     courses: [],
     role: 'Student',
   };
@@ -58,7 +58,7 @@ const HomePage: React.FC<Props> = () => {
       <Text>HomePage</Text>
       <Text>My Courses:</Text>
       {
-        courses.map((course, index) => (
+        courses && courses.map((course, index) => (
           <ListItem key={index}>
             <Pressable onPress={() => NavToCourseHome(course)}>
               <Text>{course.courseTitle}</Text>

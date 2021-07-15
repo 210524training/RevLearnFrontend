@@ -10,7 +10,7 @@ import BackendClient from '../RevLearnBackendClient';
 
 const newStudent: User = {
   username: 'michael',
-  password: '123',
+  password: '151515',
   courses: [],
   role: 'Student',
   id: '456',
@@ -75,7 +75,7 @@ const newvar2: Course = {
 };
 
 const newvar: Course = {
-  id: '1234',
+  id: '3412',
   courseTitle: 'Calculus',
   startDate: new Date(Date.now()).toDateString(),
   endDate: new Date(Date.now()).toDateString(),
@@ -255,7 +255,7 @@ export function getCourseByID(id: string): Course {
       assignment,
       assignment1,
     ],
-    admissionRequests: [student],
+    admissionRequests: [student.id],
   };
 }
 
