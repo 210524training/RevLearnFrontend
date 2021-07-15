@@ -10,7 +10,6 @@ import { QuizSubmission } from './QuizSubmission';
  * @extends Activity
  */
 export interface Quiz extends Activity{
-  submissions: QuizSubmission[],
   passingGrade: number,
   questions: QuizQuestion[],
 }

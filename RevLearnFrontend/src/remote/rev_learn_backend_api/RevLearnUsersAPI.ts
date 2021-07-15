@@ -89,13 +89,6 @@ const newvar: Course = {
   ],
   admissionRequests: [],
 };
-const stringArray: string[] = ['tht', 'thth'];
-/* const test: string[] = stringArray.reduce(
-  (strArray: string[], current: string): string[] => {
-    strArray.push(current);
-    return strArray;
-  },
-); */
 
 export const courses: Array<Course> = [newvar, newvar2];
 
