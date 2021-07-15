@@ -12,8 +12,8 @@ const CreateTeacherAccountPage: React.FC<Props> = (props) => {
 
   const handleFormSubmit = async () => {
     const role = 'Teacher';
-    const userID = uuidv4();
-    await addUser(username, password, role, userID);
+    const id = uuidv4();
+    await addUser(username, password, role, id);
   };
 
   return (

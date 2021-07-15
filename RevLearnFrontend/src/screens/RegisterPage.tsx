@@ -52,8 +52,8 @@ const RegisterScreen: React.FC<unknown> = (props) => {
     const result = users.find((u) => u.username === username);
 
     if(!result) {
-      const userID = uuidv4();
-      addUser(username, password, role, userID);
+      const id = uuidv4();
+      addUser(username, password, role, id);
     }
 
     if(user) {

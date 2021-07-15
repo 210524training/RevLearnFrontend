@@ -281,13 +281,13 @@ export function getAllTeachers() {
   return [teachers, teachers2];
 }
 
-export const addUser = async (username: string, password: string, role: string, userID: string) => {
-  console.log(username, password, role, userID);
+export const addUser = async (username: string, password: string, role: string, id: string) => {
+  console.log(username, password, role, id);
   await BackendClient.post('/user', {
     username,
     password,
     role,
-    userID,
+    id,
   }).then(() => console.log('Successfully Added User'))
     .catch((err) => window.alert(err));
 };
