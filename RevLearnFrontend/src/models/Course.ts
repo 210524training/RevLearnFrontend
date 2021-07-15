@@ -25,5 +25,5 @@ export interface Course{
   students: string[],
   category: string,
   activities: (Assignment | Quiz)[],
-  admissionRequests: User[],
+  admissionRequests: string[],
 }
