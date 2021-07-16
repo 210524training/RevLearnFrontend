@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
+import { Button } from 'react-native-elements/dist/buttons/Button';
 import { useAppSelector } from '../../hooks';
 import { CourseState, getCourse } from '../../hooks/slices/course.slice';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -27,9 +28,9 @@ const CourseGradesStudentView: React.FC<Props> = (props) => {
     }
   }, []);
 
+  const log = () => console.log('user', user);
   return (
     <View>
-      <Text>Grades for {}:</Text>
       {(user && course) && (
         <View>
           <Text>Course: {course.courseTitle}:</Text>
