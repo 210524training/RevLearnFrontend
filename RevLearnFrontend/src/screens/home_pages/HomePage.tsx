@@ -25,7 +25,7 @@ const HomePage: React.FC<Props> = () => {
   const user: User = {
     username: 'user',
     password: 'pass',
-    userID: '123',
+    id: '123',
     courses: [],
     role: 'Student',
   };
