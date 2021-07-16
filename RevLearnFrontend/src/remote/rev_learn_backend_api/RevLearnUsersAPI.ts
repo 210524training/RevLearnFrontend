@@ -259,9 +259,6 @@ export function getCourseByID(id: string): Course {
   };
 }
 
-export function updateCourse(course: Course) {
-  console.log(course);
-}
 export function getAllTeachers() {
   const teachers: User = {
     username: 'Brenda',
