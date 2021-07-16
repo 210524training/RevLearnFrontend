@@ -58,7 +58,7 @@ const CreateQuizPage: React.FC<Props> = () => {
 
       await updateCourse(updatedCourse);
       dispatch(setCourse(updatedCourse));
-      navigation.navigate('QuizzesPage', { screen: 'AllQuizzesPageNav' });
+      navigation.navigate('QuizzesPage');
     }
   };
 

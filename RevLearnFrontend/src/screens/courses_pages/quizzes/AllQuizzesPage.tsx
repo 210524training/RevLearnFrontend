@@ -23,11 +23,11 @@ const AllQuizzesPage: React.FC<Props> = () => {
 
   const Navigation = useNavigation();
   const NavToNewQuiz = () => {
-    Navigation.navigate('CreateQuizPage', { screen: 'CreateQuizPage' });
+    Navigation.navigate('CreateQuizPage');
   };
 
-  const NavToQuizPage = () => {
-    Navigation.navigate('QuizPage', { screen: 'QuizPage' });
+  const NavToQuizPage = (quiz: Quiz) => {
+    Navigation.navigate('QuizPage', { quiz });
   };
 
   const quizzes = course?.activities.filter((activity) => isQuiz(activity));
@@ -43,7 +43,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
       {
         quizzes?.map((quiz, index) => (
           <ListItem key={index}>
-            <Pressable onPress={NavToQuizPage}>
+            <Pressable onPress={() => NavToQuizPage(quiz as Quiz)}>
               <Text>{quiz.title}</Text>
             </Pressable>
           </ListItem>

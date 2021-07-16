@@ -6,70 +6,40 @@ import {
 import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
 import { ListItem } from 'react-native-elements';
+import { useNavigation } from '@react-navigation/native';
 import { MultipleChoiceQuizQuestion } from '../../../models/MultipleChoiceQuizQuestion';
-import { Quiz } from '../../../models/Quiz';
 import { QuizQuestion } from '../../../models/QuizQuestion';
-import { ShortAnswerQuestion } from '../../../models/ShortAnswerQuestion';
-import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../types/MyTypes';
-import { updateQuiz } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../Types/MyTypes';
+import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { QuizSubmission } from '../../../models/QuizSubmission';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
+import { Course } from '../../../models/Course';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.slice';
+import { Activity } from '../../../models/Activity';
+import { UserState, selectUser } from '../../../hooks/slices/user.slice';
+import { User } from '../../../models/User';
 
 type Props = {
-
+  route: any
 }
 
-const QuizPage: React.FC<Props> = () => {
-  const questions: (ShortAnswerQuestion | MultipleChoiceQuizQuestion)[] = [
-    {
-      questionID: '1',
-      questionTitle: 'Question 1',
-      pointValue: 1,
-      prompt: 'This is a question',
-      correctAnswer: 'answer1',
-    },
-    {
-      questionID: '2',
-      questionTitle: 'Question 2',
-      pointValue: 1,
-      prompt: 'This is a question',
-      correctAnswer: 'answer2',
-    },
-    {
-      questionID: '3',
-      questionTitle: 'Question 3',
-      pointValue: 1,
-      prompt: 'This is a question',
-      correctAnswer: 'answer3',
-    },
-    {
-      questionID: '4',
-      questionTitle: 'Question 4',
-      pointValue: 1,
-      prompt: 'This is a multiple choice question',
-      correctAnswer: 'OptionB',
-      choices: [
-        { option: 'OptionA', answer: 'The first option' },
-        { option: 'OptionB', answer: 'The second option' },
-        { option: 'OptionC', answer: 'The third option' },
-        { option: 'OptionD', answer: 'The fourth option' },
-      ],
-    },
-  ];
+const QuizPage: React.FC<Props> = ({ route }) => {
+  const { quiz } = route.params;
+  const course: Course | null = useAppSelector<CourseState>(getCourse);
+  const user: User | null = useAppSelector<UserState>(selectUser);
 
-  const quiz: Quiz = {
-    ID: '1',
-    title: 'Demo Quiz',
-    startDate: new Date(),
-    dueDate: new Date(),
-    description: 'This is a description of the quiz. Good luck.',
-    submissions: [],
-    passingGrade: 70,
-    questions,
-  };
+  const navigation = useNavigation();
+  const dispatch = useAppDispatch();
 
   function isMultipleChoiceQuestion(question: QuizQuestion): question is MultipleChoiceQuizQuestion {
     return 'choices' in question;
+  }
+
+  function getRadioOptions(question: MultipleChoiceQuizQuestion): { label: string, value: string }[] {
+    const options = question.choices.map((choice: MultipleChoicePossibleAnswer) => ({ label: choice.answer, value: choice.option }));
+
+    return options;
   }
 
   // Creating an array of hooks that dynamically scales to match the number of questions
@@ -84,40 +54,38 @@ const QuizPage: React.FC<Props> = () => {
     }
   });
 
-  function getRadioOptions(question: MultipleChoiceQuizQuestion): { label: string, value: string }[] {
-    const options = question.choices.map((choice: MultipleChoicePossibleAnswer) => ({ label: choice.answer, value: choice.option }));
-
-    return options;
-  }
-
   // Grade the quiz by comparing the input answer with the corrrct answer
-  const handleQuizSubmit = () => {
-    let possiblePoints: number = 0;
-    questions.forEach((question) => {
-      possiblePoints += question.pointValue;
-    });
+  const handleQuizSubmit = async () => {
+    if(course && user) {
+      let possiblePoints: number = 0;
+      quiz.questions.forEach((question: QuizQuestion) => {
+        possiblePoints += question.pointValue;
+      });
 
-    let earnedPoints: number = 0;
+      let earnedPoints: number = 0;
 
-    answerHooks.forEach((question, index) => {
-      if(questions[index].correctAnswer === answerHooks[index].value) {
-        earnedPoints += questions[index].pointValue;
-      }
-    });
+      answerHooks.forEach((question, index) => {
+        if(quiz.questions[index].correctAnswer === answerHooks[index].value) {
+          earnedPoints += quiz.questions[index].pointValue;
+        }
+      });
 
-    const percentCorrect = earnedPoints / possiblePoints;
-    const formattedPercent: number = Math.floor(percentCorrect * 10000) / 100;
+      const percentCorrect = earnedPoints / possiblePoints;
+      const formattedPercent: number = Math.floor(percentCorrect * 10000) / 100;
 
-    const submission: QuizSubmission = {
-      submissionID: uuidv4(),
-      studentID: '1',
-      submissionDate: new Date(),
-      grade: formattedPercent,
-    };
+      const submission: QuizSubmission = {
+        submissionID: uuidv4(),
+        studentID: user.id,
+        submissionDate: new Date(),
+        grade: formattedPercent,
+      };
 
-    console.log(submission);
-    quiz.submissions.push(submission);
-    updateQuiz(quiz);
+      quiz.submissions.push(submission);
+      course.activities.find((element: Activity) => element.ID === quiz.id)?.submissions.push(submission);
+
+      await updateCourse(course);
+      navigation.navigate('QuizzesPage');
+    }
   };
 
   return (
@@ -126,15 +94,15 @@ const QuizPage: React.FC<Props> = () => {
       <Text>{quiz.description}</Text>
 
       {
-        quiz.questions.map((question, index: number) => (
+        quiz.questions.map((question: QuizQuestion, index: number) => (
           <ListItem key={index}>
             <View style={{ borderWidth: 1 }}>
-              <Text>{questions[index].questionTitle}</Text>
-              <Text>{questions[index].prompt}</Text>
+              <Text>{question.questionTitle}</Text>
+              <Text>{question.prompt}</Text>
 
               {
-                isMultipleChoiceQuestion(questions[index]) ? (
-                  <RadioForm radio_props={getRadioOptions(questions[index] as MultipleChoiceQuizQuestion)} initial={0} onPress={answerHooks[index].setter} />
+                isMultipleChoiceQuestion(question) ? (
+                  <RadioForm radio_props={getRadioOptions(question as MultipleChoiceQuizQuestion)} initial={0} onPress={answerHooks[index].setter} />
                 ) : (
                   <TextInput style={{ borderWidth: 1 }} onChangeText={answerHooks[index].setter} />
                 )
