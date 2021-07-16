@@ -11,7 +11,6 @@ import BackendClient from '../RevLearnBackendClient';
 const newStudent: User = {
   username: 'michael',
   password: '123',
-  courses: [],
   role: 'Student',
   id: '456',
 };
@@ -19,7 +18,6 @@ const newStudent: User = {
 const newStudent2: User = {
   username: 'jon',
   password: '123',
-  courses: [],
   role: 'Student',
   id: '123',
 };
@@ -222,7 +220,6 @@ export function getCourseByID(id: string): Course {
   const student: User = {
     username: 'michael',
     password: '123',
-    courses: [],
     role: 'Student',
     id: '456',
   };
@@ -248,14 +245,12 @@ export function getAllTeachers() {
   const teachers: User = {
     username: 'Brenda',
     password: '123',
-    courses: [],
     role: 'Teacher',
     id: '456',
   };
   const teachers2: User = {
     username: 'Donna',
     password: '123',
-    courses: [],
     role: 'Teacher',
     id: '123',
   };
