@@ -89,13 +89,6 @@ const newvar: Course = {
   ],
   admissionRequests: [],
 };
-const stringArray: string[] = ['tht', 'thth'];
-/* const test: string[] = stringArray.reduce(
-  (strArray: string[], current: string): string[] => {
-    strArray.push(current);
-    return strArray;
-  },
-); */
 
 export const courses: Array<Course> = [newvar, newvar2];
 
@@ -151,8 +144,15 @@ export function getByUserName() {
 }
 
 export function getUserByID(id: string) {
-  console.log(id);
-  return newStudent;
+  return BackendClient.get<User>(`/user/${id}`)
+    .then((res) => { console.log('Successfully Found User'); return res.data as User; })
+    .catch((err) => { window.alert(err); return []; });
+}
+
+export function deleteUser(id: string) {
+  return BackendClient.delete(`/user/${id}`)
+    .then(() => console.log('Successfully Deleted User'))
+    .catch((err) => window.alert(err));
 }
 
 /**

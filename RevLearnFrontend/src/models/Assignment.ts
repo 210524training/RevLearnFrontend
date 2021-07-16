@@ -11,6 +11,5 @@ import { AssignmentSubmission } from './AssignmentSubmission';
  */
 export interface Assignment extends Activity{
   type: AssignmentType,
-  submissions: AssignmentSubmission[],
   passingGrade: LetterGrade,
 }

@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
+import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { Course } from '../../models/Course';
 import { createNewCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { getAllTeachers } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
@@ -55,4 +56,4 @@ const CreateCoursePage: React.FC<Props> = (props) => {
     </>
   );
 };
-export default WithCourseNavbar(CreateCoursePage);
+export default WithHomeNavbar(CreateCoursePage);

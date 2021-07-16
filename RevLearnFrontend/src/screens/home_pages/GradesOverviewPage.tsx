@@ -1,57 +1,53 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 import React, { useEffect, useState } from 'react';
 
 import { Text } from 'react-native';
-import DisplayCourseList from '../../components/display_list/DisplayCourseList';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
-import { Assignment } from '../../models/Assignment';
+import MapGrades from '../../components/MapGrades';
+import { useAppSelector } from '../../hooks';
+import { selectUser, UserState } from '../../hooks/slices/user.slice';
+import useCalcGrades from '../../hooks/useCalcGrades';
 import { Course } from '../../models/Course';
-import { courses } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { CourseGrade } from '../../models/CourseGrade';
+import { getStudentCourses } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 
 type Props = {
 
 }
 
-const calculateCourseGrade = (course: Course) => {
-
-  /* course.activities[0].submissions.reduce(temp, )
-  const stringArray: string[] = ['tht', 'thth'];
-
-  const test: string[] = stringArray.reduce((strArray: string[], string: string): string[] => {strArray.push(string); return strArray})
-
-  const result: Course = course.activities.reduce((acc: (Assignment | Quiz), cur) => {
-    acc = cur.submissions.
-  }); */
-};
-
-const awaitRequest = async (set: React.Dispatch<React.SetStateAction<Course[] | undefined>>) => {
-  // set(await getCoursesByUserID('123'));
-};
-
 const GradesOverviewPage: React.FC<Props> = (props) => {
-  const [coursesList, setCourses] = useState<Course[]>(courses);
+  const [coursesList, setCourses] = useState<Course[]>();
+  const [grades, setCourseGrades] = useState<CourseGrade[]>([]);
+  const [selected, setSelected] = useState<CourseGrade>();
+  const user = useAppSelector<UserState>(selectUser);
   useEffect(() => {
-    /* awaitRequest(setCourses); */
-
+    console.log('useEffect hook');
+    (async () => {
+      const result = await getStudentCourses(user ? user.id : '123');
+      console.log('retrived course: ');
+      // eslint-disable-next-line no-unused-expressions
+      result && result.map((element: Course) => { console.log(element); });
+      setCourses(result);
+    })();
   }, []);
+  useEffect(() => {
+    (async () => {
+      if(coursesList) {
+        const gradesResult = await useCalcGrades(coursesList, user ? user.id : '123');
+        setCourseGrades(gradesResult);
+      }
+    })();
+  }, [coursesList]);
   return (
     <>
       <Text>My Grades</Text>
-      {coursesList
+      {grades && coursesList
         ? (
-          coursesList.map((course) => (<>
-            <Text>{course.courseTitle}</Text>
-            {course.activities.map((activity) => (<>
-              {typeof (activity)}
-              <Text>{activity.ID}</Text>
-              <Text>{activity.title}</Text>
-              <Text>{activity.submissions[0].grade}</Text>
-            </>))}
-          </>))
+          <MapGrades Courses={coursesList} List={grades} set={setSelected}/>
         )
         : <> </>
       }
-
     </>
   );
 };
