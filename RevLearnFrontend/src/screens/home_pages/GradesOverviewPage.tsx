@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 
 import { Text } from 'react-native';
@@ -20,17 +21,24 @@ const GradesOverviewPage: React.FC<Props> = (props) => {
   const [coursesList, setCourses] = useState<Course[]>();
   const [grades, setCourseGrades] = useState<CourseGrade[]>([]);
   const [selected, setSelected] = useState<CourseGrade>();
+  const nav = useNavigation();
   const user = useAppSelector<UserState>(selectUser);
+
   useEffect(() => {
-    console.log('useEffect hook');
-    (async () => {
-      const result = await getStudentCourses(user ? user.id : '123');
-      console.log('retrived course: ');
-      // eslint-disable-next-line no-unused-expressions
-      result && result.map((element: Course) => { console.log(element); });
-      setCourses(result);
-    })();
+    if(!user) {
+      nav.navigate('Root');
+    } else {
+      console.log('useEffect hook');
+      (async () => {
+        const result = await getStudentCourses(user.id);
+        console.log('retrived course: ');
+        // eslint-disable-next-line no-unused-expressions
+        result && result.map((element: Course) => { console.log(element); });
+        setCourses(result);
+      })();
+    }
   }, []);
+
   useEffect(() => {
     (async () => {
       if(coursesList) {
@@ -39,6 +47,7 @@ const GradesOverviewPage: React.FC<Props> = (props) => {
       }
     })();
   }, [coursesList]);
+
   return (
     <>
       <Text>My Grades</Text>
