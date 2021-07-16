@@ -20,7 +20,7 @@ const CourseHomePage: React.FC<Props> = () => {
   const navigation = useNavigation();
 
   const dropCourse = async () => {
-    if(course) {
+    if(course && user) {
       const updatedStudentsList = course.students.filter((student) => student !== user.id);
 
       const updatedCourse = {
