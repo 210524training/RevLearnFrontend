@@ -13,8 +13,7 @@ type Props = {
 
 }
 const CourseHomePage: React.FC<Props> = () => {
-  const user: User = useAppSelector<UserState>(selectUser);
-
+  const user: User | null = useAppSelector<UserState>(selectUser);
   const course: Course | null = useAppSelector<CourseState>(getCourse);
 
   const dispatch = useAppDispatch();
@@ -39,7 +38,7 @@ const CourseHomePage: React.FC<Props> = () => {
     <>
       <Text>CourseHomePage</Text>
       {
-        course && user.role === 'Student' && (
+        course && user?.role === 'Student' && (
           <Button onPress={dropCourse} title='Drop Course' />
         )
       }
