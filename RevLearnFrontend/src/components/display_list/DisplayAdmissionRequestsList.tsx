@@ -13,7 +13,7 @@ const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests }) => (
       console.log('Requests to list: ', requests)
     }
     <Text>List Component</Text>
-    <Text>{requests[0].username}</Text>
+    {/* <Text>{requests[0].username}</Text> */}
     {
       requests.map((request, index) => (
         <ListItem key={index}>
