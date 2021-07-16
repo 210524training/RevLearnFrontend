@@ -1,7 +1,8 @@
 import React from 'react';
-import { Text, Button } from 'react-native';
+import { Text, Button, Platform } from 'react-native';
 /* import DocumentPicker, { DocumentPickerOptions, PlatformTypes } from 'react-native-document-picker'; */
 import * as DocumentPicker from 'expo-document-picker';
+
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { uploadFile } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
@@ -11,25 +12,43 @@ type Props = {
 const AddResource: React.FC<Props> = (props) => {
   const pickFile = async () => {
     try {
-      const result: DocumentPicker.DocumentResult = await DocumentPicker.getDocumentAsync({
+      const image: DocumentPicker.DocumentResult = await DocumentPicker.getDocumentAsync({
         type: 'image/*',
       });
-      console.log(result);
+      console.log(image);
 
-      if(result.type === 'success') {
-        const body = new FormData();
-        console.log(body);
+      if(image.type === 'success') {
+        const formData = new FormData();
 
-        const { uri, type, name } = result;
+        const { uri, type, name } = image;
         const file = {
           uri,
           type,
           name,
         };
 
-        body.append('file', file);
+        try {
+          const response = await fetch(uri);
+          console.log(response);
+          const blob = await response.blob();
+          console.log(blob);
+          formData.append('file', blob);
+        } catch(err) {
+          console.log(err);
+        }
 
-        uploadFile(body);
+        /* body.append('file', file); */
+        formData.append('test', 'testing tag');
+        /*  formData.append('file', image as Blob); */
+        /* formData.append('images', {
+          ...image,
+          uri: Platform.OS === 'android' ? image.uri : image.uri.replace('file://', ''),
+          name: 'image-',
+          type: 'image/*', // it may be necessary in Android.
+        }); */
+        console.log(formData);
+        formData.append('testing', 'test');
+        uploadFile(formData);
       }
     } catch(err) {
       console.log(err);

@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 // Temp sever calls go here.
+import RNFetchBlob from 'react-native-fetch-blob';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -274,6 +275,12 @@ export function updatePassword(password: string, userID: string) {
   console.log(password, userID);
 }
 
-export function uploadFile(formData: FormData) {
-  BackendClient.post('/upload', formData).then((res) => { console.log('successfull', res.data); });
+export async function uploadFile(formData: FormData) {
+  BackendClient.post('/upload', formData, /* , {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  } */)
+    .then((res) => { console.log('successfull', res.data); })
+    .catch((err) => window.alert(err));
 }
