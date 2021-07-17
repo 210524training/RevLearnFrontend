@@ -128,25 +128,10 @@ export function getByUserName() {
   return newStudent;
 }
 
-<<<<<<< HEAD
-export const getUserByID = async (id: string): Promise<User> => {
-  return {
-    username: 'michael',
-    password: '151515',
-    courses: [],
-    role: 'Student',
-    id: '456',
-  };
-
-  // return BackendClient.get<User>(`/user/${id}`)
-  //   .then((res) => { console.log('Successfully Found Users'); return res.data as User; })
-  //   .catch((err) => { window.alert(err); throw new Error(err.message); });
-};
-=======
-export function getUserByID(id: string) {
+export function getUserByID(id: string): Promise<User> {
   return BackendClient.get<User>(`/user/${id}`)
     .then((res) => { console.log('Successfully Found User'); return res.data as User; })
-    .catch((err) => { window.alert(err); return []; });
+    .catch((err) => { window.alert(err); throw new Error(err); });
 }
 
 export function deleteUser(id: string) {
@@ -154,7 +139,6 @@ export function deleteUser(id: string) {
     .then(() => console.log('Successfully Deleted User'))
     .catch((err) => window.alert(err));
 }
->>>>>>> 4e3af0772a5d319e5749e4de3be5bc3b5e75fd50
 
 /**
  * Use for updating a quiz with a new submission after the quiz is taken

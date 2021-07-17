@@ -13,10 +13,12 @@ const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests }) => (
       console.log('Requests to list: ', requests)
     }
     <Text>List Component</Text>
-    {/* <Text>{requests[0].username}</Text> */}
     {
       requests.map((request, index) => (
         <ListItem key={index}>
+          {
+            console.log('Request: ', request)
+          }
           <Pressable onPress={() => { console.log('pressed'); }}>
             <View>
               <Text>User: {request.username}</Text>

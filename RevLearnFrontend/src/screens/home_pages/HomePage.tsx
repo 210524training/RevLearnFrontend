@@ -56,16 +56,6 @@ const HomePage: React.FC<Props> = () => {
     <View style={Container.container}>
       <Text>HomePage</Text>
       <Text>My Courses:</Text>
-<<<<<<< HEAD
-      {
-        courses && courses.map((course, index) => (
-          <ListItem key={index}>
-            <Pressable onPress={() => NavToCourseHome(course)}>
-              <Text>{course.courseTitle}</Text>
-            </Pressable>
-          </ListItem>
-        ))
-=======
       {courses && courses.map((course, index) => (
         <ListItem key={index}>
           <Pressable onPress={() => NavToCourseHome(course)}>
@@ -73,7 +63,6 @@ const HomePage: React.FC<Props> = () => {
           </Pressable>
         </ListItem>
       ))
->>>>>>> 4e3af0772a5d319e5749e4de3be5bc3b5e75fd50
       }
       <Button title='Course Home Page' onPress={() => NavToCourseHome(null)}></Button>
     </View>

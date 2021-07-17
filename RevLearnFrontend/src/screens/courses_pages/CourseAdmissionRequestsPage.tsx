@@ -7,44 +7,42 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { CourseState, getCourse, setCourse } from '../../hooks/slices/course.slice';
 import { Course } from '../../models/Course';
 import { User } from '../../models/User';
-import { getUserByID, updateCourse, newStudent } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 
 }
 
-// const setRequestList = async (idList: string[], set: React.Dispatch<React.SetStateAction<User[]>>): Promise<void> => {
-//   const users: User[] = [];
-//   idList.forEach(async (id) => {
-//     console.log('User ID: ', id);
-//     users.push(await getUserByID(id));
-//   });
-//   console.log('Users: ', users);
-//   set(users);
-// };
+const setRequestList = async (idList: string[], set: React.Dispatch<React.SetStateAction<User[]>>): Promise<void> => {
+  const users: User[] = [];
+  idList.forEach(async (id) => {
+    getUserByID(id).then((user) => { users.push(user[0]); console.log('adding user ', user[0]); set(users); });
+  });
+};
 
 const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
   const dispatch = useAppDispatch();
-  const [requests, setRequests] = useState<User[]>();
+  const [requests, setRequests] = useState<User[]>([]);
 
   useEffect(() => {
-    async function setRequestList() {
-      if(course) {
-        const requestList: User[] = [];
-        course.admissionRequests?.forEach(async (id) => {
-          const user = await getUserByID(id);
-          console.log('user: ', user);
-          requestList.push(user);
-        });
-        console.log('requestList: ', requestList);
-        setRequests(requestList);
-        // setRequests([newStudent]);
-        console.log('requests: ', requests);
-      }
-    }
+    // async function setRequestList() {
+    //   if(course) {
+    //     const requestList: User[] = [];
+    //     course.admissionRequests?.forEach(async (id) => {
+    //       const user = await getUserByID(id);
+    //       console.log('user: ', user);
+    //       requestList.push(user);
+    //     });
+    //     console.log('requestList: ', requestList);
+    //     setRequests(requestList);
+    //     // setRequests([newStudent]);
+    //     console.log('requests: ', requests);
+    //   }
 
-    setRequestList();
+    if(course) {
+      setRequestList(course.admissionRequests, setRequests);
+    }
   }, []);
 
   const acceptRequestHandlers = requests ? requests.map((request) => {
