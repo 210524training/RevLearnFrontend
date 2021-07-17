@@ -6,13 +6,17 @@ import {
 import { ListItem } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigation } from '@react-navigation/native';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import NewQuestion from '../../../components/quiz_entry/NewQuestion';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
-import { useAppSelector } from '../../../hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
 import { getQuestions, QuestionState } from '../../../hooks/slices/question.slice';
 import { QuizQuestion } from '../../../models/QuizQuestion';
-import { createQuiz } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { Course } from '../../../models/Course';
+import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.slice';
+import { Quiz } from '../../../models/Quiz';
 
 type Props = {
 
@@ -26,21 +30,36 @@ const CreateQuizPage: React.FC<Props> = () => {
   const [startDateStr, setStartDateStr] = useState<string>(new Date().toDateString());
   const [dueDateStr, setDueDateStr] = useState<string>(new Date().toDateString());
 
-  const handleNewQuizSubmit = () => {
+  const course: Course | null = useAppSelector<CourseState>(getCourse);
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation();
+
+  const handleNewQuizSubmit = async () => {
     console.log(questions);
+    if(course) {
+      const newQuiz: Quiz = {
+        ID: uuidv4(),
+        submissions: [],
+        questions: questions as QuizQuestion[],
+        passingGrade: Number(passingGrade),
+        startDate: new Date(startDateStr),
+        dueDate: new Date(dueDateStr),
+        title,
+        description,
+      };
 
-    const quiz = {
-      ID: uuidv4(),
-      submissions: [],
-      questions: questions as QuizQuestion[],
-      passingGrade: Number(passingGrade),
-      startDate: new Date(startDateStr),
-      dueDate: new Date(dueDateStr),
-      title,
-      description,
-    };
+      const updatedCourse: Course = {
+        ...course,
+        activities: [
+          ...course.activities,
+          newQuiz,
+        ],
+      };
 
-    createQuiz(quiz);
+      await updateCourse(updatedCourse);
+      dispatch(setCourse(updatedCourse));
+      navigation.navigate('QuizzesPage');
+    }
   };
 
   return (

@@ -17,8 +17,8 @@ type Props = {
 
 }
 
-const setStudentCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[]>>): Promise<void> => set(await getStudentCourses(user));
-const setTeacherCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[]>>): Promise<void> => set(await getTeacherCourses(user));
+const setStudentCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[] | null>>): Promise<void> => set(await getStudentCourses(user.id));
+const setTeacherCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[] | null>>): Promise<void> => set(await getTeacherCourses(user));
 
 const HomePage: React.FC<Props> = () => {
   // const user: User = useAppSelector<UserState>(selectUser);
@@ -26,13 +26,12 @@ const HomePage: React.FC<Props> = () => {
     username: 'user',
     password: 'pass',
     id: '123',
-    courses: [],
     role: 'Student',
   };
 
   const dispatch = useAppDispatch();
 
-  const [courses, setCourses] = useState<Course[]>([]);
+  const [courses, setCourses] = useState<Course[] | null>(null);
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -57,6 +56,7 @@ const HomePage: React.FC<Props> = () => {
     <View style={Container.container}>
       <Text>HomePage</Text>
       <Text>My Courses:</Text>
+<<<<<<< HEAD
       {
         courses && courses.map((course, index) => (
           <ListItem key={index}>
@@ -65,6 +65,15 @@ const HomePage: React.FC<Props> = () => {
             </Pressable>
           </ListItem>
         ))
+=======
+      {courses && courses.map((course, index) => (
+        <ListItem key={index}>
+          <Pressable onPress={() => NavToCourseHome(course)}>
+            <Text>{course.courseTitle}</Text>
+          </Pressable>
+        </ListItem>
+      ))
+>>>>>>> 4e3af0772a5d319e5749e4de3be5bc3b5e75fd50
       }
       <Button title='Course Home Page' onPress={() => NavToCourseHome(null)}></Button>
     </View>

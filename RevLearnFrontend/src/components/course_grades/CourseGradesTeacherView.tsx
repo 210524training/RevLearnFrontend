@@ -15,7 +15,7 @@ const CourseGradesTeacherView: React.FC<Props> = (props) => {
   return (
     <View>
       {
-        activities.map((activity) => (
+        /*  activities.map((activity) => (
           <>
             <Text>{activity.title}</Text>
             {
@@ -27,7 +27,7 @@ const CourseGradesTeacherView: React.FC<Props> = (props) => {
               })
             }
           </>
-        ))
+        )) */
       }
     </View>
   );

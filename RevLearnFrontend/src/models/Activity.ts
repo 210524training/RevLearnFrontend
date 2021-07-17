@@ -1,3 +1,6 @@
+import { AssignmentSubmission } from './AssignmentSubmission';
+import { QuizSubmission } from './QuizSubmission';
+
 /**
  * Represents the data of an activity
  * @property ID: string
@@ -12,4 +15,5 @@ export interface Activity{
   startDate: Date,
   dueDate: Date,
   description: string,
+  submissions: (AssignmentSubmission | QuizSubmission)[],
 }
