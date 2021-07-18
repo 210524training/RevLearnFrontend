@@ -118,7 +118,7 @@ export function registerStudent() {
 }
 
 export function getAllUsers() {
-  return BackendClient.get<User[]>('/user', {})
+  return BackendClient.get<User[]>('/user')
     .then((res) => { console.log('Successfully Found Users'); return res.data as User[]; })
     .catch((err) => { window.alert(err); return []; });
 }

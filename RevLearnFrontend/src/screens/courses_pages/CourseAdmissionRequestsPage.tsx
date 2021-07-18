@@ -4,7 +4,8 @@ import { ListItem } from 'react-native-elements';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { Course } from '../../models/Course';
 import { User } from '../../models/User';
-import { updateCourse, getCourseByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { getCourseByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI'
 
 type Props = {
   courseID: string,
