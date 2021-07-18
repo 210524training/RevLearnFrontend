@@ -26,9 +26,11 @@ const LandingPage: React.FC<Props> = () => {
 
   };
   return (
-    <View style={Container.container}>
-      <Text style = {LandingPageStyles.h1}>RevLearn</Text>
-      <Text style = {LandingPageStyles.h2}>A Student Learning Management System</Text>
+    <View style={[Container.container, { flexDirection: 'column' }]}>
+      <View style={ Container.container }>
+        <Text style = {LandingPageStyles.h1}>RevLearn</Text>
+        <Text style = {LandingPageStyles.h2}>A Student Learning Management System</Text>
+      </View>
     </View>
   );
 };
