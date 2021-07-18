@@ -33,7 +33,7 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
           <Text>Teacher: {`${element.teacherID}`}</Text>
           <Text>Passing Grade: {`${element.passingGrade}`}</Text>
           <Text>Category: {`${element.category}`}</Text>
-          <Button onPress={() => handleButton(element)} title='Add Course'/>
+          {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
         </ListItem>
       ))}
     </>
