@@ -1,9 +1,19 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
+import { theme } from './Theme';
 
 export const LandingPageStyles = StyleSheet.create({
-  h1: {
-    fontSize: 40,
+  header: {
+    fontSize: 21,
+    color: theme.colors.primary,
+    fontWeight: 'bold',
+    paddingVertical: 12,
+  },
+  paragraph: {
+    fontSize: 15,
+    lineHeight: 21,
+    textAlign: 'center',
+    marginBottom: 12,
   },
   h2: {
     fontSize: 18,
