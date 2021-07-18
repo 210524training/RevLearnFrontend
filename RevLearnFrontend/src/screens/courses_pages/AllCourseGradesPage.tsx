@@ -1,4 +1,6 @@
 import React from 'react';
+import { Text } from 'react-native';
+import CourseGradesStudentView from '../../components/course_grades/CourseGradesStudentView';
 import CourseGradesTeacherView from '../../components/course_grades/CourseGradesTeacherView';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { Course } from '../../models/Course';
@@ -21,9 +23,11 @@ const AllCourseGradesPage: React.FC<Props> = () => {
     admissionRequests: [],
   };
 
-  return (
-    <CourseGradesTeacherView course={course} />
-  );
+  return (<>
+    {/* <CourseGradesTeacherView course={course} /> */}
+
+    <CourseGradesStudentView/>
+  </>);
 };
 
 export default WithCourseNavbar(AllCourseGradesPage);

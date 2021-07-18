@@ -14,7 +14,6 @@ import { Submission } from './Submission';
 export interface User{
   username: string,
   password: string,
-  courses: [],
   role: Role,
   id: string,
   courseGrades?: Submission[],

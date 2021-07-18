@@ -1,5 +1,6 @@
 /* eslint-disable no-alert */
 // Temp sever calls go here.
+import RNFetchBlob from 'react-native-fetch-blob';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -11,7 +12,6 @@ import BackendClient from '../RevLearnBackendClient';
 const newStudent: User = {
   username: 'michael',
   password: '123',
-  courses: [],
   role: 'Student',
   id: '456',
 };
@@ -19,7 +19,6 @@ const newStudent: User = {
 const newStudent2: User = {
   username: 'jon',
   password: '123',
-  courses: [],
   role: 'Student',
   id: '123',
 };
@@ -94,21 +93,6 @@ export const courses: Array<Course> = [newvar, newvar2];
 
 /**
  *
- * @param input string
- */
-function test55(input: string) {
-  //
-}
-
-/**
- * Send a new quiz to the back-end
- * @param quiz the quiz object
- */
-export function createQuiz(quiz: Quiz) {
-  //
-}
-/**
- *
  * @param username
  * @param password
  * @returns User: username, password
@@ -144,8 +128,15 @@ export function getByUserName() {
 }
 
 export function getUserByID(id: string) {
-  console.log(id);
-  return newStudent;
+  return BackendClient.get<User>(`/user/${id}`)
+    .then((res) => { console.log('Successfully Found User'); return res.data as User; })
+    .catch((err) => { window.alert(err); return []; });
+}
+
+export function deleteUser(id: string) {
+  return BackendClient.delete(`/user/${id}`)
+    .then(() => console.log('Successfully Deleted User'))
+    .catch((err) => window.alert(err));
 }
 
 /**
@@ -230,7 +221,6 @@ export function getCourseByID(id: string): Course {
   const student: User = {
     username: 'michael',
     password: '123',
-    courses: [],
     role: 'Student',
     id: '456',
   };
@@ -252,21 +242,16 @@ export function getCourseByID(id: string): Course {
   };
 }
 
-export function updateCourse(course: Course) {
-  console.log(course);
-}
 export function getAllTeachers() {
   const teachers: User = {
     username: 'Brenda',
     password: '123',
-    courses: [],
     role: 'Teacher',
     id: '456',
   };
   const teachers2: User = {
     username: 'Donna',
     password: '123',
-    courses: [],
     role: 'Teacher',
     id: '123',
   };
@@ -290,6 +275,12 @@ export function updatePassword(password: string, userID: string) {
   console.log(password, userID);
 }
 
-export function uploadFile(formData: FormData) {
-  BackendClient.post('/upload', formData).then((res) => { console.log('successfull', res.data); });
+export async function uploadFile(formData: FormData) {
+  BackendClient.post('/upload', formData, /* , {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  } */)
+    .then((res) => { console.log('successfull', res.data); })
+    .catch((err) => window.alert(err));
 }

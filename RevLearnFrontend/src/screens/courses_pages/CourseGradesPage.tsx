@@ -16,7 +16,6 @@ const CourseGradesPage: React.FC<Props> = () => {
   const user: User = {
     username: 'jon',
     password: '123',
-    courses: [],
     role: 'Student',
     id: '123',
   };

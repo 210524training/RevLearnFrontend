@@ -6,33 +6,31 @@ import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { selectUser, UserState } from '../../../hooks/slices/user.slice';
 import { Quiz } from '../../../models/Quiz';
+import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
+import { Course } from '../../../models/Course';
 
 type Props = {
 
 }
+
+function isQuiz(object: any): object is Quiz {
+  return 'questions' in object;
+}
+
 const AllQuizzesPage: React.FC<Props> = () => {
   const user = useAppSelector<UserState>(selectUser);
+  const course: Course | null = useAppSelector<CourseState>(getCourse);
 
   const Navigation = useNavigation();
   const NavToNewQuiz = () => {
-    Navigation.navigate('CreateQuizPage', { screen: 'CreateQuizPage' });
+    Navigation.navigate('CreateQuizPage');
   };
 
-  const NavToQuizPage = () => {
-    Navigation.navigate('QuizPage', { screen: 'QuizPage' });
+  const NavToQuizPage = (quiz: Quiz) => {
+    Navigation.navigate('QuizPage', { quiz });
   };
 
-  const demoQuiz: Quiz = {
-    submissions: [],
-    title: 'Quiz 1',
-    passingGrade: 70,
-    ID: '1',
-    startDate: new Date(),
-    dueDate: new Date(),
-    description: '',
-    questions: [],
-  };
-  const quizzes = [demoQuiz];
+  const quizzes = course?.activities.filter((activity) => isQuiz(activity));
 
   return (
     <>
@@ -43,9 +41,9 @@ const AllQuizzesPage: React.FC<Props> = () => {
         )
       }
       {
-        quizzes.map((quiz, index) => (
+        quizzes?.map((quiz, index) => (
           <ListItem key={index}>
-            <Pressable onPress={NavToQuizPage}>
+            <Pressable onPress={() => NavToQuizPage(quiz as Quiz)}>
               <Text>{quiz.title}</Text>
             </Pressable>
           </ListItem>

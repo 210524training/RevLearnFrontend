@@ -23,13 +23,14 @@ export const getTeacherCourses = async (user: User): Promise<Course[]> => {
     .catch((err) => { window.alert(err); return []; });
 };
 
-/**
- * Sends a request to create a course
- * @param course course to be added.
- */
-export async function createNewCourse(course: Course): Promise<void> {
-  console.log(course);
+export const createNewCourse = async (course: Course): Promise<void> => {
   return BackendClient.post('/course', course)
     .then((res) => window.alert('Successfully created course'))
     .catch((err) => console.log('Error attempting to add course. ', err));
-}
+};
+
+export const updateCourse = async (course: Course): Promise<void> => {
+  return BackendClient.put('/course', course)
+    .then((res) => window.alert('Successfully updated course'))
+    .catch((err) => console.log('Error attempting to update course. ', err));
+};

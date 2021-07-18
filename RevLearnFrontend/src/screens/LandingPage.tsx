@@ -16,11 +16,12 @@ type ScreenNavigationProp = StackNavigationProp<
 >;
 type Props = {
   navigation: ScreenNavigationProp
+  route: any,
 }
 
-const LandingPage: React.FC<Props> = () => {
+const LandingPage: React.FC<Props> = ({ route }) => {
   const navigation = useNavigation();
-
+  const test = route.params;
   const press = () => {
     // navigation.navigate('LoginPage');
 
