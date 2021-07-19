@@ -7,7 +7,8 @@ import { useAppDispatch, useAppSelector } from '../../hooks';
 import { CourseState, getCourse, setCourse } from '../../hooks/slices/course.slice';
 import { Course } from '../../models/Course';
 import { User } from '../../models/User';
-import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { getCourseByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI'
 
 type Props = {
 

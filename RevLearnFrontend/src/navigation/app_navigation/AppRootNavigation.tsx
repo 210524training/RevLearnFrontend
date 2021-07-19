@@ -50,16 +50,16 @@ function AppRootNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName='LandingNav'>
+      initialRouteName='Landing'>
       <BottomTab.Screen
-        name="LandingNav"
+        name="Landing"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
         }}
       />
       <BottomTab.Screen
-        name="LoginNav"
+        name="Login"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,

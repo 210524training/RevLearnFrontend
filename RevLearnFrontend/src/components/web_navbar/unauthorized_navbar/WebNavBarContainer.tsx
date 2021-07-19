@@ -9,13 +9,13 @@ const UnauthorizedNavbarContainer = () => {
    * Navigate to Landing Page
    */
   const NavToLandingPage = () => {
-    Navigation.navigate('Root', { screen: 'LandingNav' });
+    Navigation.navigate('Root', { screen: 'Landing' });
   };
   /**
    * Navigate to Login Page
    */
   const NavToLoginPage = () => {
-    Navigation.navigate('Root', { screen: 'LoginNav' });
+    Navigation.navigate('Root', { screen: 'Login' });
   };
 
   return (

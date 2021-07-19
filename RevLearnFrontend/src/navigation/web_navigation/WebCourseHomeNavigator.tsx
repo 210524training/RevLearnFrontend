@@ -15,30 +15,30 @@ function AppCourseHomeNavigator() {
   return (
     <>
       <StackNav.Navigator
-        initialRouteName="CourseHomeNav"
+        initialRouteName="CourseHome"
         headerMode={setHeader}>
         <StackNav.Screen
-          name="CourseHomeNav"
+          name="CourseHome"
           component={CourseHomeNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <StackNav.Screen
-          name="CourseResourcesNav"
+          name="CourseResources"
           component={CourseResourcesNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <StackNav.Screen
-          name="AssignmentsNav"
+          name="Assignments"
           component={AssignmentsNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <StackNav.Screen
-          name="QuizzesNav"
+          name="Quizzes"
           component={QuizzesNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <StackNav.Screen
-          name="CourseInfoNav"
+          name="CourseInfo"
           component={CourseInfoNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <StackNav.Screen
-          name="CourseGradesNav"
+          name="CourseGrades"
           component={CourseGradesNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
 
@@ -46,15 +46,15 @@ function AppCourseHomeNavigator() {
         {test
           ? (<>
             <StackNav.Screen
-              name="StudentsNav"
+              name="Students"
               component={StudentsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
             <StackNav.Screen
-              name="AllCourseGradesNav"
+              name="AllCourseGrades"
               component={AllCourseGradesNavigator}
               options={{ headerTitle: 'All Course Grades' }}/>
             <StackNav.Screen
-              name="AdmissionRequestsNav"
+              name="AdmissionRequests"
               component={AdmissionRequestsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
           </>)

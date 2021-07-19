@@ -3,9 +3,13 @@ import { StyleSheet } from 'react-native';
 
 export const Buttons = StyleSheet.create({
   container: {
-    backgroundColor: 'black',
-    borderRadius: 5,
-    padding: 2,
-    margin: 2,
+    width: '100%',
+    marginVertical: 10,
+    paddingVertical: 2,
+  },
+  text: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    lineHeight: 26,
   },
 });

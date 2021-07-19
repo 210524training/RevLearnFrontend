@@ -1,7 +1,8 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable no-alert */
 // Temp sever calls go here.
-import RNFetchBlob from 'react-native-fetch-blob';
+import * as AWS from 'aws-sdk';
+import 'dotenv/config';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -119,7 +120,7 @@ export function registerStudent() {
 }
 
 export function getAllUsers() {
-  return BackendClient.get<User[]>('/user', {})
+  return BackendClient.get<User[]>('/user')
     .then((res) => { console.log('Successfully Found Users'); return res.data as User[]; })
     .catch((err) => { window.alert(err); return []; });
 }
@@ -276,12 +277,25 @@ export function updatePassword(password: string, userID: string) {
   console.log(password, userID);
 }
 
-export async function uploadFile(formData: FormData) {
-  BackendClient.post('/upload', formData, /* , {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  } */)
+export async function uploadFile(objectName: any, objectData: any) {
+  /* BackendClient.post('/upload', formData)
     .then((res) => { console.log('successfull', res.data); })
-    .catch((err) => window.alert(err));
+    .catch((err) => window.alert(err)); */
+
+  const BUCKETNAME: string = 'revlearnbackend-dev-serverlessdeploymentbucket-1imwbwu2cp9ej';
+
+  const s3bucket = new AWS.S3();
+  AWS.config.loadFromPath('../../../AwsConfig');
+  console.log(process.env.IAM_USER_KEY);
+
+  const params: AWS.S3.PutObjectRequest = {
+    Bucket: BUCKETNAME,
+    Key: objectName,
+    Body: objectData,
+  };
+
+  s3bucket.upload(params, (err, data) => {
+    if(err) throw err;
+    console.log(`File uploaded successfully at ${data.Location}`);
+  });
 }
