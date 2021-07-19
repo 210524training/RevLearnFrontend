@@ -15,49 +15,49 @@ const CourseNavbarContainer = () => {
    * Navigate to CourseResources
    */
   const NavToCourseResources = () => {
-    Navigation.navigate('CourseHome', { screen: 'CourseResources' });
+    Navigation.navigate('CourseResources');
   };
   /**
    * Navigate to Assignments
    */
   const NavToAssignments = () => {
-    Navigation.navigate('CourseHome', { screen: 'Assignments' });
+    Navigation.navigate('Assignments');
   };
   /**
    * Navigate to Quizzes
    */
   const NavToQuizzes = () => {
-    Navigation.navigate('CourseHome', { screen: 'Quizzes' });
+    Navigation.navigate('Quizzes');
   };
   /**
    * Navigate to CourseInfo
    */
   const NavToCourseInfo = () => {
-    Navigation.navigate('CourseHome', { screen: 'CourseInfo' });
+    Navigation.navigate('CourseInfo');
   };
   /**
    * Navigate to CourseGrades
    */
   const NavToCourseGrades = () => {
-    Navigation.navigate('CourseHome', { screen: 'CourseGrades' });
+    Navigation.navigate('CourseGrades');
   };
   /**
    * Navigate to AdmissionRequests
    */
   const NavToAdmissionRequests = () => {
-    Navigation.navigate('CourseHome', { screen: 'AdmissionRequests' });
+    Navigation.navigate('AdmissionRequests');
   };
   /**
    * Navigate to Students
    */
   const NavToStudents = () => {
-    Navigation.navigate('CourseHome', { screen: 'Students' });
+    Navigation.navigate('Students');
   };
   /**
    * Navigate to AllCourseGrades
    */
   const NavToAllCourseGrades = () => {
-    Navigation.navigate('CourseHome', { screen: 'AllCourseGrades' });
+    Navigation.navigate('AllCourseGrades');
   };
 
   return (
