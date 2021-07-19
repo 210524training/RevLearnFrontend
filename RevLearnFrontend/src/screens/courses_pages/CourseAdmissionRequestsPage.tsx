@@ -8,18 +8,19 @@ import { CourseState, getCourse, setCourse } from '../../hooks/slices/course.sli
 import { Course } from '../../models/Course';
 import { User } from '../../models/User';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
-import { getCourseByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI'
+import { getCourseByID, getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
 
 }
 
-const setRequestList = async (idList: string[], set: React.Dispatch<React.SetStateAction<User[]>>): Promise<void> => {
-  const users: User[] = [];
-  idList.forEach(async (id) => {
-    getUserByID(id).then((user) => { users.push(user[0]); console.log('adding user ', user[0]); set(users); });
-  });
-};
+// const setRequestList = async (idList: string[], set: React.Dispatch<React.SetStateAction<User[]>>): Promise<void> => {
+//   const users: User[] = [];
+//   idList.forEach(async (id) => {
+//     getUserByID(id).then((user) => { users.push(user); console.log('adding user ', user); });
+//   });
+//   set(users);
+// };
 
 const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
@@ -27,23 +28,24 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   const [requests, setRequests] = useState<User[]>([]);
 
   useEffect(() => {
-    // async function setRequestList() {
-    //   if(course) {
-    //     const requestList: User[] = [];
-    //     course.admissionRequests?.forEach(async (id) => {
-    //       const user = await getUserByID(id);
-    //       console.log('user: ', user);
-    //       requestList.push(user);
-    //     });
-    //     console.log('requestList: ', requestList);
-    //     setRequests(requestList);
-    //     // setRequests([newStudent]);
-    //     console.log('requests: ', requests);
-    //   }
-
-    if(course) {
-      setRequestList(course.admissionRequests, setRequests);
+    async function setRequestList() {
+      if(course) {
+        const requestList: User[] = [];
+        course.admissionRequests?.forEach(async (id) => {
+          const user = await getUserByID(id);
+          console.log('adding user: ', user);
+          requestList.push(user);
+        });
+        console.log('request list item:', requestList[0]);
+        setRequests(requestList);
+      }
     }
+
+    setRequestList();
+
+    // if(course) {
+    //   setRequestList(course.admissionRequests, setRequests);
+    // }
   }, []);
 
   const acceptRequestHandlers = requests ? requests.map((request) => {
@@ -80,6 +82,23 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
           <Text>No Requests Found</Text>
         )
       }
+      {
+        console.log('sending requests to component: ', requests)
+      }
+      {/* <View>
+        {
+          requests.map((request, index) => (
+            <ListItem key={index}>
+              {
+                console.log('Request: ', request)
+              }
+              <View>
+                <Text>User: {request.username}</Text>
+              </View>
+            </ListItem>
+          ))
+        }
+      </View> */}
     </>
   );
 };
