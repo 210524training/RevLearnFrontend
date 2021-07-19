@@ -107,14 +107,14 @@ const RegisterScreen: React.FC<unknown> = (props) => {
                 textAlign: 'right',
               }}
               onPress={() => {
-                navigation.navigate('Home', { screen: 'HomePageNav' });
+                navigation.navigate('Home', { screen: 'HomePage' });
               }}
             >
 
             </Text>
             <Text
               onPress={() => {
-                navigation.navigate('Root', { screen: 'LoginNav' });
+                navigation.navigate('Root', { screen: 'Login' });
               }}
             >Login? </Text>
           </View>

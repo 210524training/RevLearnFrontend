@@ -30,7 +30,7 @@ const LandingPage: React.FC<Props> = ({ route }) => {
   const [password, setPassword] = useState<string>('');
   const handleLogin = async () => {
     await dispatch(loginAsync({ username, password }));
-    navigation.navigate('Home', { screen: 'HomePageNav' });
+    navigation.navigate('Home', { screen: 'HomePage' });
   };
 
   const test = route.params;

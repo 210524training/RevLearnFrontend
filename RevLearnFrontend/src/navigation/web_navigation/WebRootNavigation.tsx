@@ -60,19 +60,19 @@ function WebRootNavigator() {
 
   return (
     <WebStack.Navigator
-      initialRouteName="LandingNav"
+      initialRouteName="Landing"
       headerMode={'none'}>
       {/* ScreensFolder */}
       <WebStack.Screen
-        name="LandingNav"
+        name="Landing"
         component={LandingStackNavigator}
       />
       <WebStack.Screen
-        name="LoginNav"
+        name="Login"
         component={LoginStackNavigator}
       />
       <WebStack.Screen
-        name="RegisterNav"
+        name="Register"
         component={RegisterStackNavigator}
       />
     </WebStack.Navigator>
