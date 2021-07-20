@@ -1,31 +1,42 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Button, Text, TextInput } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
-import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { Course } from '../../models/Course';
+import { User } from '../../models/User';
 import { createNewCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { getAllTeachers } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
-
-const teachers = getAllTeachers();
-
-const teacherNames: string[] = teachers.map((element) => (element.username));
 
 type Props = {
 
 }
-const CreateCoursePage: React.FC<Props> = (props) => {
+
+const CreateCoursePage: React.FC<Props> = () => {
   const [courseTitle, setCourseTitle] = useState<string>('');
   const [startDate, setStartDate] = useState<string>('');
   const [endDate, setEndDate] = useState<string>('');
-  const [teacher, setTeacher] = useState<string>('');
   const [passingGrade, setPassingGrade] = useState<string>('');
   const [category, setCategory] = useState<string>('');
+  const [teacherList, setTeacherList] = useState<User[]>([]);
+  const [selectedTeacher, setSelectedTeacher] = useState<string>('No Teacher');
+
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const getAndSetTeachers = async () => {
+      const teachers = await getAllTeachers();
+      setTeacherList(teachers);
+    }
+
+    getAndSetTeachers();
+  }, []);
 
   const handleFormSubmit = async () => {
-    const selected = teachers.find((element) => element.username === teacher);
+    const selected = teacherList.find((element) => element.username === selectedTeacher);
     await createNewCourse({
       id: uuidv4(),
       courseTitle,
@@ -37,7 +48,10 @@ const CreateCoursePage: React.FC<Props> = (props) => {
       activities: [],
       admissionRequests: [],
       category,
+      resources: [],
     } as Course);
+
+    navigation.navigate('AllCoursesPage');
   };
 
   return (
@@ -48,8 +62,7 @@ const CreateCoursePage: React.FC<Props> = (props) => {
       <DynamicDatePicker date={endDate} setDate={setEndDate} title={'End Date'}/>
       <Text>Category:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setCategory} />
-      <Text>Teacher:</Text>
-      <DynamicDropdown Selected={teacher} setSelected={setTeacher}OptionsList={teacherNames} />
+      <DynamicDropdown title="Teacher:" Selected={selectedTeacher} setSelected={setSelectedTeacher} OptionsList={['No Teacher', ...teacherList.map((teacher) => teacher.username)]} />
       <Text>Passing Grade:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setPassingGrade} />
       <Button onPress={handleFormSubmit} title="Submit" />

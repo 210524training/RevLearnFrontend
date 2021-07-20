@@ -239,20 +239,9 @@ export function getCourseByID(id: string): Course {
 }
 
 export function getAllTeachers() {
-  const teachers: User = {
-    username: 'Brenda',
-    password: '123',
-    role: 'Teacher',
-    id: '456',
-  };
-  const teachers2: User = {
-    username: 'Donna',
-    password: '123',
-    role: 'Teacher',
-    id: '123',
-  };
-
-  return [teachers, teachers2];
+  return BackendClient.get<User[]>('/user/teacher')
+    .then((res) => { console.log('Successfully Found Teachers'); return res.data as User[]; })
+    .catch((err) => { window.alert(err); return []; });
 }
 
 export const addUser = async (username: string, password: string, role: string, id: string) => {
