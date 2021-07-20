@@ -17,20 +17,7 @@ function isAssignment(object: any): object is Assignment {
 
 const AssignmentsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
-  const [assignments, setAssignments] = useState<Assignment[]>([]);
   const navigation = useNavigation();
-
-  useEffect(() => {
-    if(course) {
-      const assignmentList: Assignment[] = [];
-      course.activities.forEach((activity) => {
-        if(isAssignment(activity)) {
-          assignmentList.push(activity);
-        }
-      });
-      setAssignments(assignmentList);
-    }
-  }, []);
 
   const createNavHandler = () => {
     navigation.navigate('CreateAssignmentPage');
@@ -45,27 +32,24 @@ const AssignmentsPage: React.FC<Props> = () => {
       <Text>Assignments Page</Text>
       <Button title={'Create Assignment'} onPress={createNavHandler}>Create Assignment</Button>
       {
-        assignments.map((assignment, index) => (
-          <ListItem key={index}>
-            <Pressable onPress={() => { NavToAssignmentSubmissions(assignment); }}>
-              <View>
-                <Text>{assignment.title}</Text>
-              </View>
-            </Pressable>
-          </ListItem>
+        course?.activities.map((activity, index) => (
+          <>
+            {
+              isAssignment(activity) && (
+                <ListItem key={index}>
+                  <Pressable onPress={() => { NavToAssignmentSubmissions(activity); }}>
+                    <View>
+                      <Text>{activity.title}</Text>
+                    </View>
+                  </Pressable>
+                </ListItem>
+              )
+            }
+          </>
         ))
       }
     </>
   );
 };
-
-// Navigate to SubmitAssignments, CreateAssignment, AssignmentsSubmissions, DetaliedSubmission
-/**
- * const navigation = useNavigation();
- * navigation.navigate('SubmitAssignmentsPage');
- * navigation.navigate('CreateAssignmentPage');
- * navigation.navigate('AssignmentsSubmissionsPage');
- * navigation.navigate('DetaliedSubmissionPage');
- */
 
 export default WithCourseNavbar(AssignmentsPage);

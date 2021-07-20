@@ -211,14 +211,6 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
   return [submission];
 }
 
-/**
- * Sends create assignment request.
- * @param assignment Assignment
- */
-export function CreateAssignment(assignment11: Assignment) {
-  console.log(assignment11);
-}
-
 export function getCourseByID(id: string): Course {
   const student: User = {
     username: 'michael',
