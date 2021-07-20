@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Text, TextInput } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
