@@ -2,7 +2,8 @@
 /* eslint-disable no-alert */
 // Temp sever calls go here.
 import * as AWS from 'aws-sdk';
-import 'dotenv/config';
+import { REVLEARN_USER_KEY, REVLEARN_USER_SECRET } from 'react-native-dotenv';
+import { v4 as uuid } from 'uuid';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -273,21 +274,46 @@ export async function uploadFile(objectName: any, objectData: any) {
   /* BackendClient.post('/upload', formData)
     .then((res) => { console.log('successfull', res.data); })
     .catch((err) => window.alert(err)); */
+  console.log('recived: ', objectName);
+  console.log('user key: ', REVLEARN_USER_KEY);
+  console.log('secret: ', REVLEARN_USER_SECRET);
+  const BUCKETNAME: string = 'p2-rev-learn-assets';
+  const userKey = REVLEARN_USER_KEY;
+  const secret = REVLEARN_USER_SECRET;
 
-  const BUCKETNAME: string = 'revlearnbackend-dev-serverlessdeploymentbucket-1imwbwu2cp9ej';
-
-  const s3bucket = new AWS.S3();
-  AWS.config.loadFromPath('../../../AwsConfig');
-  console.log(process.env.IAM_USER_KEY);
+  console.log({
+    apiVersion: 'latest',
+    accessKeyId: userKey,
+    secretAccessKey: secret,
+  });
+  AWS.config.update({ region: 'us-west-2' });
+  const s3bucket = new AWS.S3({
+    apiVersion: 'latest',
+    accessKeyId: userKey,
+    secretAccessKey: secret,
+  });
+  const key = `Assets/${uuid()}${objectName}`;
 
   const params: AWS.S3.PutObjectRequest = {
     Bucket: BUCKETNAME,
-    Key: objectName,
+    Key: key,
     Body: objectData,
   };
+  console.log('Sending request');
+  s3bucket.upload(params, (err, data) => console.log(err || data));
+  return key;
+}
 
-  s3bucket.upload(params, (err, data) => {
-    if(err) throw err;
-    console.log(`File uploaded successfully at ${data.Location}`);
+export async function getFile(key: string): Promise<string> {
+  const BUCKETNAME: string = 'p2-rev-learn-assets';
+
+  AWS.config.update({ region: 'us-west-2' });
+  const s3bucket = new AWS.S3({
+    apiVersion: 'latest',
+    accessKeyId: REVLEARN_USER_KEY,
+    secretAccessKey: REVLEARN_USER_SECRET,
   });
+  console.log('Sending retrive request');
+  const params = { Bucket: 'p2-rev-learn-assets', Key: key };
+  return s3bucket.getSignedUrl('getObject', params);
 }

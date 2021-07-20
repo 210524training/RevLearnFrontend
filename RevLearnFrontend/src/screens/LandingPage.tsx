@@ -25,7 +25,6 @@ const LandingPage: React.FC<Props> = ({ route }) => {
   const navigation = useNavigation();
   const dispatch = useAppDispatch();
 
-  const test = route.params;
   const press = () => {
     // navigation.navigate('LoginPage');
   };
