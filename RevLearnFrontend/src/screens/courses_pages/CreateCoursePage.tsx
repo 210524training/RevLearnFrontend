@@ -29,7 +29,7 @@ const CreateCoursePage: React.FC<Props> = () => {
     const getAndSetTeachers = async () => {
       const teachers = await getAllTeachers();
       setTeacherList(teachers);
-    }
+    };
 
     getAndSetTeachers();
   }, []);
