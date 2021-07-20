@@ -65,6 +65,13 @@ function AppRootNavigator() {
           tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,
         }}
       />
+      <BottomTab.Screen
+        name="Register"
+        component={TabTwoNavigator}
+        options={{
+          tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,
+        }}
+      />
     </BottomTab.Navigator>
   );
 }

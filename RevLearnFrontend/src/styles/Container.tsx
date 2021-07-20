@@ -7,7 +7,6 @@ export const Container = StyleSheet.create({
     flex: 1,
     padding: 20,
     width: '100%',
-    maxWidth: 340,
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00B2D4',

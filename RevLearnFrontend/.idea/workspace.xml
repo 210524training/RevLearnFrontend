@@ -23,14 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57db61d4-f5c6-4774-a2c4-ba8a748520b4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/assets/images/LandingPagePlaceholder.jfif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/LandingPagePlaceholder.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/screens/LandingPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/LandingPage.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/Buttons.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Buttons.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/Container.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Container.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/LandingPageStyles.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/LandingPageStyles.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/Theme.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/Theme.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,11 +67,12 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="92" y="92" width="1736" height="856" key="AVDManager" timestamp="1626648503539">
+    <state x="34" y="63" width="1736" height="863" key="AVDManager" timestamp="1626734919583">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626648503539" />
+    <state x="34" y="63" width="1736" height="863" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626734919583" />
   </component>
 </project>
