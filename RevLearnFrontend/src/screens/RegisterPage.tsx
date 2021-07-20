@@ -3,8 +3,9 @@ import { useState } from 'react';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import {
-  Button, StyleSheet, TextInput, Alert,
+  Button, StyleSheet, Alert,
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { Text, View } from '../components/Themed';
 import { useAppDispatch, useAppSelector } from '../hooks';
