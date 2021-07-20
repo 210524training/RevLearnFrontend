@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
   Button, Text, TextInput, View,
@@ -5,15 +6,23 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../../components/form_components/DynamicDropdown';
-import DynamicSlider from '../../../components/form_components/DynamicSlider';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { CreateAssignment } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
-import { AssignmentType, LetterGrade } from '../../../types/MyTypes';
+import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.slice';
+import { Course } from '../../../models/Course';
+import { Assignment } from '../../../models/Assignment';
+import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
 
 type Props = {
 
 }
-const CreateAssignmentPage: React.FC<Props> = (props) => {
+
+const CreateAssignmentPage: React.FC<Props> = () => {
+  const course = useAppSelector<CourseState>(getCourse);
+  const dispatch = useAppDispatch();
+  const navigation = useNavigation();
+
   const [assignmentType, SetAssignmentType] = useState<string>('Homework');
   const [assignmentTitle, SetAssignmentTitle] = useState<string>('Homework');
   const [assignmentDescription, SetAssignmentDescription] = useState<string>('Homework');
@@ -23,18 +32,32 @@ const CreateAssignmentPage: React.FC<Props> = (props) => {
   const Options: string[] = ['Homework', 'Project', 'Paper', 'Report'];
   const gradeOptions: string[] = ['A', 'B', 'C', 'D', 'F'];
 
-  const handleSubmit = () => {
-    const assignment = {
-      type: assignmentType as AssignmentType,
-      title: assignmentTitle,
-      startDate: new Date(startDateStr),
-      dueDate: new Date(endDateStr),
-      description: assignmentDescription,
-      passingGrade: PassingGrade as LetterGrade,
-      ID: uuidv4(),
-      submissions: [],
-    };
-    CreateAssignment(assignment);
+  const handleSubmit = async () => {
+    if(course) {
+      const assignment: Assignment = {
+        type: assignmentType as AssignmentType,
+        title: assignmentTitle,
+        startDate: new Date(startDateStr),
+        dueDate: new Date(endDateStr),
+        description: assignmentDescription,
+        passingGrade: PassingGrade as LetterGrade,
+        ID: uuidv4(),
+        submissions: [],
+      };
+
+      const updatedCourse: Course = {
+        ...course,
+        activities: [
+          ...course.activities,
+          assignment,
+        ],
+      };
+
+      console.log(updatedCourse);
+      await updateCourse(updatedCourse);
+      dispatch(setCourse(updatedCourse));
+      navigation.navigate('AssignmentsPage');
+    }
   };
 
   return (

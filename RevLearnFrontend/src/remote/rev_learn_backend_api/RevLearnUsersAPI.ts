@@ -1,7 +1,10 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-alert */
 // Temp sever calls go here.
 import * as AWS from 'aws-sdk';
-import 'dotenv/config';
+import { REVLEARN_USER_KEY, REVLEARN_USER_SECRET } from 'react-native-dotenv';
+import { v4 as uuid } from 'uuid';
+import axios from 'axios';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -10,11 +13,11 @@ import { AssignmentSubmission } from '../../models/AssignmentSubmission';
 import { Assignment } from '../../models/Assignment';
 import BackendClient from '../RevLearnBackendClient';
 
-const newStudent: User = {
+export const newStudent: User = {
   username: 'michael',
   password: '123',
   role: 'Student',
-  id: '456',
+  id: '151515',
 };
 
 const newStudent2: User = {
@@ -75,7 +78,7 @@ const newvar2: Course = {
 };
 
 const newvar: Course = {
-  id: '1234',
+  id: '3412',
   courseTitle: 'Calculus',
   startDate: new Date(Date.now()).toDateString(),
   endDate: new Date(Date.now()).toDateString(),
@@ -128,10 +131,10 @@ export function getByUserName() {
   return newStudent;
 }
 
-export function getUserByID(id: string) {
+export async function getUserByID(id: string) {
   return BackendClient.get<User>(`/user/${id}`)
     .then((res) => { console.log('Successfully Found User'); return res.data as User; })
-    .catch((err) => { window.alert(err); return []; });
+    .catch((err) => { window.alert(err); });
 }
 
 export function deleteUser(id: string) {
@@ -210,14 +213,6 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
   return [submission];
 }
 
-/**
- * Sends create assignment request.
- * @param assignment Assignment
- */
-export function CreateAssignment(assignment11: Assignment) {
-  console.log(assignment11);
-}
-
 export function getCourseByID(id: string): Course {
   const student: User = {
     username: 'michael',
@@ -239,7 +234,7 @@ export function getCourseByID(id: string): Course {
       assignment,
       assignment1,
     ],
-    admissionRequests: [student],
+    admissionRequests: [student.id],
   };
 }
 
@@ -277,24 +272,55 @@ export function updatePassword(password: string, userID: string) {
 }
 
 export async function uploadFile(objectName: any, objectData: any) {
-  /* BackendClient.post('/upload', formData)
-    .then((res) => { console.log('successfull', res.data); })
-    .catch((err) => window.alert(err)); */
+  console.log('recived: ', objectName);
+  console.log('user key: ', REVLEARN_USER_KEY);
+  console.log('secret: ', REVLEARN_USER_SECRET);
+  const BUCKETNAME: string = 'p2-rev-learn-assets';
+  const userKey = REVLEARN_USER_KEY;
+  const secret = REVLEARN_USER_SECRET;
 
-  const BUCKETNAME: string = 'revlearnbackend-dev-serverlessdeploymentbucket-1imwbwu2cp9ej';
-
-  const s3bucket = new AWS.S3();
-  AWS.config.loadFromPath('../../../AwsConfig');
-  console.log(process.env.IAM_USER_KEY);
+  console.log({
+    apiVersion: 'latest',
+    accessKeyId: userKey,
+    secretAccessKey: secret,
+  });
+  AWS.config.update({ region: 'us-west-2' });
+  const s3bucket = new AWS.S3({
+    apiVersion: 'latest',
+    accessKeyId: userKey,
+    secretAccessKey: secret,
+  });
+  const key = `Assets/${uuid()}${objectName}`;
 
   const params: AWS.S3.PutObjectRequest = {
     Bucket: BUCKETNAME,
-    Key: objectName,
+    Key: key,
     Body: objectData,
   };
+  console.log('Sending request');
+  s3bucket.upload(params, (err, data) => console.log(err || data));
+  return key;
+}
 
-  s3bucket.upload(params, (err, data) => {
-    if(err) throw err;
-    console.log(`File uploaded successfully at ${data.Location}`);
+export async function getFileUrl(key: string): Promise<string> {
+  const BUCKETNAME: string = 'p2-rev-learn-assets';
+
+  AWS.config.update({ region: 'us-west-2' });
+  const s3bucket = new AWS.S3({
+    apiVersion: 'latest',
+    accessKeyId: REVLEARN_USER_KEY,
+    secretAccessKey: REVLEARN_USER_SECRET,
   });
+  console.log('Sending retrive request');
+  const params = { Bucket: 'p2-rev-learn-assets', Key: key };
+  return s3bucket.getSignedUrl('getObject', params);
+}
+
+export async function downLoadFile(url: string) {
+  const s3Client = axios.create({
+    baseURL: url,
+  });
+  s3Client.get('')
+    .then((res) => { console.log('successfull', res.data); })
+    .catch((err) => window.alert(err));
 }
