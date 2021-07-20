@@ -1,3 +1,5 @@
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
@@ -22,26 +24,46 @@ type Props = {
 //   set(users);
 // };
 
+const getUsers = async (course: Course) => {
+  const requestList: User[] = [];
+
+  for(let i = 0; i < course.admissionRequests.length; i++) {
+    const user = await getUserByID(course.admissionRequests[i]);
+    console.log('adding user: ', user);
+    requestList.push(user);
+  }
+
+  console.log('request list item:', requestList[0]);
+  return requestList;
+};
+
 const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
   const dispatch = useAppDispatch();
   const [requests, setRequests] = useState<User[]>([]);
 
   useEffect(() => {
-    async function setRequestList() {
-      if(course) {
-        const requestList: User[] = [];
-        course.admissionRequests?.forEach(async (id) => {
-          const user = await getUserByID(id);
-          console.log('adding user: ', user);
-          requestList.push(user);
-        });
-        console.log('request list item:', requestList[0]);
-        setRequests(requestList);
-      }
-    }
+    // async function setRequestList() {
+    //   if(course) {
+    //     const requestList: User[] = [];
+    //     course.admissionRequests?.forEach(async (id) => {
+    //       const user = await getUserByID(id);
+    //       console.log('adding user: ', user);
+    //       requestList.push(user);
+    //     });
+    //     console.log('request list item:', requestList[0]);
+    //     setRequests(requestList);
+    //   }
+    // }
 
-    setRequestList();
+    // setRequestList();
+
+    (async () => {
+      if(course) {
+        const result = await getUsers(course);
+        setRequests(result);
+      }
+    })();
 
     // if(course) {
     //   setRequestList(course.admissionRequests, setRequests);
