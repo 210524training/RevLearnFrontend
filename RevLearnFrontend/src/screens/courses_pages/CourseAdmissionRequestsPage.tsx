@@ -1,23 +1,50 @@
-import React, { useState } from 'react';
-import { Pressable, Text, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
+/* eslint-disable no-await-in-loop */
+/* eslint-disable no-plusplus */
+import React, { useEffect, useState } from 'react';
+import { Text } from 'react-native';
+import DisplayAdmissionRequestsList from '../../components/display_list/DisplayAdmissionRequestsList';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { CourseState, getCourse, setCourse } from '../../hooks/slices/course.slice';
 import { Course } from '../../models/Course';
 import { User } from '../../models/User';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
-import { getCourseByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI'
+import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 type Props = {
-  courseID: string,
+
 }
 
-const CourseAdmissionRequestsPage: React.FC<Props> = (props) => {
-  const [course, setCourse] = useState<Course>(getCourseByID(props.courseID));
-  const [requests, setRequests] = useState<User[]>(course.admissionRequests || []);
+const getUsers = async (course: Course) => {
+  const requestList: User[] = [];
 
-  const acceptRequestHandlers = requests.map((request) => {
-    const acceptRequest = () => {
-      const newRequestList = requests.filter((item) => item.id !== request.id);
+  for(let i = 0; i < course.admissionRequests.length; i++) {
+    const user = await getUserByID(course.admissionRequests[i]);
+    console.log('adding user: ', user);
+    requestList.push(user);
+  }
+
+  console.log('request list item:', requestList[0]);
+  return requestList;
+};
+
+const CourseAdmissionRequestsPage: React.FC<Props> = () => {
+  const course = useAppSelector<CourseState>(getCourse);
+  const dispatch = useAppDispatch();
+  const [requests, setRequests] = useState<User[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      if(course) {
+        const result = await getUsers(course);
+        setRequests(result);
+      }
+    })();
+  }, []);
+
+  const acceptRequestHandler = async (request: User) => {
+    if(course) {
+      const newRequestList = course.admissionRequests.filter((item) => item !== request.id);
       const newStudentsList = [...course.students, request.id];
 
       const updatedCourse: Course = {
@@ -26,25 +53,25 @@ const CourseAdmissionRequestsPage: React.FC<Props> = (props) => {
         students: newStudentsList,
       };
 
-      setCourse(updatedCourse);
-      setRequests(newRequestList);
-      updateCourse(updatedCourse);
-    };
-    return acceptRequest;
-  });
+      dispatch(setCourse(updatedCourse));
+      await updateCourse(updatedCourse);
+      setRequests(await getUsers(updatedCourse));
+    }
+  };
 
   return (
     <>
       {
-        requests.map((request, index) => (
-          <ListItem key={index}>
-            <Pressable onPress={acceptRequestHandlers[index]}>
-              <View>
-                <Text>User: {request.username}</Text>
-              </View>
-            </Pressable>
-          </ListItem>
-        ))
+        course && (
+          <Text>Enrollment Requests for {course.courseTitle}</Text>
+        )
+      }
+      {
+        requests[0] ? (
+          <DisplayAdmissionRequestsList requests={requests} onPress={acceptRequestHandler} />
+        ) : (
+          <Text>No Requests Found</Text>
+        )
       }
     </>
   );

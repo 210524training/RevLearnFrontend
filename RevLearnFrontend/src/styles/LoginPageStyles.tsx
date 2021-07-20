@@ -1,5 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import { StyleSheet } from 'react-native';
+import { theme } from './Theme';
 
 export const LoginPageStyles = StyleSheet.create({
   title: {
@@ -7,10 +8,12 @@ export const LoginPageStyles = StyleSheet.create({
     fontWeight: 'bold',
     padding: 10,
   },
-  inputField: {
-    borderRadius: 2,
-    borderWidth: 2,
-    marginVertical: 20,
-    padding: 5,
+  row: {
+    flexDirection: 'row',
+    marginTop: 4,
+  },
+  link: {
+    fontWeight: 'bold',
+    color: theme.colors.primary,
   },
 });

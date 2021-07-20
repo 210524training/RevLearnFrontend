@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import {
-  Button, StyleSheet, TextInput, Text, View,
+  Text, View, Button, TouchableOpacity,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { TextInput } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   loginAsync, logout, selectUser, UserState,
@@ -10,8 +11,11 @@ import {
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
 import { Styles } from '../styles/NavBarStyles';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
+import { LandingPageStyles } from '../styles/LandingPageStyles';
 import { Buttons } from '../styles/Buttons';
 import { Container } from '../styles/Container';
+import Logo from '../styles/Logo';
+import { InputField } from '../styles/InputField';
 
 const LoginPage: React.FC<unknown> = (props) => {
   const user = useAppSelector<UserState>(selectUser);
@@ -27,27 +31,28 @@ const LoginPage: React.FC<unknown> = (props) => {
 
   return (
     <View style={Container.container}>
+      <Logo />
       {user ? (
         <>
-          <Text style={LoginPageStyles.title}>Hello, {user.username} </Text>
+          <Text style={LandingPageStyles.header}>Hello, {user.username} </Text>
           <Button
             title="Logout"
             onPress={() => dispatch(logout())}/>
         </>
       ) : (
         <>
-          <Text style={LoginPageStyles.title}>Login</Text>
+          <Text style={LandingPageStyles.header}>Welcome</Text>
 
           <TextInput
-            style={LoginPageStyles.inputField}
-            placeholder="Username"
+            style={InputField.container}
+            label="Username"
             onChangeText={(text) => setUsername(text)}
             defaultValue={username}
           />
           <TextInput
-            style={LoginPageStyles.inputField}
+            style={InputField.container}
             secureTextEntry={true}
-            placeholder="Password"
+            label="Password"
             onChangeText={(text) => setPassword(text)}
             defaultValue={password}
           />
@@ -56,15 +61,15 @@ const LoginPage: React.FC<unknown> = (props) => {
               onPress={handleLogin}
               title="Sign in"
             />
-
           </View>
-          <Text
-            onPress={() => {
-              navigation.navigate('Root', { screen: 'Register' });
-            }} style={LoginPageStyles.title}
-          >
-              Don't have an account? Register!
-          </Text>
+          <View style={LoginPageStyles.row}>
+            <Text>Don’t have an account? </Text>
+            <TouchableOpacity>
+              <Text style={LoginPageStyles.link} onPress={() => {
+                navigation.navigate('RegisterNav');
+              }}>Sign up</Text>
+            </TouchableOpacity>
+          </View>
         </>
       )}
     </View>

@@ -1,3 +1,4 @@
+/* eslint-disable arrow-body-style */
 /* eslint-disable no-alert */
 // Temp sever calls go here.
 import * as AWS from 'aws-sdk';
@@ -10,11 +11,11 @@ import { AssignmentSubmission } from '../../models/AssignmentSubmission';
 import { Assignment } from '../../models/Assignment';
 import BackendClient from '../RevLearnBackendClient';
 
-const newStudent: User = {
+export const newStudent: User = {
   username: 'michael',
   password: '123',
   role: 'Student',
-  id: '456',
+  id: '151515',
 };
 
 const newStudent2: User = {
@@ -75,7 +76,7 @@ const newvar2: Course = {
 };
 
 const newvar: Course = {
-  id: '1234',
+  id: '3412',
   courseTitle: 'Calculus',
   startDate: new Date(Date.now()).toDateString(),
   endDate: new Date(Date.now()).toDateString(),
@@ -128,10 +129,17 @@ export function getByUserName() {
   return newStudent;
 }
 
+<<<<<<< HEAD
 export async function getUserByID(id: string) {
   return BackendClient.get<User>(`/user/${id}`)
     .then((res) => { console.log('Successfully Found User'); return res.data as User; })
     .catch((err) => { window.alert(err); });
+=======
+export function getUserByID(id: string): Promise<User> {
+  return BackendClient.get<User>(`/user/${id}`)
+    .then((res) => { console.log('Successfully Found User'); return res.data as User; })
+    .catch((err) => { window.alert(err); throw new Error(err); });
+>>>>>>> a394fff0d08d827abec02f905ecc767a93bb5f2f
 }
 
 export function deleteUser(id: string) {
@@ -210,14 +218,6 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
   return [submission];
 }
 
-/**
- * Sends create assignment request.
- * @param assignment Assignment
- */
-export function CreateAssignment(assignment11: Assignment) {
-  console.log(assignment11);
-}
-
 export function getCourseByID(id: string): Course {
   const student: User = {
     username: 'michael',
@@ -239,7 +239,7 @@ export function getCourseByID(id: string): Course {
       assignment,
       assignment1,
     ],
-    admissionRequests: [student],
+    admissionRequests: [student.id],
   };
 }
 
