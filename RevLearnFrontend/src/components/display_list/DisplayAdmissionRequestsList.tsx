@@ -5,23 +5,18 @@ import { User } from '../../models/User';
 
 type Props = {
   requests: User[],
+  onPress: (request: User) => void,
 }
 
-const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests }) => (
+const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests, onPress }) => (
   <>
-    {
-      console.log('requests to list: ', requests)
-    }
     <Text>{requests[0] && requests[0].username}</Text>
     {
       requests.map((request, index) => (
         <ListItem key={index}>
-          {
-            console.log('Request: ', request)
-          }
-          <Pressable onPress={() => { console.log('pressed'); }}>
+          <Pressable onPress={() => { onPress(request); }}>
             <View>
-              <Text>User: {request.username}</Text>
+              <Text>ID: {request.id}, User: {request.username}</Text>
             </View>
           </Pressable>
         </ListItem>
