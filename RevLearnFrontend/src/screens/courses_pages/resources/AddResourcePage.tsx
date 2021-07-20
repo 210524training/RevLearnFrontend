@@ -49,7 +49,7 @@ const AddResource: React.FC<Props> = (props) => {
   const pickFile = async () => {
     try {
       const file: DocumentPicker.DocumentResult = await DocumentPicker.getDocumentAsync({
-        type: '*',
+        type: 'image/*',
       });
 
       if(file.type === 'success') {
