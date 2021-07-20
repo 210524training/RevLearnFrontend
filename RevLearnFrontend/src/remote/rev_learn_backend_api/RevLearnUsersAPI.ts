@@ -128,10 +128,10 @@ export function getByUserName() {
   return newStudent;
 }
 
-export function getUserByID(id: string) {
+export async function getUserByID(id: string) {
   return BackendClient.get<User>(`/user/${id}`)
     .then((res) => { console.log('Successfully Found User'); return res.data as User; })
-    .catch((err) => { window.alert(err); return []; });
+    .catch((err) => { window.alert(err); });
 }
 
 export function deleteUser(id: string) {
