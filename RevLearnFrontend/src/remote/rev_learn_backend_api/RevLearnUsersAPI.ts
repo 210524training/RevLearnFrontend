@@ -6,11 +6,9 @@ import { REVLEARN_USER_KEY, REVLEARN_USER_SECRET } from 'react-native-dotenv';
 import { v4 as uuid } from 'uuid';
 import axios from 'axios';
 import { User } from '../../models/User';
-import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
 import { QuizSubmission } from '../../models/QuizSubmission';
 import { AssignmentSubmission } from '../../models/AssignmentSubmission';
-import { Assignment } from '../../models/Assignment';
 import BackendClient from '../RevLearnBackendClient';
 
 export const newStudent: User = {
