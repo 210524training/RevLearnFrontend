@@ -34,7 +34,7 @@ const CourseGradesPage: React.FC<Props> = () => {
   };
 
   return (
-    <CourseGradesStudentView user={user} course={course}/>
+    <CourseGradesStudentView/>
   );
 };
 

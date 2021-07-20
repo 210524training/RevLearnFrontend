@@ -12,17 +12,17 @@ export default {
     screens: {
       Root: {
         screens: {
-          LandingNav: {
+          Landing: {
             screens: {
               Landing: 'Landing',
             },
           },
-          LoginNav: {
+          Login: {
             screens: {
               Login: 'Login',
             },
           },
-          RegisterNav: {
+          Register: {
             screens: {
               RegisterPage: 'Register',
             },
@@ -75,19 +75,19 @@ export default {
       },
       CourseHome: {
         screens: {
-          CourseHomeNav: {
+          CourseHome: {
             screens: {
               CourseHomePage: 'CourseHomePage',
             },
           },
-          CourseResourcesNav: {
+          CourseResources: {
             screens: {
               CourseResourcesPage: 'CourseResourcesPage',
               DetailedResourcePage: 'DetailedResourcePage',
               AddCourseResourcePage: 'AddCourseResourcePage',
             },
           },
-          AssignmentsNav: {
+          Assignments: {
             screens: {
               AssignmentsPage: 'AssignmentsPage',
               SubmitAssignmentsPage: 'SubmitAssignmentsPage',
@@ -96,7 +96,7 @@ export default {
               DetaliedSubmissionPage: 'DetaliedSubmissionPage',
             },
           },
-          QuizzesNav: {
+          Quizzes: {
             screens: {
               QuizzesPage: 'QuizzesPage',
               QuizPage: 'QuizPage',
@@ -104,28 +104,28 @@ export default {
               QuizGradesPage: 'QuizGradesPage',
             },
           },
-          CourseInfoNav: {
+          CourseInfo: {
             screens: {
               CourseInfoPage: 'CourseInfoPage',
               UpdateCourseInfoPage: 'UpdateCourseInfoPage',
             },
           },
-          CourseGradesNav: {
+          CourseGrades: {
             screens: {
               CourseGradesPage: 'CourseGradesPage',
             },
           },
-          AdmissionRequestsNav: {
+          AdmissionRequests: {
             screens: {
               AdmissionRequestsPage: 'AdmissionRequestsPage',
             },
           },
-          StudentsNav: {
+          Students: {
             screens: {
               StudentsPage: 'StudentsPage',
             },
           },
-          AllCourseGradesNav: {
+          AllCourseGrades: {
             screens: {
               AllCourseGradesPage: 'AllCourseGradesPage',
             },

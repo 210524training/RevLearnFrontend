@@ -25,7 +25,7 @@ const LoginPage: React.FC<unknown> = (props) => {
 
   const handleLogin = async () => {
     await dispatch(loginAsync({ username, password }));
-    navigation.navigate('Home', { screen: 'HomePageNav' });
+    navigation.navigate('Home', { screen: 'HomePage' });
   };
 
   return (
@@ -63,7 +63,7 @@ const LoginPage: React.FC<unknown> = (props) => {
           </View>
           <Text
             onPress={() => {
-              navigation.navigate('Root', { screen: 'RegisterNav' });
+              navigation.navigate('Root', { screen: 'Register' });
             }} style={LoginPageStyles.title}
           >
               Don't have an account? Register!

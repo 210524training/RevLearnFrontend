@@ -32,6 +32,7 @@ const AddResource: React.FC<Props> = (props) => {
           console.log(response);
           const blob = await response.blob();
           console.log(blob);
+          uploadFile('test', blob);
           formData.append('file', blob);
         } catch(err) {
           console.log(err);
@@ -48,7 +49,7 @@ const AddResource: React.FC<Props> = (props) => {
         }); */
         console.log(formData);
         formData.append('testing', 'test');
-        uploadFile(formData);
+        /* uploadFile(formData); */
       }
     } catch(err) {
       console.log(err);
@@ -71,6 +72,7 @@ const AddResource: React.FC<Props> = (props) => {
       }
     } */
   };
+
   return (
     <>
       <Text>AddResource</Text>
