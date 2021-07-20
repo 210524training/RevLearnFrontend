@@ -129,17 +129,10 @@ export function getByUserName() {
   return newStudent;
 }
 
-<<<<<<< HEAD
 export async function getUserByID(id: string) {
   return BackendClient.get<User>(`/user/${id}`)
     .then((res) => { console.log('Successfully Found User'); return res.data as User; })
     .catch((err) => { window.alert(err); });
-=======
-export function getUserByID(id: string): Promise<User> {
-  return BackendClient.get<User>(`/user/${id}`)
-    .then((res) => { console.log('Successfully Found User'); return res.data as User; })
-    .catch((err) => { window.alert(err); throw new Error(err); });
->>>>>>> a394fff0d08d827abec02f905ecc767a93bb5f2f
 }
 
 export function deleteUser(id: string) {
