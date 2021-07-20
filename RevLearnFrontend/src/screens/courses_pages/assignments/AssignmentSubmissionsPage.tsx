@@ -25,7 +25,7 @@ const AssignmentsSubmissionsPage: React.FC<Props> = ({ route }) => {
   }, []);
 
   const NavToSubmissionDetails = (submission: AssignmentSubmission) => {
-    navigation.navigate('DetaliedSubmissionPage', { submission });
+    navigation.navigate('DetaliedSubmissionPage', { submission, assignment });
   };
 
   return (
