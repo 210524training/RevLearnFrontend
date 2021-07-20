@@ -66,7 +66,7 @@ function AppRootNavigator() {
         }}
       />
       <BottomTab.Screen
-        name="RegisterNav"
+        name="Register"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => <TabBarIcon name="menu" color={color} />,
