@@ -1,5 +1,6 @@
 import { Activity } from './Activity';
 import { Assignment } from './Assignment';
+import { Attachment } from './Attachment';
 import { Quiz } from './Quiz';
 import { User } from './User';
 
@@ -26,4 +27,5 @@ export interface Course{
   category: string,
   activities: (Assignment | Quiz)[],
   admissionRequests: string[],
+  resources: Attachment[],
 }

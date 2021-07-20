@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { SafeAreaConsumer, SafeAreaProvider } from 'react-native-safe-area-context';
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
-import { LandingNavParamList } from '../Types/NavigatorTypes';
+import { LandingNavParamList } from '../types/NavigatorTypes';
 import { LandingPageStyles } from '../styles/LandingPageStyles';
 import { Container } from '../styles/Container';
 import Logo from '../styles/Logo';

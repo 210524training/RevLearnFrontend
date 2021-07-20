@@ -4,6 +4,7 @@
 import * as AWS from 'aws-sdk';
 import { REVLEARN_USER_KEY, REVLEARN_USER_SECRET } from 'react-native-dotenv';
 import { v4 as uuid } from 'uuid';
+import axios from 'axios';
 import { User } from '../../models/User';
 import { Quiz } from '../../models/Quiz';
 import { Course } from '../../models/Course';
@@ -271,9 +272,6 @@ export function updatePassword(password: string, userID: string) {
 }
 
 export async function uploadFile(objectName: any, objectData: any) {
-  /* BackendClient.post('/upload', formData)
-    .then((res) => { console.log('successfull', res.data); })
-    .catch((err) => window.alert(err)); */
   console.log('recived: ', objectName);
   console.log('user key: ', REVLEARN_USER_KEY);
   console.log('secret: ', REVLEARN_USER_SECRET);
@@ -304,7 +302,7 @@ export async function uploadFile(objectName: any, objectData: any) {
   return key;
 }
 
-export async function getFile(key: string): Promise<string> {
+export async function getFileUrl(key: string): Promise<string> {
   const BUCKETNAME: string = 'p2-rev-learn-assets';
 
   AWS.config.update({ region: 'us-west-2' });
@@ -316,4 +314,13 @@ export async function getFile(key: string): Promise<string> {
   console.log('Sending retrive request');
   const params = { Bucket: 'p2-rev-learn-assets', Key: key };
   return s3bucket.getSignedUrl('getObject', params);
+}
+
+export async function downLoadFile(url: string) {
+  const s3Client = axios.create({
+    baseURL: url,
+  });
+  s3Client.get('')
+    .then((res) => { console.log('successfull', res.data); })
+    .catch((err) => window.alert(err));
 }
