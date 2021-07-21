@@ -1,5 +1,6 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Button } from 'react-native';
 import DisplayAllTeachersList from '../../../components/display_list/DisplayAllTeachersList';
 import WithHomeNavbar from '../../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { User } from '../../../models/User';
@@ -9,9 +10,11 @@ type Props = {
 
 }
 
-const AllTeachersPage: React.FC<Props> = (props) => {
+const AllTeachersPage: React.FC<Props> = () => {
   const [selected, setSelected] = useState<string>();
   const [teachers, setTeachers] = useState<User[]>();
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     (async () => {
@@ -20,8 +23,10 @@ const AllTeachersPage: React.FC<Props> = (props) => {
       setTeachers(result);
     })();
   }, []);
+
   return (
     <>
+      <Button title="New Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
       {teachers
         ? <DisplayAllTeachersList teachers={teachers} setSelected={setSelected}/>
         : <></>

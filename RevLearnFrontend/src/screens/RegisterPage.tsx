@@ -12,18 +12,15 @@ import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   loginAsync, logout, selectUser, UserState,
 } from '../hooks/slices/user.slice';
-
+import { Container } from '../styles/Container';
 import {
   addUser, getAllUsers,
 } from '../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import WithNavbar from '../components/higher_order_components/Navbars/WithNavBar';
+import { LandingPageStyles } from '../styles/LandingPageStyles';
+import { InputField } from '../styles/InputField';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
@@ -64,10 +61,10 @@ const RegisterScreen: React.FC<unknown> = (props) => {
     }
   };
   return (
-    <View style={styles.container}>
+    <View style={Container.container}>
       {user ? (
         <>
-          <Text style={styles.title}>
+          <Text style={LandingPageStyles.header}>
             Hello, {user.username}!
           </Text>
           <View />
@@ -80,19 +77,19 @@ const RegisterScreen: React.FC<unknown> = (props) => {
         </>
       ) : (
         <>
-          <Text style={styles.title}>Register</Text>
+          <Text style={LandingPageStyles.header}>Register</Text>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
 
           <View style={{ width: '100%', padding: 25 }}>
             <TextInput
-              style={{ fontSize: 18, margin: 10 }}
-              placeholder="Username"
+              style={ InputField.container }
+              label="Username"
               onChangeText={(text) => setUsername(text)}
               defaultValue={username}
             />
             <TextInput
               style={{ fontSize: 18, margin: 10 }}
-              placeholder="Password"
+              label="Password"
               onChangeText={(text) => setPassword(text)}
               defaultValue={password}
             />
