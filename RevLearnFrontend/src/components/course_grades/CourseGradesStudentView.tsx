@@ -11,7 +11,6 @@ import { Course } from '../../models/Course';
 import { CourseGrade } from '../../models/CourseGrade';
 import { User } from '../../models/User';
 import { getStudentCourses } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
-import { getActivityByID, getCourseByID, getStudentSubmissions } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import ActivitiesMap from './ActivitiesMap';
 
 type Props = {

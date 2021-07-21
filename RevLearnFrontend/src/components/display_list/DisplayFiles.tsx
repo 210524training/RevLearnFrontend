@@ -1,5 +1,7 @@
+/* eslint-disable no-unused-expressions */
 import React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Platform } from 'react-native';
+import * as FileSystem from 'expo-file-system';
 import { Attachment } from '../../models/Attachment';
 import { downLoadFile, getFileUrl } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import Linking from '../../hooks/Linking';
@@ -11,7 +13,23 @@ type Props = {
 const DisplayFiles: React.FC<Props> = ({ attachments }) => {
   const download = async (attachment: Attachment) => {
     const resultUrl = await getFileUrl(attachment.key);
-    Linking.openURL(resultUrl, '_blank');
+    console.log('retrived');
+    if(Platform.OS === 'web') {
+      Linking.openURL(resultUrl, '_blank');
+    } else {
+      // downLoadFile(attachment.key);
+      FileSystem.downloadAsync(
+        resultUrl,
+        `${FileSystem.documentDirectory}${attachment.name}.`,
+      )
+        .then(({ uri }) => {
+          console.log('Finished downloading to ', uri);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }
+
     // downLoadFile(resultUrl);
   };
 
