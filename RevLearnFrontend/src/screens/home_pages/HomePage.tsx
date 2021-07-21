@@ -21,13 +21,7 @@ const setStudentCourses = async (user: User, set: React.Dispatch<React.SetStateA
 const setTeacherCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[] | null>>): Promise<void> => set(await getTeacherCourses(user));
 
 const HomePage: React.FC<Props> = () => {
-  // const user: User = useAppSelector<UserState>(selectUser);
-  const user: User = {
-    username: 'user',
-    password: 'pass',
-    id: '123',
-    role: 'Student',
-  };
+  const user = useAppSelector<UserState>(selectUser);
 
   const dispatch = useAppDispatch();
 
@@ -35,10 +29,12 @@ const HomePage: React.FC<Props> = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if(user.role === 'Teacher') {
-      setTeacherCourses(user, setCourses);
-    } else if(user.role === 'Student') {
-      setStudentCourses(user, setCourses);
+    if(user) {
+      if(user.role === 'Teacher') {
+        setTeacherCourses(user, setCourses);
+      } else if(user.role === 'Student') {
+        setStudentCourses(user, setCourses);
+      }
     }
   }, []);
 
