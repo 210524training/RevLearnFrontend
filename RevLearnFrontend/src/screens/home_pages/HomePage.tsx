@@ -59,13 +59,11 @@ const HomePage: React.FC<Props> = () => {
     <View style={Container.container}>
       <Text style={LandingPageStyles.header}>My Courses:</Text>
       {courses && courses.map((course) => (
-        <ListItem>
-          <Card.Content>
-            <Pressable onPress={() => NavToCourseHome(course)}>
-              <Title>{course.courseTitle}</Title>
-            </Pressable>
-          </Card.Content>
-        </ListItem>
+        <Card.Content>
+          <Pressable onPress={() => NavToCourseHome(course)}>
+            <Title>{course.courseTitle}</Title>
+          </Pressable>
+        </Card.Content>
       ))
       }
       <Button title='Course Home Page' onPress={() => NavToCourseHome(null)}></Button>
