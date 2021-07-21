@@ -66,7 +66,7 @@ const LoginPage: React.FC<unknown> = (props) => {
             <Text>Don’t have an account? </Text>
             <TouchableOpacity>
               <Text style={LoginPageStyles.link} onPress={() => {
-                navigation.navigate('RegisterNav');
+                navigation.navigate('Register');
               }}>Sign up</Text>
             </TouchableOpacity>
           </View>
