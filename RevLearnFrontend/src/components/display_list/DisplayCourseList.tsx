@@ -22,10 +22,10 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
   };
   return (
     <>
-      {courses.map((element, index) => (
-        <ScrollView style={AllCoursesStyle.container} >
-          <ListItem key={index} >
-            <Text><Text style={AllCoursesStyle.header}>Course ID: </Text>{`${element.id}`}</Text>
+      <ScrollView style={AllCoursesStyle.container} >
+        {courses.map((element, index) => (
+          <ListItem key={index} style={AllCoursesStyle.container} >
+            <Text><Text style={AllCoursesStyle.header}>Course ID: </Text> {`${element.id}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Course Title: </Text>{`${element.courseTitle}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Start Date: </Text>{`${element.startDate}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>End Date: </Text>{`${element.endDate}`}</Text>
@@ -34,8 +34,8 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
             <Text><Text style={AllCoursesStyle.header}>Category: </Text>{`${element.category}`}</Text>
             {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
           </ListItem>
-        </ScrollView>
-      ))}
+        ))}
+      </ScrollView>
     </>
   );
 };

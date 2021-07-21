@@ -12,8 +12,11 @@ export const AllCoursesStyle = StyleSheet.create({
   header: {
     fontWeight: 'bold',
     fontSize: 17,
+    flex: 1,
+    flexDirection: 'column',
   },
-  button: {
-    fontWeight: 'bold',
+  value: {
+    flex: 1,
+    flexDirection: 'column',
   },
 });

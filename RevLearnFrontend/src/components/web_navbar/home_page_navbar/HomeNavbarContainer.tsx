@@ -4,7 +4,7 @@ import { useAppSelector } from '../../../hooks';
 import WebNavBarPresentation from './HomeNavbarPresentation';
 
 const HomeNavbarContainer = () => {
-  const user = useAppSelector<>()
+  // const user = useAppSelector<>()
   const Navigation = useNavigation();
 
   /**
