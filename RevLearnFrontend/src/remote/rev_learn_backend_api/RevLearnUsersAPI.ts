@@ -25,17 +25,21 @@ export const newStudent: User = {
  * @returns User: username, password
  */
 
-export const sendLogin = async (username: string, password: string): Promise<User> => {
-  console.log(username, password);
-
-  /* const { data: user } = await revLearnClient.post<User>('/login', {
-      username,
-      password,
-    });
-   */
-  console.log(newStudent);
-  return newStudent;
-};
+export function sendLogin(username: string, password: string) {
+  return BackendClient.post('/login', {
+    username,
+    password,
+  }).then((res) => {
+    if(res.data === null) {
+      window.alert('No user found');
+      throw new Error('No user found');
+    } else {
+      console.log('Logged in as ', res.data);
+      return res.data as User;
+    }
+  })
+    .catch((err) => { window.alert('Invalid Credentials'); throw new Error(err); });
+}
 
 /**
  *

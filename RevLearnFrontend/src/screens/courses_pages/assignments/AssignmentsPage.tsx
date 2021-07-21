@@ -5,6 +5,7 @@ import { ListItem } from 'react-native-elements';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
+import { UserState, selectUser } from '../../../hooks/slices/user.slice';
 import { Assignment } from '../../../models/Assignment';
 
 type Props = {
@@ -19,12 +20,20 @@ const AssignmentsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
   const navigation = useNavigation();
 
+  const user = useAppSelector<UserState>(selectUser);
+
   const createNavHandler = () => {
     navigation.navigate('CreateAssignmentPage');
   };
 
   const NavToAssignmentSubmissions = (assignment: Assignment) => {
-    navigation.navigate('AssignmentsSubmissionsPage', { assignment });
+    if(user) {
+      if(user.role === 'Teacher') {
+        navigation.navigate('AssignmentsSubmissionsPage', { assignment });
+      } else {
+        navigation.navigate('SubmitAssignmentsPage', { assignment });
+      }
+    }
   };
 
   return (

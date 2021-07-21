@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import {
   Button, Pressable, Text, View,
 } from 'react-native';
+import { Card, Title } from 'react-native-paper';
 import { ListItem } from 'react-native-elements';
+import { ScreenWidth } from 'react-native-elements/dist/helpers';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -12,6 +14,9 @@ import { Course } from '../../models/Course';
 import { User } from '../../models/User';
 import { getStudentCourses, getTeacherCourses } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { Container } from '../../styles/Container';
+import { LandingPageStyles } from '../../styles/LandingPageStyles';
+import { Card as StyleCards } from '../../styles/Cards';
+import Logo from '../../styles/Logo';
 
 type Props = {
 
@@ -21,13 +26,7 @@ const setStudentCourses = async (user: User, set: React.Dispatch<React.SetStateA
 const setTeacherCourses = async (user: User, set: React.Dispatch<React.SetStateAction<Course[] | null>>): Promise<void> => set(await getTeacherCourses(user));
 
 const HomePage: React.FC<Props> = () => {
-  // const user: User = useAppSelector<UserState>(selectUser);
-  const user: User = {
-    username: 'user',
-    password: 'pass',
-    id: '123',
-    role: 'Student',
-  };
+  const user = useAppSelector<UserState>(selectUser);
 
   const dispatch = useAppDispatch();
 
@@ -35,10 +34,12 @@ const HomePage: React.FC<Props> = () => {
   const navigation = useNavigation();
 
   useEffect(() => {
-    if(user.role === 'Teacher') {
-      setTeacherCourses(user, setCourses);
-    } else if(user.role === 'Student') {
-      setStudentCourses(user, setCourses);
+    if(user) {
+      if(user.role === 'Teacher') {
+        setTeacherCourses(user, setCourses);
+      } else if(user.role === 'Student') {
+        setStudentCourses(user, setCourses);
+      }
     }
   }, []);
 
@@ -54,17 +55,16 @@ const HomePage: React.FC<Props> = () => {
 
   return (
     <View style={Container.container}>
-      <Text>HomePage</Text>
-      <Text>My Courses:</Text>
+      <Text style={LandingPageStyles.header}>My Courses:</Text>
       {courses && courses.map((course, index) => (
-        <ListItem key={index}>
-          <Pressable onPress={() => NavToCourseHome(course)}>
-            <Text>{course.courseTitle}</Text>
+        <Card key={index} style={StyleCards.container}>
+          <Pressable style={StyleCards.item} onPress={() => NavToCourseHome(course)}>
+            <Title>{course.courseTitle}</Title>
           </Pressable>
-        </ListItem>
+          <Logo />
+        </Card>
       ))
       }
-      <Button title='Course Home Page' onPress={() => NavToCourseHome(null)}></Button>
     </View>
   );
 };
