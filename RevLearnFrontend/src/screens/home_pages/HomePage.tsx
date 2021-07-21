@@ -15,6 +15,8 @@ import { User } from '../../models/User';
 import { getStudentCourses, getTeacherCourses } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { Container } from '../../styles/Container';
 import { LandingPageStyles } from '../../styles/LandingPageStyles';
+import { Card as StyleCards } from '../../styles/Cards';
+import Logo from '../../styles/Logo';
 
 type Props = {
 
@@ -54,17 +56,15 @@ const HomePage: React.FC<Props> = () => {
   return (
     <View style={Container.container}>
       <Text style={LandingPageStyles.header}>My Courses:</Text>
-      {courses && courses.map((course) => (
-        <ListItem>
-          <Card.Content>
-            <Pressable onPress={() => NavToCourseHome(course)}>
-              <Title>{course.courseTitle}</Title>
-            </Pressable>
-          </Card.Content>
-        </ListItem>
+      {courses && courses.map((course, index) => (
+        <Card key={index} style={StyleCards.container}>
+          <Pressable style={StyleCards.item} onPress={() => NavToCourseHome(course)}>
+            <Title>{course.courseTitle}</Title>
+          </Pressable>
+          <Logo />
+        </Card>
       ))
       }
-      <Button title='Course Home Page' onPress={() => NavToCourseHome(null)}></Button>
     </View>
   );
 };
