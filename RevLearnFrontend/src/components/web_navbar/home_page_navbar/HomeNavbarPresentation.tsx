@@ -10,6 +10,7 @@ type Props = {
   NavToAllTeachers: () => void,
   NavToAllCourses: () => void,
   NavToGradesOverView: () => void,
+  role: string
 }
 const HomeNavbar: React.FC<Props> = ({
   NavToHomePage, NavToUserInfo, NavToSettings, NavToAllUsers, NavToAllTeachers, NavToAllCourses, NavToGradesOverView,

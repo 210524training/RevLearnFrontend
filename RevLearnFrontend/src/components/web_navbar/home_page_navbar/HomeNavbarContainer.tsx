@@ -1,8 +1,10 @@
 import { useNavigation } from '@react-navigation/native';
 import React from 'react';
+import { useAppSelector } from '../../../hooks';
 import WebNavBarPresentation from './HomeNavbarPresentation';
 
 const HomeNavbarContainer = () => {
+  const user = useAppSelector<>()
   const Navigation = useNavigation();
 
   /**
