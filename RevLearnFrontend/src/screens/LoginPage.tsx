@@ -17,7 +17,7 @@ import { Container } from '../styles/Container';
 import Logo from '../styles/Logo';
 import { InputField } from '../styles/InputField';
 
-const LoginPage: React.FC<unknown> = (props) => {
+const LoginPage: React.FC<unknown> = () => {
   const user = useAppSelector<UserState>(selectUser);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -25,8 +25,12 @@ const LoginPage: React.FC<unknown> = (props) => {
   const dispatch = useAppDispatch();
 
   const handleLogin = async () => {
-    await dispatch(loginAsync({ username, password }));
-    navigation.navigate('Home', { screen: 'HomePage' });
+    try {
+      await dispatch(loginAsync({ username, password }));
+      navigation.navigate('Home', { screen: 'HomePage' });
+    } catch(err) {
+      console.log(err.message);
+    }
   };
 
   return (
