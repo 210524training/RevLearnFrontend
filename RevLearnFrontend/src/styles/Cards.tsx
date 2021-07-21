@@ -4,13 +4,12 @@ import { StyleSheet } from 'react-native';
 export const Card = StyleSheet.create({
   container: {
     flex: 1,
-    margin: 20,
-    width: '75%',
-    // alignSelf: 'center',
-    // alignItems: 'center',
-    // justifyContent: 'center',
+    margin: 10,
+    width: '85%',
   },
   item: {
     alignSelf: 'center',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
