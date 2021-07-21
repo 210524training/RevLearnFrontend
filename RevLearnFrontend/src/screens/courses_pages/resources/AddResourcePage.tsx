@@ -9,7 +9,7 @@ import * as DocumentPicker from 'expo-document-picker';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
-import { getFile, uploadFile } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { uploadFile } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 
 import { Attachment } from '../../../models/Attachment';
 import { useAppSelector } from '../../../hooks';
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 const AddResource: React.FC<Props> = (props) => {
   const [fileKey, setFileKey] = useState<string>('');
   const [discription, setDiscription] = useState<string>('');
-  const [name, setName] = useState<string>('');
+  const [inputName, setName] = useState<string>('');
   const [url, setUrl] = useState<string>('');
   const course = useAppSelector<CourseState>(getCourse);
   const navigation = useNavigation();
@@ -49,20 +49,20 @@ const AddResource: React.FC<Props> = (props) => {
   const pickFile = async () => {
     try {
       const file: DocumentPicker.DocumentResult = await DocumentPicker.getDocumentAsync({
-        type: 'image/*',
+        type: '*/*',
       });
 
       if(file.type === 'success') {
         const { uri, type, name } = file;
-
-        const response = await fetch(uri);
+        const response = await fetch(Platform.OS === 'android' ? `file://${uri}` : uri);
         const blob = await response.blob();
         const key = await uploadFile(name, blob);
 
         const attachment: Attachment = {
           key,
-          name,
+          name: inputName,
           discription,
+          type,
         };
         const updatedCourse: Course = course as Course;
         updatedCourse.resources[0] ? updatedCourse.resources.push(attachment) : updatedCourse.resources = [attachment];
