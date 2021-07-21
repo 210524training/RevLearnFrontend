@@ -44,6 +44,7 @@ export const userSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, action) => action.payload)
       .addCase(loginAsync.rejected, (state, action) => {
         console.log(action.error);
+        throw new Error('Invalid credentials');
       });
   },
 });
