@@ -95,7 +95,7 @@ const RegisterScreen: React.FC<unknown> = (props) => {
           </View>
         </>
       )}
-    </View >
+    </View>
   );
 };
 
