@@ -1,6 +1,8 @@
 /* eslint-disable no-unused-expressions */
-import React from 'react';
-import { View, Button, Platform } from 'react-native';
+import React, { useState } from 'react';
+import {
+  View, Button, Platform, Image,
+} from 'react-native';
 import * as FileSystem from 'expo-file-system';
 import { Attachment } from '../../models/Attachment';
 import { downLoadFile, getFileUrl } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
@@ -11,6 +13,7 @@ type Props = {
 }
 
 const DisplayFiles: React.FC<Props> = ({ attachments }) => {
+  const [url, setUrl] = useState<string>();
   const download = async (attachment: Attachment) => {
     const resultUrl = await getFileUrl(attachment.key);
     console.log('retrived');
@@ -20,7 +23,7 @@ const DisplayFiles: React.FC<Props> = ({ attachments }) => {
       // downLoadFile(attachment.key);
       FileSystem.downloadAsync(
         resultUrl,
-        `${FileSystem.documentDirectory}${attachment.name}.`,
+        `${FileSystem.documentDirectory}${attachment.name}.${attachment.type}`,
       )
         .then(({ uri }) => {
           console.log('Finished downloading to ', uri);
@@ -31,6 +34,7 @@ const DisplayFiles: React.FC<Props> = ({ attachments }) => {
     }
 
     // downLoadFile(resultUrl);
+    // ${FileSystem.documentDirectory}
   };
 
   return (
@@ -40,6 +44,9 @@ const DisplayFiles: React.FC<Props> = ({ attachments }) => {
           <Button key={index} title={`Download ${element.name}`} onPress={(event) => { download(element); }}/>
         ))
       }
+
+      {url
+        && <Image source={{ uri: url }}/>}
     </View>
   );
 };

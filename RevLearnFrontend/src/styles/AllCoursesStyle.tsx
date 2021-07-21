@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 export const AllCoursesStyle = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'column',
     padding: 20,
     width: '100%',
     backgroundColor: '#00B2D4',
@@ -11,8 +12,11 @@ export const AllCoursesStyle = StyleSheet.create({
   header: {
     fontWeight: 'bold',
     fontSize: 17,
+    flex: 1,
+    flexDirection: 'column',
   },
-  button: {
-    fontWeight: 'bold',
+  value: {
+    flex: 1,
+    flexDirection: 'column',
   },
 });
