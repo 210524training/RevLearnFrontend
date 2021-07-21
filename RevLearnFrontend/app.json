@@ -32,7 +32,8 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      "expo-document-picker"
+      "expo-document-picker",
+      "expo-file-system"
     ]
   }
 }

@@ -106,22 +106,13 @@ export function getStudentSubmissions(course: Course, user: User): (QuizSubmissi
 
 export async function uploadFile(objectName: any, objectData: any) {
   console.log('recived: ', objectName);
-  console.log('user key: ', REVLEARN_USER_KEY);
-  console.log('secret: ', REVLEARN_USER_SECRET);
   const BUCKETNAME: string = 'p2-rev-learn-assets';
-  const userKey = REVLEARN_USER_KEY;
-  const secret = REVLEARN_USER_SECRET;
 
-  console.log({
-    apiVersion: 'latest',
-    accessKeyId: userKey,
-    secretAccessKey: secret,
-  });
   AWS.config.update({ region: 'us-west-2' });
   const s3bucket = new AWS.S3({
     apiVersion: 'latest',
-    accessKeyId: userKey,
-    secretAccessKey: secret,
+    accessKeyId: REVLEARN_USER_KEY,
+    secretAccessKey: REVLEARN_USER_SECRET,
   });
   const key = `Assets/${uuid()}${objectName}`;
 
@@ -149,11 +140,27 @@ export async function getFileUrl(key: string): Promise<string> {
   return s3bucket.getSignedUrl('getObject', params);
 }
 
-export async function downLoadFile(url: string) {
-  const s3Client = axios.create({
+export async function downLoadFile(key: string) {
+  /* const s3Client = axios.create({
     baseURL: url,
   });
-  s3Client.get('')
-    .then((res) => { console.log('successfull', res.data); })
-    .catch((err) => window.alert(err));
+  s3Client.getObject('') */
+
+  const BUCKETNAME: string = 'p2-rev-learn-assets';
+
+  AWS.config.update({ region: 'us-west-2' });
+  const s3bucket = new AWS.S3({
+    apiVersion: 'latest',
+    accessKeyId: REVLEARN_USER_KEY,
+    secretAccessKey: REVLEARN_USER_SECRET,
+  });
+  console.log('Sending download request');
+  const params = {
+    Bucket: BUCKETNAME,
+    Key: key,
+  };
+  s3bucket.getObject(params, (err, data) => {
+    if(err) console.log(err, err.stack); // an error occurred
+    else console.log(data); // successful response
+  });
 }
