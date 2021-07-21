@@ -54,15 +54,16 @@ const AddResource: React.FC<Props> = (props) => {
 
       if(file.type === 'success') {
         const { uri, type, name } = file;
+        console.log(type);
         const response = await fetch(Platform.OS === 'android' ? `file://${uri}` : uri);
         const blob = await response.blob();
         const key = await uploadFile(name, blob);
-
+        const fileType = name.split('.');
         const attachment: Attachment = {
           key,
           name: inputName,
           discription,
-          type,
+          type: fileType[fileType.length - 1],
         };
         const updatedCourse: Course = course as Course;
         updatedCourse.resources[0] ? updatedCourse.resources.push(attachment) : updatedCourse.resources = [attachment];

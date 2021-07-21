@@ -23,15 +23,17 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
   return (
     <>
       {courses.map((element, index) => (
-        <ScrollView key={index} style={AllCoursesStyle.container} >
-          <Text><Text style={AllCoursesStyle.header}>Course ID: </Text>{`${element.id}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>Course Title: </Text>{`${element.courseTitle}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>Start Date: </Text>{`${element.startDate}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>End Date: </Text>{`${element.endDate}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>Teacher: </Text>{`${element.teacherID}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>Passing Grade: </Text>{`${element.passingGrade}`}</Text>
-          <Text><Text style={AllCoursesStyle.header}>Category: </Text>{`${element.category}`}</Text>
-          {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
+        <ScrollView style={AllCoursesStyle.container} >
+          <ListItem key={index} >
+            <Text><Text style={AllCoursesStyle.header}>Course ID: </Text>{`${element.id}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Course Title: </Text>{`${element.courseTitle}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Start Date: </Text>{`${element.startDate}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>End Date: </Text>{`${element.endDate}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Teacher: </Text>{`${element.teacherID}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Passing Grade: </Text>{`${element.passingGrade}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Category: </Text>{`${element.category}`}</Text>
+            {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
+          </ListItem>
         </ScrollView>
       ))}
     </>

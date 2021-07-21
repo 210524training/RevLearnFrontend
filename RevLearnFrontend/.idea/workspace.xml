@@ -24,7 +24,7 @@
   <component name="ChangeListManager">
     <list default="true" id="57db61d4-f5c6-4774-a2c4-ba8a748520b4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/screens/RegisterPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/RegisterPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/home_pages/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/home_pages/HomePage.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,9 +69,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="82" y="93" width="1736" height="863" key="AVDManager" timestamp="1626790521670">
+    <state x="82" y="93" width="1736" height="863" key="AVDManager" timestamp="1626833711484">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="82" y="93" width="1736" height="863" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626790521670" />
+    <state x="82" y="93" width="1736" height="863" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1626833711484" />
   </component>
 </project>
