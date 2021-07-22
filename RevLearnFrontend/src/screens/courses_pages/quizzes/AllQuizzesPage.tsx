@@ -42,7 +42,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
       {Platform.OS === 'web' && <B input={'Quizzes'}/>}
       {
         quizzes?.map((quiz, index) => (
-          <View style={Container.container}>
+          <View key={index} style={Container.container}>
             <Card key={index} style={StyleCards.container} onPress={() => NavToQuizPage(quiz as Quiz)}>
               <Card.Content>
                 <Title style={ LandingPageStyles.header }>{quiz.title}</Title>
