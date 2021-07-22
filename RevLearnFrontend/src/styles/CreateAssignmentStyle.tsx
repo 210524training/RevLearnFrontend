@@ -1,10 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { Platform, StyleSheet } from 'react-native';
 
-export const AssignmentPageStyle = StyleSheet.create({
+export const CreateAssignmentStyle = StyleSheet.create({
   container: {
-    flex: 1,
-    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
@@ -18,14 +16,21 @@ export const AssignmentPageStyle = StyleSheet.create({
   },
   listItemContainer: {
     width: Platform.OS !== 'web' ? '85%' : '90%',
-    flexDirection: 'column',
     margin: 20,
+    justifyContent: 'center',
     backgroundColor: '#19D9FF',
+  },
+  item: {
+    padding: 20,
+  },
+  item1: {
+    margin: 20,
   },
   background: {
     backgroundColor: '#19D9FF',
   },
   background2: {
     backgroundColor: '#00B2D4',
+    padding: 20,
   },
 });
