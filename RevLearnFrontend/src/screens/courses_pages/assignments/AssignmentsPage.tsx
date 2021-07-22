@@ -1,8 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useEffect, useState } from 'react';
-import {
-  Button, Pressable, Text, View,
-} from 'react-native';
+import React from 'react';
+import { Button, Text, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppSelector } from '../../../hooks';
@@ -42,9 +40,15 @@ const AssignmentsPage: React.FC<Props> = () => {
   return (
     <View style={AssignmentPageStyle.container}>
       <Text style={AssignmentPageStyle.header}>Assignments Page</Text>
-      <View>
-        <Button title={'Create Assignment'} onPress={createNavHandler}>Create Assignment</Button>
-      </View>
+
+      {
+        user?.role === 'Teacher' && (
+          <View>
+            <Button title={'Create Assignment'} onPress={createNavHandler}>Create Assignment</Button>
+          </View>
+        )
+      }
+
       {
         course?.activities.map((activity, index) => (
           <>
