@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Button, Text, View,
+  Button, ScrollView, Text, View,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,7 +15,6 @@ import { Assignment } from '../../../models/Assignment';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
 import { LandingPageStyles } from '../../../styles/LandingPageStyles';
-import { Container } from '../../../styles/Container';
 
 type Props = {
 
@@ -64,7 +63,8 @@ const CreateAssignmentPage: React.FC<Props> = () => {
   };
 
   return (
-    <View>
+    <ScrollView>
+      <Text>CreateAssignmentsPage</Text>
       <View>
         <Text style={LandingPageStyles.headerFont}>Assignment Title:</Text>
         <TextInput
@@ -82,7 +82,7 @@ const CreateAssignmentPage: React.FC<Props> = () => {
       <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
       <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>
       <Button title={'Submit'} onPress={handleSubmit}/>
-    </View>
+    </ScrollView>
   );
 };
 
