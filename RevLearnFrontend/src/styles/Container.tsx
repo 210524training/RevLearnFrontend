@@ -13,9 +13,10 @@ export const Container = StyleSheet.create({
     justifyContent: 'center',
   },
   CenterOnly: {
-    width: Platform.OS !== 'web' ? '60%' : '25%',
+    width: '100%',
     alignSelf: 'center',
     alignItems: 'center',
+    backgroundColor: '#00B2D4',
     justifyContent: 'center',
   },
 });

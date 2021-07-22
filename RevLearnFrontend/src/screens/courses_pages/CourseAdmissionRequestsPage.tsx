@@ -21,8 +21,10 @@ const getUsers = async (course: Course) => {
 
   for(let i = 0; i < course.admissionRequests.length; i++) {
     const user = await getUserByID(course.admissionRequests[i]);
-    console.log('adding user: ', user);
-    requestList.push(user);
+    if(user) {
+      console.log('adding user: ', user);
+      requestList.push(user);
+    }
   }
 
   console.log('request list item:', requestList[0]);

@@ -7,6 +7,7 @@ import { selectUser, UserState } from '../../hooks/slices/user.slice';
 import { User } from '../../models/User';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { AllStudentsPageStyle } from '../../styles/AllStudentsPageStyle';
+import { Container } from '../../styles/Container';
 import B from '../BoldText';
 
 type Props = {
@@ -30,7 +31,7 @@ const DisplayAllStudents: React.FC<Props> = ({ students }) => {
   };
 
   return (
-    <View style={AllStudentsPageStyle.container}>
+    <View style={Container.container}>
       {students.map((element, index) => (
         <View key={index} style={AllStudentsPageStyle.listItemContainer}>
           <Text style={{ paddingBottom: 10 }}><B input={'Student: '}/>{`${element.username}`}</Text>

@@ -12,6 +12,7 @@ import { Course } from '../../../models/Course';
 import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 import { Buttons } from '../../../styles/Buttons';
 import { Container } from '../../../styles/Container';
+import { Card as StyleCards } from '../../../styles/Cards';
 
 type Props = {
 
@@ -37,7 +38,19 @@ const AllQuizzesPage: React.FC<Props> = () => {
   const quizzes = course?.activities.filter((activity) => isQuiz(activity));
 
   return (
-    <>
+    <View style={Container.container}>
+      {
+        quizzes?.map((quiz, index) => (
+          <View style={Container.container}>
+            <Card key={index} style={StyleCards.container} onPress={() => NavToQuizPage(quiz as Quiz)}>
+              <Card.Content>
+                <Title style={ LandingPageStyles.header }>{quiz.title}</Title>
+              </Card.Content>
+            </Card>
+          </View>
+        ))
+      }
+
       {
         user && user.role === 'Teacher' && (
           <View style={ Container.CenterOnly }>
@@ -47,19 +60,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
           </View>
         )
       }
-
-      {
-        quizzes?.map((quiz, index) => (
-          <View key={index}>
-            <Card onPress={() => NavToQuizPage(quiz as Quiz)}>
-              <Card.Content>
-                <Title style={ LandingPageStyles.headerFont }>{quiz.title}</Title>
-              </Card.Content>
-            </Card>
-          </View>
-        ))
-      }
-    </>
+    </View>
   );
 };
 

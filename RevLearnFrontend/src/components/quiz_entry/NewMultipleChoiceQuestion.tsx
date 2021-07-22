@@ -9,6 +9,7 @@ import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
 import MultipleChoiceQuizQuestion from '../../models/MultipleChoiceQuizQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../types/MyTypes';
+import { InputField } from '../../styles/InputField';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');
@@ -52,25 +53,25 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
   return (
     <>
       <Text>Question Title</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setTitle} />
+      <TextInput style={InputField.container} onChangeText={setTitle} />
 
       <Text>Point Value</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setPointValue} />
+      <TextInput style={InputField.container} onChangeText={setPointValue} />
 
       <Text>Question Prompt</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setPrompt} />
+      <TextInput style={InputField.container} onChangeText={setPrompt} />
 
       <Text>Option A</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setOptionA} />
+      <TextInput style={InputField.container} onChangeText={setOptionA} />
 
       <Text>Option B</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setOptionB} />
+      <TextInput style={InputField.container} onChangeText={setOptionB} />
 
       <Text>Option C</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setOptionC} />
+      <TextInput style={InputField.container} onChangeText={setOptionC} />
 
       <Text>Option D</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setOptionD} />
+      <TextInput style={InputField.container} onChangeText={setOptionD} />
 
       <Text>Correct Answer:</Text>
       <RadioForm radio_props={radioOptions} initial={0} onPress={(value: string) => setAnswer(value as MultipleChoiceOption)} />
