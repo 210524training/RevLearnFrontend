@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import {
-  Text, Button, Platform, Image, StyleSheet,
+  Text, Platform, StyleSheet,
 } from 'react-native';
 /* import DocumentPicker, { DocumentPickerOptions, PlatformTypes } from 'react-native-document-picker'; */
 import * as DocumentPicker from 'expo-document-picker';
-
+import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { TextInput } from 'react-native-gesture-handler';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -16,6 +16,9 @@ import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { Course } from '../../../models/Course';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { View } from '../../../components/Themed';
+import { AddResourceStyles } from '../../../styles/ResourceStyles';
+import B from '../../../components/BoldText';
 
 type Props = {
 
@@ -80,18 +83,26 @@ const AddResource: React.FC<Props> = (props) => {
   };
 
   return (
-    <>
-      <Text>AddResource</Text>
-      <Text>Resource Name: </Text>
-      <TextInput onChangeText={(event) => { setName(event); }} placeholder='Textbook'/>
-      <Text>Resource Discription: </Text>
+    <View style={AddResourceStyles.container}>
+      {Platform.OS === 'web' && <B input={'Add Resource'}/>}
+      <Text style={AddResourceStyles.item}>Resource Name: </Text>
+      <TextInput style={AddResourceStyles.inputItem} onChangeText={(event) => { setName(event); }} placeholder='Textbook'/>
+      <Text style={AddResourceStyles.item}>Resource Discription: </Text>
       <TextInput
+        style={AddResourceStyles.inputItemMulti}
         multiline={true}
         numberOfLines={5}
         onChangeText={(event) => { setDiscription(event); }}
         placeholder={'Enter a discription of the the attachment'}/>
-      <Button title={'Upload File'} onPress={pickFile}/>
-    </>
+      <Button
+        style={AddResourceStyles.item}
+        color='#00B2D4'
+        mode={'contained'}
+        onPress={pickFile}
+      >
+        Upload File
+      </Button>
+    </View>
   );
 };
 
