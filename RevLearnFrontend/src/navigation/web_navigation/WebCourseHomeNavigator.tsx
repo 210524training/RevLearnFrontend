@@ -46,10 +46,6 @@ function AppCourseHomeNavigator() {
               component={StudentsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
             <StackNav.Screen
-              name="AllCourseGrades"
-              component={AllCourseGradesNavigator}
-              options={{ headerTitle: 'All Course Grades' }}/>
-            <StackNav.Screen
               name="AdmissionRequests"
               component={AdmissionRequestsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>

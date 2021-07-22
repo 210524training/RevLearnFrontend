@@ -13,7 +13,6 @@ type Props = {
   NavToCourseGrades: () => void,
   NavToAdmissionRequests: () => void,
   NavToStudents: () => void,
-  NavToAllCourseGrades: () => void,
 }
 const CourseHomeNavbar: React.FC<Props> = ({
   NavToCourseHome, NavToCourseResources, NavToAssignments, NavToQuizzes, NavToCourseInfo, NavToCourseGrades, NavToAdmissionRequests, NavToStudents, NavToAllCourseGrades,
@@ -27,11 +26,11 @@ const CourseHomeNavbar: React.FC<Props> = ({
       <Text style={NavBarStyles.navItem} onPress={NavToQuizzes}>Quizzes</Text>
       <Text style={NavBarStyles.navItem} onPress={NavToCourseInfo}>CourseInfo</Text>
 
+      <Text style={NavBarStyles.navItem} onPress={NavToCourseGrades}>CourseGrades</Text>
       {/* Teacher */}
       {
         user?.role === 'Teacher' && (
           <>
-            <Text style={NavBarStyles.navItem} onPress={NavToAllCourseGrades}>AllCourseGrades</Text>
             <Text style={NavBarStyles.navItem} onPress={NavToStudents}>Students</Text>
             <Text style={NavBarStyles.navItem} onPress={NavToAdmissionRequests}>AdmissionRequests</Text>
           </>
