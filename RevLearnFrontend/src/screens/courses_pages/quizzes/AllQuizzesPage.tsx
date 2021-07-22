@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button, ListItem } from 'react-native-elements';
-import { Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
+import { View } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';

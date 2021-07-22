@@ -40,15 +40,13 @@ const DynamicDatePicker: React.FC<Props> = (props) => {
   return (
     <>
 
-      <Text style={LandingPageStyles.header}>{props.title ? props.title : 'Select Date:'}</Text>
-
       {Platform.OS !== 'web'
         ? (<>
           <View style={Buttons.container}>
-            <Button onPress={showDatepicker} title="Show date picker!" />
+            <Button onPress={showDatepicker} title={props.title ? props.title : 'Select Date:'}/>
           </View>
           {show ? <DateTimePicker date={date} onChange={change} value={date} mode={mode} is24Hour={true} display="default"/> : <></>}
-          <Text>{props.date}</Text>
+          <Text style={LandingPageStyles.h2}>{props.date}</Text>
         </>)
         : (
           <View>
