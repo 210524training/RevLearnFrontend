@@ -1,7 +1,8 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import B from '../../components/BoldText';
 import DisplayAdmissionRequestsList from '../../components/display_list/DisplayAdmissionRequestsList';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -62,10 +63,10 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <View style={{ backgroundColor: '#00B2D4', padding: 20 }}>
       {
         course && (
-          <Text>Enrollment Requests for {course.courseTitle}</Text>
+          <Text> <B input={'Enrollment Requests For: '}/>{course.courseTitle}</Text>
         )
       }
       {
@@ -75,7 +76,7 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
           <Text>No Requests Found</Text>
         )
       }
-    </>
+    </View>
   );
 };
 
