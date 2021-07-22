@@ -95,11 +95,13 @@ const QuizPage: React.FC<Props> = ({ route }) => {
 
   return (
     <View>
-      <Text style={LandingPageStyles.headerFont}>{quiz.title}</Text>
-      <Text style={LandingPageStyles.h2}>{quiz.description}</Text>
+      <View style={Container.quizHeadingContainer}>
+        <Text style={LandingPageStyles.headerFont}>{quiz.title}</Text>
+        <Text style={LandingPageStyles.h2}>{quiz.description}</Text>
+      </View>
       {
         quiz.questions.map((question: QuizQuestion, index: number) => (
-          <View style={Container.container}>
+          <View>
             <Text>{question.questionTitle}</Text>
             <Text>{question.prompt}</Text>
             {

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View } from 'react-native';
+import { Platform, Text, View } from 'react-native';
 import { ButtonGroup } from 'react-native-elements';
 import NewShortAnswerQuestion from './NewShortAnswerQuestion';
 import NewMultipleChoiceQuestion from './NewMultipleChoiceQuestion';
@@ -18,7 +18,7 @@ const NewQuestion: React.FC<Props> = (props) => {
   return (
     <View style={Container.container}>
       <Text style={LandingPageStyles.headerFont}>Form New Question</Text>
-      <ButtonGroup onPress={setQuestionType} selectedIndex={questionType} buttons={options} />
+      <ButtonGroup containerStyle={Container.createQuizContainer} onPress={setQuestionType} selectedIndex={questionType} buttons={options}/>
       {
         (!questionType)
           ? <NewShortAnswerQuestion />

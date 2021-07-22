@@ -3,7 +3,9 @@ import React, { useEffect, useState } from 'react';
 import {
   ScrollView, Text, View,
 } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import {
+  TextInput, Button, Card, Paragraph, Title,
+} from 'react-native-paper';
 import { ListItem } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -77,6 +79,7 @@ const CreateQuizPage: React.FC<Props> = () => {
   return (
     <ScrollView>
       <View style={Container.container}>
+        <Text style={LandingPageStyles.header}>Create a Quiz</Text>
         <TextInput
           style={InputField.container}
           label='Quiz Title'
@@ -98,12 +101,12 @@ const CreateQuizPage: React.FC<Props> = () => {
       </View>
       {
         questions.map((question, index) => (
-          <ListItem key={index}>
-            <View style={{ borderWidth: 1 }}>
-              <Text>{question.questionTitle}</Text>
-              <Text>{question.prompt}</Text>
-            </View>
-          </ListItem>
+          <Card key={index}>
+            <Card.Content>
+              <Title>{question.questionTitle}</Title>
+              <Paragraph>{question.prompt}</Paragraph>
+            </Card.Content>
+          </Card>
         ))
       }
       <NewQuestion />

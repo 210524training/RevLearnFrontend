@@ -12,11 +12,17 @@ export const Container = StyleSheet.create({
     backgroundColor: '#00B2D4',
     justifyContent: 'center',
   },
+  createQuizContainer: {
+    width: Platform.OS !== 'web' ? '100%' : '25%',
+  },
   CenterOnly: {
     width: '100%',
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00B2D4',
     justifyContent: 'center',
+  },
+  quizHeadingContainer: {
+    marginBottom: 10,
   },
 });

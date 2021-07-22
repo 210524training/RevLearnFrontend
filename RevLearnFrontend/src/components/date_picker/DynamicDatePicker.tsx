@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import {
-  View, Text, TextInput, Platform, Button,
+  View, Text, Platform, Button,
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { LandingPageStyles } from '../../styles/LandingPageStyles';
 import { Buttons } from '../../styles/Buttons';
 import { Container } from '../../styles/Container';
+import { InputField } from '../../styles/InputField';
 
 type Props = {
   setDate: (dateStr: string) => void,

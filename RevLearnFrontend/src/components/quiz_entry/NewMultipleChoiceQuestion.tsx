@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Text, TextInput } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Text } from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
@@ -9,6 +9,7 @@ import { addQuestion } from '../../hooks/slices/question.slice';
 import { MultipleChoiceQuizQuestion } from '../../models/MultipleChoiceQuizQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../Types/MyTypes';
 import { InputField } from '../../styles/InputField';
+import { LandingPageStyles } from '../../styles/LandingPageStyles';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');
@@ -51,28 +52,21 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
   return (
     <>
-      <Text>Question Title</Text>
-      <TextInput style={InputField.newQuestionContainer} onChangeText={setTitle} />
+      <TextInput style={InputField.newQuestionContainer} label="Question Title" onChangeText={setTitle} />
 
-      <Text>Point Value</Text>
-      <TextInput style={InputField.newQuestionContainer} onChangeText={setPointValue} />
+      <TextInput style={InputField.newQuestionContainer} label="Point Value" onChangeText={setPointValue} />
 
-      <Text>Question Prompt</Text>
-      <TextInput style={InputField.newQuestionContainer} onChangeText={setPrompt} />
+      <TextInput style={InputField.newQuestionContainer} label="Question Prompt"onChangeText={setPrompt} />
 
-      <Text>Option A</Text>
-      <TextInput style={InputField.newQuestionContainer} onChangeText={setOptionA} />
+      <TextInput style={InputField.newQuestionContainer} label="Option A" onChangeText={setOptionA} />
 
-      <Text>Option B</Text>
-      <TextInput style={InputField.newQuestionContainer} onChangeText={setOptionB} />
+      <TextInput style={InputField.newQuestionContainer} label="Option B" onChangeText={setOptionB} />
 
-      <Text>Option C</Text>
-      <TextInput style={InputField.container} onChangeText={setOptionC} />
+      <TextInput style={InputField.newQuestionContainer} label="Option C" onChangeText={setOptionC} />
 
-      <Text>Option D</Text>
-      <TextInput style={InputField.container} onChangeText={setOptionD} />
+      <TextInput style={InputField.newQuestionContainer} label="Option D" onChangeText={setOptionD} />
 
-      <Text>Correct Answer:</Text>
+      <Text style={LandingPageStyles.h2}>Correct Answer:</Text>
       <RadioForm radio_props={radioOptions} initial={0} onPress={(value: string) => setAnswer(value as MultipleChoiceOption)} />
 
       <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
