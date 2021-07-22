@@ -15,7 +15,7 @@ type Props = {
   NavToStudents: () => void,
 }
 const CourseHomeNavbar: React.FC<Props> = ({
-  NavToCourseHome, NavToCourseResources, NavToAssignments, NavToQuizzes, NavToCourseInfo, NavToCourseGrades, NavToAdmissionRequests, NavToStudents, NavToAllCourseGrades,
+  NavToCourseHome, NavToCourseResources, NavToAssignments, NavToQuizzes, NavToCourseInfo, NavToCourseGrades, NavToAdmissionRequests, NavToStudents,
 }) => {
   const user = useAppSelector<UserState>(selectUser);
   return (
@@ -25,8 +25,8 @@ const CourseHomeNavbar: React.FC<Props> = ({
       <Text style={NavBarStyles.navItem} onPress={NavToAssignments}>Assignments</Text>
       <Text style={NavBarStyles.navItem} onPress={NavToQuizzes}>Quizzes</Text>
       <Text style={NavBarStyles.navItem} onPress={NavToCourseInfo}>CourseInfo</Text>
-
       <Text style={NavBarStyles.navItem} onPress={NavToCourseGrades}>CourseGrades</Text>
+
       {/* Teacher */}
       {
         user?.role === 'Teacher' && (
