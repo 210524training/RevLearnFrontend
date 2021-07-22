@@ -67,7 +67,9 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
       <TextInput style={InputField.newQuestionContainer} label="Option D" onChangeText={setOptionD} />
 
       <Text style={LandingPageStyles.h2}>Correct Answer:</Text>
-      <RadioForm radio_props={radioOptions} initial={0} onPress={(value: string) => setAnswer(value as MultipleChoiceOption)} />
+
+      { /* Ignore this error, it works fine */}
+      <RadioForm selectedButtonColor={'black'} buttonColor={'black'} radio_props={radioOptions} initial={0} onPress={(value: string) => setAnswer(value as MultipleChoiceOption)} />
 
       <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
     </>
