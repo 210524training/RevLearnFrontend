@@ -1,6 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
-import React, { useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import React, { useState, useImperativeHandle, useEffect } from 'react';
+import {
+  Platform, ScrollView, Text, View,
+} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
@@ -11,8 +13,9 @@ import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.
 import { Course } from '../../../models/Course';
 import { Assignment } from '../../../models/Assignment';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
-import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
-import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { AssignmentType, LetterGrade } from '../../../types/MyTypes';
+import { CreateAssignmentStyle } from '../../../styles/CreateAssignmentStyle';
+import B from '../../../components/BoldText';
 
 type Props = {
 
@@ -26,11 +29,20 @@ const CreateAssignmentPage: React.FC<Props> = () => {
   const [assignmentType, SetAssignmentType] = useState<string>('Homework');
   const [assignmentTitle, SetAssignmentTitle] = useState<string>('Homework');
   const [assignmentDescription, SetAssignmentDescription] = useState<string>('Homework');
-  const [startDateStr, SetStartDateStr] = useState<string>('');
-  const [endDateStr, SetEndDateStr] = useState<string>('');
+  const [startDateStr, SetStartDateStr] = useState<string>(new Date(Date.now()).toString());
+  const [endDateStr, SetEndDateStr] = useState<string>(new Date(Date.now()).toString());
+  const [startDate, SetStartDate] = useState<string>('');
+  const [endDate, SetEndDate] = useState<string>('');
   const [PassingGrade, SetPassingGrade] = useState<string>('');
   const Options: string[] = ['Homework', 'Project', 'Paper', 'Report'];
   const gradeOptions: string[] = ['A', 'B', 'C', 'D', 'F'];
+
+  useEffect(() => {
+    const start = startDateStr.split(' ');
+    const end = endDateStr.split(' ');
+    SetStartDate(`${start[1]} ${start[2]} ${start[3]}`);
+    SetEndDate(`${end[1]} ${end[2]} ${end[3]}`);
+  }, [startDateStr, endDateStr]);
 
   const handleSubmit = async () => {
     if(course) {
@@ -61,14 +73,14 @@ const CreateAssignmentPage: React.FC<Props> = () => {
   };
 
   return (
-    <ScrollView>
-      <Text>CreateAssignmentsPage</Text>
+    <ScrollView style={CreateAssignmentStyle.background2}>
+      {Platform.OS === 'web' && <B input={'Create Assignments Page'}/>}
       <View>
-        <Text style={LandingPageStyles.headerFont}>Assignment Title:</Text>
+        <View style={CreateAssignmentStyle.item}><B input={'Assignment Title: '}/></View>
         <TextInput
           onChangeText={(change) => { SetAssignmentTitle(change); }}
           placeholder={'Creative Writing Paper'}/>
-        <Text style={LandingPageStyles.headerFont}>{'Assignment'} Description:</Text>
+        <View style={CreateAssignmentStyle.item}><B input={'Assignment Description:'}/></View>
         <TextInput
           multiline={true}
           onChangeText={(change) => { SetAssignmentDescription(change); }}
@@ -77,9 +89,9 @@ const CreateAssignmentPage: React.FC<Props> = () => {
       <DynamicDropdown Selected={assignmentType} setSelected={SetAssignmentType} OptionsList={Options} title={'Assignment Type'}/>
       <DynamicDropdown Selected={PassingGrade} OptionsList={gradeOptions} setSelected={SetPassingGrade} title={'Passing Grade'}/>
       {/* <DynamicSlider SetValue={SetPassingGrade} Step={5} Title={'Passing Grade: '} MaxValue={100} MinValue={50} CurrentValue={PassingGrade}/> */}
-      <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
-      <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>
-      <Button mode="contained" color="#19D9FF" onPress={handleSubmit}>Create Assignment</Button>
+      <DynamicDatePicker date={startDate} setDate={SetStartDateStr} title={'Start Date'}/>
+      <DynamicDatePicker date={endDate} setDate={SetEndDateStr} title={'End Date'}/>
+      <Button style={CreateAssignmentStyle.item1} mode="contained" color="#19D9FF" onPress={handleSubmit}>Create Assignment</Button>
     </ScrollView>
   );
 };
