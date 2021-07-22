@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { View } from 'react-native';
 import { Card, Paragraph, Title } from 'react-native-paper';
 import { User } from '../../models/User';
@@ -6,11 +6,10 @@ import { Container } from '../../styles/Container';
 import { Card as StyleCards } from '../../styles/Cards';
 
 type Props = {
-teachers: User[],
-setSelected: Dispatch<SetStateAction<string | undefined>>;
+  teachers: User[],
 }
 
-const DisplayAllTeachersList: React.FC<Props> = ({ teachers, setSelected }) => (
+const DisplayAllTeachersList: React.FC<Props> = ({ teachers }) => (
   <View style={Container.container}>
     {teachers.map((element, index) => (
       <Card key={index} style={StyleCards.container}>

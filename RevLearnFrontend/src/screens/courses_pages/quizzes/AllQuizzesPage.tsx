@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button, ListItem } from 'react-native-elements';
-import { Text, View } from 'react-native';
+import { Button } from 'react-native-elements';
+import { View } from 'react-native';
 import { Card, Title } from 'react-native-paper';
 import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -39,6 +39,16 @@ const AllQuizzesPage: React.FC<Props> = () => {
   return (
     <>
       {
+        user && user.role === 'Teacher' && (
+          <View style={ Container.CenterOnly }>
+            <View style={ Buttons.container }>
+              <Button onPress={NavToNewQuiz} title='Create Quiz' />
+            </View>
+          </View>
+        )
+      }
+
+      {
         quizzes?.map((quiz, index) => (
           <View key={index}>
             <Card onPress={() => NavToQuizPage(quiz as Quiz)}>
@@ -48,16 +58,6 @@ const AllQuizzesPage: React.FC<Props> = () => {
             </Card>
           </View>
         ))
-      }
-      {
-        // user && user.role === 'Teacher' && (
-        true && (
-          <View style={ Container.CenterOnly }>
-            <View style={ Buttons.container }>
-              <Button onPress={NavToNewQuiz} title='+ Quiz' />
-            </View>
-          </View>
-        )
       }
     </>
   );

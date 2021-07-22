@@ -44,10 +44,6 @@ function AppCourseHomeNavigator() {
               component={StudentsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
             <DrawerNav.Screen
-              name="AllCourseGrades"
-              component={AllCourseGradesNavigator}
-              options={{ headerTitle: 'All Course Grades' }}/>
-            <DrawerNav.Screen
               name="AdmissionRequests"
               component={AdmissionRequestsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>

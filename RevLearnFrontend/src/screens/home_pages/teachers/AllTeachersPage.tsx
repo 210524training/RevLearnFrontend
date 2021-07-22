@@ -13,7 +13,6 @@ type Props = {
 }
 
 const AllTeachersPage: React.FC<Props> = () => {
-  const [selected, setSelected] = useState<string>();
   const [teachers, setTeachers] = useState<User[]>();
 
   const navigation = useNavigation();
@@ -28,21 +27,18 @@ const AllTeachersPage: React.FC<Props> = () => {
 
   return (
     <View style={Container.container}>
-      {teachers ? (
-        <DisplayAllTeachersList teachers={teachers} setSelected={setSelected}/>
-      ) : <></>
-      }
       <View style={Buttons.container}>
-        <Button title="Create New Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
+        <Button title="Create Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
       </View>
+
+      {
+        teachers && (
+          <DisplayAllTeachersList teachers={teachers} />
+        )
+      }
+
     </View>
   );
 };
-
-// Navigate to Create Teacher
-/**
- * const navigation = useNavigation();
- * navigation.navigate('CreateTeacher');
- */
 
 export default WithHomeNavbar(AllTeachersPage);

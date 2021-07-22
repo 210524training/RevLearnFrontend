@@ -9,25 +9,10 @@ type Props = {
 
 }
 
-const AllCourseGradesPage: React.FC<Props> = () => {
-  const course: Course = {
-    id: '1234',
-    courseTitle: 'Calculus',
-    startDate: new Date(Date.now()).toString(),
-    endDate: new Date(Date.now()).toString(),
-    teacherID: 'ProfessorC',
-    passingGrade: 'C',
-    category: 'Mathematic',
-    students: [],
-    activities: [],
-    admissionRequests: [],
-  };
+const AllCourseGradesPage: React.FC<Props> = () => (<>
+  {/* <CourseGradesTeacherView course={course} /> */}
 
-  return (<>
-    {/* <CourseGradesTeacherView course={course} /> */}
-
-    <CourseGradesStudentView/>
-  </>);
-};
+  <CourseGradesStudentView/>
+</>);
 
 export default WithCourseNavbar(AllCourseGradesPage);
