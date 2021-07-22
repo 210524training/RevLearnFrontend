@@ -40,7 +40,7 @@ const SubmitAssignmentPage: React.FC<Props> = ({ route }) => {
         type: '*/*',
       });
 
-      if(file.type === 'success') {
+      if(course && file.type === 'success') {
         const { uri, type, name } = file;
 
         const response = await fetch(Platform.OS === 'android' ? `file://${uri}` : uri);
@@ -61,10 +61,22 @@ const SubmitAssignmentPage: React.FC<Props> = ({ route }) => {
           attachment: [attachment],
         };
 
-        const updatedCourse: Course = course as Course;
-        updatedCourse.activities.find((activity: (Quiz | Assignment)) => activity.ID === assignment.ID)?.submissions.push(submission);
+        const updatedActivity = course.activities.find((activity: (Quiz | Assignment)) => activity.ID === assignment.ID);
+        const otherActivities = course.activities.filter((activity: (Quiz | Assignment)) => activity.ID !== assignment.ID);
 
-        await updateCourse(updatedCourse);
+        if(updatedActivity) {
+          updatedActivity.submissions.push(submission);
+          const updatedCourse: Course = {
+            ...course,
+            activities: [
+              ...otherActivities,
+              updatedActivity,
+            ],
+          };
+
+          await updateCourse(updatedCourse);
+        }
+
         navigation.goBack();
         /* setFileKey(key);
         const resultUrl = await getFile(fileKey);

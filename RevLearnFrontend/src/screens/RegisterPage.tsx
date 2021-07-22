@@ -22,7 +22,7 @@ import Logo from '../styles/Logo';
 import { Buttons } from '../styles/Buttons';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
 
-const RegisterScreen: React.FC<unknown> = (props) => {
+const RegisterScreen: React.FC<unknown> = () => {
   const user = useAppSelector<UserState>(selectUser);
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -39,17 +39,16 @@ const RegisterScreen: React.FC<unknown> = (props) => {
     const users = await getAllUsers();
     const result = users.find((u) => u.username === username);
 
+    console.log(result);
     if(!result) {
       const id = uuidv4();
-      addUser(username, password, role, id);
-    }
-
-    if(user) {
-      handleLogin();
+      await addUser(username, password, role, id);
+      await handleLogin();
     } else {
       Alert.alert('Username is already taken.');
     }
   };
+
   return (
     <View style={Container.container}>
       <Logo />

@@ -64,7 +64,7 @@ export const addUser = async (username: string, password: string, role: string, 
     .catch((err) => window.alert(err));
 };
 
-export function getAllUsers() {
+export function getAllUsers(): Promise<User[]> {
   return BackendClient.get<User[]>('/user')
     .then((res) => { console.log('Successfully Found Users'); return res.data as User[]; })
     .catch((err) => { window.alert(err); return []; });

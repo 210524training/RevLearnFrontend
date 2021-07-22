@@ -50,17 +50,26 @@ const HomePage: React.FC<Props> = () => {
     navigation.navigate('CourseHome', { screen: 'CourseHomeNav' });
   };
 
+  const conditionalRender = () => {
+    if(courses) {
+      return (
+        courses.map((course, index) => (
+          <Card key={index} style={StyleCards.container} onPress={() => NavToCourseHome(course)}>
+            <Card.Content>
+              <Title>{course.courseTitle}</Title>
+              <Paragraph>Brush up your skills!</Paragraph>
+            </Card.Content>
+          </Card>
+        ))
+      );
+    }
+  };
+
   return (
     <View style={Container.container}>
       <Text style={LandingPageStyles.header}>My Courses:</Text>
-      {courses && courses.map((course, index) => (
-        <Card key={index} style={StyleCards.container} onPress={() => NavToCourseHome(course)}>
-          <Card.Content>
-            <Title>{course.courseTitle}</Title>
-            <Paragraph>Brush up your skills!</Paragraph>
-          </Card.Content>
-        </Card>
-      ))
+      {
+        conditionalRender()
       }
     </View>
   );
