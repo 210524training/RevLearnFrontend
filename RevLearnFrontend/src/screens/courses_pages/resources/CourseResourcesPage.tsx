@@ -26,7 +26,7 @@ const CourseResourcesPage: React.FC<Props> = () => {
 
   return (
     <View style={ResourceStyles.container}>
-      {Platform.OS === 'web' && <B input={'CourseResourcesPage'}/>}
+      {Platform.OS === 'web' && <B input={'Course Resources'}/>}
 
       {
         user?.role === 'Teacher' && (
