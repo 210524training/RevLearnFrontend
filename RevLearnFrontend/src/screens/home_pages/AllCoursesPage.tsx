@@ -43,8 +43,6 @@ const AllCoursesPage: React.FC<Props> = (props) => {
           : <></>
         }
 
-        <Button title={'title'} onPress={temp}/>
-
       </View>
     </ScrollView>
   );

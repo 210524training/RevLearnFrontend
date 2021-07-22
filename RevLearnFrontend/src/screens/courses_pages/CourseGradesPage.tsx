@@ -33,8 +33,10 @@ const CourseGradesPage: React.FC<Props> = () => {
     admissionRequests: [],
   };
 
-  return (
+  return (<>
+    {/* <CourseGradesTeacherView course={course} /> */}
     <CourseGradesStudentView/>
+  </>
   );
 };
 
