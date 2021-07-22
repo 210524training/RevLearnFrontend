@@ -50,7 +50,7 @@ const CourseStudentsPage: React.FC<Props> = () => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#00B2D4' }}>
       <View>
         {students
           ? <DisplayAllStudents students={students} />
