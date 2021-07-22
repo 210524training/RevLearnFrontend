@@ -3,6 +3,8 @@ import {
   View, Text, TextInput, Platform, Button,
 } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
+import { LandingPageStyles } from '../../styles/LandingPageStyles';
+import { Buttons } from '../../styles/Buttons';
 
 type Props = {
   setDate: (dateStr: string) => void,
@@ -38,11 +40,13 @@ const DynamicDatePicker: React.FC<Props> = (props) => {
   return (
     <>
 
-      <Text>{props.title ? props.title : 'Select Date:'}</Text>
+      <Text style={LandingPageStyles.header}>{props.title ? props.title : 'Select Date:'}</Text>
 
       {Platform.OS !== 'web'
         ? (<>
-          <Button onPress={showDatepicker} title="Show date picker!" />
+          <View style={Buttons.container}>
+            <Button onPress={showDatepicker} title="Show date picker!" />
+          </View>
           {show ? <DateTimePicker date={date} onChange={change} value={date} mode={mode} is24Hour={true} display="default"/> : <></>}
           <Text>{props.date}</Text>
         </>)

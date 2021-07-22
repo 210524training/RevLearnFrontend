@@ -7,6 +7,7 @@ import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
 import { ListItem } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
+import { Card } from 'react-native-paper';
 import { MultipleChoiceQuizQuestion } from '../../../models/MultipleChoiceQuizQuestion';
 import { QuizQuestion } from '../../../models/QuizQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../Types/MyTypes';
@@ -19,6 +20,9 @@ import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.
 import { Activity } from '../../../models/Activity';
 import { UserState, selectUser } from '../../../hooks/slices/user.slice';
 import { User } from '../../../models/User';
+import { Container } from '../../../styles/Container';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { Card as StyleCards } from '../../../styles/Cards';
 
 type Props = {
   route: any
@@ -89,10 +93,11 @@ const QuizPage: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <>
-      <Text>{quiz.title}</Text>
-      <Text>{quiz.description}</Text>
-
+    <View style={Container.container}>
+      <Card style={StyleCards.container}>
+        <Text style={LandingPageStyles.header}>{quiz.title}</Text>
+        <Text>{quiz.description}</Text>
+      </Card>
       {
         quiz.questions.map((question: QuizQuestion, index: number) => (
           <ListItem key={index}>
@@ -114,7 +119,7 @@ const QuizPage: React.FC<Props> = ({ route }) => {
       }
 
       <Button title='Submit Quiz' onPress={handleQuizSubmit} />
-    </>
+    </View>
   );
 };
 

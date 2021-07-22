@@ -1,7 +1,6 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { Text, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
-import { Card, Title } from 'react-native-paper';
+import { View } from 'react-native';
+import { Card, Paragraph, Title } from 'react-native-paper';
 import { User } from '../../models/User';
 import { Container } from '../../styles/Container';
 import { Card as StyleCards } from '../../styles/Cards';
@@ -16,7 +15,8 @@ const DisplayAllTeachersList: React.FC<Props> = ({ teachers, setSelected }) => (
     {teachers.map((element, index) => (
       <Card key={index} style={StyleCards.container}>
         <Card.Content>
-          <Title>Teacher Username: {`${element.username}`}</Title>
+          <Title>Teacher </Title>
+          <Paragraph>Username: {`${element.username}`}</Paragraph>
         </Card.Content>
       </Card>
     ))}

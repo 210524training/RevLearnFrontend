@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState } from 'react';
 import {
-  Button, Text, TextInput, View,
+  Button, ScrollView, Text, TextInput, View,
 } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import 'react-native-get-random-values';
@@ -63,7 +63,7 @@ const CreateQuizPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <ScrollView>
       <Text>Quiz Title:</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setTitle} />
 
@@ -90,7 +90,7 @@ const CreateQuizPage: React.FC<Props> = () => {
       <NewQuestion />
 
       <Button onPress={handleNewQuizSubmit} title="Create Quiz" />
-    </>
+    </ScrollView>
   );
 };
 
