@@ -11,6 +11,7 @@ import { Course } from '../../models/Course';
 import { User } from '../../models/User';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { AdmissionRequestStyle } from '../../styles/AdmissionRequestStyle';
 
 type Props = {
 
@@ -63,7 +64,7 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   };
 
   return (
-    <View style={{ backgroundColor: '#00B2D4', padding: 20 }}>
+    <View style={AdmissionRequestStyle.background}>
       {
         course && (
           <Text> <B input={'Enrollment Requests For: '}/>{course.courseTitle}</Text>

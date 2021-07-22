@@ -26,9 +26,9 @@ export const AdmissionRequestStyle = StyleSheet.create({
     backgroundColor: '#19D9FF',
     // margin: 20,
   },
-  value: {
+  background: {
     flex: 1,
-    flexDirection: 'column',
-    flexWrap: 'wrap',
+    backgroundColor: '#00B2D4',
+    padding: 20,
   },
 });
