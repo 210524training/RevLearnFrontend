@@ -9,7 +9,7 @@ import {
 const DrawerNav = createDrawerNavigator<HomeNavParamList>();
 
 function AppCourseHomeNavigator() {
-  const test: boolean = false;
+  const test: boolean = true;
   return (
     <>
       <DrawerNav.Navigator
