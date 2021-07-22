@@ -21,5 +21,6 @@ export const AssignmentPageStyle = StyleSheet.create({
     width: Platform.OS !== 'web' ? '85%' : '90%',
     flexDirection: 'column',
     margin: 20,
+    backgroundColor: '#19D9FF',
   },
 });

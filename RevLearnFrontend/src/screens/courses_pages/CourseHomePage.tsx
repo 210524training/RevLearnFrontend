@@ -44,14 +44,14 @@ const CourseHomePage: React.FC<Props> = () => {
     <View style={CourseHome.container}>
       {Platform.OS === 'web' && <B input={'CourseHomePage'}/>}
       <View style={CourseHome.card}>
-        <Text style={CourseHome.item}><B input={'Course Title: '}/>{course?.courseTitle}</Text>
-        <Text style={CourseHome.item}><B input={'Start Date: '}/>{course?.startDate}</Text>
-        <Text style={CourseHome.item}><B input={'End Date: '}/>{course?.endDate}</Text>
-        <Text style={CourseHome.item}><B input={'Category: '}/>{course?.category}</Text>
-        <Text style={CourseHome.item}><B input={'Passing Grade: '}/>{course?.passingGrade}</Text>
-        <Text style={CourseHome.item}><B input={'Number of Students: '}/>{course?.students.length}</Text>
-        <Text style={CourseHome.item}><B input={'Number of Assignments: '}/>{course?.activities.length}</Text>
-        <Text style={CourseHome.item}><B input={'Number of Resources: '}/>{course?.resources.length}</Text>
+        <Text style={CourseHome.item}><B input={'Course Title: '}/>{course && course.courseTitle}</Text>
+        <Text style={CourseHome.item}><B input={'Start Date: '}/>{course && course.startDate}</Text>
+        <Text style={CourseHome.item}><B input={'End Date: '}/>{course && course.endDate}</Text>
+        <Text style={CourseHome.item}><B input={'Category: '}/>{course && course.category}</Text>
+        <Text style={CourseHome.item}><B input={'Passing Grade: '}/>{course && course.passingGrade}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Students: '}/>{course && course.students.length}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Assignments: '}/>{course && course.activities.length}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Resources: '}/>{course && course.resources.length}</Text>
       </View>
 
       {

@@ -24,6 +24,11 @@ export const CourseHome = StyleSheet.create({
     marginTop: 5,
   },
 
+  item2: {
+    marginBottom: 10,
+    marginTop: 10,
+  },
+
   bold: {
     fontWeight: 'bold',
   },

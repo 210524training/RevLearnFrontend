@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  Button, Text, View,
+  Button, Platform, Text, View,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import * as DocumentPicker from 'expo-document-picker';
@@ -43,15 +43,15 @@ const SubmitAssignmentPage: React.FC<Props> = ({ route }) => {
       if(file.type === 'success') {
         const { uri, type, name } = file;
 
-        const response = await fetch(uri);
+        const response = await fetch(Platform.OS === 'android' ? `file://${uri}` : uri);
         const blob = await response.blob();
         const key = await uploadFile(name, blob);
-
+        const fileType = name.split('.');
         const attachment: Attachment = {
           key,
           name: inputName,
           discription: description,
-          type,
+          type: fileType[fileType.length - 1],
         };
 
         const submission: AssignmentSubmission = {

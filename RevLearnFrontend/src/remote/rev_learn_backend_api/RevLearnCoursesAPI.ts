@@ -19,7 +19,7 @@ export const getStudentCourses = async (id: string): Promise<Course[]> => {
 
 export const getTeacherCourses = async (user: User): Promise<Course[]> => {
   return BackendClient.get<Course[]>(`/course/teacher/${user.id}`)
-    .then((res) => { console.log('Successfully Found Courses'); return res.data as Course[]; })
+    .then((res) => { console.log('Successfully Found Courses', res.data); return res.data as Course[]; })
     .catch((err) => { window.alert(err); return []; });
 };
 
