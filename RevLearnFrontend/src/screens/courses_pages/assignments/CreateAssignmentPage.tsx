@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Button, Text, TextInput, View,
+  Button, ScrollView, Text, TextInput, View,
 } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
@@ -12,7 +12,7 @@ import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.
 import { Course } from '../../../models/Course';
 import { Assignment } from '../../../models/Assignment';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
-import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
+import { AssignmentType, LetterGrade } from '../../../types/MyTypes';
 
 type Props = {
 
@@ -61,7 +61,7 @@ const CreateAssignmentPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <ScrollView>
       <Text>CreateAssignmentsPage</Text>
       <View>
         <Text>Assignment Title:</Text>
@@ -80,7 +80,7 @@ const CreateAssignmentPage: React.FC<Props> = () => {
       <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
       <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>
       <Button title={'Submit'} onPress={handleSubmit}/>
-    </>
+    </ScrollView>
   );
 };
 

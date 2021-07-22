@@ -28,7 +28,12 @@ const AllCoursesPage: React.FC<Props> = (props) => {
 
   return (
     <ScrollView>
+
       <View>
+        <View style={{ backgroundColor: '#00B2D4' }}>
+          <Button title={'Add Course'} onPress={temp}/>
+        </View>
+
         {/* {
           Platform.OS === 'android' ?
           androidJSX() : coursesJSX()

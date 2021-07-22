@@ -34,7 +34,7 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
             <Text><Text style={AllCoursesStyle.header}>Teacher: </Text>{`${element.teacherID}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Passing Grade: </Text>{`${element.passingGrade}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Category: </Text>{`${element.category}`}</Text>
-            {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
+            {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Enroll'/> : <></>}
           </View>
         ))}
       </ScrollView>
