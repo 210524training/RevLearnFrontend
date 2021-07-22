@@ -34,7 +34,7 @@ const AllCoursesPage: React.FC<Props> = () => {
         {
           user?.role === 'Admin' && (
             <View style={{ backgroundColor: '#00B2D4' }}>
-              <Button title={'Add Course'} onPress={navToCreateCourse}/>
+              <Button title={'Create Course'} onPress={navToCreateCourse}/>
             </View>
           )
         }

@@ -39,6 +39,16 @@ const AllQuizzesPage: React.FC<Props> = () => {
   return (
     <>
       {
+        user && user.role === 'Teacher' && (
+          <View style={ Container.CenterOnly }>
+            <View style={ Buttons.container }>
+              <Button onPress={NavToNewQuiz} title='Create Quiz' />
+            </View>
+          </View>
+        )
+      }
+
+      {
         quizzes?.map((quiz, index) => (
           <View key={index}>
             <Card onPress={() => NavToQuizPage(quiz as Quiz)}>
@@ -48,15 +58,6 @@ const AllQuizzesPage: React.FC<Props> = () => {
             </Card>
           </View>
         ))
-      }
-      {
-        user && user.role === 'Teacher' && (
-          <View style={ Container.CenterOnly }>
-            <View style={ Buttons.container }>
-              <Button onPress={NavToNewQuiz} title='+ Quiz' />
-            </View>
-          </View>
-        )
       }
     </>
   );
