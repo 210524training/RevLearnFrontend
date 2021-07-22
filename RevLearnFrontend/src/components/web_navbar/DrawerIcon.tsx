@@ -7,6 +7,6 @@ const color: string = 'black';
 type Props = {
   navigation: any,
 }
-const DrawerIcon: React.FC<Props> = ({ navigation }) => <Ionicons size={30} style={{ marginBottom: -3 }} name={name} color={color} onPress={() => navigation.toggleDrawer() }/>;
+const DrawerIcon: React.FC<Props> = ({ navigation }) => <Ionicons size={30} style={{ marginBottom: -3, marginRight: 10 }} name={name} color={color} onPress={() => navigation.toggleDrawer() }/>;
 
 export default DrawerIcon;
