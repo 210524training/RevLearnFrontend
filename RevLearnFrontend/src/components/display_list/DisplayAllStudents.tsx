@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Text, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { Text, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import { useAppSelector } from '../../hooks';
 import { CourseState, getCourse } from '../../hooks/slices/course.slice';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -11,7 +11,7 @@ import { Container } from '../../styles/Container';
 import B from '../BoldText';
 
 type Props = {
-students: User[],
+  students: User[],
 }
 
 const DisplayAllStudents: React.FC<Props> = ({ students }) => {
@@ -35,9 +35,8 @@ const DisplayAllStudents: React.FC<Props> = ({ students }) => {
       {students.map((element, index) => (
         <View key={index} style={AllStudentsPageStyle.listItemContainer}>
           <Text style={{ paddingBottom: 10 }}><B input={'Student: '}/>{`${element.username}`}</Text>
-          {(user?.role === 'Teacher') && <Button onPress={() => handleButton(element)} title='Drop Student'/> }
+          {(user?.role === 'Teacher') && <Button mode="contained" color="#19138c" onPress={() => handleButton(element)}>Drop Student</Button> }
         </View>
-
       ))}
     </View>
   );

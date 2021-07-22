@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import {
-  Button, ScrollView, Text, View,
+  ScrollView, Text, View,
 } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import { ListItem } from 'react-native-elements';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -108,7 +108,7 @@ const CreateQuizPage: React.FC<Props> = () => {
       }
       <NewQuestion />
 
-      <Button onPress={handleNewQuizSubmit} title="Create Quiz" />
+      <Button mode="contained" color="#19D9FF" onPress={handleNewQuizSubmit}>Create Quiz</Button>
     </ScrollView>
   );
 };

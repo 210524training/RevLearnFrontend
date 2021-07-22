@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { Text, View } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { login, selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -35,7 +35,7 @@ const SettingsPage: React.FC<Props> = () => {
 
   return (
     <View style={Container.container} >
-      <Text>SettingsPage</Text>
+      <Text>Settings Page</Text>
       {user
         ? (
           <View style={Container.container} >
@@ -48,8 +48,15 @@ const SettingsPage: React.FC<Props> = () => {
             <TextInput style={InputField.container}
               secureTextEntry={true}
               onChangeText={setPassword1} />
-            {password !== password1 ? <Text>Passwords Do Not Match</Text>
-              : <View style={Buttons.container} ><Button onPress={handleFormSubmit} title="Submit" /></View>}
+            {
+              password !== password1 ? (
+                <Text>Passwords Do Not Match</Text>
+              ) : (
+                <View style={Buttons.container} >
+                  <Button mode="contained" color="#19D9FF" onPress={handleFormSubmit}>Submit</Button>
+                </View>
+              )
+            }
           </View>
         )
         : <></>

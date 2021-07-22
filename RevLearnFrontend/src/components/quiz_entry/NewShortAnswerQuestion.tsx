@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import {
-  Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput,
+  NativeSyntheticEvent, NativeTouchEvent, Text, TextInput,
 } from 'react-native';
+import { Button } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
@@ -14,7 +15,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
+  const handleQuestionSubmit = () => {
     const newQuestion = {
       questionID: uuidv4(),
       questionTitle: title,
@@ -40,7 +41,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
       <Text>Answer</Text>
       <TextInput style={{ borderWidth: 1 }} onChangeText={setAnswer} />
 
-      <Button onPress={handleQuestionSubmit} title="Add Question" />
+      <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
     </>
   );
 };

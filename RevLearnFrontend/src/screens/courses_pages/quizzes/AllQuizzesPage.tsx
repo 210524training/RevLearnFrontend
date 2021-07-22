@@ -1,8 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from 'react-native-elements';
 import { View } from 'react-native';
-import { Card, Title } from 'react-native-paper';
+import { Card, Title, Button } from 'react-native-paper';
 import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { selectUser, UserState } from '../../../hooks/slices/user.slice';
@@ -55,7 +54,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
         user && user.role === 'Teacher' && (
           <View style={ Container.CenterOnly }>
             <View style={ Buttons.container }>
-              <Button onPress={NavToNewQuiz} title='Create Quiz' />
+              <Button mode="contained" color="#19D9FF" onPress={NavToNewQuiz}>Create Quiz</Button>
             </View>
           </View>
         )

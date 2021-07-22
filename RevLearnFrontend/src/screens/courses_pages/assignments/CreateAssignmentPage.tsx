@@ -1,9 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import {
-  Button, ScrollView, Text, View,
-} from 'react-native';
-import { TextInput } from 'react-native-paper';
+import { ScrollView, Text, View } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../../components/form_components/DynamicDropdown';
@@ -81,7 +79,7 @@ const CreateAssignmentPage: React.FC<Props> = () => {
       {/* <DynamicSlider SetValue={SetPassingGrade} Step={5} Title={'Passing Grade: '} MaxValue={100} MinValue={50} CurrentValue={PassingGrade}/> */}
       <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
       <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>
-      <Button title={'Submit'} onPress={handleSubmit}/>
+      <Button mode="contained" color="#19D9FF" onPress={handleSubmit}>Create Assignment</Button>
     </ScrollView>
   );
 };
