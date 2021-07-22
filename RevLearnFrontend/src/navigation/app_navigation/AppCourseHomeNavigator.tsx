@@ -14,6 +14,7 @@ function AppCourseHomeNavigator() {
     <>
       <DrawerNav.Navigator
         initialRouteName="CourseHome"
+        drawerPosition= 'right'
       >
         <DrawerNav.Screen
           name="CourseHome"

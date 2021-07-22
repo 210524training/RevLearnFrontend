@@ -12,12 +12,14 @@ type Props1 = {
   set: any,
 }
 
-const MapGrades: React.FC<Props1> = ({ List, Courses, set }) => (<>
+const MapGrades: React.FC<Props1> = ({ List, Courses }) => (<>
   {
     List.map((element: CourseGrade, index: number) => (
       <View key={index}>
-        <ListItem>{Courses.find((course) => course.id === element.courseId)?.courseTitle }</ListItem>
-        <ListItem >{element.grade}</ListItem>
+        <ListItem>
+          <Text>{Courses.find((course) => course.id === element.courseId)?.courseTitle }</Text>
+          <Text>{element.grade}</Text>
+        </ListItem>
       </View>
     ))}
 </>);

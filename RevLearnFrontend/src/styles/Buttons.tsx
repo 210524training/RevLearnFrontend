@@ -1,9 +1,9 @@
 /* eslint-disable import/prefer-default-export */
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 
 export const Buttons = StyleSheet.create({
   container: {
-    width: '100%',
+    width: Platform.OS !== 'web' ? '60%' : '25%',
     marginVertical: 10,
     paddingVertical: 2,
   },

@@ -1,10 +1,10 @@
 /* eslint-disable import/prefer-default-export */
-import { StyleSheet } from 'react-native';
+import { Platform, PlatformColor, StyleSheet } from 'react-native';
 import { theme } from './Theme';
 
 export const InputField = StyleSheet.create({
   container: {
-    width: '100%',
+    width: Platform.OS !== 'web' ? '100%' : '25%',
     marginVertical: 12,
   },
   input: {

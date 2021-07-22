@@ -1,11 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Pressable, Text, View,
+  Text, View,
 } from 'react-native';
-import { Card, Title } from 'react-native-paper';
-import { ListItem } from 'react-native-elements';
-import { ScreenWidth } from 'react-native-elements/dist/helpers';
+import { Card, Title, Paragraph } from 'react-native-paper';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -16,7 +14,6 @@ import { getStudentCourses, getTeacherCourses } from '../../remote/rev_learn_bac
 import { Container } from '../../styles/Container';
 import { LandingPageStyles } from '../../styles/LandingPageStyles';
 import { Card as StyleCards } from '../../styles/Cards';
-import Logo from '../../styles/Logo';
 
 type Props = {
 
@@ -57,11 +54,11 @@ const HomePage: React.FC<Props> = () => {
     <View style={Container.container}>
       <Text style={LandingPageStyles.header}>My Courses:</Text>
       {courses && courses.map((course, index) => (
-        <Card key={index} style={StyleCards.container}>
-          <Pressable style={StyleCards.item} onPress={() => NavToCourseHome(course)}>
+        <Card key={index} style={StyleCards.container} onPress={() => NavToCourseHome(course)}>
+          <Card.Content>
             <Title>{course.courseTitle}</Title>
-          </Pressable>
-          <Logo />
+            <Paragraph>Brush up your skills!</Paragraph>
+          </Card.Content>
         </Card>
       ))
       }
