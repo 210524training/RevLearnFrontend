@@ -20,6 +20,7 @@ import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.
 import { Quiz } from '../../../models/Quiz';
 import { InputField } from '../../../styles/InputField';
 import { Container } from '../../../styles/Container';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 
 type Props = {
 
@@ -75,27 +76,26 @@ const CreateQuizPage: React.FC<Props> = () => {
 
   return (
     <ScrollView>
-      <TextInput
-        style={InputField.container}
-        label='Quiz Title'
-        onChangeText={setTitle}
-      />
-      <TextInput
-        style={InputField.container}
-        label='Description'
-        onChangeText={setDescription}
-      />
+      <View style={Container.container}>
+        <TextInput
+          style={InputField.container}
+          label='Quiz Title'
+          onChangeText={setTitle}
+        />
+        <TextInput
+          style={InputField.container}
+          label='Description'
+          onChangeText={setDescription}
+        />
+        <TextInput
+          style={InputField.container}
+          label='Minimum Passing Grade'
+          onChangeText={setPassingGrade}
+        />
+        <DynamicDatePicker date={startDate} setDate={setStartDateStr} title={'Start Date'}/>
+        <DynamicDatePicker date={dueDate} setDate={setDueDateStr} title={'Due Date'}/>
 
-      <DynamicDatePicker date={startDate} setDate={setStartDateStr} title={'Start Date'}/>
-      <DynamicDatePicker date={dueDate} setDate={setDueDateStr} title={'Due Date'}/>
-
-      <TextInput
-        style={InputField.container}
-        label='Minimum Passing Grade'
-        onChangeText={setPassingGrade}
-      />
-
-      <Text>Questions:</Text>
+      </View>
       {
         questions.map((question, index) => (
           <ListItem key={index}>
@@ -107,7 +107,6 @@ const CreateQuizPage: React.FC<Props> = () => {
         ))
       }
       <NewQuestion />
-
       <Button onPress={handleNewQuizSubmit} title="Create Quiz" />
     </ScrollView>
   );

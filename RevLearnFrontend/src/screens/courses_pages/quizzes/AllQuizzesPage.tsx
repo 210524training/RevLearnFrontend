@@ -38,7 +38,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
   const quizzes = course?.activities.filter((activity) => isQuiz(activity));
 
   return (
-    <>
+    <View style={Container.container}>
       {
         quizzes?.map((quiz, index) => (
           <View style={Container.container}>
@@ -60,7 +60,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
           </View>
         )
       }
-    </>
+    </View>
   );
 };
 
