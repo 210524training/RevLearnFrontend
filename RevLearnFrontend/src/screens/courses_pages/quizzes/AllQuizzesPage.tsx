@@ -1,13 +1,17 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button, ListItem } from 'react-native-elements';
-import { Pressable, Text } from 'react-native';
+import { Text, View } from 'react-native';
+import { Card, Title } from 'react-native-paper';
 import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { selectUser, UserState } from '../../../hooks/slices/user.slice';
 import { Quiz } from '../../../models/Quiz';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { Course } from '../../../models/Course';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { Buttons } from '../../../styles/Buttons';
+import { Container } from '../../../styles/Container';
 
 type Props = {
 
@@ -35,19 +39,25 @@ const AllQuizzesPage: React.FC<Props> = () => {
   return (
     <>
       {
-        // user && user.role === 'Teacher' && (
-        true && (
-          <Button onPress={NavToNewQuiz} title='+ Quiz' />
-        )
+        quizzes?.map((quiz, index) => (
+          <View key={index}>
+            <Card onPress={() => NavToQuizPage(quiz as Quiz)}>
+              <Card.Content>
+                <Title style={ LandingPageStyles.headerFont }>{quiz.title}</Title>
+              </Card.Content>
+            </Card>
+          </View>
+        ))
       }
       {
-        quizzes?.map((quiz, index) => (
-          <ListItem key={index}>
-            <Pressable onPress={() => NavToQuizPage(quiz as Quiz)}>
-              <Text>{quiz.title}</Text>
-            </Pressable>
-          </ListItem>
-        ))
+        // user && user.role === 'Teacher' && (
+        true && (
+          <View style={ Container.CenterOnly }>
+            <View style={ Buttons.container }>
+              <Button onPress={NavToNewQuiz} title='+ Quiz' />
+            </View>
+          </View>
+        )
       }
     </>
   );

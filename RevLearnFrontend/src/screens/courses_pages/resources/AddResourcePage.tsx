@@ -1,43 +1,30 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import {
-  Text, Button, Platform, Image, StyleSheet,
+  Text, Button, Platform, StyleSheet, View,
 } from 'react-native';
 /* import DocumentPicker, { DocumentPickerOptions, PlatformTypes } from 'react-native-document-picker'; */
 import * as DocumentPicker from 'expo-document-picker';
 
 import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native-gesture-handler';
+import { TextInput } from 'react-native-paper';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { uploadFile } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
-
 import { Attachment } from '../../../models/Attachment';
 import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { Course } from '../../../models/Course';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { Buttons } from '../../../styles/Buttons';
 
 type Props = {
 
 }
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
-  },
-  logo: {
-    width: 66,
-    height: 58,
-  },
-});
-
 const AddResource: React.FC<Props> = (props) => {
   const [fileKey, setFileKey] = useState<string>('');
-  const [discription, setDiscription] = useState<string>('');
+  const [discription, setDescription] = useState<string>('');
   const [inputName, setName] = useState<string>('');
   const [url, setUrl] = useState<string>('');
   const course = useAppSelector<CourseState>(getCourse);
@@ -81,16 +68,18 @@ const AddResource: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Text>AddResource</Text>
-      <Text>Resource Name: </Text>
+      <Text style={LandingPageStyles.headerFont}>Resource Name: </Text>
       <TextInput onChangeText={(event) => { setName(event); }} placeholder='Textbook'/>
-      <Text>Resource Discription: </Text>
+      <Text style={LandingPageStyles.headerFont}>Resource Description: </Text>
       <TextInput
         multiline={true}
         numberOfLines={5}
-        onChangeText={(event) => { setDiscription(event); }}
-        placeholder={'Enter a discription of the the attachment'}/>
-      <Button title={'Upload File'} onPress={pickFile}/>
+        onChangeText={(event) => { setDescription(event); }}
+        placeholder={'Enter a description of the the attachment'}/>
+      <View style={Buttons.container}>
+        <Button title={'Upload File'} onPress={pickFile}/>
+      </View>
+
     </>
   );
 };

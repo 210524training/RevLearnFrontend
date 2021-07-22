@@ -1,13 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
 import {
-  Button, Text, TextInput, View,
+  Button, Text, View,
 } from 'react-native';
 import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
-import { ListItem } from 'react-native-elements';
 import { useNavigation } from '@react-navigation/native';
-import { Card } from 'react-native-paper';
+import { TextInput } from 'react-native-paper';
 import { MultipleChoiceQuizQuestion } from '../../../models/MultipleChoiceQuizQuestion';
 import { QuizQuestion } from '../../../models/QuizQuestion';
 import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../../Types/MyTypes';
@@ -21,8 +20,10 @@ import { Activity } from '../../../models/Activity';
 import { UserState, selectUser } from '../../../hooks/slices/user.slice';
 import { User } from '../../../models/User';
 import { Container } from '../../../styles/Container';
-import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 import { Card as StyleCards } from '../../../styles/Cards';
+import { CourseHome } from '../../../styles/CourseHome';
+import { InputField } from '../../../styles/InputField';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 
 type Props = {
   route: any
@@ -94,27 +95,23 @@ const QuizPage: React.FC<Props> = ({ route }) => {
 
   return (
     <View style={Container.container}>
-      <Card style={StyleCards.container}>
-        <Text style={LandingPageStyles.header}>{quiz.title}</Text>
-        <Text>{quiz.description}</Text>
-      </Card>
+      <Text style={LandingPageStyles.header}>{quiz.title}</Text>
+      <Text>{quiz.description}</Text>
       {
         quiz.questions.map((question: QuizQuestion, index: number) => (
-          <ListItem key={index}>
-            <View style={{ borderWidth: 1 }}>
-              <Text>{question.questionTitle}</Text>
-              <Text>{question.prompt}</Text>
-
-              {
-                isMultipleChoiceQuestion(question) ? (
-                  <RadioForm radio_props={getRadioOptions(question as MultipleChoiceQuizQuestion)} initial={0} onPress={answerHooks[index].setter} />
-                ) : (
-                  <TextInput style={{ borderWidth: 1 }} onChangeText={answerHooks[index].setter} />
-                )
-              }
-
-            </View>
-          </ListItem>
+          <View style={Container.container}>
+            <Text>{question.questionTitle}</Text>
+            <Text>{question.prompt}</Text>
+            {
+              isMultipleChoiceQuestion(question) ? (
+                <RadioForm radio_props={getRadioOptions(question as MultipleChoiceQuizQuestion)} initial={0} onPress={answerHooks[index].setter} />
+              ) : (
+                <TextInput
+                  style={InputField.container}
+                  onChangeText={answerHooks[index].setter} />
+              )
+            }
+          </View>
         ))
       }
 

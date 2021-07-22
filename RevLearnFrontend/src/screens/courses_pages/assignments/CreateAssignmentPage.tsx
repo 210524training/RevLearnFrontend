@@ -1,8 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import {
-  Button, Text, TextInput, View,
+  Button, Text, View,
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 import DynamicDatePicker from '../../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../../components/form_components/DynamicDropdown';
@@ -13,6 +14,8 @@ import { Course } from '../../../models/Course';
 import { Assignment } from '../../../models/Assignment';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { AssignmentType, LetterGrade } from '../../../Types/MyTypes';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { Container } from '../../../styles/Container';
 
 type Props = {
 
@@ -61,14 +64,13 @@ const CreateAssignmentPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
-      <Text>CreateAssignmentsPage</Text>
+    <View>
       <View>
-        <Text>Assignment Title:</Text>
+        <Text style={LandingPageStyles.headerFont}>Assignment Title:</Text>
         <TextInput
           onChangeText={(change) => { SetAssignmentTitle(change); }}
           placeholder={'Creative Writing Paper'}/>
-        <Text>{'Assignment'} Discription:</Text>
+        <Text style={LandingPageStyles.headerFont}>{'Assignment'} Description:</Text>
         <TextInput
           multiline={true}
           onChangeText={(change) => { SetAssignmentDescription(change); }}
@@ -80,7 +82,7 @@ const CreateAssignmentPage: React.FC<Props> = () => {
       <DynamicDatePicker date={startDateStr} setDate={SetStartDateStr} title={'Start Date'}/>
       <DynamicDatePicker date={endDateStr} setDate={SetEndDateStr} title={'End Date'}/>
       <Button title={'Submit'} onPress={handleSubmit}/>
-    </>
+    </View>
   );
 };
 

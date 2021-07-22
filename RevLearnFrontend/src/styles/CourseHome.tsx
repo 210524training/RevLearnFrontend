@@ -25,6 +25,6 @@ export const CourseHome = StyleSheet.create({
   },
 
   bold: {
-    // fontWeight: 'bold',
+    fontWeight: 'bold',
   },
 });

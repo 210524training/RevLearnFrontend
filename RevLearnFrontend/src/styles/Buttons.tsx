@@ -6,6 +6,9 @@ export const Buttons = StyleSheet.create({
     width: Platform.OS !== 'web' ? '60%' : '25%',
     marginVertical: 10,
     paddingVertical: 2,
+    justifyContent: 'center',
+    alignSelf: 'center',
+    alignItems: 'center',
   },
   text: {
     fontWeight: 'bold',

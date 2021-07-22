@@ -1,6 +1,6 @@
 /* eslint-disable import/prefer-default-export */
 import React from 'react';
-import { ImageBackground, KeyboardAvoidingView, StyleSheet } from 'react-native';
+import { ImageBackground, KeyboardAvoidingView, Platform, StyleSheet } from 'react-native';
 
 export const Container = StyleSheet.create({
   container: {
@@ -10,6 +10,12 @@ export const Container = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00B2D4',
+    justifyContent: 'center',
+  },
+  CenterOnly: {
+    width: Platform.OS !== 'web' ? '60%' : '25%',
+    alignSelf: 'center',
+    alignItems: 'center',
     justifyContent: 'center',
   },
 });

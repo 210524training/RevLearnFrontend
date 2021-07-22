@@ -9,6 +9,11 @@ export const LandingPageStyles = StyleSheet.create({
     fontWeight: 'bold',
     paddingVertical: 12,
   },
+  headerFont: {
+    fontSize: 21,
+    color: theme.colors.primary,
+    fontWeight: 'bold',
+  },
   paragraph: {
     fontSize: 15,
     lineHeight: 21,
