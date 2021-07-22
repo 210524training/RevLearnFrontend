@@ -53,19 +53,19 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
   return (
     <>
       <Text>Question Title</Text>
-      <TextInput style={InputField.container} onChangeText={setTitle} />
+      <TextInput style={InputField.newQuestionContainer} onChangeText={setTitle} />
 
       <Text>Point Value</Text>
-      <TextInput style={InputField.container} onChangeText={setPointValue} />
+      <TextInput style={InputField.newQuestionContainer} onChangeText={setPointValue} />
 
       <Text>Question Prompt</Text>
-      <TextInput style={InputField.container} onChangeText={setPrompt} />
+      <TextInput style={InputField.newQuestionContainer} onChangeText={setPrompt} />
 
       <Text>Option A</Text>
-      <TextInput style={InputField.container} onChangeText={setOptionA} />
+      <TextInput style={InputField.newQuestionContainer} onChangeText={setOptionA} />
 
       <Text>Option B</Text>
-      <TextInput style={InputField.container} onChangeText={setOptionB} />
+      <TextInput style={InputField.newQuestionContainer} onChangeText={setOptionB} />
 
       <Text>Option C</Text>
       <TextInput style={InputField.container} onChangeText={setOptionC} />

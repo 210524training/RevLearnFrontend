@@ -10,6 +10,11 @@ export const InputField = StyleSheet.create({
   createCourseContainer: {
     width: Platform.OS !== 'web' ? '75%' : '25%',
   },
+  newQuestionContainer: {
+    width: Platform.OS !== 'web' ? '100%' : '25%',
+    marginVertical: 12,
+    borderWidth: 1,
+  },
   input: {
     backgroundColor: theme.colors.surface,
   },
