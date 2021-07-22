@@ -19,6 +19,7 @@ import { Course } from '../../../models/Course';
 import { CourseState, getCourse, setCourse } from '../../../hooks/slices/course.slice';
 import { Quiz } from '../../../models/Quiz';
 import { InputField } from '../../../styles/InputField';
+import { Container } from '../../../styles/Container';
 
 type Props = {
 

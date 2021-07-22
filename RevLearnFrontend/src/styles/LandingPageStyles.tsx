@@ -20,7 +20,6 @@ export const LandingPageStyles = StyleSheet.create({
   },
   h2: {
     fontSize: 18,
-    textAlign: 'center',
   },
   image: {
     flex: 1,
