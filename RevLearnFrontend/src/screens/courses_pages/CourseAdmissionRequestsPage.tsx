@@ -1,7 +1,8 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
-import { Text } from 'react-native';
+import { Text, View } from 'react-native';
+import B from '../../components/BoldText';
 import DisplayAdmissionRequestsList from '../../components/display_list/DisplayAdmissionRequestsList';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
@@ -10,6 +11,7 @@ import { Course } from '../../models/Course';
 import { User } from '../../models/User';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { AdmissionRequestStyle } from '../../styles/AdmissionRequestStyle';
 
 type Props = {
 
@@ -62,10 +64,10 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
+    <View style={AdmissionRequestStyle.background}>
       {
         course && (
-          <Text>Enrollment Requests for {course.courseTitle}</Text>
+          <Text> <B input={'Enrollment Requests For: '}/>{course.courseTitle}</Text>
         )
       }
       {
@@ -75,7 +77,7 @@ const CourseAdmissionRequestsPage: React.FC<Props> = () => {
           <Text>No Requests Found</Text>
         )
       }
-    </>
+    </View>
   );
 };
 

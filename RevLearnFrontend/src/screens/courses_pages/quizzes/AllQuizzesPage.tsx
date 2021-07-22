@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View } from 'react-native';
+import { Platform, View } from 'react-native';
 import { Card, Title, Button } from 'react-native-paper';
 import { useAppSelector } from '../../../hooks';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -12,6 +12,7 @@ import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 import { Buttons } from '../../../styles/Buttons';
 import { Container } from '../../../styles/Container';
 import { Card as StyleCards } from '../../../styles/Cards';
+import B from '../../../components/BoldText';
 
 type Props = {
 
@@ -38,6 +39,7 @@ const AllQuizzesPage: React.FC<Props> = () => {
 
   return (
     <View style={Container.container}>
+      {Platform.OS === 'web' && <B input={'Quizzes'}/>}
       {
         quizzes?.map((quiz, index) => (
           <View style={Container.container}>
