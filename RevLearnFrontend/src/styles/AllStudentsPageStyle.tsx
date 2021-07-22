@@ -5,6 +5,7 @@ import { Platform, StyleSheet } from 'react-native';
 export const AllStudentsPageStyle = StyleSheet.create({
   container: {
     flex: 1,
+    flexWrap: 'wrap',
     flexDirection: 'column',
     padding: 20,
     width: '100%',
@@ -12,7 +13,6 @@ export const AllStudentsPageStyle = StyleSheet.create({
     alignSelf: 'center',
     alignItems: 'center',
     backgroundColor: '#00B2D4',
-    justifyContent: 'center',
   },
   listItemContainer: {
     flex: 1,
