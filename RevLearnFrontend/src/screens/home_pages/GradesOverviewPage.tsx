@@ -1,3 +1,4 @@
+/* eslint-disable no-constant-condition */
 /* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 import { useNavigation } from '@react-navigation/native';
@@ -19,7 +20,7 @@ type Props = {
 
 const GradesOverviewPage: React.FC<Props> = (props) => {
   const [coursesList, setCourses] = useState<Course[]>();
-  const [grades, setCourseGrades] = useState<CourseGrade[]>([]);
+  const [grades, setCourseGrades] = useState<CourseGrade[]>();
   const [selected, setSelected] = useState<CourseGrade>();
   const nav = useNavigation();
   const user = useAppSelector<UserState>(selectUser);
@@ -51,14 +52,9 @@ const GradesOverviewPage: React.FC<Props> = (props) => {
   return (
     <>
       <Text>My Grades</Text>
-      {(grades && coursesList)
-        ? (
-          <> {/* <MapGrades Courses={coursesList} List={grades} set={setSelected}/> */} </>
-        )
-        : <> </>
-      }
+      {(10 > 5) ? (<> </>) : (<> </>)}
     </>
   );
 };
-
+// <MapGrades Courses={coursesList} List={grades} set={setSelected}/>
 export default WithHomeNavbar(GradesOverviewPage);

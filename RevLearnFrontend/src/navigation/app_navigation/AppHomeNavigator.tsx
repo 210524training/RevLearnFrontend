@@ -1,11 +1,22 @@
+/* eslint-disable no-alert */
 import * as React from 'react';
+import { Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Button, Icon } from 'react-native-elements';
 import useColorScheme from '../../hooks/useColorScheme';
 import { RootHomeNavParamList } from '../../types/NavigatorTypes';
 import {
   AllCoursesNavigator, AllTeachersNavigator, AllUsersNavigator, GradesOverViewNavigator, HomeNavigator, SettingsNavigator, UserInfoNavigator,
 } from '../StackNavigatiors';
+import DrawerIcon from '../../components/web_navbar/DrawerIcon';
 
+/* const navigationOptions = ({ navigation }) => ({
+  headerTitle: 'Home',
+  headerLeft: (
+    < Icon name="menu" size={30} style={{ marginStart: 10 }} backgroundColor="#000000" onPress={() => navigation.openDrawer()} > </Icon>
+  ),
+});
+ */
 const DrawerNav = createDrawerNavigator<RootHomeNavParamList>();
 
 function AppHomeNavigator() {
@@ -14,11 +25,13 @@ function AppHomeNavigator() {
   return (
     <>
       <DrawerNav.Navigator
-        initialRouteName="HomePage">
+        initialRouteName="HomePage"
+        drawerPosition= 'right'
+      >
         <DrawerNav.Screen
           name="HomePage"
           component={HomeNavigator}
-          options={{ headerTitle: 'Home Screen' }}/>
+        />
         <DrawerNav.Screen
           name="UserInfo"
           component={UserInfoNavigator}

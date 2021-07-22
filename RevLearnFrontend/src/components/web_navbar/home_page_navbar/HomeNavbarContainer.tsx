@@ -65,6 +65,7 @@ const HomeNavbarContainer = () => {
       NavToAllTeachers={NavToAllTeachers}
       NavToAllCourses={NavToAllCourses}
       NavToGradesOverView={NavToGradesOverView}
+      role={''}
     />
   );
 };
