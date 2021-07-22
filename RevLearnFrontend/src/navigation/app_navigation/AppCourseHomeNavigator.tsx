@@ -33,10 +33,6 @@ function AppCourseHomeNavigator() {
           component={QuizzesNavigator}
           options={{ headerTitle: 'Home Screen' }}/>
         <DrawerNav.Screen
-          name="CourseInfo"
-          component={CourseInfoNavigator}
-          options={{ headerTitle: 'Home Screen' }}/>
-        <DrawerNav.Screen
           name="CourseGrades"
           component={CourseGradesNavigator}
           options={{ headerTitle: 'Home Screen' }}/>

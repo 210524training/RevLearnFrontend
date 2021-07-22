@@ -19,4 +19,7 @@ export const Card = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  bold: {
+    fontWeight: 'bold',
+  },
 });
