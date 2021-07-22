@@ -51,7 +51,7 @@ const HomePage: React.FC<Props> = () => {
   };
 
   return (
-    <View style={Container.container}>
+    <View style={Container.assignmentContainer}>
       <Text style={LandingPageStyles.header}>My Courses:</Text>
       {courses && courses.map((course, index) => (
         <Card key={index} style={StyleCards.container} onPress={() => NavToCourseHome(course)}>

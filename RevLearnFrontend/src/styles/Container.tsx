@@ -12,6 +12,14 @@ export const Container = StyleSheet.create({
     backgroundColor: '#00B2D4',
     justifyContent: 'center',
   },
+  assignmentContainer: {
+    flex: 1,
+    padding: 20,
+    width: '100%',
+    alignSelf: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00B2D4',
+  },
   createQuizContainer: {
     width: Platform.OS !== 'web' ? '100%' : '25%',
   },
