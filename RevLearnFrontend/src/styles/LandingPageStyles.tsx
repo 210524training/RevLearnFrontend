@@ -5,9 +5,12 @@ import { theme } from './Theme';
 export const LandingPageStyles = StyleSheet.create({
   header: {
     fontSize: 21,
-    color: theme.colors.primary,
     fontWeight: 'bold',
     paddingVertical: 12,
+  },
+  headerFont: {
+    fontSize: 21,
+    fontWeight: 'bold',
   },
   paragraph: {
     fontSize: 15,

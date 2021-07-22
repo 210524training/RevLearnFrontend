@@ -61,6 +61,14 @@ export const AddResourceStyles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 5,
     backgroundColor: 'white',
+    fontSize: 21,
+    fontWeight: 'bold',
+  },
+
+  inputText: {
+    marginBottom: 20,
+    marginTop: 5,
+    backgroundColor: 'white',
     height: 40,
   },
 

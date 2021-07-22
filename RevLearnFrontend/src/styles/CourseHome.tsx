@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-import React from 'react';
 import { Platform, StyleSheet } from 'react-native';
 
 export const CourseHome = StyleSheet.create({
@@ -25,4 +24,7 @@ export const CourseHome = StyleSheet.create({
     marginTop: 5,
   },
 
+  bold: {
+    fontWeight: 'bold',
+  },
 });

@@ -7,6 +7,9 @@ export const InputField = StyleSheet.create({
     width: Platform.OS !== 'web' ? '100%' : '25%',
     marginVertical: 12,
   },
+  createCourseContainer: {
+    width: Platform.OS !== 'web' ? '75%' : '25%',
+  },
   input: {
     backgroundColor: theme.colors.surface,
   },

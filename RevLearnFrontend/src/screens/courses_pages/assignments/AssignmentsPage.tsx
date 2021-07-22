@@ -1,12 +1,15 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Button, Pressable, Text, View } from 'react-native';
+import {
+  Button, Pressable, Text, View,
+} from 'react-native';
 import { ListItem } from 'react-native-elements';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { UserState, selectUser } from '../../../hooks/slices/user.slice';
 import { Assignment } from '../../../models/Assignment';
+import { AssignmentPageStyle } from '../../../styles/AssignmentPageStyle';
 
 type Props = {
 
@@ -37,27 +40,25 @@ const AssignmentsPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
-      <Text>Assignments Page</Text>
-      <Button title={'Create Assignment'} onPress={createNavHandler}>Create Assignment</Button>
+    <View style={AssignmentPageStyle.container}>
+      <Text style={AssignmentPageStyle.header}>Assignments Page</Text>
+      <View>
+        <Button title={'Create Assignment'} onPress={createNavHandler}>Create Assignment</Button>
+      </View>
       {
         course?.activities.map((activity, index) => (
           <>
             {
               isAssignment(activity) && (
-                <ListItem key={index}>
-                  <Pressable onPress={() => { NavToAssignmentSubmissions(activity); }}>
-                    <View>
-                      <Text>{activity.title}</Text>
-                    </View>
-                  </Pressable>
+                <ListItem key={index} style={AssignmentPageStyle.listItemContainer} onPress={() => { NavToAssignmentSubmissions(activity); }}>
+                  <Text>{activity.title} </Text>
                 </ListItem>
               )
             }
           </>
         ))
       }
-    </>
+    </View>
   );
 };
 

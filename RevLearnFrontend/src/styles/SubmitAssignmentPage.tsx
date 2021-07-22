@@ -1,33 +1,25 @@
 /* eslint-disable import/prefer-default-export */
 import { Platform, StyleSheet } from 'react-native';
 
-export const AllCoursesStyle = StyleSheet.create({
+export const SubmitAssignmentPageStyle = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: Platform.OS !== 'web' ? 'row' : 'column',
-    flexWrap: 'wrap',
-    padding: 20,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '100%',
     backgroundColor: '#00B2D4',
   },
   header: {
+    margin: 20,
     fontWeight: 'bold',
     fontSize: 17,
-    flex: 1,
-    flexDirection: 'column',
+    textAlign: 'center',
   },
   listItemContainer: {
-    flex: 1,
     padding: 5,
     width: Platform.OS !== 'web' ? '85%' : '90%',
     flexDirection: 'column',
-    // flexWrap: 'wrap',
-    backgroundColor: '#19D9FF',
     margin: 20,
-  },
-  value: {
-    flex: 1,
-    flexDirection: 'column',
-    flexWrap: 'wrap',
   },
 });
