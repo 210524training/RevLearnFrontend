@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
-import {
-  Button, Text, View,
-} from 'react-native';
-=======
 import React from 'react';
-import { Button, Text } from 'react-native';
->>>>>>> f0edb96d214553a509f91fbd99d863469f090a2b
+import { Button, Text, View } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { useAppSelector } from '../../hooks';
 import { CourseState, getCourse } from '../../hooks/slices/course.slice';
