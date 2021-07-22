@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Button, View } from 'react-native';
+import { View } from 'react-native';
+import { Button } from 'react-native-paper';
 import DisplayAllTeachersList from '../../../components/display_list/DisplayAllTeachersList';
 import WithHomeNavbar from '../../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { User } from '../../../models/User';
@@ -28,7 +29,7 @@ const AllTeachersPage: React.FC<Props> = () => {
   return (
     <View style={Container.container}>
       <View style={Buttons.container}>
-        <Button title="Create Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
+        <Button mode="contained" color="#19D9FF" onPress={() => navigation.navigate('CreateTeacherPage')}>Create Teacher</Button>
       </View>
 
       {

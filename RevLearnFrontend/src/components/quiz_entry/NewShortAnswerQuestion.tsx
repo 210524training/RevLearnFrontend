@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
-import {
-  Button, NativeSyntheticEvent, NativeTouchEvent, Text,
-} from 'react-native';
+import { Button, TextInput } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
-import { TextInput } from 'react-native-paper';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
 import { InputField } from '../../styles/InputField';
@@ -16,7 +13,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
   const dispatch = useAppDispatch();
 
-  const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
+  const handleQuestionSubmit = () => {
     const newQuestion = {
       questionID: uuidv4(),
       questionTitle: title,
@@ -38,7 +35,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
       <TextInput style={InputField.container} label="Answer" onChangeText={setAnswer} />
 
-      <Button onPress={handleQuestionSubmit} title="Add Question" />
+      <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
     </>
   );
 };

@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-import {
-  Text, View, Button, TouchableOpacity,
-} from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { TextInput } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import { useAppDispatch, useAppSelector } from '../hooks';
 import {
   loginAsync, logout, selectUser, UserState,
 } from '../hooks/slices/user.slice';
 import WithNavBar from '../components/higher_order_components/Navbars/WithNavBar';
-import { Styles } from '../styles/NavBarStyles';
 import { LoginPageStyles } from '../styles/LoginPageStyles';
 import { LandingPageStyles } from '../styles/LandingPageStyles';
 import { Buttons } from '../styles/Buttons';
@@ -39,9 +36,7 @@ const LoginPage: React.FC<unknown> = () => {
       {user ? (
         <>
           <Text style={LandingPageStyles.header}>Hello, {user.username} </Text>
-          <Button
-            title="Logout"
-            onPress={() => dispatch(logout())}/>
+          <Button mode="contained" color="#19D9FF" onPress={() => dispatch(logout())}>Logout</Button>
         </>
       ) : (
         <>
@@ -61,10 +56,7 @@ const LoginPage: React.FC<unknown> = () => {
             defaultValue={password}
           />
           <View style={Buttons.container}>
-            <Button
-              onPress={handleLogin}
-              title="Sign in"
-            />
+            <Button mode="contained" color="#19D9FF" onPress={handleLogin}>Sign In</Button>
           </View>
           <View style={LoginPageStyles.row}>
             <Text>Don’t have an account? </Text>
