@@ -10,7 +10,6 @@ type Props = {
 
 const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests, onPress }) => (
   <>
-    <Text>{requests[0] && requests[0].username}</Text>
     {
       requests.map((request, index) => (
         <ListItem key={index}>

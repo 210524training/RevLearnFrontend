@@ -4,7 +4,6 @@
 import * as AWS from 'aws-sdk';
 import { REVLEARN_USER_KEY, REVLEARN_USER_SECRET } from 'react-native-dotenv';
 import { v4 as uuid } from 'uuid';
-import axios from 'axios';
 import { User } from '../../models/User';
 import { Course } from '../../models/Course';
 import { QuizSubmission } from '../../models/QuizSubmission';
@@ -88,6 +87,12 @@ export function deleteUser(id: string) {
     .then(() => console.log('Successfully Deleted User'))
     .catch((err) => window.alert(err));
 }
+
+export const updateUser = async (user: User): Promise<void> => {
+  return BackendClient.put('/user', user)
+    .then((res) => window.alert('Successfully updated user'))
+    .catch((err) => console.log('Error attempting to update user. ', err));
+};
 
 /**
  * Returns all of a student's submissions for a given course

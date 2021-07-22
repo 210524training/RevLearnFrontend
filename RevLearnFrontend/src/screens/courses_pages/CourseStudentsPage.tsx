@@ -2,7 +2,7 @@
 /* eslint-disable no-await-in-loop */
 /* eslint-disable no-plusplus */
 import React, { useEffect, useState } from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import DisplayAllStudents from '../../components/display_list/DisplayAllStudents';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppSelector } from '../../hooks';
@@ -13,9 +13,9 @@ import { getUserByID } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI
 type Props = {
 
 }
-const CourseStudentsPage: React.FC<Props> = (props) => {
+
+const CourseStudentsPage: React.FC<Props> = () => {
   const course = useAppSelector<CourseState>(getCourse);
-  const [selected, setSelected] = useState<string>();
   const [students, setStudents] = useState<User[]>();
 
   async function getListOfStudents() {
@@ -50,10 +50,10 @@ const CourseStudentsPage: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={{ backgroundColor: '#00B2D4' }}>
       <View>
         {students
-          ? <DisplayAllStudents students={students} setSelected={setSelected}/>
+          ? <DisplayAllStudents students={students} />
           : <></>
         }
 

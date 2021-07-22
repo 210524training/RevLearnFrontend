@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Button, Text, View } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
-import { useAppSelector } from '../../hooks';
-import { selectUser, UserState } from '../../hooks/slices/user.slice';
-import { updatePassword } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { useAppDispatch, useAppSelector } from '../../hooks';
+import { login, selectUser, UserState } from '../../hooks/slices/user.slice';
+import { User } from '../../models/User';
+import { updateUser } from '../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import { Buttons } from '../../styles/Buttons';
 import { Container } from '../../styles/Container';
 import { InputField } from '../../styles/InputField';
@@ -13,14 +14,22 @@ import { LandingPageStyles } from '../../styles/LandingPageStyles';
 type Props = {
 
 }
-const SettingsPage: React.FC<Props> = (props) => {
+
+const SettingsPage: React.FC<Props> = () => {
   const [password, setPassword] = useState<string>('');
   const [password1, setPassword1] = useState<string>('');
   const user = useAppSelector<UserState>(selectUser);
 
-  const handleFormSubmit = () => {
-    if(user) {
-      updatePassword(password, user.id);
+  const dispatch = useAppDispatch();
+
+  const handleFormSubmit = async () => {
+    if(user && password === password1 && password.length > 0) {
+      const updatedUser: User = {
+        ...user,
+        password,
+      };
+      await updateUser(updatedUser);
+      dispatch(login(updatedUser));
     }
   };
 

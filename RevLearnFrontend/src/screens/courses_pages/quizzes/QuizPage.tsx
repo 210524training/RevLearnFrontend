@@ -94,9 +94,9 @@ const QuizPage: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <View style={Container.container}>
-      <Text style={LandingPageStyles.header}>{quiz.title}</Text>
-      <Text>{quiz.description}</Text>
+    <View>
+      <Text style={LandingPageStyles.headerFont}>{quiz.title}</Text>
+      <Text style={LandingPageStyles.h2}>{quiz.description}</Text>
       {
         quiz.questions.map((question: QuizQuestion, index: number) => (
           <View style={Container.container}>
