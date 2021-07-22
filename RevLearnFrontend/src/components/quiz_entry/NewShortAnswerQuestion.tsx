@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import {
-  NativeSyntheticEvent, NativeTouchEvent, Text, TextInput,
-} from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, TextInput } from 'react-native-paper';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
+import { InputField } from '../../styles/InputField';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
   const [title, setTitle] = useState<string>('');
@@ -29,17 +27,13 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
 
   return (
     <>
-      <Text>Question Title</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setTitle} />
+      <TextInput style={InputField.container} label="Question Title" onChangeText={setTitle} />
 
-      <Text>Point Value</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setPointValue} />
+      <TextInput style={InputField.container} label="Point Value" onChangeText={setPointValue} />
 
-      <Text>Question Prompt</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setPrompt} />
+      <TextInput style={InputField.container} label="Question Prompt" onChangeText={setPrompt} />
 
-      <Text>Answer</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setAnswer} />
+      <TextInput style={InputField.container} label="Answer" onChangeText={setAnswer} />
 
       <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
     </>

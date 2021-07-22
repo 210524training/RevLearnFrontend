@@ -3,6 +3,8 @@ import React from 'react';
 import { View, Text } from 'react-native';
 import { Assignment } from '../../models/Assignment';
 import { Quiz } from '../../models/Quiz';
+import { CourseHome } from '../../styles/CourseHome';
+import B from '../BoldText';
 import SubmissionMap from './SubmissionsMap';
 
 type Props = {
@@ -19,15 +21,15 @@ const ActivitiesMap: React.FC<Props> = ({ Activities }) => (
       <View key={index}>
         {isAssignmment(element)
           ? (<>
-            <Text>Assignment: {element.title}</Text>
-            <Text>Type: {element.type}</Text>
+            <Text style={CourseHome.item2}><B input={'Assignment: '}/>{element.title}</Text>
+            <Text style={CourseHome.item}><B input={'Type: '}/>{element.type}</Text>
           </>)
           : (<>
-            <Text>Quiz: {element.title}</Text>
+            <Text style={CourseHome.item}><B input={'Quiz: '}/>{element.title}</Text>
           </>)
         }
-        <Text>Start Date: {element.startDate}</Text>
-        <Text>Due Date: {element.dueDate}</Text>
+        <Text style={CourseHome.item}><B input={'Start Date: '}/>{element.startDate}</Text>
+        <Text style={CourseHome.item}><B input={'Due Date: '}/>{element.dueDate}</Text>
 
         {element.submissions && <SubmissionMap Submissions={element.submissions}/>}
 
