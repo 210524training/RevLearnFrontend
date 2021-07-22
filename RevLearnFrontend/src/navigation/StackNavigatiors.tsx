@@ -1,5 +1,8 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-alert */
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Button, useColorScheme } from 'react-native';
 import {
   HomePageNavParamList, UserInfoNavParamList, SettingsNavParamList, AllUsersNavParamList, AllTeachersNavParamList, AllCoursesNavParamList, GradesOverViewNavParamList, AdmissionRequestsNavParamList, AllCourseGradesNavParamList, AssignmentsNavParamList, CourseGradesNavParamList, CourseInfoNavParamList, CourseResourcesNavParamList, QuizzesNavParamList, StudentsNavParamList, CourseHomeNavParamList,
 } from '../types/NavigatorTypes';
@@ -32,11 +35,13 @@ import CreateQuizPage from '../screens/courses_pages/quizzes/CreateQuizPage';
 import AllQuizResultsPage from '../screens/courses_pages/quizzes/AllQuizResultsPage';
 import CourseHomePage from '../screens/courses_pages/CourseHomePage';
 import AllCourseGradesPage from '../screens/courses_pages/AllCourseGradesPage';
+import DrawerIcon from '../components/web_navbar/DrawerIcon';
 
 // Home navigation stack navigators
 export function HomeNavigator() {
   const HomeNav = createStackNavigator<HomePageNavParamList>();
   const setHeader = useNavHeader();
+  const colorScheme = useColorScheme();
   return (
     <HomeNav.Navigator
       initialRouteName='HomePage'
@@ -44,11 +49,17 @@ export function HomeNavigator() {
       <HomeNav.Screen
         name="HomePage"
         component={HomePage}
-        options={{ headerTitle: 'Home Page' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Home Page',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </HomeNav.Navigator>
   );
 }
+
 export function UserInfoNavigator() {
   const UserInfoStack = createStackNavigator<UserInfoNavParamList>();
   const setHeader = useNavHeader();
@@ -59,7 +70,12 @@ export function UserInfoNavigator() {
       <UserInfoStack.Screen
         name="UserInfoPage"
         component={UserInfoPage}
-        options={{ headerTitle: 'User Info' }}
+        options={({ navigation }) => ({
+          headerTitle: 'User Info',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </UserInfoStack.Navigator>
   );
@@ -74,7 +90,12 @@ export function SettingsNavigator() {
       <SettingsStack.Screen
         name="SettingsPage"
         component={SettingsPage}
-        options={{ headerTitle: 'Settings' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Settings',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </SettingsStack.Navigator>
   );
@@ -89,7 +110,12 @@ export function AllUsersNavigator() {
       <AllUsersStack.Screen
         name="AllUsersPage"
         component={AllUsersPage}
-        options={{ headerTitle: 'All Users' }}
+        options={({ navigation }) => ({
+          headerTitle: 'All Users',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AllUsersStack.Navigator>
   );
@@ -104,12 +130,22 @@ export function AllTeachersNavigator() {
       <AllTeachersStack.Screen
         name="AllTeachersPage"
         component={AllTeachersPage}
-        options={{ headerTitle: 'All Teachers' }}
+        options={({ navigation }) => ({
+          headerTitle: 'All Teachers',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AllTeachersStack.Screen
         name="CreateTeacherPage"
         component={CreateTeacherAccountPage}
-        options={{ headerTitle: 'Create Teacher' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Create Teacher',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AllTeachersStack.Navigator>
   );
@@ -124,12 +160,22 @@ export function AllCoursesNavigator() {
       <AllCoursesStack.Screen
         name="AllCoursesPage"
         component={AllCoursesPage}
-        options={{ headerTitle: 'All Courses' }}
+        options={({ navigation }) => ({
+          headerTitle: 'All Courses',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AllCoursesStack.Screen
         name="CreateCoursePage"
         component={CreateCoursePage}
-        options={{ headerTitle: 'Create Course' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Create Course',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AllCoursesStack.Navigator>
   );
@@ -144,7 +190,12 @@ export function GradesOverViewNavigator() {
       <GradesOverViewStack.Screen
         name="GradesOverViewPage"
         component={GradesOverviewPage}
-        options={{ headerTitle: 'Grades OverView' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Grades OverView',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </GradesOverViewStack.Navigator>
   );
@@ -162,7 +213,12 @@ export function CourseHomeNavigator() {
       <HomeNav.Screen
         name="CourseHomePage"
         component={CourseHomePage}
-        options={{ headerTitle: 'Home Page' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Course HomePage',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </HomeNav.Navigator>
   );
@@ -177,17 +233,32 @@ export function CourseResourcesNavigator() {
       <CourseResourcesStack.Screen
         name="CourseResourcesPage"
         component={CourseResourcesPage}
-        options={{ headerTitle: 'Course Resources' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Course Resources',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <CourseResourcesStack.Screen
         name="DetailedResourcePage"
         component={DetailedResourcePage}
-        options={{ headerTitle: 'Detailed Resource' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Detailed Resource',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <CourseResourcesStack.Screen
         name="AddCourseResourcePage"
         component={AddResource}
-        options={{ headerTitle: 'Add Course Resource' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Add Course Resource',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </CourseResourcesStack.Navigator>
   );
@@ -202,27 +273,52 @@ export function AssignmentsNavigator() {
       <AssignmentsStack.Screen
         name="AssignmentsPage"
         component={AssignmentsPage}
-        options={{ headerTitle: 'Assignments' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Assignments',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AssignmentsStack.Screen
         name="SubmitAssignmentsPage"
         component={SubmitAssignmentPage}
-        options={{ headerTitle: 'Submit Assignments' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Submit Assignments',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AssignmentsStack.Screen
         name="CreateAssignmentPage"
         component={CreateAssignmentPage}
-        options={{ headerTitle: 'Create Assignment' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Create Assignment',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AssignmentsStack.Screen
         name="AssignmentsSubmissionsPage"
         component={AssignmentsSubmissionsPage}
-        options={{ headerTitle: 'Assignments Submissions' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Assignments Submissions',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <AssignmentsStack.Screen
         name="DetaliedSubmissionPage"
         component={DetailedSubmissionPage}
-        options={{ headerTitle: 'Detalied Submission' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Detalied Submission',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AssignmentsStack.Navigator>
   );
@@ -237,22 +333,42 @@ export function QuizzesNavigator() {
       <QuizzesStack.Screen
         name="QuizzesPage"
         component={AllQuizzesPage}
-        options={{ headerTitle: 'Quizzes' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Quizzes',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <QuizzesStack.Screen
         name="QuizPage"
         component={QuizPage}
-        options={{ headerTitle: 'Quiz' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Quiz',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <QuizzesStack.Screen
         name="CreateQuizPage"
         component={CreateQuizPage}
-        options={{ headerTitle: 'Create Quiz' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Create Quiz',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <QuizzesStack.Screen
         name="QuizGradesPage"
         component={AllQuizResultsPage}
-        options={{ headerTitle: 'Quiz Grades' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Quiz Grades',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </QuizzesStack.Navigator>
   );
@@ -267,12 +383,22 @@ export function CourseInfoNavigator() {
       <CourseInfoStack.Screen
         name="CourseInfoPage"
         component={CourseInfoPage}
-        options={{ headerTitle: 'Course Info' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Course Info',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
       <CourseInfoStack.Screen
         name="UpdateCourseInfoPage"
         component={UpdateCourseInfoPage}
-        options={{ headerTitle: 'Update Course Info' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Update Course Info',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </CourseInfoStack.Navigator>
   );
@@ -287,7 +413,12 @@ export function CourseGradesNavigator() {
       <CourseGradesStack.Screen
         name="CourseGradesPage"
         component={CourseGradesPage}
-        options={{ headerTitle: 'Course Grades' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Course Grades',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </CourseGradesStack.Navigator>
   );
@@ -302,7 +433,12 @@ export function AdmissionRequestsNavigator() {
       <AdmissionRequestsStack.Screen
         name="AdmissionRequestsPage"
         component={CourseAdmissionReouetsPage}
-        options={{ headerTitle: 'Admission Requests' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Admission Requests',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AdmissionRequestsStack.Navigator>
   );
@@ -317,7 +453,12 @@ export function StudentsNavigator() {
       <StudentsStack.Screen
         name="StudentsPage"
         component={CourseStudentsPage}
-        options={{ headerTitle: 'StudentsPage' }}
+        options={({ navigation }) => ({
+          headerTitle: 'Students Page',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </StudentsStack.Navigator>
   );
@@ -332,7 +473,12 @@ export function AllCourseGradesNavigator() {
       <AllCourseGradesStack.Screen
         name="AllCourseGradesPage"
         component={AllCourseGradesPage}
-        options={{ headerTitle: 'All Course Grades' }}
+        options={({ navigation }) => ({
+          headerTitle: 'All Course Grades',
+          headerRight: (props) => {
+            return <DrawerIcon navigation={navigation}/>;
+          },
+        })}
       />
     </AllCourseGradesStack.Navigator>
   );

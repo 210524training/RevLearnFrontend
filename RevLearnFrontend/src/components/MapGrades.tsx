@@ -13,13 +13,13 @@ type Props1 = {
 }
 
 const MapGrades: React.FC<Props1> = ({ List, Courses, set }) => (<>
-  {
+  {/* {
     List.map((element: CourseGrade, index: number) => (
       <View key={index}>
         <ListItem>{Courses.find((course) => course.id === element.courseId)?.courseTitle }</ListItem>
         <ListItem >{element.grade}</ListItem>
       </View>
-    ))}
+    ))} */}
 </>);
 
 export default MapGrades;
