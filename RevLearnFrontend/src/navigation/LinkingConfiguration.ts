@@ -104,12 +104,6 @@ export default {
               QuizGradesPage: 'QuizGradesPage',
             },
           },
-          CourseInfo: {
-            screens: {
-              CourseInfoPage: 'CourseInfoPage',
-              UpdateCourseInfoPage: 'UpdateCourseInfoPage',
-            },
-          },
           CourseGrades: {
             screens: {
               CourseGradesPage: 'CourseGradesPage',
