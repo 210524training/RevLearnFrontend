@@ -94,7 +94,7 @@ const QuizPage: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <View>
+    <View style={Container.quizPageContainer}>
       <View style={Container.quizHeadingContainer}>
         <Text style={LandingPageStyles.headerFont}>{quiz.title}</Text>
         <Text style={LandingPageStyles.h2}>{quiz.description}</Text>

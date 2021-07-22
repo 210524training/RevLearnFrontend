@@ -15,6 +15,10 @@ export const Container = StyleSheet.create({
   createQuizContainer: {
     width: Platform.OS !== 'web' ? '100%' : '25%',
   },
+  quizPageContainer: {
+    marginTop: 10,
+    marginLeft: 10,
+  },
   CenterOnly: {
     width: '100%',
     alignSelf: 'center',
