@@ -70,7 +70,6 @@ const CourseNavbarContainer = () => {
       NavToCourseGrades={NavToCourseGrades}
       NavToAdmissionRequests={NavToAdmissionRequests}
       NavToStudents={NavToStudents}
-      NavToAllCourseGrades={NavToAllCourseGrades}
     />
   );
 };

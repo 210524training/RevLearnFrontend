@@ -9,7 +9,7 @@ import {
 const DrawerNav = createDrawerNavigator<HomeNavParamList>();
 
 function AppCourseHomeNavigator() {
-  const test: boolean = false;
+  const test: boolean = true;
   return (
     <>
       <DrawerNav.Navigator
@@ -43,10 +43,6 @@ function AppCourseHomeNavigator() {
               name="Students"
               component={StudentsNavigator}
               options={{ headerTitle: 'Home Screen' }}/>
-            <DrawerNav.Screen
-              name="AllCourseGrades"
-              component={AllCourseGradesNavigator}
-              options={{ headerTitle: 'All Course Grades' }}/>
             <DrawerNav.Screen
               name="AdmissionRequests"
               component={AdmissionRequestsNavigator}
