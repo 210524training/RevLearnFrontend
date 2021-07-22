@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState, useEffect } from 'react';
-import { Button, Text, View } from 'react-native';
+import { View } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
-import { TextInput } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import DynamicDatePicker from '../../components/date_picker/DynamicDatePicker';
 import DynamicDropdown from '../../components/form_components/DynamicDropdown';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
@@ -78,9 +78,7 @@ const CreateCoursePage: React.FC<Props> = () => {
         onChangeText={setPassingGrade}
       />
       <View style={Buttons.container}>
-        <Button
-          onPress={handleFormSubmit}
-          title="Submit" />
+        <Button mode="contained" color="#19D9FF" onPress={handleFormSubmit}>Create Course</Button>
       </View>
     </View>
   );

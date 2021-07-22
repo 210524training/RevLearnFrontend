@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
-import { TextInput } from 'react-native-paper';
+import { TextInput, Button } from 'react-native-paper';
 import { addUser } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
 import { Container } from '../../../styles/Container';
 import { InputField } from '../../../styles/InputField';
@@ -48,10 +48,7 @@ const CreateTeacherAccountPage: React.FC<Props> = () => {
         editable={false}
       />
       <View style={Buttons.container}>
-        <Button
-          onPress={handleFormSubmit}
-          title="Submit"
-        />
+        <Button mode="contained" color="#19D9FF" onPress={handleFormSubmit}>Create Teacher</Button>
       </View>
     </View>
   );

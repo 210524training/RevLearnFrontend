@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Button, ScrollView, View } from 'react-native';
+import { ScrollView, View } from 'react-native';
+import { Button } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import DisplayCourseList from '../../components/display_list/DisplayCourseList';
@@ -34,7 +35,7 @@ const AllCoursesPage: React.FC<Props> = () => {
         {
           user?.role === 'Admin' && (
             <View style={{ backgroundColor: '#00B2D4' }}>
-              <Button title={'Create Course'} onPress={navToCreateCourse}/>
+              <Button mode="contained" color="#19D9FF" onPress={navToCreateCourse}>Create Course</Button>
             </View>
           )
         }

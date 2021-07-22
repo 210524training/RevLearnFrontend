@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import {
-  Button, NativeSyntheticEvent, NativeTouchEvent, Text, TextInput,
-} from 'react-native';
+import { Text, TextInput } from 'react-native';
+import { Button } from 'react-native-paper';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import RadioForm from 'react-native-simple-radio-button';
 import { v4 as uuidv4 } from 'uuid';
 import { useAppDispatch } from '../../hooks';
 import { addQuestion } from '../../hooks/slices/question.slice';
-import MultipleChoiceQuizQuestion from '../../models/MultipleChoiceQuizQuestion';
-import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../types/MyTypes';
+import { MultipleChoiceQuizQuestion } from '../../models/MultipleChoiceQuizQuestion';
+import { MultipleChoiceOption, MultipleChoicePossibleAnswer } from '../../Types/MyTypes';
 import { InputField } from '../../styles/InputField';
 
 const NewShortAnswerQuestion: React.FC<unknown> = () => {
@@ -30,7 +29,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
     { label: 'D', value: 'OptionD' },
   ];
 
-  const handleQuestionSubmit = (ev: NativeSyntheticEvent<NativeTouchEvent>) => {
+  const handleQuestionSubmit = () => {
     const choices: MultipleChoicePossibleAnswer[] = [
       { option: 'OptionA', answer: optionA },
       { option: 'OptionB', answer: optionB },
@@ -76,7 +75,7 @@ const NewShortAnswerQuestion: React.FC<unknown> = () => {
       <Text>Correct Answer:</Text>
       <RadioForm radio_props={radioOptions} initial={0} onPress={(value: string) => setAnswer(value as MultipleChoiceOption)} />
 
-      <Button onPress={handleQuestionSubmit} title="Add Question" />
+      <Button mode="contained" color="#19D9FF" onPress={handleQuestionSubmit}>Add Question</Button>
     </>
   );
 };
