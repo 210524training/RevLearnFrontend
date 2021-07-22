@@ -1,5 +1,7 @@
 import React, { Dispatch, SetStateAction, useState } from 'react';
-import { Button, ScrollView, Text } from 'react-native';
+import {
+  Button, ScrollView, Text, View,
+} from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { useAppSelector } from '../../hooks';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';
@@ -24,7 +26,7 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
     <>
       <ScrollView style={AllCoursesStyle.container} >
         {courses.map((element, index) => (
-          <ListItem key={index} style={AllCoursesStyle.container} >
+          <View key={index}style={AllCoursesStyle.listItemContainer}>
             <Text><Text style={AllCoursesStyle.header}>Course ID: </Text> {`${element.id}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Course Title: </Text>{`${element.courseTitle}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Start Date: </Text>{`${element.startDate}`}</Text>
@@ -33,7 +35,7 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
             <Text><Text style={AllCoursesStyle.header}>Passing Grade: </Text>{`${element.passingGrade}`}</Text>
             <Text><Text style={AllCoursesStyle.header}>Category: </Text>{`${element.category}`}</Text>
             {(user && user.role === 'Student') ? <Button onPress={() => handleButton(element)} title='Add Course'/> : <></>}
-          </ListItem>
+          </View>
         ))}
       </ScrollView>
     </>
