@@ -47,7 +47,7 @@ const DisplayFiles: React.FC<Props> = ({ attachments }) => {
           <View key={index} style={ResourceStyles.card}>
             <Text style={ResourceStyles.item}><B input={'Resource Name: '}/>{element.name}</Text>
             <Text style={ResourceStyles.item}><B input={'File Type: '}/>{element.type}</Text>
-            <Text style={ResourceStyles.item}><B input={'Resource Discription: '}/>{element.discription}</Text>
+            <Text style={ResourceStyles.item}><B input={'Resource Description: '}/>{element.discription}</Text>
             <Button
               style={ResourceStyles.item}
               color='#00B2D4'

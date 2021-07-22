@@ -36,6 +36,7 @@ const LoginPage: React.FC<unknown> = () => {
       {user ? (
         <>
           <Text style={LandingPageStyles.header}>Hello, {user.username} </Text>
+          <Button style={{ marginBottom: 10 }} mode="contained" color="#19D9FF" onPress={() => navigation.navigate('Home', { screen: 'HomePage' })}>Home Page</Button>
           <Button mode="contained" color="#19D9FF" onPress={() => dispatch(logout())}>Logout</Button>
         </>
       ) : (
