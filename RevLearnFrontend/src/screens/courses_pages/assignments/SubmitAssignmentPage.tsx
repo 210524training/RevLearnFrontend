@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import { Button, Text, TextInput } from 'react-native';
+import {
+  Button, Text, View,
+} from 'react-native';
+import { TextInput } from 'react-native-paper';
 import * as DocumentPicker from 'expo-document-picker';
 import { useNavigation } from '@react-navigation/native';
 import { v4 as uuidv4 } from 'uuid';
@@ -14,6 +17,9 @@ import { Assignment } from '../../../models/Assignment';
 import { AssignmentSubmission } from '../../../models/AssignmentSubmission';
 import { UserState, selectUser } from '../../../hooks/slices/user.slice';
 import { Quiz } from '../../../models/Quiz';
+import B from '../../../components/BoldText';
+import { SubmitAssignmentPageStyle } from '../../../styles/SubmitAssignmentPage';
+import { InputField } from '../../../styles/InputField';
 
 type Props = {
   route: any
@@ -70,22 +76,25 @@ const SubmitAssignmentPage: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <>
-      <Text>{assignment?.title}</Text>
-      <Text>Description: {assignment?.description}</Text>
-      <Text>Due Date: {assignment?.dueDate}</Text>
+    <View style={SubmitAssignmentPageStyle.container}>
+      <Text style={{ fontWeight: 'bold' }}>{assignment?.title}</Text>
+      <Text><B input={'Description: '}/>{assignment?.description}</Text>
+      <Text><B input={'Due Date: '}/> {assignment?.dueDate}</Text>
 
-      <Text>New Submission:</Text>
-      <Text>Submission Name: </Text>
-      <TextInput onChangeText={(event) => { setName(event); }} placeholder='My submission'/>
-      <Text>Discription: </Text>
+      <Text> <B input={'New Submission: '}/></Text>
+      <Text> <B input={'Submission Name: '}/> </Text>
       <TextInput
+        style={ InputField.container }
+        onChangeText={(event) => { setName(event); }} placeholder='My submission'/>
+      <Text> <B input={'Description: '}/></Text>
+      <TextInput
+        style={ InputField.container }
         multiline={true}
         numberOfLines={5}
         onChangeText={setDescription}
         placeholder={'Enter a discription for the attachment'}/>
       <Button title={'Upload File'} onPress={pickFile}/>
-    </>
+    </View>
   );
 };
 

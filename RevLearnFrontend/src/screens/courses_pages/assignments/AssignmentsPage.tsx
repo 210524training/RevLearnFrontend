@@ -50,12 +50,8 @@ const AssignmentsPage: React.FC<Props> = () => {
           <>
             {
               isAssignment(activity) && (
-                <ListItem key={index} style={AssignmentPageStyle.listItemContainer}>
-                  <Pressable onPress={() => { NavToAssignmentSubmissions(activity); }}>
-                    <View>
-                      <Text>{activity.title}</Text>
-                    </View>
-                  </Pressable>
+                <ListItem key={index} style={AssignmentPageStyle.listItemContainer} onPress={() => { NavToAssignmentSubmissions(activity); }}>
+                  <Text>{activity.title} </Text>
                 </ListItem>
               )
             }
