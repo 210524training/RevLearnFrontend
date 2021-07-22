@@ -17,14 +17,12 @@ export const CourseHome = StyleSheet.create({
     margin: 10,
     width: Platform.OS !== 'web' ? '95%' : '25%',
     backgroundColor: '#19D9FF',
+    padding: 20,
   },
 
   item: {
-    /* marginTop: '20',
-    marginBottom: '20', */
+    marginBottom: 5,
+    marginTop: 5,
   },
 
-  bold: {
-    // fontWeight: 'bold',
-  },
 });

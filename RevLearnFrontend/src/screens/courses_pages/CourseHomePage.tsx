@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
+import { Button, Platform, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Card } from 'react-native-paper';
 import WithCourseNavbar from '../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -42,21 +42,17 @@ const CourseHomePage: React.FC<Props> = () => {
 
   return (
     <View style={CourseHome.container}>
-      <Text style={CourseHome.bold}>CourseHomePage</Text>
-      <Card style={CourseHome.card}>
-        <Card.Content>
-
-          <Text style={CourseHome.item}><B input={'Course Title: '}/>  {course?.courseTitle}</Text>
-          <Text style={CourseHome.item}>Start Date: {course?.startDate}</Text>
-          <Text style={CourseHome.item}>End Date: {course?.endDate}</Text>
-          <Text style={CourseHome.item}>Category: {course?.category}</Text>
-          <Text style={CourseHome.item}>Passing Grade: {course?.passingGrade}</Text>
-          <Text style={CourseHome.item}>Number of Students: {course?.students.length}</Text>
-          <Text style={CourseHome.item}>Number of Assignments: {course?.activities.length}</Text>
-          <Text style={CourseHome.item}>Number of Resources: {course?.resources.length}</Text>
-        </Card.Content>
-
-      </Card>
+      {Platform.OS === 'web' && <B input={'CourseHomePage'}/>}
+      <View style={CourseHome.card}>
+        <Text style={CourseHome.item}><B input={'Course Title: '}/>{course?.courseTitle}</Text>
+        <Text style={CourseHome.item}><B input={'Start Date: '}/>{course?.startDate}</Text>
+        <Text style={CourseHome.item}><B input={'End Date: '}/>{course?.endDate}</Text>
+        <Text style={CourseHome.item}><B input={'Category: '}/>{course?.category}</Text>
+        <Text style={CourseHome.item}><B input={'Passing Grade: '}/>{course?.passingGrade}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Students: '}/>{course?.students.length}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Assignments: '}/>{course?.activities.length}</Text>
+        <Text style={CourseHome.item}><B input={'Number of Resources: '}/>{course?.resources.length}</Text>
+      </View>
 
       {
         course && user?.role === 'Student' && (
