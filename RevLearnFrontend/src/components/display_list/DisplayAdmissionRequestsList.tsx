@@ -13,7 +13,6 @@ type Props = {
 
 const DisplayAdmissionRequestsList: React.FC<Props> = ({ requests, onPress }) => (
   <View style={AdmissionRequestStyle.container}>
-    <Text>{requests[0] && requests[0].username}</Text>
     {
       requests.map((request, index) => (
         <View key={index} style={AdmissionRequestStyle.listItemContainer}>
