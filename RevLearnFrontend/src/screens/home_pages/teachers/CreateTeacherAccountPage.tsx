@@ -1,8 +1,13 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Button, Text, TextInput } from 'react-native';
+import { Button, Text, View } from 'react-native';
 import { v4 as uuidv4 } from 'uuid';
+import { TextInput } from 'react-native-paper';
 import { addUser } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { Container } from '../../../styles/Container';
+import { InputField } from '../../../styles/InputField';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
+import { Buttons } from '../../../styles/Buttons';
 
 type Props = {
 
@@ -21,15 +26,34 @@ const CreateTeacherAccountPage: React.FC<Props> = () => {
   };
 
   return (
-    <>
-      <Text>Username:</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setUsername} />
-      <Text>Password:</Text>
-      <TextInput style={{ borderWidth: 1 }} onChangeText={setPassword} />
-      <Text>Role:</Text>
-      <TextInput style={{ borderWidth: 1 }} value='Teacher' editable={false}/>
-      <Button onPress={handleFormSubmit} title="Submit" />
-    </>
+    <View style={Container.container}>
+      <Text style={LandingPageStyles.header}>Please fill in the following fields</Text>
+      <TextInput
+        style={ InputField.container }
+        label="Username"
+        onChangeText={(text) => setUsername(text)}
+        defaultValue={username}
+      />
+      <TextInput
+        style={ InputField.container }
+        secureTextEntry={true}
+        label="Password"
+        onChangeText={(text) => setPassword(text)}
+        defaultValue={password}
+      />
+      <TextInput
+        style={ InputField.container }
+        value='Teacher'
+        label="Role"
+        editable={false}
+      />
+      <View style={Buttons.container}>
+        <Button
+          onPress={handleFormSubmit}
+          title="Submit"
+        />
+      </View>
+    </View>
   );
 };
 

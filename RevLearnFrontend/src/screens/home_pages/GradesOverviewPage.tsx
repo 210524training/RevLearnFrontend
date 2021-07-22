@@ -51,9 +51,9 @@ const GradesOverviewPage: React.FC<Props> = (props) => {
   return (
     <>
       <Text>My Grades</Text>
-      {grades && coursesList
+      {(grades && coursesList)
         ? (
-          <MapGrades Courses={coursesList} List={grades} set={setSelected}/>
+          <> {/* <MapGrades Courses={coursesList} List={grades} set={setSelected}/> */} </>
         )
         : <> </>
       }

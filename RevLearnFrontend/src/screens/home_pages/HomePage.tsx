@@ -1,11 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import {
-  Button, Pressable, Text, View,
+  Text, View,
 } from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
-import { ListItem } from 'react-native-elements';
-import { ScreenWidth } from 'react-native-elements/dist/helpers';
 import WithHomeNavbar from '../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { useAppDispatch, useAppSelector } from '../../hooks';
 import { selectUser, UserState } from '../../hooks/slices/user.slice';

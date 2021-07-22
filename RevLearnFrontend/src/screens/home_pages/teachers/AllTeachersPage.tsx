@@ -1,10 +1,12 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
-import { Button } from 'react-native';
+import { Button, View } from 'react-native';
 import DisplayAllTeachersList from '../../../components/display_list/DisplayAllTeachersList';
 import WithHomeNavbar from '../../../components/higher_order_components/Navbars/WithHomeNavbar';
 import { User } from '../../../models/User';
 import { getAllTeachers } from '../../../remote/rev_learn_backend_api/RevLearnUsersAPI';
+import { Buttons } from '../../../styles/Buttons';
+import { Container } from '../../../styles/Container';
 
 type Props = {
 
@@ -25,13 +27,15 @@ const AllTeachersPage: React.FC<Props> = () => {
   }, []);
 
   return (
-    <>
-      <Button title="New Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
-      {teachers
-        ? <DisplayAllTeachersList teachers={teachers} setSelected={setSelected}/>
-        : <></>
+    <View style={Container.container}>
+      {teachers ? (
+        <DisplayAllTeachersList teachers={teachers} setSelected={setSelected}/>
+      ) : <></>
       }
-    </>
+      <View style={Buttons.container}>
+        <Button title="Create New Teacher" onPress={() => navigation.navigate('CreateTeacherPage')} />
+      </View>
+    </View>
   );
 };
 
