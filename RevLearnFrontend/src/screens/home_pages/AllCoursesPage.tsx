@@ -36,6 +36,8 @@ const AllCoursesPage: React.FC<Props> = () => {
           user?.role === 'Admin' && (
             <View style={{ backgroundColor: '#00B2D4' }}>
               <Button mode="contained" color="#19D9FF" onPress={navToCreateCourse}>Create Course</Button>
+              <Button style={{ marginTop: 10 }} mode="contained" color="#19D9FF" onPress={() => awaitRequest(setCourses)}>Refresh</Button>
+
             </View>
           )
         }
