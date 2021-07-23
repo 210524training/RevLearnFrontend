@@ -1,11 +1,14 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useEffect, useState } from 'react';
 import { Pressable, Text, View } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { Card, Paragraph, Title } from 'react-native-paper';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
 import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { AssignmentSubmission } from '../../../models/AssignmentSubmission';
+import { Card as StyleCards } from '../../../styles/Cards';
+import { Container } from '../../../styles/Container';
+import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 
 type Props = {
   route: any
@@ -29,20 +32,19 @@ const AssignmentsSubmissionsPage: React.FC<Props> = ({ route }) => {
   };
 
   return (
-    <>
-      <Text>Submissions for {assignment.title}</Text>
+    <View style={Container.assignmentContainer}>
+      <Text style={LandingPageStyles.header}>Submissions for {assignment.title}</Text>
       {
         submissions.map((submission, index) => (
-          <ListItem key={index}>
-            <Pressable onPress={() => { NavToSubmissionDetails(submission); }}>
-              <View>
-                <Text>Submission ID:{submission.submissionID}, Student ID: {submission.studentID}</Text>
-              </View>
-            </Pressable>
-          </ListItem>
+          <Card style={ StyleCards.container} key={index}>
+            <Card.Content>
+              <Title onPress={() => { NavToSubmissionDetails(submission); }}>Submission ID:{submission.submissionID}</Title>
+              <Paragraph>Student ID: {submission.studentID}</Paragraph>
+            </Card.Content>
+          </Card>
         ))
       }
-    </>
+    </View>
   );
 };
 

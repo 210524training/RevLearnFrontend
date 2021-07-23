@@ -8,6 +8,7 @@ import { selectUser, UserState } from '../../hooks/slices/user.slice';
 import { Course } from '../../models/Course';
 import { updateCourse } from '../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { AllCoursesStyle } from '../../styles/AllCoursesStyle';
+import { Container } from '../../styles/Container';
 
 type Props = {
   courses: Course[];
@@ -23,8 +24,8 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
     }
   };
   return (
-    <>
-      <ScrollView style={AllCoursesStyle.container} >
+    <View style={Container.assignmentContainer}>
+      <ScrollView>
         {courses.map((element, index) => (
           <View key={index}style={AllCoursesStyle.listItemContainer}>
             <Text><Text style={AllCoursesStyle.header}>Course ID: </Text> {`${element.id}`}</Text>
@@ -38,7 +39,7 @@ const DisplayCourseList: React.FC<Props> = ({ courses, setSelected }) => {
           </View>
         ))}
       </ScrollView>
-    </>
+    </View>
   );
 };
 
