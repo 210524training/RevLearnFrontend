@@ -10,7 +10,7 @@ import { Buttons } from '../../../styles/Buttons';
 import { Container } from '../../../styles/Container';
 
 type Props = {
-
+  route: any
 }
 
 const AllTeachersPage: React.FC<Props> = () => {
@@ -18,18 +18,22 @@ const AllTeachersPage: React.FC<Props> = () => {
 
   const navigation = useNavigation();
 
+  const refreshTeacherList = async () => {
+    const result = await getAllTeachers();
+    // add error handling
+    setTeachers(result);
+  };
+
   useEffect(() => {
-    (async () => {
-      const result = await getAllTeachers();
-      // add error handling
-      setTeachers(result);
-    })();
+    refreshTeacherList();
   }, []);
 
   return (
     <View style={Container.container}>
       <View style={Buttons.container}>
         <Button mode="contained" color="#19D9FF" onPress={() => navigation.navigate('CreateTeacherPage')}>Create Teacher</Button>
+        <Button style={{ marginTop: 10 }} mode="contained" color="#19D9FF" onPress={refreshTeacherList}>Refresh</Button>
+
       </View>
 
       {
