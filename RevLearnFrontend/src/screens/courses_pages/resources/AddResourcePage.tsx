@@ -17,7 +17,6 @@ import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCour
 import { View } from '../../../components/Themed';
 import { AddResourceStyles } from '../../../styles/ResourceStyles';
 import B from '../../../components/BoldText';
-import { LandingPageStyles } from '../../../styles/LandingPageStyles';
 
 type Props = {
 
@@ -72,16 +71,16 @@ const AddResource: React.FC<Props> = (props) => {
       {Platform.OS === 'web' && <B input={'Add Resource'}/>}
       <Text style={AddResourceStyles.item}>Resource Name: </Text>
       <TextInput style={AddResourceStyles.inputText} onChangeText={(event) => { setName(event); }} placeholder='Textbook'/>
-      <Text style={AddResourceStyles.item}>Resource Discription: </Text>
+      <Text style={AddResourceStyles.item}>Resource Description: </Text>
       <TextInput
         style={AddResourceStyles.inputItemMulti}
         multiline={true}
         numberOfLines={5}
         onChangeText={(event) => { setDescription(event); }}
-        placeholder={'Enter a discription of the the attachment'}/>
+        placeholder={'Enter a description of the the attachment'}/>
       <Button
         style={AddResourceStyles.item}
-        color='#00B2D4'
+        color='#19D9FF'
         mode={'contained'}
         onPress={pickFile}
       >

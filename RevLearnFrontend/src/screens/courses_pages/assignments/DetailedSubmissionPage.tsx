@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Button, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
+import { Card, Button } from 'react-native-paper';
 import { Assignment } from '../../../models/Assignment';
 import DynamicDropdown from '../../../components/form_components/DynamicDropdown';
 import WithCourseNavbar from '../../../components/higher_order_components/Navbars/WithCourseNavbar';
@@ -11,6 +12,9 @@ import { Submission } from '../../../models/Submission';
 import { updateCourse } from '../../../remote/rev_learn_backend_api/RevLearnCoursesAPI';
 import { Course } from '../../../models/Course';
 import { Quiz } from '../../../models/Quiz';
+import { Container } from '../../../styles/Container';
+import { AllCoursesStyle } from '../../../styles/AllCoursesStyle';
+import { Card as StyleCards } from '../../../styles/Cards';
 
 type Props = {
   route: any
@@ -55,13 +59,16 @@ const DetailedSubmissionPage: React.FC<Props> = ({ route }) => {
 
   return (
     <>
-      <View>
-        <Text>Submission ID: {submission.submissionID}</Text>
-        <Text>Student ID: {submission.studentID}</Text>
-        <Text>Submission Date: {new Date(submission.date).toDateString()}</Text>
-
+      <View style={ Container.assignmentContainer }>
+        <Card style={StyleCards.container}>
+          <Card.Content>
+            <Text><Text style={AllCoursesStyle.header}>Submission ID: </Text>{`${submission.submissionID}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Student ID: </Text>{`${submission.studentID}`}</Text>
+            <Text><Text style={AllCoursesStyle.header}>Submission Date: </Text>{new Date(submission.date).toDateString()}</Text>
+          </Card.Content>
+        </Card>
         <DynamicDropdown title="Letter Grade:" OptionsList={['A', 'B', 'C', 'D', 'F']} Selected='B' setSelected={setGrade} />
-        <Button onPress={handleGradeUpdate} title="Update Grade" />
+        <Button color='#19D9FF' mode={'contained'} onPress={handleGradeUpdate}>Update Grade</Button>
       </View>
     </>
   );

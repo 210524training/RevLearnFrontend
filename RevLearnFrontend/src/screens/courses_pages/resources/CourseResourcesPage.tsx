@@ -9,6 +9,7 @@ import { View } from '../../../components/Themed';
 import { useAppSelector } from '../../../hooks';
 import { CourseState, getCourse } from '../../../hooks/slices/course.slice';
 import { UserState, selectUser } from '../../../hooks/slices/user.slice';
+import { Container } from '../../../styles/Container';
 import { ResourceStyles } from '../../../styles/ResourceStyles';
 
 type Props = {
@@ -25,7 +26,7 @@ const CourseResourcesPage: React.FC<Props> = () => {
   };
 
   return (
-    <View style={ResourceStyles.container}>
+    <View style={Container.assignmentContainer}>
       {Platform.OS === 'web' && <B input={'Course Resources'}/>}
 
       {

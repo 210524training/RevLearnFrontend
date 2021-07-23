@@ -15,7 +15,7 @@ type Props = {
 const UserInfoPage: React.FC<Props> = () => {
   const user: User | null = useAppSelector<UserState>(selectUser);
   return (
-    <View style={Container.container}>
+    <View style={Container.assignmentContainer}>
       <Text style={LandingPageStyles.header}>User Info Page</Text>
       {user
         ? (

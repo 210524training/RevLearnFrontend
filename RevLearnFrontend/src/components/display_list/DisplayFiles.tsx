@@ -10,6 +10,7 @@ import { downLoadFile, getFileUrl } from '../../remote/rev_learn_backend_api/Rev
 import Linking from '../../hooks/Linking';
 import { ResourceStyles } from '../../styles/ResourceStyles';
 import B from '../BoldText';
+import { Container } from '../../styles/Container';
 
 type Props = {
   attachments: Attachment[],
@@ -41,7 +42,7 @@ const DisplayFiles: React.FC<Props> = ({ attachments }) => {
   };
 
   return (
-    <View>
+    <View style={Container.assignmentContainer}>
       {attachments
         && attachments.map((element, index) => (
           <View key={index} style={ResourceStyles.card}>
