@@ -1,6 +1,6 @@
 # RevLearnFrontend
 
-This repo will contain the React Frontend of our project.
+This repo will contain the React Frontend of our project. [Backend Repository](https://github.com/210524training/RevLearnBackend)
 
 ## Learning Management System
 
